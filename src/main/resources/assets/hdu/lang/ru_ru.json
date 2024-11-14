@@ -9,6 +9,8 @@
   "block.hdu.ethereum_ore": "Руда Эфириума",
   "block.hdu.ethereum_block": "Блок Эфириума",
   "block.hdu.raw_ethereum_block": "Блок Необработанного Эфириума",
+  "block.hdu.stone_of_hopes": "Камень Надежд",
+  "block.hdu.shards_of_the_stone_of_hopes": "Осколки камня Надежд",
   "creativetab.hdu_tab": "Подземелье Dedrarion",
   "message.metal_detector.found": "Найдено %s на (%d, %d, %d)",
   "message.metal_detector.notfound": "Ничего не найдено!",

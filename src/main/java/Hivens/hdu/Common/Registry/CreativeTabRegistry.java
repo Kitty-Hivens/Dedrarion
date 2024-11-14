@@ -36,6 +36,10 @@ public class CreativeTabRegistry {
                         pOutput.accept(BlockRegistry.ETHEREUM_BLOCK.get());
                         pOutput.accept(BlockRegistry.RAW_ETHEREUM_BLOCK.get());
 
+                        // Blocks
+                        pOutput.accept(BlockRegistry.STONE_OF_HOPES.get());
+                        pOutput.accept(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get());
+
 
                     })
                     .build());

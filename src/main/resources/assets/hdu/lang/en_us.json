@@ -9,6 +9,8 @@
   "block.hdu.ethereum_ore": "Ethereum Ore",
   "block.hdu.ethereum_block": "Block of Ethereum",
   "block.hdu.raw_ethereum_block": "Block of Raw Ethereum",
+  "block.hdu.stone_of_hopes": "Stone of Hopes",
+  "block.hdu.shards_of_the_stone_of_hopes": "Shards of the Stone of Hopes",
   "creativetab.hdu_tab": "Dedrarion Underground Tab",
   "message.metal_detector.found":"Found %s on (%d, %d, %d)",
   "message.metal_detector.notfound": "Nothing found!",

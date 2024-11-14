@@ -2,6 +2,8 @@
   "values": [
     "hdu:ethereum_ore",
     "hdu:raw_ethereum_block",
-    "hdu:ethereum_block"
+    "hdu:ethereum_block",
+    "hdu:stone_of_hopes",
+    "hdu:shards_of_the_stone_of_hopes"
   ]
 }

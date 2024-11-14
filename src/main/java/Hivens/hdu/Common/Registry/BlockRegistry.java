@@ -27,6 +27,10 @@ public class BlockRegistry {
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.NETHER_GOLD_ORE)));
     public static final RegistryObject<Block> RAW_ETHEREUM_BLOCK = registerBlock("raw_ethereum_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_ORE).sound(SoundType.TUFF)));
+    public static final RegistryObject<Block> STONE_OF_HOPES = registerBlock("stone_of_hopes",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
+    public static final RegistryObject<Block> SHARDS_OF_THE_STONE_OF_HOPES = registerBlock("shards_of_the_stone_of_hopes",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
