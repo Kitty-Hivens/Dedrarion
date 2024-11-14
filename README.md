@@ -1,2 +1,4 @@
-# Dedrarion_Undeground
- Underground part of Dedrarion
+# Dedrarion Undeground
+## Приветствую!
+### Данный мод это лишь часть большого набора Dedrarion
+#### Данная часть сосредоточена на дополнении подземелья верхнего мира, наслаждайтесь игрой
