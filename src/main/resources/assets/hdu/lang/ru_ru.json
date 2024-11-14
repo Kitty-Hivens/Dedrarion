@@ -1,0 +1,19 @@
+{
+  "item.hdu.metal_detector": "Детектор редчайшего металла",
+  "item.hdu.ethereum": "Эфириум",
+  "item.hdu.ethereum_ore": "Эфириумовая руда",
+  "item.hdu.raw_ethereum": "Необработанный Эфириум",
+  "item.hdu.ethereum_dust": "Пыль Эфириума",
+  "item.hdu.fuel_of_promises": "Топливо Обещаний",
+  "item.hdu.forbidden_fruit": "Запретный Плод",
+  "block.hdu.ethereum_ore": "Руда Эфириума",
+  "block.hdu.ethereum_block": "Блок Эфириума",
+  "block.hdu.raw_ethereum_block": "Блок Необработанного Эфириума",
+  "creativetab.hdu_tab": "Подземелье Dedrarion",
+  "message.metal_detector.found": "Найдено %s на (%d, %d, %d)",
+  "message.metal_detector.notfound": "Ничего не найдено!",
+  "tooltip.item.hdu.metal_detector": "§bКажется, его энергия связана только с магией",
+  "tooltip.item.hdu.ethereum": "§eКристалл, что кажется легче облаков",
+  "tooltip.item.hdu.fuel_of_promises": "§4Кого стоит за это благодарить?",
+  "tooltip.item.hdu.forbidden_fruit": "§eКого вы готовы отдать ради этого?"
+}

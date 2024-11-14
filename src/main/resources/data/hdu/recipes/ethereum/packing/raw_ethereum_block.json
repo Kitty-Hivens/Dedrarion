@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "hdu:raw_ethereum"
+    }
+  },
+  "result": {
+    "item": "hdu:raw_ethereum_block"
+  }
+}

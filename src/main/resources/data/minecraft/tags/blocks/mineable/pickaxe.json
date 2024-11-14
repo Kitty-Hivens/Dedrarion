@@ -1,0 +1,7 @@
+{
+  "values": [
+    "hdu:ethereum_ore",
+    "hdu:raw_ethereum_block",
+    "hdu:ethereum_block"
+  ]
+}

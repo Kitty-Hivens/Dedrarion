@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "hdu:block/raw_ethereum_block"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hdu:ethereum_block"
+    }
+  ],
+  "result": {
+    "item": "hdu:ethereum",
+    "count": 9
+  }
+}

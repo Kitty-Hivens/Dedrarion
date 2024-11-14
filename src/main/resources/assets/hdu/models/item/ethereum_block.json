@@ -1,0 +1,6 @@
+{
+  "parent": "hdu:block/ethereum_block",
+  "textures": {
+    "all": "hdu:block/ethereum_block"
+  }
+}

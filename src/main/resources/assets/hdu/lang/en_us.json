@@ -1,0 +1,19 @@
+{
+  "item.hdu.metal_detector": "Metal Detector",
+  "item.hdu.ethereum": "Ethereum",
+  "item.hdu.ethereum_ore": "Ethereum Ore",
+  "item.hdu.raw_ethereum": "Raw Ethereum",
+  "item.hdu.ethereum_dust": "Ethereum Dust",
+  "item.hdu.fuel_of_promises": "Fuel Of Promises",
+  "item.hdu.forbidden_fruit": "Forbidden Fruit",
+  "block.hdu.ethereum_ore": "Ethereum Ore",
+  "block.hdu.ethereum_block": "Block of Ethereum",
+  "block.hdu.raw_ethereum_block": "Block of Raw Ethereum",
+  "creativetab.hdu_tab": "Dedrarion Underground Tab",
+  "message.metal_detector.found":"Found %s on (%d, %d, %d)",
+  "message.metal_detector.notfound": "Nothing found!",
+  "tooltip.item.hdu.metal_detector": "§bIt seems that his energy is tied only to magic",
+  "tooltip.item.hdu.ethereum": "§eA certain crystal that seems lighter than clouds",
+  "tooltip.item.hdu.fuel_of_promises": "§4Who should we thank for this?",
+  "tooltip.item.hdu.forbidden_fruit": "§eWho are you willing to give up for this?"
+}
