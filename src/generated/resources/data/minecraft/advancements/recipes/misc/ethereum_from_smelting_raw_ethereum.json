@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_ethereum": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hdu:raw_ethereum"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:ethereum_from_smelting_raw_ethereum"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_ethereum",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:ethereum_from_smelting_raw_ethereum"
+    ]
+  },
+  "sends_telemetry_event": false
+}

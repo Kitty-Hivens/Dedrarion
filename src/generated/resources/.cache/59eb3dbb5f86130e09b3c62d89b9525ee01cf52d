@@ -1,0 +1,6 @@
+// 1.20.1	2024-11-16T00:17:12.24259829	Loot Tables
+1a7800e73aba2778fe3466db247fe2bdc1a9a29b data/hdu/loot_tables/blocks/ethereum_block.json
+8e43236d2d68ee1438614802e71da322ee9326e3 data/hdu/loot_tables/blocks/ethereum_ore.json
+6d6f52f26233a5501bf93c1b9cf3a1215201d183 data/hdu/loot_tables/blocks/raw_ethereum_block.json
+7b31bb04fe310f7d889611fde7d00157a2b56ce9 data/hdu/loot_tables/blocks/shards_of_the_stone_of_hopes.json
+3a9f4677eed6e79e1807ece61dcccb449f09dbfe data/hdu/loot_tables/blocks/stone_of_hopes.json

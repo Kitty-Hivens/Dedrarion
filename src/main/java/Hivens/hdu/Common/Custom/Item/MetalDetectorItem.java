@@ -1,9 +1,10 @@
 package Hivens.hdu.Common.Custom.Item;
 
-import Hivens.hdu.Common.Registry.BlockRegistry;
+import Hivens.hdu.Common.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -18,7 +19,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Objects;
 
 public class MetalDetectorItem extends Item {
 
@@ -32,14 +32,12 @@ public class MetalDetectorItem extends Item {
             Player player = pContext.getPlayer();
             if (player == null) return InteractionResult.FAIL;
 
-
             Vec3 eyePos = player.getEyePosition();
             BlockPos playerPos = new BlockPos((int) eyePos.x(), (int) eyePos.y(), (int) eyePos.z());
             int range = 7;
 
             BlockPos foundPos = null;
             boolean foundBlock = false;
-
 
             for (int x = -range; x <= range; x++) {
                 for (int y = -range; y <= range; y++) {
@@ -59,9 +57,9 @@ public class MetalDetectorItem extends Item {
                 if (foundBlock) break;
             }
 
-
             if (foundBlock) {
                 addLineHighlight(pContext.getLevel(), eyePos, foundPos);
+                playSoundForPlayer(player);
             }
 
             if (!foundBlock) {
@@ -69,10 +67,14 @@ public class MetalDetectorItem extends Item {
             }
         }
 
-        pContext.getItemInHand().hurtAndBreak(1, Objects.requireNonNull(pContext.getPlayer()),
-                player -> player.broadcastBreakEvent(player.getUsedItemHand()));
-
         return InteractionResult.SUCCESS;
+    }
+
+    private void playSoundForPlayer(Player player) {
+        if (player != null && player.level() instanceof ServerLevel serverLevel) {
+            serverLevel.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    SoundEvents.AMETHYST_BLOCK_CHIME, player.getSoundSource(), 1.0F, 1.0F);
+        }
     }
 
     @Override
@@ -88,33 +90,27 @@ public class MetalDetectorItem extends Item {
         }
     }
 
-
     private void addLineHighlight(Level world, Vec3 fromPos, BlockPos toPos) {
         if (world instanceof ServerLevel serverLevel) {
-
-
             double xDiff = toPos.getX() - fromPos.x();
             double yDiff = toPos.getY() - fromPos.y();
             double zDiff = toPos.getZ() - fromPos.z();
 
             double distance = Math.sqrt(xDiff * xDiff + yDiff * yDiff + zDiff * zDiff);
 
-
             int particleCount = (int) (distance / 2);
             for (int i = 0; i <= particleCount; i++) {
-
                 double x = fromPos.x() + (xDiff * i / particleCount);
                 double y = fromPos.y() + (yDiff * i / particleCount);
                 double z = fromPos.z() + (zDiff * i / particleCount);
 
-
-                serverLevel.sendParticles(ParticleTypes.GLOW, x + 0.5, y-0.5, z + 0.5, 1, 0, 0, 0, 0);
+                serverLevel.sendParticles(ParticleTypes.GLOW, x + 0.5, y - 0.5, z + 0.5, 1, 0, 0, 0, 0);
             }
         }
     }
 
-
     private boolean isValuableBlock(BlockState state) {
-        return state.is(BlockRegistry.ETHEREUM_ORE.get());
+        return state.is(ModTags.Blocks.METAL_DETECTOR_VALUABLES);
     }
 }
+

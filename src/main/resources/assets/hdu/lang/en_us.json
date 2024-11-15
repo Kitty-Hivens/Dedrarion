@@ -1,5 +1,5 @@
 {
-  "item.hdu.metal_detector": "Metal Detector",
+  "item.hdu.metal_detector": "Magical Detector",
   "item.hdu.ethereum": "Ethereum",
   "item.hdu.ethereum_ore": "Ethereum Ore",
   "item.hdu.raw_ethereum": "Raw Ethereum",
@@ -12,8 +12,6 @@
   "block.hdu.stone_of_hopes": "Stone of Hopes",
   "block.hdu.shards_of_the_stone_of_hopes": "Shards of the Stone of Hopes",
   "creativetab.hdu_tab": "Dedrarion Underground Tab",
-  "message.metal_detector.found":"Found %s on (%d, %d, %d)",
-  "message.metal_detector.notfound": "Nothing found!",
   "tooltip.item.hdu.metal_detector": "§bIt seems that his energy is tied only to magic",
   "tooltip.item.hdu.ethereum": "§eA certain crystal that seems lighter than clouds",
   "tooltip.item.hdu.fuel_of_promises": "§4Who should we thank for this?",

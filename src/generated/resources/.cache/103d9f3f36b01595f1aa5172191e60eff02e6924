@@ -1,0 +1,4 @@
+// 1.20.1	2024-11-16T00:17:12.243264245	Registries
+660325423a2b6a088cf795f47b5602143ce1ef69 data/hdu/forge/biome_modifier/add_ethereum_ore.json
+c36e4be51588365192aa9ed0ad5c0aaf9a45caaa data/hdu/worldgen/configured_feature/ethereum_ore.json
+815d54aeb9d871a0fbc4cffb418f7d84ab1b143b data/hdu/worldgen/placed_feature/ethereum_ore_placed.json

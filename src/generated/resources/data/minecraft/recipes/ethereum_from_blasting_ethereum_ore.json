@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 600,
+  "experience": 23.0,
+  "group": "ethereum",
+  "ingredient": {
+    "item": "hdu:ethereum_ore"
+  },
+  "result": "hdu:ethereum"
+}

@@ -1,5 +1,5 @@
 {
-  "item.hdu.metal_detector": "Детектор редчайшего металла",
+  "item.hdu.metal_detector": "Магический детектор",
   "item.hdu.ethereum": "Эфириум",
   "item.hdu.ethereum_ore": "Эфириумовая руда",
   "item.hdu.raw_ethereum": "Необработанный Эфириум",
@@ -12,8 +12,6 @@
   "block.hdu.stone_of_hopes": "Камень Надежд",
   "block.hdu.shards_of_the_stone_of_hopes": "Осколки камня Надежд",
   "creativetab.hdu_tab": "Подземелье Dedrarion",
-  "message.metal_detector.found": "Найдено %s на (%d, %d, %d)",
-  "message.metal_detector.notfound": "Ничего не найдено!",
   "tooltip.item.hdu.metal_detector": "§bКажется, его энергия связана только с магией",
   "tooltip.item.hdu.ethereum": "§eКристалл, что кажется легче облаков",
   "tooltip.item.hdu.fuel_of_promises": "§4Кого стоит за это благодарить?",

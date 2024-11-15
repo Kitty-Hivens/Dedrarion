@@ -1,0 +1,16 @@
+// 1.20.1	2024-11-16T00:17:12.241546587	Block States: hdu
+61957409849008a597e11b08aa284cd0b514138d assets/hdu/blockstates/ethereum_block.json
+fe5992066dc18e9e18e0bf1d8f5a3518e484906b assets/hdu/blockstates/ethereum_ore.json
+757442f8574e46109f1bc0be41859324cee9ae2a assets/hdu/blockstates/raw_ethereum_block.json
+3c5346bda74ed3519810dc6cc5e6a667e8420a32 assets/hdu/blockstates/shards_of_the_stone_of_hopes.json
+57ef5f7e3ff6ee5e31d4284cd8567173f8acbd54 assets/hdu/blockstates/stone_of_hopes.json
+fc5ce9de3b0326b804b14b9f6767d5556ca4b627 assets/hdu/models/block/ethereum_block.json
+4f78a7ae209916fbca8b9e1d301b1dcec039d629 assets/hdu/models/block/ethereum_ore.json
+35462c1f097eccc20afe32f349bf1949102cfe32 assets/hdu/models/block/raw_ethereum_block.json
+22c7e173a03d73e73f7c0c7e2629d17c741d6e9e assets/hdu/models/block/shards_of_the_stone_of_hopes.json
+668ee94de828d70e79940b2e2daed06bf1c7510b assets/hdu/models/block/stone_of_hopes.json
+ca81921a7efe007690d3ef4a5605883aa9f28b60 assets/hdu/models/item/ethereum_block.json
+c4e793caf0cf50a15d868bfd26d3fdba1e85de5b assets/hdu/models/item/ethereum_ore.json
+859db91d8afc883e015b6c7732319136126bc1f1 assets/hdu/models/item/raw_ethereum_block.json
+78f304748beaf7093ccb49606d2f67c3de212196 assets/hdu/models/item/shards_of_the_stone_of_hopes.json
+54ff70924a4132e55fbbfa25f1cb07cacf0dd299 assets/hdu/models/item/stone_of_hopes.json

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 800,
+  "experience": 17.0,
+  "group": "ethereum",
+  "ingredient": {
+    "item": "hdu:raw_ethereum"
+  },
+  "result": "hdu:ethereum"
+}
