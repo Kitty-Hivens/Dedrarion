@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ethereum_dust": {
+    "has_ethereum": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hdu:ethereum_dust"
+              "hdu:ethereum"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:ethereum_from_ethereum_dust_stonecutting"
+        "recipe": "minecraft:ethereum_dust_from_ethereum_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_ethereum_dust",
+      "has_ethereum",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:ethereum_from_ethereum_dust_stonecutting"
+      "minecraft:ethereum_dust_from_ethereum_stonecutting"
     ]
   },
   "sends_telemetry_event": false
