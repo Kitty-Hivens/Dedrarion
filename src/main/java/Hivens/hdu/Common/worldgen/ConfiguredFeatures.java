@@ -38,7 +38,7 @@ public class ConfiguredFeatures {
                 new OreConfiguration(
                         deepslateReplaceable,
                         BlockRegistry.STONE_OF_HOPES.get().defaultBlockState(),
-                        28));
+                        64));
 
 
     }

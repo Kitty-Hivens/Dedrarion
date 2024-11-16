@@ -26,7 +26,7 @@ public class PlacedFeatures {
                 OrePlacement.rareOrePlacement(1,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-50))));
         register(context, STONE_OF_HOPES_PLACED_KEY, configuredFeatures.getOrThrow(ConfiguredFeatures.OVERWORLD_STONE_OF_HOPES_ORE_KEY),
-                OrePlacement.rareOrePlacement(8,
+                OrePlacement.rareOrePlacement(2,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-30))));
 
     }
