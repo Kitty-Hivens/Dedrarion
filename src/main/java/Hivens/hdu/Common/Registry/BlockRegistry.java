@@ -2,7 +2,6 @@ package Hivens.hdu.Common.Registry;
 
 import Hivens.hdu.HDU;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.ai.behavior.Behavior;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
