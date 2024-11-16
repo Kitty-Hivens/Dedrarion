@@ -98,6 +98,12 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 BlockRegistry.STONE_OF_HOPES.get(),
                 BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()
         );
+
+        smeltingResultFromBase(
+                pWriter,
+                BlockRegistry.SMOOTH_STONE_OF_HOPES.get(),
+                BlockRegistry.STONE_OF_HOPES.get()
+        );
     }
 
 
