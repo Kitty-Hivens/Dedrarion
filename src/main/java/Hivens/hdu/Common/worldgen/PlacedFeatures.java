@@ -17,6 +17,7 @@ import java.util.List;
 
 public class PlacedFeatures {
     public static final ResourceKey<PlacedFeature> ETHEREUM_ORE_PLACED_KEY = registerKey("ethereum_ore_placed");
+    public static final ResourceKey<PlacedFeature> STONE_OF_HOPES_PLACED_KEY = registerKey("stone_of_hopes_placed");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -24,6 +25,9 @@ public class PlacedFeatures {
         register(context, ETHEREUM_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ConfiguredFeatures.OVERWORLD_ETHEREUM_ORE_KEY),
                 OrePlacement.rareOrePlacement(1,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-50))));
+        register(context, STONE_OF_HOPES_PLACED_KEY, configuredFeatures.getOrThrow(ConfiguredFeatures.OVERWORLD_STONE_OF_HOPES_ORE_KEY),
+                OrePlacement.rareOrePlacement(8,
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-30))));
 
     }
 

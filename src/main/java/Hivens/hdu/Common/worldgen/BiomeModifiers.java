@@ -15,6 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class BiomeModifiers {
 
     public static final ResourceKey<BiomeModifier> ADD_ETHEREUM_ORE = registerKey("add_ethereum_ore");
+    public static final ResourceKey<BiomeModifier> ADD_STONE_OF_HOPES = registerKey("add_stone_of_hopes");
 
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
@@ -24,6 +25,11 @@ public class BiomeModifiers {
         context.register(ADD_ETHEREUM_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(PlacedFeatures.ETHEREUM_ORE_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES
+        ));
+        context.register(ADD_STONE_OF_HOPES, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(PlacedFeatures.STONE_OF_HOPES_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
     }
