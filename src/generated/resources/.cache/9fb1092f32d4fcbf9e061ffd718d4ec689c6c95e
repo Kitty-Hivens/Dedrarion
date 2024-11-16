@@ -1,4 +1,5 @@
-// 1.20.1	2024-11-16T11:41:14.72448085	Recipes
+// 1.20.1	2024-11-16T11:57:50.455203222	Recipes
+1ea08584aa74318f20b326986e51f6b6cde260b7 data/hdu/advancements/recipes/building_blocks/smooth_stone_of_hopes.json
 7a7dc9149ab161c7d05567fc011648beae46b47c data/hdu/advancements/recipes/building_blocks/stone_of_hopes.json
 8dbdea309fcfecc507d9be104f3847e46937a300 data/hdu/advancements/recipes/misc/bricks_from_the_shards_of_the_stone_of_hopes.json
 6d2fbf2ea8000bebba703e0b797c765726b84e16 data/hdu/advancements/recipes/misc/bricks_from_the_smooth_stone_of_hopes.json
@@ -13,6 +14,7 @@ b690ddba73ba4be78bd5dcc8ad91495104937032 data/hdu/advancements/recipes/misc/stai
 bb7201977fc580033cdbddb35eb97eb1ed0533c8 data/hdu/recipes/bricks_from_the_stone_of_hopes.json
 69bc282153c2276823e05cd53e87b40724e2d0d2 data/hdu/recipes/ethereum.json
 30867c7ca212752915313bb5744834b59ef0667a data/hdu/recipes/ethereum_block.json
+25e212352edcc518d556b275f694827845480d64 data/hdu/recipes/smooth_stone_of_hopes.json
 a5675c68ce644bfab06e3bb329c47625fa29bd70 data/hdu/recipes/stairs_from_the_shards_of_the_stone_of_hopes.json
 4fb0e9c98c710e365a744b0cf4f437e31b5c1c9b data/hdu/recipes/stairs_from_the_smooth_stone_of_hopes.json
 aa945701bc16c0e7bb6a0b5e9cd419ca6d8fb6aa data/hdu/recipes/stairs_from_the_stone_of_hopes.json
