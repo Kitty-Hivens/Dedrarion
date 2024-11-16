@@ -36,7 +36,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .unlockedBy(getHasName(ItemRegistry.ETHEREUM.get()), has(ItemRegistry.ETHEREUM.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get(), 8)
                 .pattern("  S")
                 .pattern(" SS")
                 .pattern("SSS")
@@ -44,14 +44,14 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .unlockedBy(getHasName(BlockRegistry.STONE_OF_HOPES.get()), has(BlockRegistry.STONE_OF_HOPES.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get(), 4)
                 .pattern("SS")
                 .pattern("SS")
                 .define('S', BlockRegistry.STONE_OF_HOPES.get())
                 .unlockedBy(getHasName(BlockRegistry.STONE_OF_HOPES.get()), has(BlockRegistry.STONE_OF_HOPES.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(), 8)
                 .pattern("  S")
                 .pattern(" SS")
                 .pattern("SSS")
@@ -59,14 +59,14 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .unlockedBy(getHasName(BlockRegistry.SMOOTH_STONE_OF_HOPES.get()), has(BlockRegistry.SMOOTH_STONE_OF_HOPES.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(), 4)
                 .pattern("SS")
                 .pattern("SS")
                 .define('S', BlockRegistry.SMOOTH_STONE_OF_HOPES.get())
                 .unlockedBy(getHasName(BlockRegistry.SMOOTH_STONE_OF_HOPES.get()), has(BlockRegistry.SMOOTH_STONE_OF_HOPES.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(), 8)
                 .pattern("  S")
                 .pattern(" SS")
                 .pattern("SSS")
@@ -74,7 +74,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .unlockedBy(getHasName(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()), has(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(), 4)
                 .pattern("SS")
                 .pattern("SS")
                 .define('S', BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get())
