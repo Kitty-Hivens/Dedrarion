@@ -20,7 +20,16 @@ public class BlockStateProvider extends net.minecraftforge.client.model.generato
         blockWithItem(BlockRegistry.ETHEREUM_ORE);
 
         blockWithItem(BlockRegistry.STONE_OF_HOPES);
+        blockWithItem(BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES);
+        blockWithItem(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES);
+
         blockWithItem(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES);
+        blockWithItem(BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES);
+        blockWithItem(BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES);
+
+        blockWithItem(BlockRegistry.SMOOTH_STONE_OF_HOPES);
+        blockWithItem(BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES);
+        blockWithItem(BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES);
 
 
     }

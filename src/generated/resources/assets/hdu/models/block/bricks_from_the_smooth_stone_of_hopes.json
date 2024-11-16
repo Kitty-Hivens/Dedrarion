@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "hdu:block/bricks_from_the_smooth_stone_of_hopes"
+  }
+}

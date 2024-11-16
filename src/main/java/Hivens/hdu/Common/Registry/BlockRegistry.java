@@ -2,12 +2,10 @@ package Hivens.hdu.Common.Registry;
 
 import Hivens.hdu.HDU;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.entity.ai.behavior.Behavior;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DropExperienceBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -27,9 +25,42 @@ public class BlockRegistry {
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.NETHER_GOLD_ORE)));
     public static final RegistryObject<Block> RAW_ETHEREUM_BLOCK = registerBlock("raw_ethereum_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_ORE).sound(SoundType.TUFF)));
+
+
+
+
     public static final RegistryObject<Block> STONE_OF_HOPES = registerBlock("stone_of_hopes",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
+
+    public static final RegistryObject<Block> STAIRS_FROM_THE_STONE_OF_HOPES = registerBlock("stairs_from_the_stone_of_hopes",
+            () -> new StairBlock(() -> BlockRegistry.STONE_OF_HOPES.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
+
+    public static final RegistryObject<Block> BRICKS_FROM_THE_STONE_OF_HOPES = registerBlock("bricks_from_the_stone_of_hopes",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
+
+
+
     public static final RegistryObject<Block> SHARDS_OF_THE_STONE_OF_HOPES = registerBlock("shards_of_the_stone_of_hopes",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
+
+    public static final RegistryObject<Block> STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES = registerBlock("stairs_from_the_shards_of_the_stone_of_hopes",
+            () -> new StairBlock(() -> BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
+
+    public static final RegistryObject<Block> BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES = registerBlock("bricks_from_the_shards_of_the_stone_of_hopes",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
+
+
+
+    public static final RegistryObject<Block> SMOOTH_STONE_OF_HOPES = registerBlock("smooth_stone_of_hopes",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
+
+    public static final RegistryObject<Block> STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES = registerBlock("stairs_from_the_smooth_stone_of_hopes",
+            () -> new StairBlock(() -> BlockRegistry.SMOOTH_STONE_OF_HOPES.get().defaultBlockState(),
+            BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
+
+    public static final RegistryObject<Block> BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES = registerBlock("bricks_from_the_smooth_stone_of_hopes",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
 
 

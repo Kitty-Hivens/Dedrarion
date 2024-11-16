@@ -25,7 +25,17 @@ public class BlockLootTables extends BlockLootSubProvider {
     protected void generate() {
         this.dropSelf(BlockRegistry.ETHEREUM_BLOCK.get());
         this.dropSelf(BlockRegistry.RAW_ETHEREUM_BLOCK.get());
+
+        this.dropSelf(BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get());
+        this.dropSelf(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get());
+
+        this.dropSelf(BlockRegistry.SMOOTH_STONE_OF_HOPES.get());
+        this.dropSelf(BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get());
+        this.dropSelf(BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get());
+
         this.dropSelf(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get());
+        this.dropSelf(BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get());
+        this.dropSelf(BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get());
 
         this.add(BlockRegistry.ETHEREUM_ORE.get(),
                 block -> createRareLikeOreDrops(BlockRegistry.ETHEREUM_ORE.get(), ItemRegistry.RAW_ETHEREUM.get()));

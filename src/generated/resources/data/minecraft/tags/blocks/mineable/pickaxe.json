@@ -4,6 +4,13 @@
     "hdu:raw_ethereum_block",
     "hdu:ethereum_block",
     "hdu:stone_of_hopes",
-    "hdu:shards_of_the_stone_of_hopes"
+    "hdu:stairs_from_the_stone_of_hopes",
+    "hdu:bricks_from_the_stone_of_hopes",
+    "hdu:shards_of_the_stone_of_hopes",
+    "hdu:stairs_from_the_shards_of_the_stone_of_hopes",
+    "hdu:bricks_from_the_shards_of_the_stone_of_hopes",
+    "hdu:smooth_stone_of_hopes",
+    "hdu:stairs_from_the_smooth_stone_of_hopes",
+    "hdu:bricks_from_the_smooth_stone_of_hopes"
   ]
 }

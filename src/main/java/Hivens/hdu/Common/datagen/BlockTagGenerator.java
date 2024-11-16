@@ -26,11 +26,21 @@ public class BlockTagGenerator extends BlockTagsProvider {
                 );
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(BlockRegistry.ETHEREUM_ORE.get(),
+                    .add(BlockRegistry.ETHEREUM_ORE.get(),
                         BlockRegistry.RAW_ETHEREUM_BLOCK.get(),
                         BlockRegistry.ETHEREUM_BLOCK.get(),
+
                         BlockRegistry.STONE_OF_HOPES.get(),
-                        BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()
+                        BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get(),
+                        BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get(),
+
+                        BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get(),
+                        BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(),
+                        BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(),
+
+                        BlockRegistry.SMOOTH_STONE_OF_HOPES.get(),
+                        BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
+                        BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get()
 
     );
         this.tag(BlockTags.NEEDS_STONE_TOOL);
@@ -40,11 +50,23 @@ public class BlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL);
 
         this.tag(Tags.Blocks.NEEDS_NETHERITE_TOOL)
-                .add(BlockRegistry.ETHEREUM_ORE.get())
-                .add(BlockRegistry.RAW_ETHEREUM_BLOCK.get())
-                .add(BlockRegistry.ETHEREUM_BLOCK.get())
-                .add(BlockRegistry.STONE_OF_HOPES.get())
-                .add(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get());
+                .add(BlockRegistry.ETHEREUM_ORE.get(),
+                        BlockRegistry.RAW_ETHEREUM_BLOCK.get(),
+                        BlockRegistry.ETHEREUM_BLOCK.get(),
+
+                        BlockRegistry.STONE_OF_HOPES.get(),
+                        BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get(),
+                        BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get(),
+
+                        BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get(),
+                        BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(),
+                        BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(),
+
+                        BlockRegistry.SMOOTH_STONE_OF_HOPES.get(),
+                        BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
+                        BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get()
+
+                );
 
     }
 }
