@@ -40,6 +40,13 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .requires(BlockRegistry.ETHEREUM_BLOCK.get())
                 .unlockedBy(getHasName(BlockRegistry.ETHEREUM_BLOCK.get()), has(BlockRegistry.ETHEREUM_BLOCK.get()))
                 .save(pWriter);
+
+        stonecutterResultFromBase(
+                pWriter,
+                RecipeCategory.MISC,
+                ItemRegistry.ETHEREUM_DUST.get(),
+                ItemRegistry.ETHEREUM.get()
+        );
     }
 
 
