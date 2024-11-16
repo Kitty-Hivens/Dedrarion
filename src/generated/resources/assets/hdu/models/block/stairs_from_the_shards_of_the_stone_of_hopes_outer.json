@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/stairs",
+  "parent": "minecraft:block/outer_stairs",
   "textures": {
     "bottom": "hdu:block/shards_of_the_stone_of_hopes",
     "side": "hdu:block/shards_of_the_stone_of_hopes",
