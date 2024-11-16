@@ -47,6 +47,12 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 ItemRegistry.ETHEREUM_DUST.get(),
                 ItemRegistry.ETHEREUM.get()
         );
+
+        smeltingResultFromBase(
+                pWriter,
+                BlockRegistry.STONE_OF_HOPES.get(),
+                BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()
+        );
     }
 
 
@@ -67,6 +73,11 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
             SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), p_251154_, p_250066_, p_251871_, p_251316_, pCookingSeliazer).group(p_251450_).unlockedBy(getHasName(itemlike), has(itemlike)).save(pFinishedRecipeConsumer, getItemName(p_250066_) + p_249236_ + "_" + getItemName(itemlike));
         }
 
+    }
+
+
+    protected static void smeltingResultFromBase(Consumer<FinishedRecipe> p_176740_, ItemLike p_176741_, ItemLike p_176742_) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(new ItemLike[]{p_176742_}), RecipeCategory.BUILDING_BLOCKS, p_176741_, 0.1F, 200).unlockedBy(getHasName(p_176742_), has(p_176742_)).save(p_176740_);
     }
 
 

@@ -1,8 +1,10 @@
-// 1.20.1	2024-11-16T10:27:55.0620058	Recipes
+// 1.20.1	2024-11-16T10:46:53.2133953	Recipes
+7a7dc9149ab161c7d05567fc011648beae46b47c data/hdu/advancements/recipes/building_blocks/stone_of_hopes.json
 b6de5141a19212222fdc9ec9d4dc4aa0602d7895 data/hdu/advancements/recipes/misc/ethereum.json
 98eb01568b194b8fac1dec4c441c8aaff15b552a data/hdu/advancements/recipes/misc/ethereum_block.json
 69bc282153c2276823e05cd53e87b40724e2d0d2 data/hdu/recipes/ethereum.json
 30867c7ca212752915313bb5744834b59ef0667a data/hdu/recipes/ethereum_block.json
+76e3cbe3b8732ff81ed0bf14b78af9fc3724dcc3 data/hdu/recipes/stone_of_hopes.json
 3d59168019df73cd001d9cd67444d282831926ee data/minecraft/advancements/recipes/misc/ethereum_dust_from_ethereum_stonecutting.json
 3dbfd7214052cac19fcdf8549b2b7d26f1001d4e data/minecraft/advancements/recipes/misc/ethereum_from_blasting_ethereum_ore.json
 22da35f854c18e0c2f1c08d8cc2cb0abf57ad77d data/minecraft/advancements/recipes/misc/ethereum_from_blasting_raw_ethereum.json
