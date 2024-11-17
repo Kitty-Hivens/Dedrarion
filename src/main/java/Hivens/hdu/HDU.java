@@ -3,6 +3,7 @@ import Hivens.hdu.Common.Registry.BlockRegistry;
 import Hivens.hdu.Common.Registry.CreativeTabRegistry;
 import Hivens.hdu.Common.Registry.ItemRegistry;
 import Hivens.hdu.Common.entities.TheDestroyedMechanism.BossEntity;
+import Hivens.hdu.Common.loot.ModLootModifiers;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -30,6 +31,10 @@ public class HDU {
         ItemRegistry.register(modEventBus);
         // Регистрация блоков
         BlockRegistry.register(modEventBus);
+
+        // Регистрация дропа
+        ModLootModifiers.register(modEventBus);
+
         // Регистрация креативного меню
         CreativeTabRegistry.register(modEventBus);
 
