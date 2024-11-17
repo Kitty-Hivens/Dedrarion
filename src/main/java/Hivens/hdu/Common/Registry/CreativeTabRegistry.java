@@ -38,14 +38,19 @@ public class CreativeTabRegistry {
 
                         // Blocks
                         pOutput.accept(BlockRegistry.STONE_OF_HOPES.get());
-                        pOutput.accept(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get());
-                        pOutput.accept(BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get());
-                        pOutput.accept(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get());
-                        pOutput.accept(BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get());
-                        pOutput.accept(BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get());
                         pOutput.accept(BlockRegistry.SMOOTH_STONE_OF_HOPES.get());
-                        pOutput.accept(BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get());
+                        pOutput.accept(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get());
+
+                        pOutput.accept(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get());
                         pOutput.accept(BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get());
+                        pOutput.accept(BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get());
+
+                        pOutput.accept(BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get());
+                        pOutput.accept(BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get());
+                        pOutput.accept(BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get());
+                        pOutput.accept(BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_STONE_OF_HOPES.get());
+                        pOutput.accept(BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get());
+                        pOutput.accept(BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get());
 
 
 
