@@ -6,28 +6,39 @@
   "item.hdu.ethereum_dust": "Пыль Эфириума",
   "item.hdu.fuel_of_promises": "Топливо Обещаний",
   "item.hdu.forbidden_fruit": "Запретный Плод",
+
+
   "block.hdu.ethereum_ore": "Руда Эфириума",
   "block.hdu.ethereum_block": "Блок Эфириума",
   "block.hdu.raw_ethereum_block": "Блок Необработанного Эфириума",
+
   "block.hdu.stone_of_hopes": "Камень Надежд",
-  "block.hdu.stairs_from_the_stone_of_hopes": "Ступеньки из Камня Надежды",
-  "block.hdu.bricks_from_the_stone_of_hopes": "Кирпичи из Камня Надежды",
-  "block.hdu.stairs_from_the_bricks_from_the_stone_of_hopes": "Ступеньки из Кирпичей Камня Надежды",
+  "block.hdu.smooth_stone_of_hopes": "Гладкий камень Надежд",
   "block.hdu.shards_of_the_stone_of_hopes": "Осколки камня Надежд",
-  "block.hdu.stairs_from_the_shards_of_the_stone_of_hopes": "Ступеньки из осколков Камня Надежды",
-  "block.hdu.bricks_from_the_shards_of_the_stone_of_hopes": "Кирпичи из осколков Камня Надежды",
-  "block.hdu.stairs_from_the_bricks_from_the_shards_of_the_stone_of_hopes": "Ступеньки из Кирпичей Осколков Камня Надежды",
-  "block.hdu.smooth_stone_of_hopes": "Гладкий камень надежды",
+
+  "block.hdu.stairs_from_the_stone_of_hopes": "Ступеньки из Камня Надежды",
   "block.hdu.stairs_from_the_smooth_stone_of_hopes": "Ступеньки из Гладкого Камня Надежды",
+  "block.hdu.stairs_from_the_shards_of_the_stone_of_hopes": "Ступеньки из осколков Камня Надежды",
+
+  "block.hdu.bricks_from_the_stone_of_hopes": "Кирпичи из Камня Надежды",
   "block.hdu.bricks_from_the_smooth_stone_of_hopes": "Кирпичи из гладкого камня надежд",
+  "block.hdu.bricks_from_the_shards_of_the_stone_of_hopes": "Кирпичи из осколков Камня Надежды",
+
+  "block.hdu.stairs_from_the_bricks_from_the_stone_of_hopes": "Ступеньки из Кирпичей Камня Надежды",
   "block.hdu.stairs_from_the_bricks_from_the_smooth_stone_of_hopes": "Ступеньки из Кирпичей Гладкого Камня Надежд",
+  "block.hdu.stairs_from_the_bricks_from_the_shards_of_the_stone_of_hopes": "Ступеньки из Кирпичей Осколков Камня Надежды",
+
+
   "creativetab.hdu_tab": "Подземелье Dedrarion",
   "tooltip.item.hdu.metal_detector": "§bКажется, его энергия связана только с магией",
   "tooltip.item.hdu.ethereum": "§eКристалл, что кажется легче облаков",
   "tooltip.item.hdu.fuel_of_promises": "§4Кого стоит за это благодарить?",
   "tooltip.item.hdu.forbidden_fruit": "§eКого вы готовы отдать ради этого?",
+
+
   "advancement.hdu.seeker_of_magic.title": "Искатель магии",
   "advancement.hdu.seeker_of_magic.description": "Ты у нас молодой ищейка?",
+
   "advancement.hdu.white_prince.title": "Белый принц",
   "advancement.hdu.white_prince.description": "И ты смеешь называть себя королём?"
 }
