@@ -28,6 +28,10 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         oreSmelting(pWriter, ETHEREUM_SMELTABLES, RecipeCategory.MISC, ItemRegistry.ETHEREUM.get(), 17f, 800, "ethereum");
         oreBlasting(pWriter, ETHEREUM_SMELTABLES, RecipeCategory.MISC, ItemRegistry.ETHEREUM.get(), 23f, 600, "ethereum");
 
+
+
+        // Craft
+
         // Ethereum
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.ETHEREUM_BLOCK.get())
@@ -84,8 +88,8 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .pattern("  S")
                 .pattern(" SS")
                 .pattern("SSS")
-                .define('S', BlockRegistry.SMOOTH_STONE_OF_HOPES.get())
-                .unlockedBy(getHasName(BlockRegistry.SMOOTH_STONE_OF_HOPES.get()), has(BlockRegistry.SMOOTH_STONE_OF_HOPES.get()))
+                .define('S', BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get())
+                .unlockedBy(getHasName(BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get()), has(BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get()))
                 .save(pWriter);
 
         // Shards of the Stone of Hope
@@ -105,10 +109,27 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .unlockedBy(getHasName(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()), has(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(), 8)
+                .pattern("  S")
+                .pattern(" SS")
+                .pattern("SSS")
+                .define('S', BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get())
+                .unlockedBy(getHasName(BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()), has(BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()))
+                .save(pWriter);
+
+
+
+        // Other
+
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistry.ETHEREUM.get(), 9)
                 .requires(BlockRegistry.ETHEREUM_BLOCK.get())
                 .unlockedBy(getHasName(BlockRegistry.ETHEREUM_BLOCK.get()), has(BlockRegistry.ETHEREUM_BLOCK.get()))
                 .save(pWriter);
+
+
+        // Other
+
 
         stonecutterResultFromBase(
                 pWriter,

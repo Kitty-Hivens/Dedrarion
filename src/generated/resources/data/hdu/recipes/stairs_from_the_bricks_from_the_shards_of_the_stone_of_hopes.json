@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "S": {
-      "item": "hdu:bricks_from_the_smooth_stone_of_hopes"
+      "item": "hdu:bricks_from_the_shards_of_the_stone_of_hopes"
     }
   },
   "pattern": [
@@ -13,7 +13,7 @@
   ],
   "result": {
     "count": 8,
-    "item": "hdu:stairs_from_the_bricks_from_the_smooth_stone_of_hopes"
+    "item": "hdu:stairs_from_the_bricks_from_the_shards_of_the_stone_of_hopes"
   },
   "show_notification": true
 }
