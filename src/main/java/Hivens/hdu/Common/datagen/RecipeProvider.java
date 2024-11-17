@@ -28,6 +28,10 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         oreSmelting(pWriter, ETHEREUM_SMELTABLES, RecipeCategory.MISC, ItemRegistry.ETHEREUM.get(), 17f, 800, "ethereum");
         oreBlasting(pWriter, ETHEREUM_SMELTABLES, RecipeCategory.MISC, ItemRegistry.ETHEREUM.get(), 23f, 600, "ethereum");
 
+
+
+        // Craft
+
         // Ethereum
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.ETHEREUM_BLOCK.get())
@@ -105,10 +109,19 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .unlockedBy(getHasName(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()), has(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()))
                 .save(pWriter);
 
+
+
+        // Other
+
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistry.ETHEREUM.get(), 9)
                 .requires(BlockRegistry.ETHEREUM_BLOCK.get())
                 .unlockedBy(getHasName(BlockRegistry.ETHEREUM_BLOCK.get()), has(BlockRegistry.ETHEREUM_BLOCK.get()))
                 .save(pWriter);
+
+
+        // Other
+
 
         stonecutterResultFromBase(
                 pWriter,
