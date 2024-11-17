@@ -40,7 +40,11 @@ public class BlockTagGenerator extends BlockTagsProvider {
 
                         BlockRegistry.SMOOTH_STONE_OF_HOPES.get(),
                         BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
-                        BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get()
+                        BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
+
+                        BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_STONE_OF_HOPES.get(),
+                        BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
+                        BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()
 
     );
         this.tag(BlockTags.NEEDS_STONE_TOOL);
@@ -64,14 +68,22 @@ public class BlockTagGenerator extends BlockTagsProvider {
 
                         BlockRegistry.SMOOTH_STONE_OF_HOPES.get(),
                         BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
-                        BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get()
+                        BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get(),
+
+                        BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_STONE_OF_HOPES.get(),
+                        BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
+                        BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()
 
                 );
 
-        this.tag(BlockTags.STAIRS)
-                .add(BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get(),
+        this.tag(BlockTags.STAIRS).add(
+                    BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get(),
                     BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
-                    BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get());
+                    BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(),
+                    BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_STONE_OF_HOPES.get(),
+                    BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
+                    BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()
+                );
 
         this.tag(BlockTags.STONE_BRICKS)
                 .add(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get(),

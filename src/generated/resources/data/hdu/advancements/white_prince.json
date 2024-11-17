@@ -1,0 +1,38 @@
+{
+  "parent": "hdu:seeker_of_magic",
+  "criteria": {
+    "get_ethereum_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hdu:ethereum_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.hdu.white_prince.description"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "item": "hdu:ethereum_block"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.hdu.white_prince.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_ethereum_block"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

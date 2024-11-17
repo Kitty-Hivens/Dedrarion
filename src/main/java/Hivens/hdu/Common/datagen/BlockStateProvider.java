@@ -32,6 +32,10 @@ public class BlockStateProvider extends net.minecraftforge.client.model.generato
         stairsBlock(((StairBlock) BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get()), blockTexture(BlockRegistry.SMOOTH_STONE_OF_HOPES.get()));
         blockWithItem(BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES);
 
+        stairsBlock(((StairBlock) BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_STONE_OF_HOPES.get()), blockTexture(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get()));
+        stairsBlock(((StairBlock) BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get()), blockTexture(BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get()));
+        stairsBlock(((StairBlock) BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()), blockTexture(BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()));
+
 
     }
 

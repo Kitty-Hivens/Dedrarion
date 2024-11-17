@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "ethereum_get": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hdu:ethereum"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "hdu:textures/block/ethereum_block.png",
+    "description": {
+      "translate": "advancement.hdu.seeker_of_magic.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "hdu:ethereum"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.hdu.seeker_of_magic.title"
+    }
+  },
+  "requirements": [
+    [
+      "ethereum_get"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

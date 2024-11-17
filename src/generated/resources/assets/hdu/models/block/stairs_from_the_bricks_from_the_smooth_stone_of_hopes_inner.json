@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "hdu:block/bricks_from_the_smooth_stone_of_hopes",
+    "side": "hdu:block/bricks_from_the_smooth_stone_of_hopes",
+    "top": "hdu:block/bricks_from_the_smooth_stone_of_hopes"
+  }
+}

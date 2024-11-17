@@ -22,5 +22,9 @@
   "tooltip.item.hdu.metal_detector": "§bКажется, его энергия связана только с магией",
   "tooltip.item.hdu.ethereum": "§eКристалл, что кажется легче облаков",
   "tooltip.item.hdu.fuel_of_promises": "§4Кого стоит за это благодарить?",
-  "tooltip.item.hdu.forbidden_fruit": "§eКого вы готовы отдать ради этого?"
+  "tooltip.item.hdu.forbidden_fruit": "§eКого вы готовы отдать ради этого?",
+  "advancement.hdu.seeker_of_magic.title": "Искатель магии",
+  "advancement.hdu.seeker_of_magic.description": "Ты у нас молодой ищейка?",
+  "advancement.hdu.white_prince.title": "Белый принц",
+  "advancement.hdu.white_prince.description": "И ты смеешь называть себя королём?"
 }

@@ -2,6 +2,9 @@
   "values": [
     "hdu:stairs_from_the_stone_of_hopes",
     "hdu:stairs_from_the_smooth_stone_of_hopes",
-    "hdu:stairs_from_the_shards_of_the_stone_of_hopes"
+    "hdu:stairs_from_the_shards_of_the_stone_of_hopes",
+    "hdu:stairs_from_the_bricks_from_the_stone_of_hopes",
+    "hdu:stairs_from_the_bricks_from_the_smooth_stone_of_hopes",
+    "hdu:stairs_from_the_bricks_from_the_shards_of_the_stone_of_hopes"
   ]
 }

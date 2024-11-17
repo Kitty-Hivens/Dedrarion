@@ -34,5 +34,7 @@ public class DataGenerators {
 
         generator.addProvider(event.includeServer(), new WorldGenProvided(packOutput, lookupProvider));
 
+        generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, lookupProvider, existingFileHelper));
+
     }
 }

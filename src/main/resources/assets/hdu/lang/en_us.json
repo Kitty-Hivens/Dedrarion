@@ -22,5 +22,9 @@
   "tooltip.item.hdu.metal_detector": "§bIt seems that his energy is tied only to magic",
   "tooltip.item.hdu.ethereum": "§eA certain crystal that seems lighter than clouds",
   "tooltip.item.hdu.fuel_of_promises": "§4Who should we thank for this?",
-  "tooltip.item.hdu.forbidden_fruit": "§eWho are you willing to give up for this?"
+  "tooltip.item.hdu.forbidden_fruit": "§eWho are you willing to give up for this?",
+  "advancement.hdu.seeker_of_magic.title": "Seeker of Magic",
+  "advancement.hdu.seeker_of_magic.description": "Are you our young bloodhound?",
+  "advancement.hdu.white_prince.title": "White Prince",
+  "advancement.hdu.white_prince.description": "And you dare call yourself a king?"
 }

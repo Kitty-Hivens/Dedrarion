@@ -32,6 +32,9 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
         evenSimplerBlockItem(BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES);
         evenSimplerBlockItem(BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES);
         evenSimplerBlockItem(BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES);
+        evenSimplerBlockItem(BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_STONE_OF_HOPES);
+        evenSimplerBlockItem(BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES);
+        evenSimplerBlockItem(BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES);
     }
     private ItemModelBuilder simpleItem(RegistryObject<Item> item){
         return withExistingParent(item.getId().getPath(),

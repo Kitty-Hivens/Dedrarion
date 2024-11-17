@@ -38,6 +38,10 @@ public class BlockRegistry {
     public static final RegistryObject<Block> BRICKS_FROM_THE_STONE_OF_HOPES = registerBlock("bricks_from_the_stone_of_hopes",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
 
+    public static final RegistryObject<Block> STAIRS_FROM_THE_BRICKS_FROM_THE_STONE_OF_HOPES = registerBlock("stairs_from_the_bricks_from_the_stone_of_hopes",
+            () -> new StairBlock(() -> BlockRegistry.SMOOTH_STONE_OF_HOPES.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
+
 
 
     public static final RegistryObject<Block> SHARDS_OF_THE_STONE_OF_HOPES = registerBlock("shards_of_the_stone_of_hopes",
@@ -50,6 +54,10 @@ public class BlockRegistry {
     public static final RegistryObject<Block> BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES = registerBlock("bricks_from_the_shards_of_the_stone_of_hopes",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
 
+    public static final RegistryObject<Block> STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES = registerBlock("stairs_from_the_bricks_from_the_shards_of_the_stone_of_hopes",
+            () -> new StairBlock(() -> BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
+
 
 
     public static final RegistryObject<Block> SMOOTH_STONE_OF_HOPES = registerBlock("smooth_stone_of_hopes",
@@ -61,6 +69,10 @@ public class BlockRegistry {
 
     public static final RegistryObject<Block> BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES = registerBlock("bricks_from_the_smooth_stone_of_hopes",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
+
+    public static final RegistryObject<Block> STAIRS_FROM_THE_BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES = registerBlock("stairs_from_the_bricks_from_the_smooth_stone_of_hopes",
+            () -> new StairBlock(() -> BlockRegistry.SMOOTH_STONE_OF_HOPES.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
