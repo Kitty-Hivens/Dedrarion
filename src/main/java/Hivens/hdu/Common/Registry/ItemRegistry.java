@@ -26,7 +26,7 @@ public class ItemRegistry {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> METAL_DETECTOR = Items.register("metal_detector",
-            () -> new MetalDetectorItem(new Item.Properties().durability(100)));
+            () -> new MetalDetectorItem(new Item.Properties()));
 
     public static final RegistryObject<Item> FORBIDDEN_FRUIT = Items.register("forbidden_fruit",
             () -> new TooltipFoodItem(new Item.Properties().food(FoodRegistry.FORBIDDEN_FRUIT), "tooltip.item.hdu.forbidden_fruit"));
