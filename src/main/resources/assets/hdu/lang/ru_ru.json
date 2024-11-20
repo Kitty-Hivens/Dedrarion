@@ -18,7 +18,7 @@
 
   "block.hdu.stairs_from_the_stone_of_hopes": "Ступеньки Из Камня Надежды",
   "block.hdu.stairs_from_the_smooth_stone_of_hopes": "Ступеньки Из Гладкого Камня Надежды",
-  "block.hdu.stairs_from_the_shards_of_the_stone_of_hopes": "Ступеньки из осколков Камня Надежды",
+  "block.hdu.stairs_from_the_shards_of_the_stone_of_hopes": "Ступеньки Из осколков Камня Надежды",
 
   "block.hdu.bricks_from_the_stone_of_hopes": "Кирпичи Из Камня Надежды",
   "block.hdu.bricks_from_the_smooth_stone_of_hopes": "Кирпичи Из Гладкого Камня Надежд",
@@ -26,12 +26,12 @@
 
   "block.hdu.stairs_from_the_bricks_from_the_stone_of_hopes": "Ступеньки Из Кирпичей Камня Надежды",
   "block.hdu.stairs_from_the_bricks_from_the_smooth_stone_of_hopes": "Ступеньки Из Кирпичей Гладкого Камня Надежд",
-  "block.hdu.stairs_from_the_bricks_from_the_shards_of_the_stone_of_hopes": "Ступеньки из Кирпичей Осколков Камня Надежды",
+  "block.hdu.stairs_from_the_bricks_from_the_shards_of_the_stone_of_hopes": "Ступеньки Из Кирпичей Осколков Камня Надежды",
 
 
   "creativetab.hdu_tab": "Подземелье Dedrarion",
-  "tooltip.item.hdu.metal_detector": "§bКажеться, его энергия связана лишь только с магией",
-  "tooltip.item.hdu.ethereum": "§eКристалл, кажеться что он легче облаков",
+  "tooltip.item.hdu.metal_detector": "§bКажется, его энергия связана лишь только с магией",
+  "tooltip.item.hdu.ethereum": "§eКристалл, кажется что он легче облаков",
   "tooltip.item.hdu.fuel_of_promises": "§4И кого стоит за это благодарить?",
   "tooltip.item.hdu.forbidden_fruit": "§eКого вы готовы отдать ради этого?",
 
