@@ -1,7 +1,10 @@
-// 1.20.1	2024-11-16T03:00:00.029804599	Registries
+// 1.20.1	2024-11-20T11:38:43.13988271	Registries
 660325423a2b6a088cf795f47b5602143ce1ef69 data/hdu/forge/biome_modifier/add_ethereum_ore.json
+0dc6cece06addca5064081b932c388d9cad1e146 data/hdu/forge/biome_modifier/add_ruby_ore.json
 a71f1dbe58ce9a0c21c837f70691894542903b4b data/hdu/forge/biome_modifier/add_stone_of_hopes.json
 c36e4be51588365192aa9ed0ad5c0aaf9a45caaa data/hdu/worldgen/configured_feature/ethereum_ore.json
+f1deb099d076ea5c9cbd85b3597a52036787d2ad data/hdu/worldgen/configured_feature/ruby_ore.json
 1796a5b0e9fc3a244109003266e7584d749bc241 data/hdu/worldgen/configured_feature/stone_of_hopes.json
 815d54aeb9d871a0fbc4cffb418f7d84ab1b143b data/hdu/worldgen/placed_feature/ethereum_ore_placed.json
+f8ef372b2de9d9bad9e5a6813e1949a1770b921b data/hdu/worldgen/placed_feature/ruby_ore_placed.json
 f27a10ec469b9990d68771c0fbd9b49f38cb52cf data/hdu/worldgen/placed_feature/stone_of_hopes_placed.json

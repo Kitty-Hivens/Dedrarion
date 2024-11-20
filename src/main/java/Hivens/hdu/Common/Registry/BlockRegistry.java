@@ -27,6 +27,17 @@ public class BlockRegistry {
 
 
 
+    public static final RegistryObject<Block> STONE_RUBY_ORE = registerBlock("stone_ruby_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.LAPIS_ORE).sound(SoundType.METAL)
+                    .strength(1f).requiresCorrectToolForDrops(), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> RUBY_ORE = registerBlock("ruby_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.LAPIS_ORE).sound(SoundType.METAL)
+                    .strength(1f).requiresCorrectToolForDrops(), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> RUBY_BLOCK = registerBlock("ruby_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.LAPIS_ORE).sound(SoundType.METAL)));
+
+
+
 
     public static final RegistryObject<Block> STONE_OF_HOPES = registerBlock("stone_of_hopes",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.TUFF)));

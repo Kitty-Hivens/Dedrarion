@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 160,
+  "experience": 23.0,
+  "group": "ethereum",
+  "ingredient": {
+    "item": "hdu:stone_ruby_ore"
+  },
+  "result": "hdu:ruby"
+}

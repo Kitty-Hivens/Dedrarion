@@ -162,5 +162,69 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
 
                 ItemRegistry.FUEL_OF_PROMISES.get()
         ));
+
+        add("ruby_from_ancient_city", new AddItemModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(new ResourceLocation(
+                        "chests/ancient_city"
+                )).build()},
+
+                ItemRegistry.RUBY.get()
+        ));
+
+        add("ruby_from_ancient_city_ice_box", new AddItemModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(new ResourceLocation(
+                        "chests/ancient_city_ice_box"
+                )).build()},
+
+                ItemRegistry.RUBY.get()
+        ));
+
+        add("ruby_from_jungle_temple", new AddItemModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(new ResourceLocation(
+                        "chests/jungle_temple"
+                )).build()},
+
+                ItemRegistry.RUBY.get()
+        ));
+
+        add("ruby_from_desert_pyramid", new AddItemModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(new ResourceLocation(
+                        "chests/desert_pyramid"
+                )).build()},
+
+                ItemRegistry.RUBY.get()
+        ));
+
+        add("ruby_from_end_city_treasure", new AddItemModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(new ResourceLocation(
+                        "chests/end_city_treasure"
+                )).build()},
+
+                ItemRegistry.RUBY.get()
+        ));
+
+        add("ruby_from_stronghold_corridor", new AddItemModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(new ResourceLocation(
+                        "chests/stronghold_library"
+                )).build()},
+
+                ItemRegistry.RUBY.get()
+        ));
+
+        add("ruby_from_stronghold_crossing", new AddItemModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(new ResourceLocation(
+                        "chests/stronghold_crossing"
+                )).build()},
+
+                ItemRegistry.RUBY.get()
+        ));
+
+        add("ruby_from_stronghold_library", new AddItemModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(new ResourceLocation(
+                        "chests/stronghold_library"
+                )).build()},
+
+                ItemRegistry.RUBY.get()
+        ));
     }
 }

@@ -14,15 +14,25 @@ import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguratio
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
+import java.util.List;
+
 public class ConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_ETHEREUM_ORE_KEY = registerKey("ethereum_ore");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_RUBY_ORE_KEY = registerKey("ruby_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_STONE_OF_HOPES_ORE_KEY = registerKey("stone_of_hopes");
 
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
 
+        RuleTest stoneReplaceable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceable = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+
+        List<OreConfiguration.TargetBlockState> overworldRubyOres = List.of(
+                OreConfiguration.target(stoneReplaceable, BlockRegistry.STONE_RUBY_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceable, BlockRegistry.RUBY_ORE.get().defaultBlockState()
+                ));
+
 
         register(context,
                 OVERWORLD_ETHEREUM_ORE_KEY,
@@ -31,6 +41,13 @@ public class ConfiguredFeatures {
                         deepslateReplaceable,
                         BlockRegistry.ETHEREUM_ORE.get().defaultBlockState(),
                         3));
+
+        register(context,
+                OVERWORLD_RUBY_ORE_KEY,
+                Feature.ORE,
+                new OreConfiguration(
+                        overworldRubyOres,
+                        7));
 
         register(context,
                 OVERWORLD_STONE_OF_HOPES_ORE_KEY,

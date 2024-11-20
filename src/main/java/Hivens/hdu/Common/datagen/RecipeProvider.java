@@ -17,6 +17,9 @@ import java.util.function.Consumer;
 public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider implements IConditionBuilder {
     public static final List<ItemLike> ETHEREUM_SMELTABLES = List.of(ItemRegistry.RAW_ETHEREUM.get(),
             BlockRegistry.ETHEREUM_ORE.get());
+    public static final List<ItemLike> RUBY_SMELTABLES = List.of(ItemRegistry.RUBY.get(),
+            BlockRegistry.STONE_RUBY_ORE.get(),
+            BlockRegistry.RUBY_ORE.get());
 
 
     public RecipeProvider(PackOutput pOutput) {
@@ -28,9 +31,16 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         oreSmelting(pWriter, ETHEREUM_SMELTABLES, RecipeCategory.MISC, ItemRegistry.ETHEREUM.get(), 17f, 800, "ethereum");
         oreBlasting(pWriter, ETHEREUM_SMELTABLES, RecipeCategory.MISC, ItemRegistry.ETHEREUM.get(), 23f, 600, "ethereum");
 
+        oreSmelting(pWriter, RUBY_SMELTABLES, RecipeCategory.MISC, ItemRegistry.RUBY.get(), 17f, 200, "ethereum");
+        oreBlasting(pWriter, RUBY_SMELTABLES, RecipeCategory.MISC, ItemRegistry.RUBY.get(), 23f, 160, "ethereum");
 
 
-        // Craft
+
+        // ===============================================================
+        //
+        //                              Craft
+        //
+        // ===============================================================
 
         // Ethereum
 
@@ -40,6 +50,16 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .pattern("SSS")
                 .define('S', ItemRegistry.ETHEREUM.get())
                 .unlockedBy(getHasName(ItemRegistry.ETHEREUM.get()), has(ItemRegistry.ETHEREUM.get()))
+                .save(pWriter);
+
+        // Ruby
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.RUBY_BLOCK.get())
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('S', ItemRegistry.RUBY.get())
+                .unlockedBy(getHasName(ItemRegistry.RUBY.get()), has(ItemRegistry.RUBY.get()))
                 .save(pWriter);
 
         // Stone of Hope
@@ -125,6 +145,11 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistry.ETHEREUM.get(), 9)
                 .requires(BlockRegistry.ETHEREUM_BLOCK.get())
                 .unlockedBy(getHasName(BlockRegistry.ETHEREUM_BLOCK.get()), has(BlockRegistry.ETHEREUM_BLOCK.get()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistry.RUBY.get(), 9)
+                .requires(BlockRegistry.RUBY_BLOCK.get())
+                .unlockedBy(getHasName(BlockRegistry.RUBY_BLOCK.get()), has(BlockRegistry.RUBY_BLOCK.get()))
                 .save(pWriter);
 
 

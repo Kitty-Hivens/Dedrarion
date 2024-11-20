@@ -17,8 +17,11 @@ public class BlockStateProvider extends net.minecraftforge.client.model.generato
     protected void registerStatesAndModels() {
         blockWithItem(BlockRegistry.ETHEREUM_BLOCK);
         blockWithItem(BlockRegistry.RAW_ETHEREUM_BLOCK);
-
         blockWithItem(BlockRegistry.ETHEREUM_ORE);
+
+        blockWithItem(BlockRegistry.STONE_RUBY_ORE);
+        blockWithItem(BlockRegistry.RUBY_ORE);
+        blockWithItem(BlockRegistry.RUBY_BLOCK);
 
         blockWithItem(BlockRegistry.STONE_OF_HOPES);
         stairsBlock(((StairBlock) BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get()), blockTexture(BlockRegistry.STONE_OF_HOPES.get()));

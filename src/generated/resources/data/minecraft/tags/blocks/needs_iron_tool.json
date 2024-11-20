@@ -1,3 +1,7 @@
 {
-  "values": []
+  "values": [
+    "hdu:stone_ruby_ore",
+    "hdu:ruby_ore",
+    "hdu:ruby_block"
+  ]
 }

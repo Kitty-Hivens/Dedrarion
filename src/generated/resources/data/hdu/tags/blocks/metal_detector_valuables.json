@@ -1,5 +1,7 @@
 {
   "values": [
-    "hdu:ethereum_ore"
+    "hdu:ethereum_ore",
+    "hdu:stone_ruby_ore",
+    "hdu:ruby_ore"
   ]
 }

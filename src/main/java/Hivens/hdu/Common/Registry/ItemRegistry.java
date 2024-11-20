@@ -22,6 +22,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> ETHEREUM_DUST = Items.register("ethereum_dust",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> RUBY = Items.register("ruby",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> METAL_DETECTOR = Items.register("metal_detector",
             () -> new MetalDetectorItem(new Item.Properties().durability(100)));
 

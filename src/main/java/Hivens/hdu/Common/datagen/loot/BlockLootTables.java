@@ -26,6 +26,8 @@ public class BlockLootTables extends BlockLootSubProvider {
         this.dropSelf(BlockRegistry.ETHEREUM_BLOCK.get());
         this.dropSelf(BlockRegistry.RAW_ETHEREUM_BLOCK.get());
 
+        this.dropSelf(BlockRegistry.RUBY_BLOCK.get());
+
         this.dropSelf(BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get());
         this.dropSelf(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get());
 
@@ -43,6 +45,10 @@ public class BlockLootTables extends BlockLootSubProvider {
 
         this.add(BlockRegistry.ETHEREUM_ORE.get(),
                 block -> createRareLikeOreDrops(BlockRegistry.ETHEREUM_ORE.get(), ItemRegistry.RAW_ETHEREUM.get()));
+        this.add(BlockRegistry.STONE_RUBY_ORE.get(),
+                block -> createRareLikeOreDrops(BlockRegistry.RUBY_ORE.get(), ItemRegistry.RUBY.get()));
+        this.add(BlockRegistry.RUBY_ORE.get(),
+                block -> createRareLikeOreDrops(BlockRegistry.RUBY_ORE.get(), ItemRegistry.RUBY.get()));
         this.add(BlockRegistry.STONE_OF_HOPES.get(),
                 block -> createLikeStoneDrops(BlockRegistry.STONE_OF_HOPES.get(), BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()));
     }

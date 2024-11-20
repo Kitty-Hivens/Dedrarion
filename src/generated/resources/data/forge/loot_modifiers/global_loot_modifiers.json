@@ -1,13 +1,20 @@
 {
   "entries": [
     "hdu:fuel_of_promises_from_desert_pyramid",
+    "hdu:ruby_from_stronghold_library",
     "hdu:metal_detector_from_jungle_temple",
     "hdu:fuel_of_promises_from_end_city_treasure",
     "hdu:fuel_of_promises_from_jungle_temple",
     "hdu:metal_detector_from_ancient_city_ice_box",
+    "hdu:ruby_from_jungle_temple",
+    "hdu:ruby_from_desert_pyramid",
+    "hdu:ruby_from_stronghold_crossing",
     "hdu:fuel_of_promises_from_ancient_city",
+    "hdu:ruby_from_end_city_treasure",
     "hdu:metal_detector_from_end_city_treasure",
+    "hdu:ruby_from_stronghold_corridor",
     "hdu:metal_detector_from_desert_pyramid",
+    "hdu:ruby_from_ancient_city",
     "hdu:fuel_of_promises_from_stronghold_crossing",
     "hdu:fuel_of_promises_from_stronghold_corridor",
     "hdu:fuel_of_promises_from_stronghold_library",
@@ -15,7 +22,8 @@
     "hdu:fuel_of_promises_from_ancient_city_ice_box",
     "hdu:metal_detector_from_stronghold_corridor",
     "hdu:metal_detector_from_ancient_city",
-    "hdu:metal_detector_from_stronghold_crossing"
+    "hdu:metal_detector_from_stronghold_crossing",
+    "hdu:ruby_from_ancient_city_ice_box"
   ],
   "replace": false
 }

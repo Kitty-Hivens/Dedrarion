@@ -22,13 +22,19 @@ public class BlockTagGenerator extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NotNull Provider pProvider) {
         this.tag(ModTags.Blocks.METAL_DETECTOR_VALUABLES)
-                .add(BlockRegistry.ETHEREUM_ORE.get()
+                .add(BlockRegistry.ETHEREUM_ORE.get(),
+                     BlockRegistry.STONE_RUBY_ORE.get(),
+                     BlockRegistry.RUBY_ORE.get()
                 );
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                    .add(BlockRegistry.ETHEREUM_ORE.get(),
+                   .add(BlockRegistry.ETHEREUM_ORE.get(),
                         BlockRegistry.RAW_ETHEREUM_BLOCK.get(),
                         BlockRegistry.ETHEREUM_BLOCK.get(),
+
+                        BlockRegistry.STONE_RUBY_ORE.get(),
+                        BlockRegistry.RUBY_ORE.get(),
+                        BlockRegistry.RUBY_BLOCK.get(),
 
                         BlockRegistry.STONE_OF_HOPES.get(),
                         BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get(),
@@ -49,7 +55,11 @@ public class BlockTagGenerator extends BlockTagsProvider {
     );
         this.tag(BlockTags.NEEDS_STONE_TOOL);
 
-        this.tag(BlockTags.NEEDS_IRON_TOOL);
+        this.tag(BlockTags.NEEDS_IRON_TOOL)
+                   .add(BlockRegistry.STONE_RUBY_ORE.get(),
+                        BlockRegistry.RUBY_ORE.get(),
+                        BlockRegistry.RUBY_BLOCK.get());
+
 
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL);
 
