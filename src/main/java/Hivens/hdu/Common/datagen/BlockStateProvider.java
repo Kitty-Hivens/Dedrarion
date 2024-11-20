@@ -23,6 +23,9 @@ public class BlockStateProvider extends net.minecraftforge.client.model.generato
         blockWithItem(BlockRegistry.RUBY_ORE);
         blockWithItem(BlockRegistry.RUBY_BLOCK);
 
+        blockWithItem(BlockRegistry.EFTORIT_ORE);
+        blockWithItem(BlockRegistry.EFTORIT_BLOCK);
+
         blockWithItem(BlockRegistry.STONE_OF_HOPES);
         stairsBlock(((StairBlock) BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get()), blockTexture(BlockRegistry.STONE_OF_HOPES.get()));
         blockWithItem(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES);

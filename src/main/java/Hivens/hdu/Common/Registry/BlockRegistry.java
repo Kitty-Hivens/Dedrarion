@@ -36,6 +36,12 @@ public class BlockRegistry {
     public static final RegistryObject<Block> RUBY_BLOCK = registerBlock("ruby_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.LAPIS_ORE).sound(SoundType.METAL)));
 
+    public static  final RegistryObject<Block> EFTORIT_ORE = registerBlock("eftorit_ore",
+            ()-> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE).sound(SoundType.COPPER)));
+    public static  final  RegistryObject<Block> EFTORIT_BLOCK = registerBlock("eftorit_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_BLOCK).sound(SoundType.METAL)));
+
+
 
 
 
@@ -91,12 +97,10 @@ public class BlockRegistry {
         registerBlockItem(name, toReturn);
         return toReturn;
     }
-
-
-
-    private static <T extends Block> RegistryObject <Item> registerBlockItem(String name, RegistryObject<T> block) {
+    private  static <T extends  Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block){
         return ItemRegistry.Items.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
+
 
     public static void register(IEventBus eventBus){
         BLOCKS.register(eventBus);

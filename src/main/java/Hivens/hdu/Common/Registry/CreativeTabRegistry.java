@@ -41,6 +41,9 @@ public class CreativeTabRegistry {
                         pOutput.accept(BlockRegistry.RUBY_ORE.get());
                         pOutput.accept(BlockRegistry.RUBY_BLOCK.get());
 
+                        pOutput.accept(BlockRegistry.EFTORIT_ORE.get());
+                        pOutput.accept(BlockRegistry.EFTORIT_BLOCK.get());
+
                         // Blocks
                         pOutput.accept(BlockRegistry.STONE_OF_HOPES.get());
                         pOutput.accept(BlockRegistry.SMOOTH_STONE_OF_HOPES.get());

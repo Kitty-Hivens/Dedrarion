@@ -5,6 +5,7 @@
   "item.hdu.raw_ethereum": "Необработанный Эфириум",
   "item.hdu.ethereum_dust": "Пыль Эфириума",
   "item.hdu.ruby": "Рубин",
+  "item.hdu.eftorit": "Эфторит",
   "item.hdu.fuel_of_promises": "Топливо Обещаний",
   "item.hdu.forbidden_fruit": "Запретный Плод",
 
@@ -16,6 +17,9 @@
   "block.hdu.stone_ruby_ore": "Каменная рубиновая руда",
   "block.hdu.ruby_ore": "Рубиновая руда",
   "block.hdu.ruby_block": "Рубиновый блок",
+
+  "block.hdu.eftorit_ore": "Эфторитовая руда",
+  "block.hdu.eftorit_block": "Эфторитовый блок",
 
   "block.hdu.stone_of_hopes": "Камень Надежд",
   "block.hdu.smooth_stone_of_hopes": "Гладкий камень Надежд",

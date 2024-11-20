@@ -25,6 +25,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> RUBY = Items.register("ruby",
             () -> new Item(new Item.Properties()));
 
+    public  static final RegistryObject<Item> EFTORIT = Items.register("eftorit",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> METAL_DETECTOR = Items.register("metal_detector",
             () -> new MetalDetectorItem(new Item.Properties()));
 

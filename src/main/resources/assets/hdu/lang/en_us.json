@@ -4,8 +4,8 @@
   "item.hdu.ethereum_ore": "Ethereum Ore",
   "item.hdu.raw_ethereum": "Raw Ethereum",
   "item.hdu.ruby": "Ruby",
+  "item.hdu.eftorit": "Eftorit",
   "item.hdu.ethereum_dust": "Ethereum Dust",
-  "item.hdu.ruby": "Ruby",
   "item.hdu.fuel_of_promises": "Fuel Of Promises",
   "item.hdu.forbidden_fruit": "Forbidden Fruit",
 
@@ -17,6 +17,9 @@
   "block.hdu.stone_ruby_ore": "Stone Ruby Ore",
   "block.hdu.ruby_ore": "Ruby Ore",
   "block.hdu.ruby_block": "Ruby Block",
+
+  "block.hdu.eftorit_ore": "Eftorit Ore",
+  "block.hdu.eftorit_block": "Eftorit Block",
 
   "block.hdu.stone_of_hopes": "Stone of Hopes",
   "block.hdu.smooth_stone_of_hopes": "Smooth Stone of Hopes",

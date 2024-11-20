@@ -36,6 +36,9 @@ public class BlockTagGenerator extends BlockTagsProvider {
                         BlockRegistry.RUBY_ORE.get(),
                         BlockRegistry.RUBY_BLOCK.get(),
 
+                        BlockRegistry.EFTORIT_ORE.get(),
+                        BlockRegistry.EFTORIT_BLOCK.get(),
+
                         BlockRegistry.STONE_OF_HOPES.get(),
                         BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get(),
                         BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get(),

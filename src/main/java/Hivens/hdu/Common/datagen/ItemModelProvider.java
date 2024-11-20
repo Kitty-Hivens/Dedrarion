@@ -27,6 +27,8 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
 
         simpleItem(ItemRegistry.RUBY);
 
+        simpleItem(ItemRegistry.EFTORIT);
+
         simpleItem(ItemRegistry.METAL_DETECTOR);
         simpleItem(ItemRegistry.FUEL_OF_PROMISES);
         simpleItem(ItemRegistry.FORBIDDEN_FRUIT);
