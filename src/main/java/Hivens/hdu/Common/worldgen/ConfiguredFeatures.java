@@ -29,8 +29,12 @@ public class ConfiguredFeatures {
         RuleTest deepslateReplaceable = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
 
         List<OreConfiguration.TargetBlockState> overworldRubyOres = List.of(
+
+
                 OreConfiguration.target(stoneReplaceable, BlockRegistry.STONE_RUBY_ORE.get().defaultBlockState()),
                 OreConfiguration.target(deepslateReplaceable, BlockRegistry.RUBY_ORE.get().defaultBlockState()
+
+
                 ));
 
 
