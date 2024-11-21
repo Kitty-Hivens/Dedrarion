@@ -19,11 +19,12 @@ public class BlockStateProvider extends net.minecraftforge.client.model.generato
         blockWithItem(BlockRegistry.RAW_ETHEREUM_BLOCK);
         blockWithItem(BlockRegistry.ETHEREUM_ORE);
 
-        blockWithItem(BlockRegistry.STONE_RUBY_ORE);
         blockWithItem(BlockRegistry.RUBY_ORE);
+        blockWithItem(BlockRegistry.DEEPSLATE_RUBY_ORE);
         blockWithItem(BlockRegistry.RUBY_BLOCK);
 
         blockWithItem(BlockRegistry.EFTORIT_ORE);
+        blockWithItem(BlockRegistry.DEEPSLATE_EFTORIT_ORE);
         blockWithItem(BlockRegistry.EFTORIT_BLOCK);
 
         blockWithItem(BlockRegistry.STONE_OF_HOPES);

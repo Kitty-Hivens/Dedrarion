@@ -15,11 +15,21 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider implements IConditionBuilder {
-    public static final List<ItemLike> ETHEREUM_SMELTABLES = List.of(ItemRegistry.RAW_ETHEREUM.get(),
-            BlockRegistry.ETHEREUM_ORE.get());
-    public static final List<ItemLike> RUBY_SMELTABLES = List.of(ItemRegistry.RUBY.get(),
-            BlockRegistry.STONE_RUBY_ORE.get(),
-            BlockRegistry.RUBY_ORE.get());
+    public static final List<ItemLike> ETHEREUM_SMELTABLES = List.of(
+            ItemRegistry.RAW_ETHEREUM.get(),
+            BlockRegistry.ETHEREUM_ORE.get()
+    );
+
+    public static final List<ItemLike> RUBY_SMELTABLES = List.of(
+            BlockRegistry.RUBY_ORE.get(),
+            BlockRegistry.DEEPSLATE_RUBY_ORE.get()
+    );
+
+    public static final List<ItemLike> EFTORIT_SMELTABLES = List.of(
+            BlockRegistry.EFTORIT_ORE.get(),
+            BlockRegistry.DEEPSLATE_EFTORIT_ORE.get()
+    );
+
 
 
     public RecipeProvider(PackOutput pOutput) {
@@ -31,14 +41,17 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         oreSmelting(pWriter, ETHEREUM_SMELTABLES, RecipeCategory.MISC, ItemRegistry.ETHEREUM.get(), 17f, 800, "ethereum");
         oreBlasting(pWriter, ETHEREUM_SMELTABLES, RecipeCategory.MISC, ItemRegistry.ETHEREUM.get(), 23f, 600, "ethereum");
 
-        oreSmelting(pWriter, RUBY_SMELTABLES, RecipeCategory.MISC, ItemRegistry.RUBY.get(), 17f, 200, "ethereum");
-        oreBlasting(pWriter, RUBY_SMELTABLES, RecipeCategory.MISC, ItemRegistry.RUBY.get(), 23f, 160, "ethereum");
+        oreSmelting(pWriter, RUBY_SMELTABLES, RecipeCategory.MISC, ItemRegistry.RUBY.get(), 17f, 200, "ruby");
+        oreBlasting(pWriter, RUBY_SMELTABLES, RecipeCategory.MISC, ItemRegistry.RUBY.get(), 23f, 160, "ruby");
+
+        oreSmelting(pWriter, EFTORIT_SMELTABLES, RecipeCategory.MISC, ItemRegistry.EFTORIT.get(), 20f, 200, "eftorit");
+        oreBlasting(pWriter, EFTORIT_SMELTABLES, RecipeCategory.MISC, ItemRegistry.EFTORIT.get(), 28f, 160, "eftorit");
 
 
 
         // ===============================================================
         //
-        //                              Craft
+        //                        Shaped Craft
         //
         // ===============================================================
 
@@ -60,6 +73,16 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .pattern("SSS")
                 .define('S', ItemRegistry.RUBY.get())
                 .unlockedBy(getHasName(ItemRegistry.RUBY.get()), has(ItemRegistry.RUBY.get()))
+                .save(pWriter);
+
+        // Eftorit
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.EFTORIT_BLOCK.get())
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('S', ItemRegistry.EFTORIT.get())
+                .unlockedBy(getHasName(ItemRegistry.EFTORIT.get()), has(ItemRegistry.EFTORIT.get()))
                 .save(pWriter);
 
         // Stone of Hope
@@ -139,7 +162,11 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
 
 
 
-        // Other
+        // ===============================================================
+        //
+        //                      Shapeless Craft
+        //
+        // ===============================================================
 
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistry.ETHEREUM.get(), 9)
@@ -150,6 +177,11 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistry.RUBY.get(), 9)
                 .requires(BlockRegistry.RUBY_BLOCK.get())
                 .unlockedBy(getHasName(BlockRegistry.RUBY_BLOCK.get()), has(BlockRegistry.RUBY_BLOCK.get()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistry.EFTORIT.get(), 9)
+                .requires(BlockRegistry.EFTORIT_BLOCK.get())
+                .unlockedBy(getHasName(BlockRegistry.EFTORIT_BLOCK.get()), has(BlockRegistry.EFTORIT_BLOCK.get()))
                 .save(pWriter);
 
 

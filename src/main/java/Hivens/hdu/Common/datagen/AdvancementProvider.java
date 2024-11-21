@@ -10,6 +10,8 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.ForgeAdvancementProvider;
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +34,24 @@ public class AdvancementProvider extends ForgeAdvancementProvider {
                              @NotNull Consumer<Advancement> consumer,
                              @NotNull ExistingFileHelper existingFileHelper) {
 
+            Advancement DEDRARION_UNDERGROUND_MAIN = Advancement.Builder.advancement()
+                    .display(
+                            ItemRegistry.EFTORIT.get(),
+                            Component.translatable("advancement.hdu.dedrarion_underground.title"),
+                            Component.translatable("advancement.hdu.dedrarion_underground.description"),
+                            new ResourceLocation(HDU.MODID, "textures/block/ethereum_block.png"),
+                            FrameType.TASK,
+                            false, // Показывать всплывающее уведомление
+                            false, // Объявлять в чате
+                            false // Скрытая ачивка
+                    )
+                    .addCriterion("cobblestone_get",
+                            InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.COBBLESTONE)
+                    )
+                    .save(consumer, String.valueOf(new ResourceLocation(HDU.MODID, "dedrarion_underground_main")));
+
             Advancement SEEKER_OF_MAGIC = Advancement.Builder.advancement()
+                    .parent(DEDRARION_UNDERGROUND_MAIN)
                     .display(
                             ItemRegistry.ETHEREUM.get(),
                             Component.translatable("advancement.hdu.seeker_of_magic.title"),
@@ -65,6 +84,25 @@ public class AdvancementProvider extends ForgeAdvancementProvider {
                             InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegistry.ETHEREUM_BLOCK.get())
                     )
                     .save(consumer, String.valueOf(new ResourceLocation(HDU.MODID, "white_prince")));
+
+            Advancement COLLECTOR_OF_JEWELRY = Advancement.Builder.advancement()
+                    .parent(SEEKER_OF_MAGIC)
+                    .display(
+                            ItemRegistry.RUBY.get(),
+                            Component.translatable("advancement.hdu.collector_of_jewelry.title"),
+                            Component.translatable("advancement.hdu.collector_of_jewelry.description"),
+                            null,
+                            FrameType.GOAL,
+                            true,
+                            false,
+                            false
+                    )
+                    .addCriterion("get_all_the_jewelry_of_the_dedrarion_underground",
+                            InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegistry.ETHEREUM.get(),
+                                                                            ItemRegistry.RUBY.get(),
+                                                                            ItemRegistry.EFTORIT.get())
+                    )
+                    .save(consumer, String.valueOf(new ResourceLocation(HDU.MODID, "collector_of_jewelry")));
         }
     }
 }

@@ -2,10 +2,10 @@
   "type": "minecraft:smelting",
   "category": "misc",
   "cookingtime": 200,
-  "experience": 17.0,
-  "group": "ethereum",
+  "experience": 20.0,
+  "group": "eftorit",
   "ingredient": {
-    "item": "hdu:stone_ruby_ore"
+    "item": "hdu:eftorit_ore"
   },
-  "result": "hdu:ruby"
+  "result": "hdu:eftorit"
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "hdu:block/eftorit_block"
+    "all": "hdu:block/deepslate_eftorit_ore"
   }
 }

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "hdu:eftorit"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "item": "hdu:eftorit_block"
+  },
+  "show_notification": true
+}

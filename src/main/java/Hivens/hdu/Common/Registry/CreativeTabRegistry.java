@@ -24,6 +24,8 @@ public class CreativeTabRegistry {
                         pOutput.accept(ItemRegistry.ETHEREUM.get());
                         pOutput.accept(ItemRegistry.RAW_ETHEREUM.get());
                         pOutput.accept(ItemRegistry.ETHEREUM_DUST.get());
+                        pOutput.accept(ItemRegistry.RUBY.get());
+                        pOutput.accept(ItemRegistry.EFTORIT.get());
 
                         // Fuel
                         pOutput.accept(ItemRegistry.FUEL_OF_PROMISES.get());
@@ -37,11 +39,12 @@ public class CreativeTabRegistry {
                         pOutput.accept(BlockRegistry.RAW_ETHEREUM_BLOCK.get());
 
 
-                        pOutput.accept(BlockRegistry.STONE_RUBY_ORE.get());
                         pOutput.accept(BlockRegistry.RUBY_ORE.get());
+                        pOutput.accept(BlockRegistry.DEEPSLATE_RUBY_ORE.get());
                         pOutput.accept(BlockRegistry.RUBY_BLOCK.get());
 
                         pOutput.accept(BlockRegistry.EFTORIT_ORE.get());
+                        pOutput.accept(BlockRegistry.DEEPSLATE_EFTORIT_ORE.get());
                         pOutput.accept(BlockRegistry.EFTORIT_BLOCK.get());
 
                         // Blocks

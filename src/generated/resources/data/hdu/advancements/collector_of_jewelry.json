@@ -1,0 +1,48 @@
+{
+  "parent": "hdu:seeker_of_magic",
+  "criteria": {
+    "get_all_the_jewelry_of_the_dedrarion_underground": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hdu:ethereum"
+            ]
+          },
+          {
+            "items": [
+              "hdu:ruby"
+            ]
+          },
+          {
+            "items": [
+              "hdu:eftorit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancement.hdu.collector_of_jewelry.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "hdu:ruby"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.hdu.collector_of_jewelry.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_all_the_jewelry_of_the_dedrarion_underground"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,7 +1,10 @@
 {
   "values": [
-    "hdu:stone_ruby_ore",
     "hdu:ruby_ore",
-    "hdu:ruby_block"
+    "hdu:deepslate_ruby_ore",
+    "hdu:ruby_block",
+    "hdu:eftorit_ore",
+    "hdu:deepslate_eftorit_ore",
+    "hdu:eftorit_block"
   ]
 }

@@ -27,16 +27,18 @@ public class BlockRegistry {
 
 
 
-    public static final RegistryObject<Block> STONE_RUBY_ORE = registerBlock("stone_ruby_ore",
+    public static final RegistryObject<Block> RUBY_ORE = registerBlock("ruby_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.LAPIS_ORE).sound(SoundType.METAL)
                     .strength(1f).requiresCorrectToolForDrops(), UniformInt.of(3, 7)));
-    public static final RegistryObject<Block> RUBY_ORE = registerBlock("ruby_ore",
+    public static final RegistryObject<Block> DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.LAPIS_ORE).sound(SoundType.METAL)
                     .strength(1f).requiresCorrectToolForDrops(), UniformInt.of(3, 7)));
     public static final RegistryObject<Block> RUBY_BLOCK = registerBlock("ruby_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.LAPIS_ORE).sound(SoundType.METAL)));
 
     public static  final RegistryObject<Block> EFTORIT_ORE = registerBlock("eftorit_ore",
+            ()-> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE).sound(SoundType.COPPER)));
+    public static  final RegistryObject<Block> DEEPSLATE_EFTORIT_ORE = registerBlock("deepslate_eftorit_ore",
             ()-> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE).sound(SoundType.COPPER)));
     public static  final  RegistryObject<Block> EFTORIT_BLOCK = registerBlock("eftorit_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_BLOCK).sound(SoundType.METAL)));

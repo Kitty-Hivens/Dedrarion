@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 20.0,
+  "group": "eftorit",
+  "ingredient": {
+    "item": "hdu:deepslate_eftorit_ore"
+  },
+  "result": "hdu:eftorit"
+}

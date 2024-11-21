@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 160,
+  "experience": 28.0,
+  "group": "eftorit",
+  "ingredient": {
+    "item": "hdu:deepslate_eftorit_ore"
+  },
+  "result": "hdu:eftorit"
+}

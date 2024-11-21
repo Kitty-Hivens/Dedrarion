@@ -23,8 +23,10 @@ public class BlockTagGenerator extends BlockTagsProvider {
     protected void addTags(HolderLookup.@NotNull Provider pProvider) {
         this.tag(ModTags.Blocks.METAL_DETECTOR_VALUABLES)
                 .add(BlockRegistry.ETHEREUM_ORE.get(),
-                     BlockRegistry.STONE_RUBY_ORE.get(),
-                     BlockRegistry.RUBY_ORE.get()
+                     BlockRegistry.RUBY_ORE.get(),
+                     BlockRegistry.DEEPSLATE_RUBY_ORE.get(),
+                     BlockRegistry.EFTORIT_ORE.get(),
+                     BlockRegistry.DEEPSLATE_EFTORIT_ORE.get()
                 );
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
@@ -32,11 +34,12 @@ public class BlockTagGenerator extends BlockTagsProvider {
                         BlockRegistry.RAW_ETHEREUM_BLOCK.get(),
                         BlockRegistry.ETHEREUM_BLOCK.get(),
 
-                        BlockRegistry.STONE_RUBY_ORE.get(),
                         BlockRegistry.RUBY_ORE.get(),
+                        BlockRegistry.RUBY_BLOCK.get(),
                         BlockRegistry.RUBY_BLOCK.get(),
 
                         BlockRegistry.EFTORIT_ORE.get(),
+                        BlockRegistry.DEEPSLATE_EFTORIT_ORE.get(),
                         BlockRegistry.EFTORIT_BLOCK.get(),
 
                         BlockRegistry.STONE_OF_HOPES.get(),
@@ -59,9 +62,13 @@ public class BlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.NEEDS_STONE_TOOL);
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
-                   .add(BlockRegistry.STONE_RUBY_ORE.get(),
-                        BlockRegistry.RUBY_ORE.get(),
-                        BlockRegistry.RUBY_BLOCK.get());
+                   .add(BlockRegistry.RUBY_ORE.get(),
+                        BlockRegistry.DEEPSLATE_RUBY_ORE.get(),
+                        BlockRegistry.RUBY_BLOCK.get(),
+                        BlockRegistry.EFTORIT_ORE.get(),
+                        BlockRegistry.DEEPSLATE_EFTORIT_ORE.get(),
+                        BlockRegistry.EFTORIT_BLOCK.get()
+                   );
 
 
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL);

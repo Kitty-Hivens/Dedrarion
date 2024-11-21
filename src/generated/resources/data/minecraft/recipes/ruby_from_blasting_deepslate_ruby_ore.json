@@ -3,9 +3,9 @@
   "category": "misc",
   "cookingtime": 160,
   "experience": 23.0,
-  "group": "ethereum",
+  "group": "ruby",
   "ingredient": {
-    "item": "hdu:ruby"
+    "item": "hdu:deepslate_ruby_ore"
   },
   "result": "hdu:ruby"
 }

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ruby": {
+    "has_eftorit": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hdu:ruby"
+              "hdu:eftorit"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:ruby_from_smelting_ruby"
+        "recipe": "hdu:eftorit_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_ruby",
+      "has_eftorit",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:ruby_from_smelting_ruby"
+      "hdu:eftorit_block"
     ]
   },
   "sends_telemetry_event": false

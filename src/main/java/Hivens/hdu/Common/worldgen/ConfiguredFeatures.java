@@ -20,6 +20,7 @@ public class ConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_ETHEREUM_ORE_KEY = registerKey("ethereum_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_RUBY_ORE_KEY = registerKey("ruby_ore");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_EFTORIT_ORE_KEY = registerKey("eftorit_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_STONE_OF_HOPES_ORE_KEY = registerKey("stone_of_hopes");
 
 
@@ -29,12 +30,13 @@ public class ConfiguredFeatures {
         RuleTest deepslateReplaceable = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
 
         List<OreConfiguration.TargetBlockState> overworldRubyOres = List.of(
+                OreConfiguration.target(stoneReplaceable, BlockRegistry.RUBY_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceable, BlockRegistry.DEEPSLATE_RUBY_ORE.get().defaultBlockState()
+                ));
 
-
-                OreConfiguration.target(stoneReplaceable, BlockRegistry.STONE_RUBY_ORE.get().defaultBlockState()),
-                OreConfiguration.target(deepslateReplaceable, BlockRegistry.RUBY_ORE.get().defaultBlockState()
-
-
+        List<OreConfiguration.TargetBlockState> overworldEftoritOres = List.of(
+                OreConfiguration.target(stoneReplaceable, BlockRegistry.EFTORIT_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceable, BlockRegistry.EFTORIT_ORE.get().defaultBlockState()
                 ));
 
 
@@ -52,6 +54,13 @@ public class ConfiguredFeatures {
                 new OreConfiguration(
                         overworldRubyOres,
                         7));
+
+        register(context,
+                OVERWORLD_EFTORIT_ORE_KEY,
+                Feature.ORE,
+                new OreConfiguration(
+                        overworldEftoritOres,
+                        4));
 
         register(context,
                 OVERWORLD_STONE_OF_HOPES_ORE_KEY,
