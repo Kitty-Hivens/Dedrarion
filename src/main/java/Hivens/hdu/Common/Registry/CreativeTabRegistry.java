@@ -20,6 +20,9 @@ public class CreativeTabRegistry {
                         // Custom Item
                         pOutput.accept(ItemRegistry.METAL_DETECTOR.get());
 
+                        // Custom Block
+                        pOutput.accept(BlockRegistry.EFTORIT_FORGE.get());
+
                         // Misc
                         pOutput.accept(ItemRegistry.ETHEREUM.get());
                         pOutput.accept(ItemRegistry.RAW_ETHEREUM.get());

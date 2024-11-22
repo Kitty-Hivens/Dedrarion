@@ -41,6 +41,7 @@ public class BlockTagGenerator extends BlockTagsProvider {
                         BlockRegistry.EFTORIT_ORE.get(),
                         BlockRegistry.DEEPSLATE_EFTORIT_ORE.get(),
                         BlockRegistry.EFTORIT_BLOCK.get(),
+                        BlockRegistry.DEEPSLATE_EFTORIT_ORE.get(),
 
                         BlockRegistry.STONE_OF_HOPES.get(),
                         BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get(),
@@ -67,7 +68,8 @@ public class BlockTagGenerator extends BlockTagsProvider {
                         BlockRegistry.RUBY_BLOCK.get(),
                         BlockRegistry.EFTORIT_ORE.get(),
                         BlockRegistry.DEEPSLATE_EFTORIT_ORE.get(),
-                        BlockRegistry.EFTORIT_BLOCK.get()
+                        BlockRegistry.EFTORIT_BLOCK.get(),
+                        BlockRegistry.EFTORIT_FORGE.get()
                    );
 
 

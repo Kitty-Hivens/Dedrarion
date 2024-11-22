@@ -1,5 +1,6 @@
 package Hivens.hdu.Common.Registry;
 
+import Hivens.hdu.Common.Custom.Block.EftoritForgeBlock;
 import Hivens.hdu.HDU;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -42,6 +43,8 @@ public class BlockRegistry {
             ()-> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE).sound(SoundType.COPPER)));
     public static  final  RegistryObject<Block> EFTORIT_BLOCK = registerBlock("eftorit_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_BLOCK).sound(SoundType.METAL)));
+    public static  final  RegistryObject<Block> EFTORIT_FORGE = registerBlock("eftorit_forge",
+            () -> new EftoritForgeBlock(BlockBehaviour.Properties.copy(Blocks.EMERALD_BLOCK).sound(SoundType.METAL)));
 
 
 

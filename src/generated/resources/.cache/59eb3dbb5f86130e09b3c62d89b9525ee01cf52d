@@ -1,10 +1,11 @@
-// 1.20.1	2024-11-21T00:40:18.768891517	Loot Tables
+// 1.20.1	2024-11-22T02:00:43.322755537	Loot Tables
 e752fbca84ecae002d6d13301c7d53d6a5cb24ef data/hdu/loot_tables/blocks/bricks_from_the_shards_of_the_stone_of_hopes.json
 163eb5c159e9178b8d3af384de0866477dbfe73a data/hdu/loot_tables/blocks/bricks_from_the_smooth_stone_of_hopes.json
 c42ff60dd3f8ac50f27907d4a3936ae884083dea data/hdu/loot_tables/blocks/bricks_from_the_stone_of_hopes.json
 748f58aea8cda17035fd66a6397a2aa7949ca660 data/hdu/loot_tables/blocks/deepslate_eftorit_ore.json
 fc0f16ab71c920c541a7d82d243d2d6299179222 data/hdu/loot_tables/blocks/deepslate_ruby_ore.json
 2114f448385f2556d22409fec38da1548347faf2 data/hdu/loot_tables/blocks/eftorit_block.json
+ad1360a2a8e5c870f791ceebc8243096a5072c51 data/hdu/loot_tables/blocks/eftorit_forge.json
 a19d3627d8fb1f0073d1ce3b5dd1c929ae62acc2 data/hdu/loot_tables/blocks/eftorit_ore.json
 1a7800e73aba2778fe3466db247fe2bdc1a9a29b data/hdu/loot_tables/blocks/ethereum_block.json
 8e43236d2d68ee1438614802e71da322ee9326e3 data/hdu/loot_tables/blocks/ethereum_ore.json

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "hdu:block/eftorit_forge"
+    },
+    "facing=south": {
+      "model": "hdu:block/eftorit_forge",
+      "y": "180"
+    },
+    "facing=west": {
+      "model": "hdu:block/eftorit_forge",
+      "y": "270"
+    },
+    "facing=east": {
+      "model": "hdu:block/eftorit_forge",
+      "y": "90"
+    }
+  }
+}

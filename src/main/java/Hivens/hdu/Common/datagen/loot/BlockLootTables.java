@@ -28,6 +28,7 @@ public class BlockLootTables extends BlockLootSubProvider {
 
         this.dropSelf(BlockRegistry.RUBY_BLOCK.get());
         this.dropSelf(BlockRegistry.EFTORIT_BLOCK.get());
+        this.dropSelf(BlockRegistry.EFTORIT_FORGE.get());
 
         this.dropSelf(BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get());
         this.dropSelf(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get());
