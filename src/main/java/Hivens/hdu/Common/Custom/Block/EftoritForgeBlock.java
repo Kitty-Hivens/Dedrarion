@@ -24,12 +24,12 @@ public class EftoritForgeBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    public BlockState rotate(@NotNull BlockState pState, @NotNull Rotation pRotation) {
+    public @NotNull BlockState rotate(@NotNull BlockState pState, @NotNull Rotation pRotation) {
         return pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING)));
     }
 
     @Override
-    public BlockState mirror(BlockState pState, Mirror pMirror) {
+    public @NotNull BlockState mirror(BlockState pState, Mirror pMirror) {
         return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
     }
 

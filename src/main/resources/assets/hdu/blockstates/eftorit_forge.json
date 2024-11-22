@@ -5,15 +5,15 @@
     },
     "facing=south": {
       "model": "hdu:block/eftorit_forge",
-      "y": "180"
+      "y": 180
     },
     "facing=west": {
       "model": "hdu:block/eftorit_forge",
-      "y": "270"
+      "y": 270
     },
     "facing=east": {
       "model": "hdu:block/eftorit_forge",
-      "y": "90"
+      "y": 90
     }
   }
 }
