@@ -22,8 +22,7 @@ import org.jetbrains.annotations.NotNull;
 public class EftoritForgeBlock extends HorizontalDirectionalBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final EnumProperty<Mode> MODE = EnumProperty.create("mode", Mode.class);
-
-    // Определение режимов с реализацией StringRepresentable
+    
     public enum Mode implements StringRepresentable {
         SIDE("side"),
         FRONT("front");
@@ -40,52 +39,6 @@ public class EftoritForgeBlock extends HorizontalDirectionalBlock {
         }
     }
 
-    private static final VoxelShape SHAPE_FRONT = Shapes.or(
-            // Нижняя пластина (3, 0, 4 to 13, 2, 12)
-            Shapes.box(3.0D/16.0D, 0.0D/16.0D, 4.0D/16.0D, 13.0D/16.0D, 2.0D/16.0D, 12.0D/16.0D),
-
-            // Средний блок (5, 2, 6 to 11, 6, 10)
-            Shapes.box(5.0D/16.0D, 2.0D/16.0D, 6.0D/16.0D, 11.0D/16.0D, 6.0D/16.0D, 10.0D/16.0D),
-
-            // Средняя пластина (0, 6, 3 to 16, 8, 13)
-            Shapes.box(0.0D/16.0D, 6.0D/16.0D, 3.0D/16.0D, 1.0, 8.0D/16.0D, 13.0D/16.0D),
-
-            // Верхняя пластина (0, 10, 3 to 16, 13, 13)
-            Shapes.box(0.0D/16.0D, 10.0D/16.0D, 3.0D/16.0D, 1.0, 13.0D/16.0D, 13.0D/16.0D),
-
-            // Малые элементы
-            Shapes.box(2.0D/16.0D, 8.0D/16.0D, 5.0D/16.0D, 4.0D/16.0D, 10.0D/16.0D, 7.0D/16.0D),   // Левый передний
-            Shapes.box(7.0D/16.0D, 8.0D/16.0D, 4.0D/16.0D, 9.0D/16.0D, 10.0D/16.0D, 6.0D/16.0D),    // Центральный передний
-            Shapes.box(12.0D/16.0D, 8.0D/16.0D, 5.0D/16.0D, 14.0D/16.0D, 10.0D/16.0D, 7.0D/16.0D),  // Правый передний
-
-            Shapes.box(3.0D/16.0D, 8.0D/16.0D, 10.0D/16.0D, 5.0D/16.0D, 10.0D/16.0D, 12.0D/16.0D),  // Левый задний
-            Shapes.box(7.0D/16.0D, 8.0D/16.0D, 9.0D/16.0D, 9.0D/16.0D, 10.0D/16.0D, 11.0D/16.0D),   // Центральный задний
-            Shapes.box(11.0D/16.0D, 8.0D/16.0D, 10.0D/16.0D, 13.0D/16.0D, 10.0D/16.0D, 12.0D/16.0D) // Правый задний
-    );
-
-    private static final VoxelShape SHAPE_SIDE = Shapes.or(
-            // Нижняя пластина (3, 0, 4 to 13, 2, 12)
-            Shapes.box(4.0D/16.0D, 0.0D/16.0D, 3.0D/16.0D, 12.0D/16.0D, 2.0D/16.0D, 13.0D/16.0D),
-
-            // Средний блок (5, 2, 6 to 11, 6, 10)
-            Shapes.box(6.0D/16.0D, 2.0D/16.0D, 5.0D/16.0D, 10.0D/16.0D, 6.0D/16.0D, 11.0D/16.0D),
-
-            // Средняя пластина (0, 6, 3 to 16, 8, 13)
-            Shapes.box(3.0D/16.0D, 6.0D/16.0D, 0.0D/16.0D, 13.0D/16.0D, 8.0D/16.0D, 1.0),
-
-            // Верхняя пластина (0, 10, 3 to 16, 13, 13)
-            Shapes.box(3.0D/16.0D, 10.0D/16.0D, 0.0D/16.0D, 13.0D/16.0D, 13.0D/16.0D, 1.0),
-
-            // Малые элементы
-            Shapes.box(5.0D/16.0D, 8.0D/16.0D, 2.0D/16.0D, 7.0D/16.0D, 10.0D/16.0D, 4.0D/16.0D),   // Левый передний
-            Shapes.box(4.0D/16.0D, 8.0D/16.0D, 7.0D/16.0D, 6.0D/16.0D, 10.0D/16.0D, 9.0D/16.0D),   // Центральный передний
-            Shapes.box(5.0D/16.0D, 8.0D/16.0D, 12.0D/16.0D, 7.0D/16.0D, 10.0D/16.0D, 14.0D/16.0D), // Правый передний
-
-            Shapes.box(10.0D/16.0D, 8.0D/16.0D, 3.0D/16.0D, 12.0D/16.0D, 10.0D/16.0D, 5.0D/16.0D), // Левый задний
-            Shapes.box(9.0D/16.0D, 8.0D/16.0D, 7.0D/16.0D, 11.0D/16.0D, 10.0D/16.0D, 9.0D/16.0D),  // Центральный задний
-            Shapes.box(10.0D/16.0D, 8.0D/16.0D, 11.0D/16.0D, 12.0D/16.0D, 10.0D/16.0D, 13.0D/16.0D) // Правый задний
-    );
-
     public EftoritForgeBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any()
@@ -95,23 +48,182 @@ public class EftoritForgeBlock extends HorizontalDirectionalBlock {
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        Mode mode = pContext.getClickedFace().getAxis() == Direction.Axis.Y
-                ? Mode.SIDE
-                : Mode.FRONT;
+        Direction facing = pContext.getClickedFace();
+
+        if (facing.getAxis() == Direction.Axis.Y) {
+            facing = pContext.getHorizontalDirection();
+        }
 
         return this.defaultBlockState()
-                .setValue(FACING, pContext.getHorizontalDirection().getOpposite())
-                .setValue(MODE, mode);
+                .setValue(FACING, facing)
+                .setValue(MODE, facing.getAxis() == Direction.Axis.Y ? Mode.SIDE : Mode.FRONT);
     }
+
+    VoxelShape NorthShape = Shapes.or(
+            Shapes.box(/*X1*/ 3.0D / 16.0D,  /*Y1*/ 0.0D / 16.0D,  /*Z1*/ 4.0D / 16.0D,
+                       /*X2*/ 13.0D / 16.0D, /*Y2*/ 2.0D / 16.0D,  /*Z2*/ 12.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 5.0D / 16.0D,  /*Y1*/ 2.0D / 16.0D,  /*Z1*/ 6.0D / 16.0D,
+                       /*X2*/ 11.0D / 16.0D, /*Y2*/ 6.0D / 16.0D,  /*Z2*/ 10.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 0.0D / 16.0D,  /*Y1*/ 6.0D / 16.0D,  /*Z1*/ 3.0D / 16.0D,
+                       /*X2*/ 1.0D,          /*Y2*/ 8.0D / 16.0D,  /*Z2*/ 13.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 0.0D / 16.0D,  /*Y1*/ 10.0D / 16.0D, /*Z1*/ 3.0D / 16.0D,
+                       /*X2*/ 1.0D,          /*Y2*/ 13.0D / 16.0D, /*Z2*/ 13.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 2.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 5.0D / 16.0D,
+                       /*X2*/ 4.0D / 16.0D,  /*Y2*/ 10.0D / 16.0D, /*Z2*/ 7.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 7.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 4.0D / 16.0D,
+                       /*X2*/ 9.0D / 16.0D,  /*Y2*/ 10.0D / 16.0D, /*Z2*/ 6.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 12.0D / 16.0D, /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 5.0D / 16.0D,
+                       /*X2*/ 14.0D / 16.0D, /*Y2*/ 10.0D / 16.0D, /*Z2*/ 7.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 3.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 10.0D / 16.0D,
+                       /*X2*/ 5.0D / 16.0D,  /*Y2*/ 10.0D / 16.0D, /*Z2*/ 12.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 7.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 9.0D / 16.0D,
+                       /*X2*/ 9.0D / 16.0D,  /*Y2*/ 10.0D / 16.0D, /*Z2*/ 11.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 11.0D / 16.0D, /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 10.0D / 16.0D,
+                       /*X2*/ 13.0D / 16.0D, /*Y2*/ 10.0D / 16.0D, /*Z2*/ 12.0D / 16.0D)
+    );
+
+    VoxelShape SouthShape = Shapes.or(
+            Shapes.box(/*X1*/ 3.0D / 16.0D,  /*Y1*/ 0.0D / 16.0D,  /*Z1*/ 4.0D / 16.0D,
+                       /*X2*/ 13.0D / 16.0D, /*Y2*/ 2.0D / 16.0D,  /*Z2*/ 12.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 5.0D / 16.0D,  /*Y1*/ 2.0D / 16.0D,  /*Z1*/ 6.0D / 16.0D,
+                       /*X2*/ 11.0D / 16.0D, /*Y2*/ 6.0D / 16.0D,  /*Z2*/ 10.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 0.0D / 16.0D,  /*Y1*/ 6.0D / 16.0D,  /*Z1*/ 3.0D / 16.0D,
+                       /*X2*/ 1.0D,          /*Y2*/ 8.0D / 16.0D,  /*Z2*/ 13.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 0.0D / 16.0D,  /*Y1*/ 10.0D / 16.0D, /*Z1*/ 3.0D / 16.0D,
+                       /*X2*/ 1.0D,          /*Y2*/ 13.0D / 16.0D, /*Z2*/ 13.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 2.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 9.0D / 16.0D,
+                       /*X2*/ 4.0D / 16.0D,  /*Y2*/ 10.0D / 16.0D, /*Z2*/ 11.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 7.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 10.0D / 16.0D,
+                       /*X2*/ 9.0D / 16.0D,  /*Y2*/ 10.0D / 16.0D, /*Z2*/ 12.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 12.0D / 16.0D, /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 9.0D / 16.0D,
+                       /*X2*/ 14.0D / 16.0D, /*Y2*/ 10.0D / 16.0D, /*Z2*/ 11.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 3.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 4.0D / 16.0D,
+                       /*X2*/ 5.0D / 16.0D,  /*Y2*/ 10.0D / 16.0D, /*Z2*/ 6.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 7.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 5.0D / 16.0D,
+                       /*X2*/ 9.0D / 16.0D,  /*Y2*/ 10.0D / 16.0D, /*Z2*/ 7.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 11.0D / 16.0D, /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 4.0D / 16.0D,
+                       /*X2*/ 13.0D / 16.0D, /*Y2*/ 10.0D / 16.0D, /*Z2*/ 6.0D / 16.0D)
+    );
+
+
+    VoxelShape EastShape = Shapes.or(
+            Shapes.box(/*X1*/ 4.0D / 16.0D,  /*Y1*/ 0.0D / 16.0D,  /*Z1*/ 3.0D / 16.0D,
+                       /*X2*/ 12.0D / 16.0D, /*Y2*/ 2.0D / 16.0D,  /*Z2*/ 13.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 6.0D / 16.0D,  /*Y1*/ 2.0D / 16.0D,  /*Z1*/ 5.0D / 16.0D,
+                       /*X2*/ 10.0D / 16.0D, /*Y2*/ 6.0D / 16.0D,  /*Z2*/ 11.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 3.0D / 16.0D,  /*Y1*/ 6.0D / 16.0D,  /*Z1*/ 0.0D / 16.0D,
+                       /*X2*/ 13.0D / 16.0D, /*Y2*/ 8.0D / 16.0D,  /*Z2*/ 1.0D),
+
+            Shapes.box(/*X1*/ 3.0D / 16.0D,  /*Y1*/ 10.0D / 16.0D, /*Z1*/ 0.0D / 16.0D,
+                       /*X2*/ 13.0D / 16.0D, /*Y2*/ 13.0D / 16.0D, /*Z2*/ 1.0D),
+
+            Shapes.box(/*X1*/ 4.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 3.0D / 16.0D,
+                       /*X2*/ 6.0D / 16.0D,  /*Y2*/ 10.0D / 16.0D, /*Z2*/ 5.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 5.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 7.0D / 16.0D,
+                       /*X2*/ 7.0D / 16.0D,  /*Y2*/ 10.0D / 16.0D, /*Z2*/ 9.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 4.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 11.0D / 16.0D,
+                       /*X2*/ 6.0D / 16.0D,  /*Y2*/ 10.0D / 16.0D, /*Z2*/ 13.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 9.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 2.0D / 16.0D,
+                       /*X2*/ 11.0D / 16.0D, /*Y2*/ 10.0D / 16.0D, /*Z2*/ 4.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 10.0D / 16.0D, /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 7.0D / 16.0D,
+                       /*X2*/ 12.0D / 16.0D, /*Y2*/ 10.0D / 16.0D, /*Z2*/ 9.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 9.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 12.0D / 16.0D,
+                       /*X2*/ 11.0D / 16.0D, /*Y2*/ 10.0D / 16.0D, /*Z2*/ 14.0D / 16.0D)
+    );
+
+
+    VoxelShape WestShape = Shapes.or(
+            Shapes.box(/*X1*/ 4.0D / 16.0D,  /*Y1*/ 0.0D / 16.0D, /*Z1*/ 3.0D / 16.0D,
+                       /*X2*/ 12.0D / 16.0D, /*Y2*/ 2.0D / 16.0D, /*Z2*/ 13.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 6.0D / 16.0D,  /*Y1*/ 2.0D / 16.0D, /*Z1*/ 5.0D / 16.0D,
+                       /*X2*/ 10.0D / 16.0D, /*Y2*/ 6.0D / 16.0D, /*Z2*/ 11.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 3.0D / 16.0D,  /*Y1*/ 6.0D / 16.0D, /*Z1*/ 0.0D / 16.0D,
+                       /*X2*/ 13.0D / 16.0D, /*Y2*/ 8.0D / 16.0D, /*Z2*/ 1.0D),
+
+            Shapes.box(/*X1*/ 3.0D / 16.0D,  /*Y1*/ 10.0D / 16.0D, /*Z1*/ 0.0D / 16.0D,
+                       /*X2*/ 13.0D / 16.0D, /*Y2*/ 13.0D / 16.0D, /*Z2*/ 1.0D),
+
+            Shapes.box(/*X1*/ 5.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 2.0D / 16.0D,
+                       /*X2*/ 7.0D / 16.0D,  /*Y2*/ 10.0D / 16.0D, /*Z2*/ 4.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 4.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 7.0D / 16.0D,
+                       /*X2*/ 6.0D / 16.0D,  /*Y2*/ 10.0D / 16.0D, /*Z2*/ 9.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 5.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 12.0D / 16.0D,
+                       /*X2*/ 7.0D / 16.0D,  /*Y2*/ 10.0D / 16.0D, /*Z2*/ 14.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 10.0D / 16.0D, /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 3.0D / 16.0D,
+                       /*X2*/ 12.0D / 16.0D, /*Y2*/ 10.0D / 16.0D, /*Z2*/ 5.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 9.0D / 16.0D,  /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 7.0D / 16.0D,
+                       /*X2*/ 11.0D / 16.0D, /*Y2*/ 10.0D / 16.0D, /*Z2*/ 9.0D / 16.0D),
+
+            Shapes.box(/*X1*/ 10.0D / 16.0D, /*Y1*/ 8.0D / 16.0D,  /*Z1*/ 11.0D / 16.0D,
+                       /*X2*/ 12.0D / 16.0D, /*Y2*/ 10.0D / 16.0D, /*Z2*/ 13.0D / 16.0D)
+    );
+
 
     @Override
     public @NotNull VoxelShape getShape(BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
-        return pState.getValue(MODE) == Mode.SIDE ? SHAPE_SIDE : SHAPE_FRONT;
+        Direction facing = pState.getValue(FACING); // Получаем направление
+
+        switch (facing) {
+            case NORTH:
+                return NorthShape;
+            case SOUTH:
+                return SouthShape;
+            case EAST:
+                return EastShape;
+            case WEST:
+                return WestShape;
+            default:
+                return super.getShape(pState, pLevel, pPos, pContext);
+        }
     }
 
     @Override
-    public @NotNull VoxelShape getCollisionShape(BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
-        return pState.getValue(MODE) == Mode.SIDE ? SHAPE_SIDE : SHAPE_FRONT;
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        Direction facing = state.getValue(FACING);
+
+        switch (facing) {
+            case NORTH:
+                return NorthShape;
+            case SOUTH:
+                return SouthShape;
+            case EAST:
+                return EastShape;
+            case WEST:
+                return WestShape;
+            default:
+                return super.getCollisionShape(state, world, pos, context);
+        }
     }
 
     @Override
