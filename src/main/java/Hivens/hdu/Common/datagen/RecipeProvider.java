@@ -85,6 +85,18 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .unlockedBy(getHasName(ItemRegistry.EFTORIT.get()), has(ItemRegistry.EFTORIT.get()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.EFTORIT_FORGE.get())
+                .pattern("AAA")
+                .pattern("BAB")
+                .pattern("CCC")
+                .define('A', BlockRegistry.EFTORIT_BLOCK.get())
+                .define('B', ItemRegistry.ETHEREUM.get())
+                .define('C', BlockRegistry.STONE_OF_HOPES.get())
+                .unlockedBy(getHasName(ItemRegistry.EFTORIT.get()), has(ItemRegistry.EFTORIT.get()))
+                .unlockedBy(getHasName(ItemRegistry.ETHEREUM.get()), has(ItemRegistry.ETHEREUM.get()))
+                .unlockedBy(getHasName(BlockRegistry.STONE_OF_HOPES.get()), has(BlockRegistry.STONE_OF_HOPES.get()))
+                .save(pWriter);
+
         // Stone of Hope
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get(), 8)

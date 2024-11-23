@@ -48,10 +48,10 @@ public class EftoritForgeBlock extends HorizontalDirectionalBlock {
             Shapes.box(5.0D/16.0D, 2.0D/16.0D, 6.0D/16.0D, 11.0D/16.0D, 6.0D/16.0D, 10.0D/16.0D),
 
             // Средняя пластина (0, 6, 3 to 16, 8, 13)
-            Shapes.box(0.0D/16.0D, 6.0D/16.0D, 3.0D/16.0D, 16.0D/16.0D, 8.0D/16.0D, 13.0D/16.0D),
+            Shapes.box(0.0D/16.0D, 6.0D/16.0D, 3.0D/16.0D, 1.0, 8.0D/16.0D, 13.0D/16.0D),
 
             // Верхняя пластина (0, 10, 3 to 16, 13, 13)
-            Shapes.box(0.0D/16.0D, 10.0D/16.0D, 3.0D/16.0D, 16.0D/16.0D, 13.0D/16.0D, 13.0D/16.0D),
+            Shapes.box(0.0D/16.0D, 10.0D/16.0D, 3.0D/16.0D, 1.0, 13.0D/16.0D, 13.0D/16.0D),
 
             // Малые элементы
             Shapes.box(2.0D/16.0D, 8.0D/16.0D, 5.0D/16.0D, 4.0D/16.0D, 10.0D/16.0D, 7.0D/16.0D),   // Левый передний
@@ -71,10 +71,10 @@ public class EftoritForgeBlock extends HorizontalDirectionalBlock {
             Shapes.box(6.0D/16.0D, 2.0D/16.0D, 5.0D/16.0D, 10.0D/16.0D, 6.0D/16.0D, 11.0D/16.0D),
 
             // Средняя пластина (0, 6, 3 to 16, 8, 13)
-            Shapes.box(3.0D/16.0D, 6.0D/16.0D, 0.0D/16.0D, 13.0D/16.0D, 8.0D/16.0D, 16.0D/16.0D),
+            Shapes.box(3.0D/16.0D, 6.0D/16.0D, 0.0D/16.0D, 13.0D/16.0D, 8.0D/16.0D, 1.0),
 
             // Верхняя пластина (0, 10, 3 to 16, 13, 13)
-            Shapes.box(3.0D/16.0D, 10.0D/16.0D, 0.0D/16.0D, 13.0D/16.0D, 13.0D/16.0D, 16.0D/16.0D),
+            Shapes.box(3.0D/16.0D, 10.0D/16.0D, 0.0D/16.0D, 13.0D/16.0D, 13.0D/16.0D, 1.0),
 
             // Малые элементы
             Shapes.box(5.0D/16.0D, 8.0D/16.0D, 2.0D/16.0D, 7.0D/16.0D, 10.0D/16.0D, 4.0D/16.0D),   // Левый передний
@@ -88,7 +88,6 @@ public class EftoritForgeBlock extends HorizontalDirectionalBlock {
 
     public EftoritForgeBlock(Properties properties) {
         super(properties);
-        // Установка дефолтного состояния
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(MODE, Mode.SIDE));
@@ -96,7 +95,6 @@ public class EftoritForgeBlock extends HorizontalDirectionalBlock {
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        // Определение режима в зависимости от стороны клика
         Mode mode = pContext.getClickedFace().getAxis() == Direction.Axis.Y
                 ? Mode.SIDE
                 : Mode.FRONT;
@@ -107,12 +105,12 @@ public class EftoritForgeBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    public @NotNull VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public @NotNull VoxelShape getShape(BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
         return pState.getValue(MODE) == Mode.SIDE ? SHAPE_SIDE : SHAPE_FRONT;
     }
 
     @Override
-    public @NotNull VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public @NotNull VoxelShape getCollisionShape(BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
         return pState.getValue(MODE) == Mode.SIDE ? SHAPE_SIDE : SHAPE_FRONT;
     }
 

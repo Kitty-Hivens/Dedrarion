@@ -1,4 +1,4 @@
-// 1.20.1	2024-11-21T02:00:18.935082943	Recipes
+// 1.20.1	2024-11-23T01:49:14.589835806	Recipes
 1ea08584aa74318f20b326986e51f6b6cde260b7 data/hdu/advancements/recipes/building_blocks/smooth_stone_of_hopes.json
 7a7dc9149ab161c7d05567fc011648beae46b47c data/hdu/advancements/recipes/building_blocks/stone_of_hopes.json
 8dbdea309fcfecc507d9be104f3847e46937a300 data/hdu/advancements/recipes/misc/bricks_from_the_shards_of_the_stone_of_hopes.json
@@ -6,6 +6,7 @@
 695abf5a809e3d62b2584f51edc997dbb3f7b2cd data/hdu/advancements/recipes/misc/bricks_from_the_stone_of_hopes.json
 3a83cf595635499e20d0ddef54c0288de149919f data/hdu/advancements/recipes/misc/eftorit.json
 771625e24ad616f0b9fccfb315fe6ffd712c0055 data/hdu/advancements/recipes/misc/eftorit_block.json
+c8e5124e49eabfca4af342532e6effcfca135a38 data/hdu/advancements/recipes/misc/eftorit_forge.json
 b6de5141a19212222fdc9ec9d4dc4aa0602d7895 data/hdu/advancements/recipes/misc/ethereum.json
 98eb01568b194b8fac1dec4c441c8aaff15b552a data/hdu/advancements/recipes/misc/ethereum_block.json
 bf4053e463fc180db83962d36b02dfbf771adaf2 data/hdu/advancements/recipes/misc/ruby.json
@@ -21,6 +22,7 @@ a11d92c2854b93a1ba2bf2102d67b28d172e1fae data/hdu/recipes/bricks_from_the_shards
 decafe368d6525c831314ddea4ee8f3ce85cd7f9 data/hdu/recipes/bricks_from_the_stone_of_hopes.json
 dd0db00a4b5a4c43c5dafb6a39504257dcc27c93 data/hdu/recipes/eftorit.json
 6a98d7055f5059089251ece7660417ac8f57ab37 data/hdu/recipes/eftorit_block.json
+f4c88a43335cdddf053e1b07d17e34df94458366 data/hdu/recipes/eftorit_forge.json
 69bc282153c2276823e05cd53e87b40724e2d0d2 data/hdu/recipes/ethereum.json
 30867c7ca212752915313bb5744834b59ef0667a data/hdu/recipes/ethereum_block.json
 116757eb1cb0be2fa7791627591aec19a5215470 data/hdu/recipes/ruby.json
