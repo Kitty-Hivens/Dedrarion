@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 public class EftoritForgeBlock extends HorizontalDirectionalBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final EnumProperty<Mode> MODE = EnumProperty.create("mode", Mode.class);
-    
+
     public enum Mode implements StringRepresentable {
         SIDE("side"),
         FRONT("front");

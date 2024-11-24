@@ -1,0 +1,29 @@
+{
+  "music.biome.lush_caves": {
+    "sounds": [
+      {
+        "name": "hdu:music/nostalgia",
+        "stream": true
+      }
+    ],
+    "replace": true
+  },
+  "music.biome.dripstone_caves": {
+    "sounds": [
+      {
+        "name": "hdu:music/nostalgia",
+        "stream": true
+      }
+    ],
+    "replace": true
+  },
+  "music.biome.cave": {
+    "sounds": [
+      {
+        "name": "hdu:music/nostalgia",
+        "stream": true
+      }
+    ],
+    "replace": true
+  }
+}
