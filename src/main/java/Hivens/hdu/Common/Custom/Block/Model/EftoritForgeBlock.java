@@ -194,36 +194,26 @@ public class EftoritForgeBlock extends HorizontalDirectionalBlock {
     public @NotNull VoxelShape getShape(BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
         Direction facing = pState.getValue(FACING); // Получаем направление
 
-        switch (facing) {
-            case NORTH:
-                return NorthShape;
-            case SOUTH:
-                return SouthShape;
-            case EAST:
-                return EastShape;
-            case WEST:
-                return WestShape;
-            default:
-                return super.getShape(pState, pLevel, pPos, pContext);
-        }
+        return switch (facing) {
+            case NORTH -> NorthShape;
+            case SOUTH -> SouthShape;
+            case EAST -> EastShape;
+            case WEST -> WestShape;
+            default -> super.getShape(pState, pLevel, pPos, pContext);
+        };
     }
 
     @Override
-    public VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getCollisionShape(BlockState state, @NotNull BlockGetter world, @NotNull BlockPos pos, @NotNull CollisionContext context) {
         Direction facing = state.getValue(FACING);
 
-        switch (facing) {
-            case NORTH:
-                return NorthShape;
-            case SOUTH:
-                return SouthShape;
-            case EAST:
-                return EastShape;
-            case WEST:
-                return WestShape;
-            default:
-                return super.getCollisionShape(state, world, pos, context);
-        }
+        return switch (facing) {
+            case NORTH -> NorthShape;
+            case SOUTH -> SouthShape;
+            case EAST -> EastShape;
+            case WEST -> WestShape;
+            default -> super.getCollisionShape(state, world, pos, context);
+        };
     }
 
     @Override

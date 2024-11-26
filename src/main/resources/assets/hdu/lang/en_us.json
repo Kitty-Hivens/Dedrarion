@@ -20,6 +20,7 @@
 
   "block.hdu.eftorit_ore": "Eftorit Ore",
   "block.hdu.eftorit_block": "Eftorit Block",
+  "block.hdu.eftorit_forge": "Eftorit Forge",
 
   "block.hdu.stone_of_hopes": "Stone of Hopes",
   "block.hdu.smooth_stone_of_hopes": "Smooth Stone of Hopes",
@@ -49,5 +50,8 @@
   "advancement.hdu.seeker_of_magic.description": "Are you our young bloodhound?",
 
   "advancement.hdu.white_prince.title": "White Prince",
-  "advancement.hdu.white_prince.description": "And you dare call yourself a king?"
+  "advancement.hdu.white_prince.description": "And you dare call yourself a king?",
+
+  "advancement.hdu.magic_forger.title": "Magic Forger",
+  "advancement.hdu.magic_forger.description": "Get Eftorit Anvil"
 }

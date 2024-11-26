@@ -20,6 +20,7 @@
 
   "block.hdu.eftorit_ore": "Эфторитовая руда",
   "block.hdu.eftorit_block": "Эфторитовый блок",
+  "block.hdu.eftorit_forge": "Эфторитовая наковальня",
 
   "block.hdu.stone_of_hopes": "Камень Надежд",
   "block.hdu.smooth_stone_of_hopes": "Гладкий камень Надежд",
@@ -49,5 +50,8 @@
   "advancement.hdu.seeker_of_magic.description": "Ты у нас молодой ищейка?",
 
   "advancement.hdu.white_prince.title": "Белый Принц",
-  "advancement.hdu.white_prince.description": "И ты смеешь называть себя королём?"
+  "advancement.hdu.white_prince.description": "И ты смеешь называть себя королём?",
+
+  "advancement.hdu.magic_forger.title": "Магический ковщик",
+  "advancement.hdu.magic_forger.description": "Бей, бей, бей! Разрушение это искусство!"
 }
