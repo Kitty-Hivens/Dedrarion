@@ -1,12 +1,10 @@
 package Hivens.hdu;
+import Hivens.hdu.Common.Custom.Block.Entity.ModBlockEntities;
 import Hivens.hdu.Common.Registry.BlockRegistry;
 import Hivens.hdu.Common.Registry.CreativeTabRegistry;
 import Hivens.hdu.Common.Registry.ItemRegistry;
 import Hivens.hdu.Common.loot.ModLootModifiers;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -26,6 +24,7 @@ public class HDU {
         BlockRegistry.register(modEventBus);
         ModLootModifiers.register(modEventBus);
         CreativeTabRegistry.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
 

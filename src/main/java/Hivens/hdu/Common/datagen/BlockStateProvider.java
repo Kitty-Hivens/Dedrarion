@@ -5,6 +5,7 @@ import Hivens.hdu.HDU;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.StairBlock;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -44,6 +45,8 @@ public class BlockStateProvider extends net.minecraftforge.client.model.generato
         stairsBlock(((StairBlock) BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()), blockTexture(BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()));
 
 
+        simpleBlock(BlockRegistry.EFTORIT_FORGE.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/eftorit_forge")));
     }
 
 

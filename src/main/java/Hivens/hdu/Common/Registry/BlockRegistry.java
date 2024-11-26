@@ -1,6 +1,6 @@
 package Hivens.hdu.Common.Registry;
 
-import Hivens.hdu.Common.Custom.Block.EftoritForgeBlock;
+import Hivens.hdu.Common.Custom.Block.Model.EftoritForgeBlock;
 import Hivens.hdu.HDU;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;

@@ -1,4 +1,4 @@
-package Hivens.hdu.Common.Custom.Block;
+package Hivens.hdu.Common.Custom.Block.Model;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

@@ -1,10 +1,11 @@
-// 1.20.1	2024-11-21T00:40:18.76664508	Block States: hdu
+// 1.20.1	2024-11-26T03:43:16.522410711	Block States: hdu
 859cb18669e776b34fb5fa71d758b3d5ccf46469 assets/hdu/blockstates/bricks_from_the_shards_of_the_stone_of_hopes.json
 6e78c78158605c92ab847c2e6cd442c1d8cdbc05 assets/hdu/blockstates/bricks_from_the_smooth_stone_of_hopes.json
 75ef26c9a18f9d39d30d97fa92a892d586583efc assets/hdu/blockstates/bricks_from_the_stone_of_hopes.json
 a01f9f282059a3ef27fa24209b5247e46eaaf367 assets/hdu/blockstates/deepslate_eftorit_ore.json
 d160872a858ec137540011a7084d884db8eac8dc assets/hdu/blockstates/deepslate_ruby_ore.json
 549c5ae0d8edeac890fcc72bbea0a6d6701dcb13 assets/hdu/blockstates/eftorit_block.json
+7d1b857419e560d16e83a7188b520b4e98c006c6 assets/hdu/blockstates/eftorit_forge.json
 30ec6c30f1976f5b21313e902cd901606764b2b5 assets/hdu/blockstates/eftorit_ore.json
 61957409849008a597e11b08aa284cd0b514138d assets/hdu/blockstates/ethereum_block.json
 fe5992066dc18e9e18e0bf1d8f5a3518e484906b assets/hdu/blockstates/ethereum_ore.json
