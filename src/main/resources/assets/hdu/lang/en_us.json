@@ -8,36 +8,37 @@
   "item.hdu.eftorit": "Eftorit",
   "item.hdu.fuel_of_promises": "Fuel Of Promises",
   "item.hdu.forbidden_fruit": "Forbidden Fruit",
+  "item.hdu.catalyst_of_debauchery" : "Catalyst of Debauchery",
 
 
   "block.hdu.ethereum_ore": "Ethereum Ore",
   "block.hdu.ethereum_block": "Block of Ethereum",
   "block.hdu.raw_ethereum_block": "Block of Raw Ethereum",
 
-  "block.hdu.stone_ruby_ore": "Stone Ruby Ore",
   "block.hdu.ruby_ore": "Ruby Ore",
+  "block.hdu.deepslate_ruby_ore": "Deepslate Ruby Ore",
   "block.hdu.ruby_block": "Ruby Block",
 
   "block.hdu.eftorit_ore": "Eftorit Ore",
+  "block.hdu.deepslate_eftorit_ore": "Deepslate Eftorit Ore",
   "block.hdu.eftorit_block": "Eftorit Block",
   "block.hdu.eftorit_forge": "Eftorit Forge",
 
-  "block.hdu.stone_of_hopes": "Stone of Hopes",
-  "block.hdu.smooth_stone_of_hopes": "Smooth Stone of Hopes",
-  "block.hdu.shards_of_the_stone_of_hopes": "Shards of the Stone of Hopes",
+  "block.hdu.hope_stone": "Hope Stone",
+  "block.hdu.smooth_hope_stone": "Smooth Hope Stone",
+  "block.hdu.hope_shards": "Hope Shards",
 
-  "block.hdu.bricks_from_the_stone_of_hopes": "Bricks from the Stone of Hopes",
-  "block.hdu.bricks_from_the_smooth_stone_of_hopes": "Bricks from the Smooth Stone of Hopes",
-  "block.hdu.bricks_from_the_shards_of_the_stone_of_hopes": "Bricks from the Shards of the Stone of Hopes",
+  "block.hdu.hope_stone_bricks": "Hope Stone Bricks",
+  "block.hdu.smooth_hope_bricks": "Smooth Hope Bricks",
+  "block.hdu.hope_shard_bricks": "Hope Shard Bricks",
 
-  "block.hdu.stairs_from_the_stone_of_hopes": "Stairs from the Stone of Hopes",
-  "block.hdu.stairs_from_the_smooth_stone_of_hopes": "Stairs from the Smooth Stone of Hopes",
-  "block.hdu.stairs_from_the_shards_of_the_stone_of_hopes": "Stairs from the Shards of the Stone of Hopes",
+  "block.hdu.hope_stone_stairs": "Hope Stone Stairs",
+  "block.hdu.smooth_hope_stairs": "Smooth Hope Stairs",
+  "block.hdu.hope_shard_stairs": "Hope Shard Stairs",
 
-  "block.hdu.stairs_from_the_bricks_from_the_stone_of_hopes": "Stairs from the Bricks from the Stone of Hopes",
-  "block.hdu.stairs_from_the_bricks_from_the_smooth_stone_of_hopes": "Stairs from the Bricks from the Smooth Stone of Hopes",
-  "block.hdu.stairs_from_the_bricks_from_the_shards_of_the_stone_of_hopes": "Stairs from the Bricks from the Shards of the Stone of Hopes",
-
+  "block.hdu.hope_brick_stairs": "Hope Brick Stairs",
+  "block.hdu.smooth_hope_brick_stairs": "Smooth Hope Brick Stairs",
+  "block.hdu.hope_shard_brick_stairs": "Hope Shard Brick Stairs",
 
   "creativetab.hdu_tab": "Dedrarion Underground Tab",
   "tooltip.item.hdu.metal_detector": "§bIt seems that his energy is tied only to magic",
@@ -47,7 +48,7 @@
 
 
   "advancement.hdu.seeker_of_magic.title": "Seeker of Magic",
-  "advancement.hdu.seeker_of_magic.description": "Are you our young bloodhound?",
+  "advancement.hdu.seeker_of_magic.description": "Are you our young sleuth?",
 
   "advancement.hdu.white_prince.title": "White Prince",
   "advancement.hdu.white_prince.description": "And you dare call yourself a king?",

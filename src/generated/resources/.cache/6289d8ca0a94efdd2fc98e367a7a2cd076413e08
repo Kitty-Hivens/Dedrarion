@@ -1,9 +1,0 @@
-// 1.20.1	2024-11-22T02:00:43.324081605	Tags for minecraft:block mod id hdu
-a5ee41e45edc4a784c30128febdf8861a511d042 data/forge/tags/blocks/needs_netherite_tool.json
-73b001de337f93ad5187f3f599fa8778c2fadc4b data/hdu/tags/blocks/metal_detector_valuables.json
-71e0ff3c92c104fc76068c175a70cf35e0f7b242 data/minecraft/tags/blocks/mineable/pickaxe.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/blocks/needs_diamond_tool.json
-bf040a2fc92639ff0888638846b4bb5262175ff7 data/minecraft/tags/blocks/needs_iron_tool.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/blocks/needs_stone_tool.json
-609fe724fd6bcc97abb44f3a3919ba81cad2d42f data/minecraft/tags/blocks/stairs.json
-c21a0d4804592f99087c0119cdc3c43403a62461 data/minecraft/tags/blocks/stone_bricks.json

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "hdu:block/shards_of_the_stone_of_hopes"
-  }
-}

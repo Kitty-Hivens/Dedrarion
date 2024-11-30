@@ -1,10 +1,10 @@
 {
   "values": [
-    "hdu:stairs_from_the_stone_of_hopes",
-    "hdu:stairs_from_the_smooth_stone_of_hopes",
-    "hdu:stairs_from_the_shards_of_the_stone_of_hopes",
-    "hdu:stairs_from_the_bricks_from_the_stone_of_hopes",
-    "hdu:stairs_from_the_bricks_from_the_smooth_stone_of_hopes",
-    "hdu:stairs_from_the_bricks_from_the_shards_of_the_stone_of_hopes"
+    "hdu:hope_stone_stairs",
+    "hdu:smooth_hope_stone_bricks",
+    "hdu:hope_shard_stairs",
+    "hdu:hope_brick_stairs",
+    "hdu:smooth_hope_brick_stairs",
+    "hdu:hope_shard_brick_stairs"
   ]
 }

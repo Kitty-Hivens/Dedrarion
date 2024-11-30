@@ -1,7 +1,7 @@
 {
   "values": [
-    "hdu:bricks_from_the_stone_of_hopes",
-    "hdu:bricks_from_the_smooth_stone_of_hopes",
-    "hdu:bricks_from_the_shards_of_the_stone_of_hopes"
+    "hdu:hope_stone_bricks",
+    "hdu:smooth_hope_stone_bricks",
+    "hdu:hope_shard_bricks"
   ]
 }

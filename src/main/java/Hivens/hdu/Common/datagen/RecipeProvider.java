@@ -91,86 +91,87 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .pattern("CCC")
                 .define('A', BlockRegistry.EFTORIT_BLOCK.get())
                 .define('B', ItemRegistry.ETHEREUM.get())
-                .define('C', BlockRegistry.STONE_OF_HOPES.get())
+                .define('C', BlockRegistry.HOPE_STONE.get())
                 .unlockedBy(getHasName(ItemRegistry.EFTORIT.get()), has(ItemRegistry.EFTORIT.get()))
                 .unlockedBy(getHasName(ItemRegistry.ETHEREUM.get()), has(ItemRegistry.ETHEREUM.get()))
-                .unlockedBy(getHasName(BlockRegistry.STONE_OF_HOPES.get()), has(BlockRegistry.STONE_OF_HOPES.get()))
+                .unlockedBy(getHasName(BlockRegistry.HOPE_STONE.get()), has(BlockRegistry.HOPE_STONE.get()))
                 .save(pWriter);
 
-        // Stone of Hope
+        // Hope Stone
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get(), 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.HOPE_STONE_STAIRS.get(), 8)
                 .pattern("  S")
                 .pattern(" SS")
                 .pattern("SSS")
-                .define('S', BlockRegistry.STONE_OF_HOPES.get())
-                .unlockedBy(getHasName(BlockRegistry.STONE_OF_HOPES.get()), has(BlockRegistry.STONE_OF_HOPES.get()))
+                .define('S', BlockRegistry.HOPE_STONE.get())
+                .unlockedBy(getHasName(BlockRegistry.HOPE_STONE.get()), has(BlockRegistry.HOPE_STONE.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.HOPE_STONE_BRICKS.get(), 4)
                 .pattern("SS")
                 .pattern("SS")
-                .define('S', BlockRegistry.STONE_OF_HOPES.get())
-                .unlockedBy(getHasName(BlockRegistry.STONE_OF_HOPES.get()), has(BlockRegistry.STONE_OF_HOPES.get()))
+                .define('S', BlockRegistry.HOPE_STONE.get())
+                .unlockedBy(getHasName(BlockRegistry.HOPE_STONE.get()), has(BlockRegistry.HOPE_STONE.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_STONE_OF_HOPES.get(), 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.HOPE_BRICK_STAIRS.get(), 8)
                 .pattern("  S")
                 .pattern(" SS")
                 .pattern("SSS")
-                .define('S', BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get())
-                .unlockedBy(getHasName(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get()), has(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get()))
+                .define('S', BlockRegistry.HOPE_STONE_BRICKS.get())
+                .unlockedBy(getHasName(BlockRegistry.HOPE_STONE_BRICKS.get()), has(BlockRegistry.HOPE_STONE_BRICKS.get()))
                 .save(pWriter);
 
-        // Smooth Stone of Hope
+// Smooth Hope Stone
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(), 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.SMOOTH_HOPE_STONE_STAIRS.get(), 8)
                 .pattern("  S")
                 .pattern(" SS")
                 .pattern("SSS")
-                .define('S', BlockRegistry.SMOOTH_STONE_OF_HOPES.get())
-                .unlockedBy(getHasName(BlockRegistry.SMOOTH_STONE_OF_HOPES.get()), has(BlockRegistry.SMOOTH_STONE_OF_HOPES.get()))
+                .define('S', BlockRegistry.SMOOTH_HOPE_STONE.get())
+                .unlockedBy(getHasName(BlockRegistry.SMOOTH_HOPE_STONE.get()), has(BlockRegistry.SMOOTH_HOPE_STONE.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.SMOOTH_HOPE_STONE_BRICKS.get(), 4)
                 .pattern("SS")
                 .pattern("SS")
-                .define('S', BlockRegistry.SMOOTH_STONE_OF_HOPES.get())
-                .unlockedBy(getHasName(BlockRegistry.SMOOTH_STONE_OF_HOPES.get()), has(BlockRegistry.SMOOTH_STONE_OF_HOPES.get()))
+                .define('S', BlockRegistry.SMOOTH_HOPE_STONE.get())
+                .unlockedBy(getHasName(BlockRegistry.SMOOTH_HOPE_STONE.get()), has(BlockRegistry.SMOOTH_HOPE_STONE.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(), 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.SMOOTH_HOPE_BRICK_STAIRS.get(), 8)
                 .pattern("  S")
                 .pattern(" SS")
                 .pattern("SSS")
-                .define('S', BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get())
-                .unlockedBy(getHasName(BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get()), has(BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get()))
+                .define('S', BlockRegistry.SMOOTH_HOPE_STONE_BRICKS.get())
+                .unlockedBy(getHasName(BlockRegistry.SMOOTH_HOPE_STONE_BRICKS.get()), has(BlockRegistry.SMOOTH_HOPE_STONE_BRICKS.get()))
                 .save(pWriter);
 
-        // Shards of the Stone of Hope
+// Hope Shards
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(), 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.HOPE_SHARD_STAIRS.get(), 8)
                 .pattern("  S")
                 .pattern(" SS")
                 .pattern("SSS")
-                .define('S', BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get())
-                .unlockedBy(getHasName(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()), has(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()))
+                .define('S', BlockRegistry.HOPE_SHARDS.get())
+                .unlockedBy(getHasName(BlockRegistry.HOPE_SHARDS.get()), has(BlockRegistry.HOPE_SHARDS.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.HOPE_SHARD_BRICKS.get(), 4)
                 .pattern("SS")
                 .pattern("SS")
-                .define('S', BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get())
-                .unlockedBy(getHasName(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()), has(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()))
+                .define('S', BlockRegistry.HOPE_SHARDS.get())
+                .unlockedBy(getHasName(BlockRegistry.HOPE_SHARDS.get()), has(BlockRegistry.HOPE_SHARDS.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(), 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegistry.HOPE_SHARD_BRICK_STAIRS.get(), 8)
                 .pattern("  S")
                 .pattern(" SS")
                 .pattern("SSS")
-                .define('S', BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get())
-                .unlockedBy(getHasName(BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()), has(BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()))
+                .define('S', BlockRegistry.HOPE_SHARD_BRICKS.get())
+                .unlockedBy(getHasName(BlockRegistry.HOPE_SHARD_BRICKS.get()), has(BlockRegistry.HOPE_SHARD_BRICKS.get()))
                 .save(pWriter);
+
 
 
 
@@ -209,14 +210,14 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
 
         smeltingResultFromBase(
                 pWriter,
-                BlockRegistry.STONE_OF_HOPES.get(),
-                BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()
+                BlockRegistry.HOPE_STONE.get(),
+                BlockRegistry.HOPE_SHARDS.get()
         );
 
         smeltingResultFromBase(
                 pWriter,
-                BlockRegistry.SMOOTH_STONE_OF_HOPES.get(),
-                BlockRegistry.STONE_OF_HOPES.get()
+                BlockRegistry.SMOOTH_HOPE_STONE.get(),
+                BlockRegistry.HOPE_STONE.get()
         );
     }
 

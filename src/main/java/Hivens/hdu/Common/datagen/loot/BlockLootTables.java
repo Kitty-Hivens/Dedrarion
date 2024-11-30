@@ -30,20 +30,21 @@ public class BlockLootTables extends BlockLootSubProvider {
         this.dropSelf(BlockRegistry.EFTORIT_BLOCK.get());
         this.dropSelf(BlockRegistry.EFTORIT_FORGE.get());
 
-        this.dropSelf(BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get());
-        this.dropSelf(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get());
+        this.dropSelf(BlockRegistry.SMOOTH_HOPE_STONE.get());
+        this.dropSelf(BlockRegistry.HOPE_SHARDS.get());
 
-        this.dropSelf(BlockRegistry.SMOOTH_STONE_OF_HOPES.get());
-        this.dropSelf(BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get());
-        this.dropSelf(BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get());
+        this.dropSelf(BlockRegistry.HOPE_STONE_BRICKS.get());
+        this.dropSelf(BlockRegistry.SMOOTH_HOPE_STONE_BRICKS.get());
+        this.dropSelf(BlockRegistry.HOPE_SHARD_BRICKS.get());
 
-        this.dropSelf(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get());
-        this.dropSelf(BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get());
-        this.dropSelf(BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get());
+        this.dropSelf(BlockRegistry.HOPE_STONE_STAIRS.get());
+        this.dropSelf(BlockRegistry.SMOOTH_HOPE_STONE_STAIRS.get());
+        this.dropSelf(BlockRegistry.HOPE_SHARD_STAIRS.get());
 
-        this.dropSelf(BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_STONE_OF_HOPES.get());
-        this.dropSelf(BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get());
-        this.dropSelf(BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get());
+        this.dropSelf(BlockRegistry.HOPE_BRICK_STAIRS.get());
+        this.dropSelf(BlockRegistry.SMOOTH_HOPE_BRICK_STAIRS.get());
+        this.dropSelf(BlockRegistry.HOPE_SHARD_BRICK_STAIRS.get());
+
 
         this.add(BlockRegistry.ETHEREUM_ORE.get(),
                 block -> createRareLikeOreDrops(BlockRegistry.ETHEREUM_ORE.get(), ItemRegistry.RAW_ETHEREUM.get()));
@@ -59,8 +60,8 @@ public class BlockLootTables extends BlockLootSubProvider {
                 block -> createRareLikeOreDrops(BlockRegistry.EFTORIT_ORE.get(), ItemRegistry.EFTORIT.get()));
         this.add(BlockRegistry.DEEPSLATE_EFTORIT_ORE.get(),
                 block -> createRareLikeOreDrops(BlockRegistry.EFTORIT_ORE.get(), ItemRegistry.EFTORIT.get()));
-        this.add(BlockRegistry.STONE_OF_HOPES.get(),
-                block -> createLikeStoneDrops(BlockRegistry.STONE_OF_HOPES.get(), BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()));
+        this.add(BlockRegistry.HOPE_STONE.get(),
+                block -> createLikeStoneDrops(BlockRegistry.HOPE_STONE.get(), BlockRegistry.HOPE_SHARDS.get()));
     }
 
 

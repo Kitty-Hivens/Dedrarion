@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "hdu:hope_shards"
+    }
+  },
+  "pattern": [
+    "  S",
+    " SS",
+    "SSS"
+  ],
+  "result": {
+    "count": 8,
+    "item": "hdu:hope_shard_stairs"
+  },
+  "show_notification": true
+}

@@ -28,21 +28,21 @@ public class BlockStateProvider extends net.minecraftforge.client.model.generato
         blockWithItem(BlockRegistry.DEEPSLATE_EFTORIT_ORE);
         blockWithItem(BlockRegistry.EFTORIT_BLOCK);
 
-        blockWithItem(BlockRegistry.STONE_OF_HOPES);
-        stairsBlock(((StairBlock) BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get()), blockTexture(BlockRegistry.STONE_OF_HOPES.get()));
-        blockWithItem(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES);
+        blockWithItem(BlockRegistry.HOPE_STONE);
+        blockWithItem(BlockRegistry.SMOOTH_HOPE_STONE);
+        blockWithItem(BlockRegistry.HOPE_SHARDS);
 
-        blockWithItem(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES);
-        stairsBlock(((StairBlock) BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()), blockTexture(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get()));
-        blockWithItem(BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES);
+        blockWithItem(BlockRegistry.HOPE_STONE_BRICKS);
+        blockWithItem(BlockRegistry.SMOOTH_HOPE_STONE_BRICKS);
+        blockWithItem(BlockRegistry.HOPE_SHARD_BRICKS);
 
-        blockWithItem(BlockRegistry.SMOOTH_STONE_OF_HOPES);
-        stairsBlock(((StairBlock) BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get()), blockTexture(BlockRegistry.SMOOTH_STONE_OF_HOPES.get()));
-        blockWithItem(BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES);
+        stairsBlock(((StairBlock) BlockRegistry.HOPE_STONE_STAIRS.get()), blockTexture(BlockRegistry.HOPE_STONE.get()));
+        stairsBlock(((StairBlock) BlockRegistry.SMOOTH_HOPE_STONE_STAIRS.get()), blockTexture(BlockRegistry.SMOOTH_HOPE_STONE.get()));
+        stairsBlock(((StairBlock) BlockRegistry.HOPE_SHARD_STAIRS.get()), blockTexture(BlockRegistry.HOPE_SHARDS.get()));
 
-        stairsBlock(((StairBlock) BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_STONE_OF_HOPES.get()), blockTexture(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get()));
-        stairsBlock(((StairBlock) BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get()), blockTexture(BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get()));
-        stairsBlock(((StairBlock) BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()), blockTexture(BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()));
+        stairsBlock(((StairBlock) BlockRegistry.HOPE_BRICK_STAIRS.get()), blockTexture(BlockRegistry.HOPE_STONE_BRICKS.get()));
+        stairsBlock(((StairBlock) BlockRegistry.SMOOTH_HOPE_BRICK_STAIRS.get()), blockTexture(BlockRegistry.SMOOTH_HOPE_STONE_BRICKS.get()));
+        stairsBlock(((StairBlock) BlockRegistry.HOPE_SHARD_BRICK_STAIRS.get()), blockTexture(BlockRegistry.HOPE_SHARD_BRICKS.get()));
     }
 
 

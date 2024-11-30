@@ -17,6 +17,8 @@ public class CreativeTabRegistry {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ItemRegistry.ETHEREUM.get()))
                     .title(Component.translatable("creativetab.hdu_tab"))
                     .displayItems((pParameters, pOutput) -> {
+
+
                         // Custom Item
                         pOutput.accept(ItemRegistry.METAL_DETECTOR.get());
 
@@ -41,38 +43,34 @@ public class CreativeTabRegistry {
                         pOutput.accept(BlockRegistry.ETHEREUM_BLOCK.get());
                         pOutput.accept(BlockRegistry.RAW_ETHEREUM_BLOCK.get());
 
+                        // Ruby
 
                         pOutput.accept(BlockRegistry.RUBY_ORE.get());
                         pOutput.accept(BlockRegistry.DEEPSLATE_RUBY_ORE.get());
                         pOutput.accept(BlockRegistry.RUBY_BLOCK.get());
+
+                        // Eftorit
 
                         pOutput.accept(BlockRegistry.EFTORIT_ORE.get());
                         pOutput.accept(BlockRegistry.DEEPSLATE_EFTORIT_ORE.get());
                         pOutput.accept(BlockRegistry.EFTORIT_BLOCK.get());
 
                         // Blocks
-                        pOutput.accept(BlockRegistry.STONE_OF_HOPES.get());
-                        pOutput.accept(BlockRegistry.SMOOTH_STONE_OF_HOPES.get());
-                        pOutput.accept(BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get());
+                        pOutput.accept(BlockRegistry.HOPE_STONE.get());
+                        pOutput.accept(BlockRegistry.SMOOTH_HOPE_STONE.get());
+                        pOutput.accept(BlockRegistry.HOPE_SHARDS.get());
 
+                        pOutput.accept(BlockRegistry.HOPE_STONE_BRICKS.get());
+                        pOutput.accept(BlockRegistry.SMOOTH_HOPE_STONE_BRICKS.get());
+                        pOutput.accept(BlockRegistry.HOPE_SHARD_BRICKS.get());
 
-                        pOutput.accept(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get());
-                        pOutput.accept(BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get());
-                        pOutput.accept(BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get());
+                        pOutput.accept(BlockRegistry.HOPE_STONE_STAIRS.get());
+                        pOutput.accept(BlockRegistry.SMOOTH_HOPE_STONE_STAIRS.get());
+                        pOutput.accept(BlockRegistry.HOPE_SHARD_STAIRS.get());
 
-
-                        pOutput.accept(BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get());
-                        pOutput.accept(BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get());
-                        pOutput.accept(BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get());
-                        pOutput.accept(BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_STONE_OF_HOPES.get());
-                        pOutput.accept(BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get());
-                        pOutput.accept(BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get());
-
-
-
-
-
-
+                        pOutput.accept(BlockRegistry.HOPE_BRICK_STAIRS.get());
+                        pOutput.accept(BlockRegistry.SMOOTH_HOPE_BRICK_STAIRS.get());
+                        pOutput.accept(BlockRegistry.HOPE_SHARD_BRICK_STAIRS.get());
 
 
                     })

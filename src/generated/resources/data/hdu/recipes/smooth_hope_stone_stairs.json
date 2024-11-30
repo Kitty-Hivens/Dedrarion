@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "hdu:smooth_hope_stone"
+    }
+  },
+  "pattern": [
+    "  S",
+    " SS",
+    "SSS"
+  ],
+  "result": {
+    "count": 8,
+    "item": "hdu:smooth_hope_stone_stairs"
+  },
+  "show_notification": true
+}

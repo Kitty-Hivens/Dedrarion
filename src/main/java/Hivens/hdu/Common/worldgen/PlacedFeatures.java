@@ -19,7 +19,7 @@ public class PlacedFeatures {
     public static final ResourceKey<PlacedFeature> ETHEREUM_ORE_PLACED_KEY = registerKey("ethereum_ore_placed");
     public static final ResourceKey<PlacedFeature> RUBY_ORE_PLACED_KEY = registerKey("ruby_ore_placed");
     public static final ResourceKey<PlacedFeature> EFTORIT_ORE_PLACED_KEY = registerKey("eftorit_ore_placed");
-    public static final ResourceKey<PlacedFeature> STONE_OF_HOPES_PLACED_KEY = registerKey("stone_of_hopes_placed");
+    public static final ResourceKey<PlacedFeature> HOPE_STONE_PLACED_KEY = registerKey("hope_stone_placed");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -33,7 +33,7 @@ public class PlacedFeatures {
         register(context, EFTORIT_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ConfiguredFeatures.OVERWORLD_EFTORIT_ORE_KEY),
                 OrePlacement.commonOrePlacement(4,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(40))));
-        register(context, STONE_OF_HOPES_PLACED_KEY, configuredFeatures.getOrThrow(ConfiguredFeatures.OVERWORLD_STONE_OF_HOPES_ORE_KEY),
+        register(context, HOPE_STONE_PLACED_KEY, configuredFeatures.getOrThrow(ConfiguredFeatures.OVERWORLD_HOPE_STONE_ORE_KEY),
                 OrePlacement.rareOrePlacement(2,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-30))));
 

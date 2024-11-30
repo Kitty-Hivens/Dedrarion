@@ -8,35 +8,37 @@
   "item.hdu.eftorit": "Эфторит",
   "item.hdu.fuel_of_promises": "Топливо Обещаний",
   "item.hdu.forbidden_fruit": "Запретный Плод",
+  "item.hdu.catalyst_of_debauchery" : "Каталист Распутия",
 
 
   "block.hdu.ethereum_ore": "Руда Эфириума",
   "block.hdu.ethereum_block": "Блок Эфириума",
   "block.hdu.raw_ethereum_block": "Блок Необработанного Эфириума",
 
-  "block.hdu.stone_ruby_ore": "Каменная рубиновая руда",
   "block.hdu.ruby_ore": "Рубиновая руда",
+  "block.hdu.deepslate_ruby_ore": "Рубиноносный глубинный сланец",
   "block.hdu.ruby_block": "Рубиновый блок",
 
   "block.hdu.eftorit_ore": "Эфторитовая руда",
+  "block.hdu.deepslate_eftorit_ore": "Эфторитоносный глубинный сланец",
   "block.hdu.eftorit_block": "Эфторитовый блок",
   "block.hdu.eftorit_forge": "Эфторитовая наковальня",
 
-  "block.hdu.stone_of_hopes": "Камень Надежд",
-  "block.hdu.smooth_stone_of_hopes": "Гладкий камень Надежд",
-  "block.hdu.shards_of_the_stone_of_hopes": "Осколки камня Надежд",
+  "block.hdu.hope_stone": "Камень Надежды",
+  "block.hdu.smooth_hope_stone": "Гладкий Камень Надежды",
+  "block.hdu.hope_shards": "Осколки Надежды",
 
-  "block.hdu.stairs_from_the_stone_of_hopes": "Ступеньки Из Камня Надежды",
-  "block.hdu.stairs_from_the_smooth_stone_of_hopes": "Ступеньки Из Гладкого Камня Надежды",
-  "block.hdu.stairs_from_the_shards_of_the_stone_of_hopes": "Ступеньки Из осколков Камня Надежды",
+  "block.hdu.hope_stone_bricks": "Кирпичи из Камня Надежды",
+  "block.hdu.smooth_hope_bricks": "Кирпичи из Гладкого Камня Надежды",
+  "block.hdu.hope_shard_bricks": "Кирпичи из Осколков Надежды",
 
-  "block.hdu.bricks_from_the_stone_of_hopes": "Кирпичи Из Камня Надежды",
-  "block.hdu.bricks_from_the_smooth_stone_of_hopes": "Кирпичи Из Гладкого Камня Надежд",
-  "block.hdu.bricks_from_the_shards_of_the_stone_of_hopes": "Кирпичи Из Осколков Камня Надежды",
+  "block.hdu.hope_stone_stairs": "Ступеньки из Камня Надежды",
+  "block.hdu.smooth_hope_stairs": "Ступеньки из Гладкого Камня Надежды",
+  "block.hdu.hope_shard_stairs": "Ступеньки из Осколков Надежды",
 
-  "block.hdu.stairs_from_the_bricks_from_the_stone_of_hopes": "Ступеньки Из Кирпичей Камня Надежды",
-  "block.hdu.stairs_from_the_bricks_from_the_smooth_stone_of_hopes": "Ступеньки Из Кирпичей Гладкого Камня Надежд",
-  "block.hdu.stairs_from_the_bricks_from_the_shards_of_the_stone_of_hopes": "Ступеньки Из Кирпичей Осколков Камня Надежды",
+  "block.hdu.hope_brick_stairs": "Ступеньки из Кирпичей Надежды",
+  "block.hdu.smooth_hope_brick_stairs": "Ступеньки из Гладких Кирпичей Надежды",
+  "block.hdu.hope_shard_brick_stairs": "Ступеньки из Кирпичей из Осколков Надежды",
 
 
   "creativetab.hdu_tab": "Подземелье Dedrarion",

@@ -1,5 +1,7 @@
 package Hivens.hdu.Common.datagen;
 
+import Hivens.hdu.Common.Registry.ItemRegistry;
+import Hivens.hdu.Common.util.ModTags;
 import Hivens.hdu.HDU;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -18,6 +20,8 @@ public class ItemTagGenerator extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider pProvider) {
-
+        this.tag(ModTags.Items.CATALYSTS)
+                .add(ItemRegistry.CATALYST_OF_DEBAUCHERY.get())
+        ;
     }
 }

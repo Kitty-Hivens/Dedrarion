@@ -43,23 +43,24 @@ public class BlockTagGenerator extends BlockTagsProvider {
                         BlockRegistry.EFTORIT_BLOCK.get(),
                         BlockRegistry.DEEPSLATE_EFTORIT_ORE.get(),
 
-                        BlockRegistry.STONE_OF_HOPES.get(),
-                        BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get(),
-                        BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get(),
+                        BlockRegistry.HOPE_STONE.get(),
+                        BlockRegistry.HOPE_STONE_STAIRS.get(),
+                        BlockRegistry.HOPE_STONE_BRICKS.get(),
 
-                        BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get(),
-                        BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(),
-                        BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(),
+                        BlockRegistry.HOPE_SHARDS.get(),
+                        BlockRegistry.HOPE_SHARD_STAIRS.get(),
+                        BlockRegistry.HOPE_SHARD_BRICKS.get(),
 
-                        BlockRegistry.SMOOTH_STONE_OF_HOPES.get(),
-                        BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
-                        BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
+                        BlockRegistry.SMOOTH_HOPE_STONE.get(),
+                        BlockRegistry.SMOOTH_HOPE_STONE_STAIRS.get(),
+                        BlockRegistry.SMOOTH_HOPE_STONE_BRICKS.get(),
 
-                        BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_STONE_OF_HOPES.get(),
-                        BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
-                        BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()
+                        BlockRegistry.HOPE_BRICK_STAIRS.get(),
+                        BlockRegistry.SMOOTH_HOPE_BRICK_STAIRS.get(),
+                        BlockRegistry.HOPE_SHARD_BRICK_STAIRS.get()
 
-    );
+
+                   );
         this.tag(BlockTags.NEEDS_STONE_TOOL);
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
@@ -80,36 +81,41 @@ public class BlockTagGenerator extends BlockTagsProvider {
                         BlockRegistry.RAW_ETHEREUM_BLOCK.get(),
                         BlockRegistry.ETHEREUM_BLOCK.get(),
 
-                        BlockRegistry.STONE_OF_HOPES.get(),
-                        BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get(),
-                        BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get(),
+                        BlockRegistry.HOPE_STONE.get(),
+                        BlockRegistry.SMOOTH_HOPE_STONE.get(),
+                        BlockRegistry.HOPE_SHARDS.get(),
 
-                        BlockRegistry.SHARDS_OF_THE_STONE_OF_HOPES.get(),
-                        BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(),
-                        BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(),
+                        BlockRegistry.HOPE_STONE_BRICKS.get(),
+                        BlockRegistry.SMOOTH_HOPE_STONE_BRICKS.get(),
+                        BlockRegistry.HOPE_SHARD_BRICKS.get(),
 
-                        BlockRegistry.SMOOTH_STONE_OF_HOPES.get(),
-                        BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
-                        BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get(),
+                        BlockRegistry.HOPE_STONE_STAIRS.get(),
+                        BlockRegistry.SMOOTH_HOPE_STONE_BRICKS.get(),
+                        BlockRegistry.HOPE_SHARD_STAIRS.get(),
 
-                        BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_STONE_OF_HOPES.get(),
-                        BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
-                        BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()
 
+                        BlockRegistry.HOPE_BRICK_STAIRS.get(),
+                        BlockRegistry.SMOOTH_HOPE_BRICK_STAIRS.get(),
+                        BlockRegistry.HOPE_SHARD_BRICK_STAIRS.get()
                 );
 
-        this.tag(BlockTags.STAIRS).add(
-                    BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES.get(),
-                    BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
-                    BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get(),
-                    BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_STONE_OF_HOPES.get(),
-                    BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
-                    BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get()
+        this.tag(BlockTags.STAIRS)
+                .add(
+                        BlockRegistry.HOPE_STONE_STAIRS.get(),
+                        BlockRegistry.SMOOTH_HOPE_STONE_BRICKS.get(),
+                        BlockRegistry.HOPE_SHARD_STAIRS.get(),
+
+                        BlockRegistry.HOPE_BRICK_STAIRS.get(),
+                        BlockRegistry.SMOOTH_HOPE_BRICK_STAIRS.get(),
+                        BlockRegistry.HOPE_SHARD_BRICK_STAIRS.get()
                 );
 
         this.tag(BlockTags.STONE_BRICKS)
-                .add(BlockRegistry.BRICKS_FROM_THE_STONE_OF_HOPES.get(),
-                        BlockRegistry.BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES.get(),
-                        BlockRegistry.BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES.get());
+                .add(
+                        BlockRegistry.HOPE_STONE_BRICKS.get(),
+                        BlockRegistry.SMOOTH_HOPE_STONE_BRICKS.get(),
+                        BlockRegistry.HOPE_SHARD_BRICKS.get()
+                );
+
     }
 }

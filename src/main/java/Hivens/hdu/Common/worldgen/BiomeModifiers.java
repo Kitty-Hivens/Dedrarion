@@ -41,7 +41,7 @@ public class BiomeModifiers {
         ));
         context.register(ADD_STONE_OF_HOPES, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeatures.getOrThrow(PlacedFeatures.STONE_OF_HOPES_PLACED_KEY)),
+                HolderSet.direct(placedFeatures.getOrThrow(PlacedFeatures.HOPE_STONE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
     }

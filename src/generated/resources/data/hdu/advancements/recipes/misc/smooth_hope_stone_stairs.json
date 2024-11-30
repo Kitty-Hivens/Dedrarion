@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_smooth_hope_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hdu:smooth_hope_stone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hdu:smooth_hope_stone_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_smooth_hope_stone",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hdu:smooth_hope_stone_stairs"
+    ]
+  },
+  "sends_telemetry_event": false
+}

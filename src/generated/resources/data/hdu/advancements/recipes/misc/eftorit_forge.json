@@ -25,12 +25,12 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_stone_of_hopes": {
+    "has_hope_stone": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hdu:stone_of_hopes"
+              "hdu:hope_stone"
             ]
           }
         ]
@@ -48,7 +48,7 @@
     [
       "has_eftorit",
       "has_ethereum",
-      "has_stone_of_hopes",
+      "has_hope_stone",
       "has_the_recipe"
     ]
   ],

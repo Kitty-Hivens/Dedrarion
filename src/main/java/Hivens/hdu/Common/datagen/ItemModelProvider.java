@@ -7,6 +7,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -33,12 +34,13 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
         simpleItem(ItemRegistry.FUEL_OF_PROMISES);
         simpleItem(ItemRegistry.FORBIDDEN_FRUIT);
 
-        evenSimplerBlockItem(BlockRegistry.STAIRS_FROM_THE_STONE_OF_HOPES);
-        evenSimplerBlockItem(BlockRegistry.STAIRS_FROM_THE_SMOOTH_STONE_OF_HOPES);
-        evenSimplerBlockItem(BlockRegistry.STAIRS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES);
-        evenSimplerBlockItem(BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_STONE_OF_HOPES);
-        evenSimplerBlockItem(BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SMOOTH_STONE_OF_HOPES);
-        evenSimplerBlockItem(BlockRegistry.STAIRS_FROM_THE_BRICKS_FROM_THE_SHARDS_OF_THE_STONE_OF_HOPES);
+        evenSimplerBlockItem(BlockRegistry.HOPE_STONE_STAIRS);
+        evenSimplerBlockItem(BlockRegistry.SMOOTH_HOPE_STONE_STAIRS);
+        evenSimplerBlockItem(BlockRegistry.HOPE_SHARD_STAIRS);
+        evenSimplerBlockItem(BlockRegistry.HOPE_BRICK_STAIRS);
+        evenSimplerBlockItem(BlockRegistry.SMOOTH_HOPE_BRICK_STAIRS);
+        evenSimplerBlockItem(BlockRegistry.HOPE_SHARD_BRICK_STAIRS);
+
     }
     private ItemModelBuilder simpleItem(RegistryObject<Item> item){
         return withExistingParent(item.getId().getPath(),
@@ -46,7 +48,7 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
                 new ResourceLocation(HDU.MODID, "item/" + item.getId().getPath()));
     }
 
-    public void evenSimplerBlockItem(RegistryObject<Block> block) {
+    public void evenSimplerBlockItem(RegistryObject<StairBlock> block) {
         this.withExistingParent(HDU.MODID + ":" + Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block.get())).getPath(),
                 modLoc("block/" + Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block.get())).getPath()));
     }

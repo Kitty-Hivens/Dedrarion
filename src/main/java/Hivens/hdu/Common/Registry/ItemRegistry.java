@@ -1,6 +1,9 @@
 package Hivens.hdu.Common.Registry;
 
 import Hivens.hdu.Common.Custom.Item.*;
+import Hivens.hdu.Common.util.TooltipFoodItem;
+import Hivens.hdu.Common.util.TooltipFuelItem;
+import Hivens.hdu.Common.util.TooltipItem;
 import Hivens.hdu.HDU;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -26,6 +29,9 @@ public class ItemRegistry {
             () -> new Item(new Item.Properties()));
 
     public  static final RegistryObject<Item> EFTORIT = Items.register("eftorit",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> CATALYST_OF_DEBAUCHERY = Items.register("catalyst_of_debauchery",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> METAL_DETECTOR = Items.register("metal_detector",

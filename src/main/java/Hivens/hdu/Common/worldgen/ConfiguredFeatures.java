@@ -21,7 +21,7 @@ public class ConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_ETHEREUM_ORE_KEY = registerKey("ethereum_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_RUBY_ORE_KEY = registerKey("ruby_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_EFTORIT_ORE_KEY = registerKey("eftorit_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_STONE_OF_HOPES_ORE_KEY = registerKey("stone_of_hopes");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_HOPE_STONE_ORE_KEY = registerKey("hope_stone");
 
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
@@ -63,11 +63,11 @@ public class ConfiguredFeatures {
                         4));
 
         register(context,
-                OVERWORLD_STONE_OF_HOPES_ORE_KEY,
+                OVERWORLD_HOPE_STONE_ORE_KEY,
                 Feature.ORE,
                 new OreConfiguration(
                         deepslateReplaceable,
-                        BlockRegistry.STONE_OF_HOPES.get().defaultBlockState(),
+                        BlockRegistry.HOPE_STONE.get().defaultBlockState(),
                         64));
 
 
