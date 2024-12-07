@@ -25,7 +25,7 @@ public class HDU {
         CreativeTabRegistry.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
-        
+
         LOGGER.info("HDU Mod Initialization Started");
     }
 
