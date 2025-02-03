@@ -8,7 +8,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.StairBlock;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -42,8 +41,8 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
         evenSimplerBlockItem(BlockRegistry.HOPE_SHARD_BRICK_STAIRS);
 
     }
-    private ItemModelBuilder simpleItem(RegistryObject<Item> item){
-        return withExistingParent(item.getId().getPath(),
+    private void simpleItem(RegistryObject<Item> item){
+        withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(HDU.MODID, "item/" + item.getId().getPath()));
     }

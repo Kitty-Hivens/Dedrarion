@@ -72,6 +72,9 @@ public class CreativeTabRegistry {
                         pOutput.accept(BlockRegistry.SMOOTH_HOPE_BRICK_STAIRS.get());
                         pOutput.accept(BlockRegistry.HOPE_SHARD_BRICK_STAIRS.get());
 
+                        // Structure
+                        pOutput.accept(BlockRegistry.BROKEN_PLANKS.get());
+                        pOutput.accept(BlockRegistry.EXTINGUISHED_TORCH.get());
 
                     })
                     .build());

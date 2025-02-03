@@ -4,8 +4,6 @@ import Hivens.hdu.Common.Registry.BlockRegistry;
 import Hivens.hdu.HDU;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -36,13 +34,16 @@ public class BlockStateProvider extends net.minecraftforge.client.model.generato
         blockWithItem(BlockRegistry.SMOOTH_HOPE_STONE_BRICKS);
         blockWithItem(BlockRegistry.HOPE_SHARD_BRICKS);
 
-        stairsBlock(((StairBlock) BlockRegistry.HOPE_STONE_STAIRS.get()), blockTexture(BlockRegistry.HOPE_STONE.get()));
-        stairsBlock(((StairBlock) BlockRegistry.SMOOTH_HOPE_STONE_STAIRS.get()), blockTexture(BlockRegistry.SMOOTH_HOPE_STONE.get()));
-        stairsBlock(((StairBlock) BlockRegistry.HOPE_SHARD_STAIRS.get()), blockTexture(BlockRegistry.HOPE_SHARDS.get()));
+        stairsBlock(BlockRegistry.HOPE_STONE_STAIRS.get(), blockTexture(BlockRegistry.HOPE_STONE.get()));
+        stairsBlock(BlockRegistry.SMOOTH_HOPE_STONE_STAIRS.get(), blockTexture(BlockRegistry.SMOOTH_HOPE_STONE.get()));
+        stairsBlock(BlockRegistry.HOPE_SHARD_STAIRS.get(), blockTexture(BlockRegistry.HOPE_SHARDS.get()));
 
-        stairsBlock(((StairBlock) BlockRegistry.HOPE_BRICK_STAIRS.get()), blockTexture(BlockRegistry.HOPE_STONE_BRICKS.get()));
-        stairsBlock(((StairBlock) BlockRegistry.SMOOTH_HOPE_BRICK_STAIRS.get()), blockTexture(BlockRegistry.SMOOTH_HOPE_STONE_BRICKS.get()));
-        stairsBlock(((StairBlock) BlockRegistry.HOPE_SHARD_BRICK_STAIRS.get()), blockTexture(BlockRegistry.HOPE_SHARD_BRICKS.get()));
+        stairsBlock(BlockRegistry.HOPE_BRICK_STAIRS.get(), blockTexture(BlockRegistry.HOPE_STONE_BRICKS.get()));
+        stairsBlock(BlockRegistry.SMOOTH_HOPE_BRICK_STAIRS.get(), blockTexture(BlockRegistry.SMOOTH_HOPE_STONE_BRICKS.get()));
+        stairsBlock(BlockRegistry.HOPE_SHARD_BRICK_STAIRS.get(), blockTexture(BlockRegistry.HOPE_SHARD_BRICKS.get()));
+
+        blockWithItem(BlockRegistry.BROKEN_PLANKS);
+        blockWithItem(BlockRegistry.EXTINGUISHED_TORCH);
     }
 
 
