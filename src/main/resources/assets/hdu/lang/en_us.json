@@ -46,6 +46,8 @@
   "tooltip.item.hdu.fuel_of_promises": "§4Who should we thank for this?",
   "tooltip.item.hdu.forbidden_fruit": "§eWho are you willing to give up for this?",
 
+  "event.hdu.creativehandler.success": "Nice to meet you",
+  "event.hdu.creativehandler.failure": "You are failure, playerName%s",
 
   "advancement.hdu.seeker_of_magic.title": "Seeker of Magic",
   "advancement.hdu.seeker_of_magic.description": "Are you our young sleuth?",

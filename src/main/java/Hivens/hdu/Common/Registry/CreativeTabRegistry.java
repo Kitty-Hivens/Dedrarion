@@ -75,6 +75,7 @@ public class CreativeTabRegistry {
                         // Structure
                         pOutput.accept(BlockRegistry.BROKEN_PLANKS.get());
                         pOutput.accept(BlockRegistry.EXTINGUISHED_TORCH.get());
+                        pOutput.accept(BlockRegistry.PEDESTAL.get());
 
                     })
                     .build());

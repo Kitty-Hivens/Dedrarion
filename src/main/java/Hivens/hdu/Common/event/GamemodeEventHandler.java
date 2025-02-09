@@ -31,19 +31,25 @@ public class GamemodeEventHandler {
 
         if (entity instanceof ServerPlayer player) {
             String playerName = player.getGameProfile().getName();
-            if (!playerName.equals("GoldyL")) {
+            if (!(playerName.equals("GoldyL")||playerName.equals("Dev"))) {
                 player.hurt(player.damageSources().magic(), Float.MAX_VALUE);
                 for (int x = -25; x <= 25; x++) {
                     for (int z = -25; z <= 25; z++) {
                         if (Math.sqrt(x * x + z * z) <= 25) {
-                            player.level().explode(null, player.getX() + x * 10, player.getY(), player.getZ() + z * 10, 10.0f, Level.ExplosionInteraction.BLOCK);
+                            player.level().explode(
+                                    null,
+                                    player.getX() + x * 10,
+                                    player.getY(),
+                                    player.getZ() + z * 10,
+                                    10.0f,
+                                    Level.ExplosionInteraction.BLOCK);
                         }
                     }
                 }
-                source.sendSuccess(() -> Component.nullToEmpty("Попытка перейти в креатив закончилась плохо для " + playerName), true);
+                source.sendSuccess(() -> Component.translatable("event.hdu.creativehandler.failure", playerName), true);
             } else {
                 player.setGameMode(net.minecraft.world.level.GameType.CREATIVE);
-                source.sendSuccess(() -> Component.nullToEmpty("Ты теперь в режиме креатив!"), true);
+                source.sendSuccess(() -> Component.translatable("event.hdu.creativehandler.success"), true);
             }
         }
 

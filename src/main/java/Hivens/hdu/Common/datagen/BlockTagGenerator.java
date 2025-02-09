@@ -63,11 +63,14 @@ public class BlockTagGenerator extends BlockTagsProvider {
 
                            BlockRegistry.HOPE_BRICK_STAIRS.get(),
                            BlockRegistry.SMOOTH_HOPE_BRICK_STAIRS.get(),
-                           BlockRegistry.HOPE_SHARD_BRICK_STAIRS.get()
+                           BlockRegistry.HOPE_SHARD_BRICK_STAIRS.get(),
 
-
+                           BlockRegistry.PEDESTAL.get()
                    );
-        this.tag(BlockTags.NEEDS_STONE_TOOL);
+        this.tag(BlockTags.NEEDS_STONE_TOOL)
+                    .add(
+                            BlockRegistry.PEDESTAL.get()
+                );
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
                    .add(

@@ -39,14 +39,15 @@
   "block.hdu.hope_brick_stairs": "Ступеньки из Кирпичей Надежды",
   "block.hdu.smooth_hope_brick_stairs": "Ступеньки из Гладких Кирпичей Надежды",
   "block.hdu.hope_shard_brick_stairs": "Ступеньки из Кирпичей из Осколков Надежды",
-
-
+  
   "creativetab.hdu_tab": "Подземелье Dedrarion",
   "tooltip.item.hdu.metal_detector": "§bКажется, его энергия связана лишь только с магией",
   "tooltip.item.hdu.ethereum": "§eКристалл, кажется что он легче облаков",
   "tooltip.item.hdu.fuel_of_promises": "§4И кого стоит за это благодарить?",
   "tooltip.item.hdu.forbidden_fruit": "§eКого вы готовы отдать ради этого?",
 
+  "event.hdu.creativehandler.success": "Nice to meet you",
+  "event.hdu.creativehandler.failure": "You are failure, playerName%s",
 
   "advancement.hdu.seeker_of_magic.title": "Искатель Магии",
   "advancement.hdu.seeker_of_magic.description": "Ты у нас молодой ищейка?",

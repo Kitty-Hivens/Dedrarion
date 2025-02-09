@@ -115,10 +115,8 @@ public class EftoritForgeBlock extends HorizontalDirectionalBlock {
             double maxY = aabb.maxY;
             double maxZ = aabb.maxZ;
             double rMinX = 1 - maxZ;
-            double rMinZ = minX;
             double rMaxX = 1 - minZ;
-            double rMaxZ = maxX;
-            result = Shapes.or(result, Shapes.box(rMinX, minY, rMinZ, rMaxX, maxY, rMaxZ));
+            result = Shapes.or(result, Shapes.box(rMinX, minY, minX, rMaxX, maxY, maxX));
         }
         return result;
     }

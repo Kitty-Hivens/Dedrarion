@@ -45,6 +45,10 @@ public class BlockLootTables extends BlockLootSubProvider {
         this.dropSelf(BlockRegistry.SMOOTH_HOPE_BRICK_STAIRS.get());
         this.dropSelf(BlockRegistry.HOPE_SHARD_BRICK_STAIRS.get());
 
+        this.dropSelf(BlockRegistry.PEDESTAL.get());
+        this.dropSelf(BlockRegistry.BROKEN_PLANKS.get());
+        this.dropSelf(BlockRegistry.EXTINGUISHED_TORCH.get());
+
 
         this.add(BlockRegistry.ETHEREUM_ORE.get(),
                 block -> createRareLikeOreDrops(BlockRegistry.ETHEREUM_ORE.get(), ItemRegistry.RAW_ETHEREUM.get()));
@@ -63,6 +67,8 @@ public class BlockLootTables extends BlockLootSubProvider {
         this.add(BlockRegistry.HOPE_STONE.get(),
                 block -> createLikeStoneDrops(BlockRegistry.HOPE_STONE.get(), BlockRegistry.HOPE_SHARDS.get()));
     }
+
+
 
 
     protected LootTable.Builder createRareLikeOreDrops(@NotNull Block pBlock, Item item) {

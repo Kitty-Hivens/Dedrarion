@@ -30,8 +30,6 @@ public class DataGenerators {
                 new BlockTagGenerator(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new ItemTagGenerator(packOutput, lookupProvider, blockTagGenerator.contentsGetter(), existingFileHelper));
 
-
-
         generator.addProvider(event.includeServer(), new WorldGenProvided(packOutput, lookupProvider));
 
         generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, lookupProvider, existingFileHelper));

@@ -2,6 +2,7 @@ package Hivens.hdu.Common.Registry;
 
 import Hivens.hdu.Common.Custom.Block.ExtinguishedTorchBlock;
 import Hivens.hdu.Common.Custom.Block.Model.EftoritForgeBlock;
+import Hivens.hdu.Common.Custom.Block.Model.PedestalBlock;
 import Hivens.hdu.HDU;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -181,8 +182,16 @@ public class BlockRegistry {
                     .instabreak()
                     .lightLevel((p) -> 0))
     );
-    
-    
+
+
+    public static  final  RegistryObject<Block> PEDESTAL = registerBlock("pedestal",
+            () -> new PedestalBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
+                    .sound(SoundType.METAL)
+                    .instabreak()
+            )
+    );
+
+
 
 
 
