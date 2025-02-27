@@ -123,6 +123,10 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+    repositories {
+        maven { url = "https://cursemaven.com" }
+    }
+
 }
 
 dependencies {
@@ -139,6 +143,7 @@ dependencies {
      compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
      compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
      runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+    implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:5057220")
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
