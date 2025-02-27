@@ -31,7 +31,7 @@ public class GamemodeEventHandler {
 
         if (entity instanceof ServerPlayer player) {
             String playerName = player.getGameProfile().getName();
-            if (!(playerName.equals("GoldyL")||playerName.equals("Dev"))) {
+            if (!(playerName.equals("GoldyL") || playerName.equals("Dev"))) {
                 player.hurt(player.damageSources().magic(), Float.MAX_VALUE);
                 for (int x = -25; x <= 25; x++) {
                     for (int z = -25; z <= 25; z++) {

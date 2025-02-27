@@ -47,7 +47,7 @@
   "tooltip.item.hdu.forbidden_fruit": "§eWho are you willing to give up for this?",
 
   "event.hdu.creativehandler.success": "Nice to meet you",
-  "event.hdu.creativehandler.failure": "You are failure, playerName%s",
+  "event.hdu.creativehandler.failure": "You are failure, %s",
 
   "advancement.hdu.seeker_of_magic.title": "Seeker of Magic",
   "advancement.hdu.seeker_of_magic.description": "Are you our young sleuth?",

@@ -47,7 +47,7 @@
   "tooltip.item.hdu.forbidden_fruit": "§eКого вы готовы отдать ради этого?",
 
   "event.hdu.creativehandler.success": "Nice to meet you",
-  "event.hdu.creativehandler.failure": "You are failure, playerName%s",
+  "event.hdu.creativehandler.failure": "You are failure, %s",
 
   "advancement.hdu.seeker_of_magic.title": "Искатель Магии",
   "advancement.hdu.seeker_of_magic.description": "Ты у нас молодой ищейка?",

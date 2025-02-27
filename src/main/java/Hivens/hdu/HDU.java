@@ -1,5 +1,7 @@
 package Hivens.hdu;
+import Hivens.hdu.Client.ClientSetup;
 import Hivens.hdu.Common.Registry.*;
+import Hivens.hdu.Common.compat.ModCompat;
 import Hivens.hdu.Common.loot.ModLootModifiers;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
@@ -22,12 +24,17 @@ public class HDU {
         ModLootModifiers.register(modEventBus);
         CreativeTabRegistry.register(modEventBus);
         BlockEntitiesRegistry.register(modEventBus);
+        modEventBus.addListener(this::setup);
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(ClientSetup::init);
         MinecraftForge.EVENT_BUS.register(this);
 
         LOGGER.info("HDU Mod Initialization Started");
     }
 
+    private void setup(final FMLCommonSetupEvent event) {
+        ModCompat.initCommon(event);
+    }
 
 
     private void commonSetup(final FMLCommonSetupEvent event) {
