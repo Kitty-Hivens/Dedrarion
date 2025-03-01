@@ -1,12 +1,17 @@
 package Hivens.hdu.Common.Custom.Block.Entity;
 
 import Hivens.hdu.Common.Registry.BlockEntitiesRegistry;
+import Hivens.hdu.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nullable;
+import java.util.Objects;
 
 public class PedestalBlockEntity extends BlockEntity {
     private ItemStack storedItem = ItemStack.EMPTY;
@@ -25,28 +30,66 @@ public class PedestalBlockEntity extends BlockEntity {
 
     public void setItem(ItemStack item) {
         this.storedItem = item;
-        System.out.println("Item set: " + item); // Отладочное сообщение
+        if (Config.isDevMode()) {
+            System.out.println("Setting item: " + item);
+        }
         setChanged();
+        assert level != null;
+        level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
     }
+
 
     public ItemStack removeItem() {
         ItemStack item = storedItem;
         storedItem = ItemStack.EMPTY;
+        if (Config.isDevMode()) {
+            System.out.println("Removing item: " + item);
+        }
         setChanged();
+        assert level != null;
+        level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
         return item;
     }
 
-    // ✅ Сохранение данных в NBT (для перезахода)
+
+    // *** Сохранение в NBT ***
     @Override
     protected void saveAdditional(@NotNull CompoundTag tag) {
         super.saveAdditional(tag);
-        tag.put("StoredItem", storedItem.save(new CompoundTag())); // Сохраняем предмет
+        CompoundTag itemTag = new CompoundTag();
+        storedItem.save(itemTag);
+        tag.put("StoredItem", itemTag);
     }
 
-    // ✅ Загрузка данных из NBT
     @Override
     public void load(@NotNull CompoundTag tag) {
         super.load(tag);
-        storedItem = ItemStack.of(tag.getCompound("StoredItem")); // Восстанавливаем предмет
+        if (tag.contains("StoredItem")) {
+            storedItem = ItemStack.of(tag.getCompound("StoredItem"));
+        }
+    }
+
+    // *** Синхронизация с клиентом ***
+    @Nullable
+    @Override
+    public ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public void onDataPacket(net.minecraft.network.Connection net, ClientboundBlockEntityDataPacket pkt) {
+        this.load(Objects.requireNonNull(pkt.getTag()));
+    }
+
+    @Override
+    public @NotNull CompoundTag getUpdateTag() {
+        CompoundTag tag = new CompoundTag();
+        saveAdditional(tag);
+        return tag;
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag) {
+        load(tag);
     }
 }

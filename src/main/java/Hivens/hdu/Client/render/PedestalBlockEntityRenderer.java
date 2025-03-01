@@ -1,6 +1,7 @@
 package Hivens.hdu.Client.render;
 
 import Hivens.hdu.Common.Custom.Block.Entity.PedestalBlockEntity;
+import Hivens.hdu.Config;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
@@ -15,6 +16,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -27,10 +29,24 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
     }
 
     @Override
-    public void render(PedestalBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack,
-                       MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
-        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+    public void render(PedestalBlockEntity pBlockEntity, float pPartialTick, @NotNull PoseStack pPoseStack,
+                       @NotNull MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
+        // Запрос обновления с сервера
+        if (pBlockEntity.getLevel() != null && pBlockEntity.getLevel().isClientSide) {
+            assert Minecraft.getInstance().player != null;
+            Minecraft.getInstance().player.connection.sendCommand("data get block "
+                    + pBlockEntity.getBlockPos().getX() + " "
+                    + pBlockEntity.getBlockPos().getY() + " "
+                    + pBlockEntity.getBlockPos().getZ());
+        }
+
         ItemStack itemStack = pBlockEntity.getItem();
+        if (Config.isDevMode()) {
+            System.out.println("Rendering item: " + itemStack);
+        }
+
+
+        if (itemStack.isEmpty()) return; // Если предмет пустой — выходим
 
         pPoseStack.pushPose();
         pPoseStack.translate(0.5f, 0.75f, 0.5f);
@@ -45,8 +61,9 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         );
 
         pPoseStack.popPose();
-
     }
+
+
 
     private int getLightLevel(Level level, BlockPos pos) {
         int bLight = level.getBrightness(LightLayer.BLOCK, pos);
