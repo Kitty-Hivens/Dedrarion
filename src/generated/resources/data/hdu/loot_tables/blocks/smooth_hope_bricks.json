@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "hdu:smooth_hope_stone_bricks"
+          "name": "hdu:smooth_hope_bricks"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "hdu:blocks/smooth_hope_stone_bricks"
+  "random_sequence": "hdu:blocks/smooth_hope_bricks"
 }

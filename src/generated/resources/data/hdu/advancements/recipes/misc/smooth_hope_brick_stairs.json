@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_smooth_hope_stone_bricks": {
+    "has_smooth_hope_bricks": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hdu:smooth_hope_stone_bricks"
+              "hdu:smooth_hope_bricks"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_smooth_hope_stone_bricks",
+      "has_smooth_hope_bricks",
       "has_the_recipe"
     ]
   ],

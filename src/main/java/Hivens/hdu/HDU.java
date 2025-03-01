@@ -23,8 +23,11 @@ public class HDU {
         ModLootModifiers.register(modEventBus);
         CreativeTabRegistry.register(modEventBus);
         BlockEntitiesRegistry.register(modEventBus);
+        ModRecipes.RECIPE_TYPES.register(modEventBus);
+        ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::commonSetup);
+
         MinecraftForge.EVENT_BUS.register(this);
 
         LOGGER.info("HDU Mod Initialization Started");

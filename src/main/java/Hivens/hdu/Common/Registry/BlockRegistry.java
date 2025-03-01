@@ -127,7 +127,7 @@ public class BlockRegistry {
                     .copy(BlockRegistry.HOPE_STONE.get()))
     );
 
-    public static final RegistryObject<Block> SMOOTH_HOPE_STONE_BRICKS = registerBlock("smooth_hope_stone_bricks",
+    public static final RegistryObject<Block> SMOOTH_HOPE_STONE_BRICKS = registerBlock("smooth_hope_bricks",
             () -> new Block(BlockBehaviour.Properties
                     .copy(BlockRegistry.HOPE_STONE.get()))
     );
@@ -143,7 +143,7 @@ public class BlockRegistry {
                     .copy(BlockRegistry.HOPE_STONE.get()))
     );
 
-    public static final RegistryObject<StairBlock> SMOOTH_HOPE_STONE_STAIRS = registerBlock("smooth_hope_stone_stairs",
+    public static final RegistryObject<StairBlock> SMOOTH_HOPE_STONE_STAIRS = registerBlock("smooth_hope_stairs",
             () -> new StairBlock(() -> BlockRegistry.SMOOTH_HOPE_STONE.get().defaultBlockState(), BlockBehaviour.Properties
                     .copy(BlockRegistry.HOPE_STONE.get()))
     );

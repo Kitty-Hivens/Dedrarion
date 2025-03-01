@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/stairs",
   "textures": {
-    "bottom": "hdu:block/smooth_hope_stone_bricks",
-    "side": "hdu:block/smooth_hope_stone_bricks",
-    "top": "hdu:block/smooth_hope_stone_bricks"
+    "bottom": "hdu:block/smooth_hope_bricks",
+    "side": "hdu:block/smooth_hope_bricks",
+    "top": "hdu:block/smooth_hope_bricks"
   }
 }
