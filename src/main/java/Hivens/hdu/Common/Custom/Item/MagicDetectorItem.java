@@ -20,9 +20,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class MetalDetectorItem extends Item {
+public class MagicDetectorItem extends Item {
 
-    public MetalDetectorItem(Properties pProperties) {
+    public MagicDetectorItem(Properties pProperties) {
         super(pProperties);
     }
 

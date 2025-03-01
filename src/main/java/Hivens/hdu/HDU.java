@@ -1,5 +1,4 @@
 package Hivens.hdu;
-import Hivens.hdu.Client.ClientSetup;
 import Hivens.hdu.Common.Registry.*;
 import Hivens.hdu.Common.compat.ModCompat;
 import Hivens.hdu.Common.loot.ModLootModifiers;
@@ -26,7 +25,6 @@ public class HDU {
         BlockEntitiesRegistry.register(modEventBus);
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(ClientSetup::init);
         MinecraftForge.EVENT_BUS.register(this);
 
         LOGGER.info("HDU Mod Initialization Started");

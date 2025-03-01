@@ -1,17 +1,22 @@
 package Hivens.hdu.Client.render;
 
 import Hivens.hdu.Common.Custom.Block.Entity.PedestalBlockEntity;
+import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.world.entity.LivingEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LightLayer;
+
+import java.util.Objects;
 
 public class PedestalBlockEntityRenderer implements BlockEntityRenderer<PedestalBlockEntity> {
 
@@ -22,30 +27,31 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
     }
 
     @Override
-    public void render(PedestalBlockEntity pedestalBlockEntity,
-                       float partialTick,
-                       @NotNull PoseStack poseStack,
-                       @NotNull MultiBufferSource buffer,
-                       int light,
-                       int overlay
-    ) {
-        ItemStack storedItem = pedestalBlockEntity.getItem();
+    public void render(PedestalBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack,
+                       MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
+        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+        ItemStack itemStack = pBlockEntity.getItem();
 
-        if (!storedItem.isEmpty()) {
-            // Создаем смещение для отображения предмета над пьедесталом
-            poseStack.pushPose();
-            poseStack.translate(0.5, 1.5, 0.5); // Рендерим чуть выше блока
+        pPoseStack.pushPose();
+        pPoseStack.translate(0.5f, 0.75f, 0.5f);
+        pPoseStack.scale(0.35f, 0.35f, 0.35f);
+        pPoseStack.mulPose(Axis.XP.rotationDegrees(270));
 
-            // Получаем модель и рендерим предмет
-            LivingEntity playerEntity = Minecraft.getInstance().player; // Игрок как LivingEntity
-            BakedModel model = itemRenderer.getModel(storedItem, Minecraft.getInstance().level, playerEntity, 0); // Передаем игрока вместо уровня
-            itemRenderer.render(
-                    storedItem,
-                    ItemDisplayContext.GROUND,
-                    false, poseStack, buffer, light, overlay, model
-            );
+        itemRenderer.renderStatic(
+                itemStack,
+                ItemDisplayContext.FIXED,
+                getLightLevel(Objects.requireNonNull(pBlockEntity.getLevel()), pBlockEntity.getBlockPos()),
+                OverlayTexture.NO_OVERLAY, pPoseStack, pBuffer, pBlockEntity.getLevel(), 1
+        );
 
-            poseStack.popPose();
-        }
+        pPoseStack.popPose();
+
+    }
+
+    private int getLightLevel(Level level, BlockPos pos) {
+        int bLight = level.getBrightness(LightLayer.BLOCK, pos);
+        int sLight = level.getBrightness(LightLayer.SKY, pos);
+
+        return LightTexture.pack(bLight, sLight);
     }
 }
