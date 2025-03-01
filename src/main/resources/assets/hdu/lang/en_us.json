@@ -40,6 +40,10 @@
   "block.hdu.smooth_hope_brick_stairs": "Smooth Hope Brick Stairs",
   "block.hdu.hope_shard_brick_stairs": "Hope Shard Brick Stairs",
 
+  "block.hdu.broken_planks": "Broken Planks",
+  "block.hdu.extinguished_torch": "Extinguished Torch",
+  "block.hdu.pedestal": "Pedestal",
+
   "creativetab.hdu_tab": "Dedrarion Underground Tab",
   "tooltip.item.hdu.metal_detector": "§bIt seems that his energy is tied only to magic",
   "tooltip.item.hdu.ethereum": "§eA certain crystal that seems lighter than clouds",
