@@ -1,10 +1,15 @@
 package Hivens.hdu.Common.Custom.Block.Model;
 
 import Hivens.hdu.Common.Custom.Block.Entity.EftoritForgeEntity;
-import Hivens.hdu.Common.Registry.BlockEntitiesRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -18,6 +23,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -188,19 +194,19 @@ public class EftoritForgeBlock extends Block implements EntityBlock {
     }
 
     @Override
-    public void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean isMoving) {
+    public void onPlace(@NotNull BlockState state, @NotNull Level world, @NotNull BlockPos pos, @NotNull BlockState oldState, boolean isMoving) {
         super.onPlace(state, world, pos, oldState, isMoving);
     }
 
     @Nullable
     @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+    public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
         return new EftoritForgeEntity(pos, state);
     }
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, @NotNull BlockState state, @NotNull BlockEntityType<T> type) {
         return level.isClientSide ? null : (lvl, pos, st, entity) -> {
             if (entity instanceof EftoritForgeEntity forgeEntity) {
                 EftoritForgeEntity.tick(lvl, pos, st, forgeEntity);
@@ -210,7 +216,7 @@ public class EftoritForgeBlock extends Block implements EntityBlock {
 
 
     @Override
-    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
+    public void onRemove(BlockState state, @NotNull Level world, @NotNull BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity entity = world.getBlockEntity(pos);
             if (entity instanceof EftoritForgeEntity forgeEntity) {
@@ -219,4 +225,45 @@ public class EftoritForgeBlock extends Block implements EntityBlock {
             super.onRemove(state, world, pos, newState, isMoving);
         }
     }
+
+
+    @Override
+    public @NotNull InteractionResult use(@NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
+        if (level.isClientSide) return InteractionResult.SUCCESS;
+
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (!(blockEntity instanceof EftoritForgeEntity forgeEntity)) return InteractionResult.PASS;
+
+        if (!forgeEntity.getItems().isEmpty()) {
+            ItemStack removed = forgeEntity.removeLastItem();
+            player.getInventory().placeItemBackInInventory(removed);
+            return InteractionResult.SUCCESS;
+        }
+
+        return InteractionResult.PASS;
+    }
+
+    @Override
+    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+        if (level.isClientSide || !(entity instanceof ItemEntity itemEntity)) return;
+
+        ItemStack stack = itemEntity.getItem();
+
+        System.out.println("Обнаружен ItemEntity! " + stack.getCount() + " " + stack.getItem());
+
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (!(blockEntity instanceof EftoritForgeEntity forgeEntity)) return;
+
+        if (forgeEntity.addItem(stack, itemEntity)) {
+            System.out.println("Предмет добавлен! Осталось: " + stack.getCount());
+        } else {
+            System.out.println("Не удалось добавить предмет!");
+        }
+        System.out.println("BlockEntity inventory: " + forgeEntity.getItems());
+    }
+
+
+
+
+
 }

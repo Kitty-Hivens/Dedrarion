@@ -1,6 +1,6 @@
 package Hivens.hdu.Client;
 
-import Hivens.hdu.Client.render.EftoritForgeEntityRenderer;
+import Hivens.hdu.Client.render.EftoritForgeRenderer;
 import Hivens.hdu.Client.render.PedestalBlockEntityRenderer;
 import Hivens.hdu.Common.Registry.BlockEntitiesRegistry;
 import net.minecraftforge.api.distmarker.Dist;
@@ -29,7 +29,7 @@ public class ClientSetup {
 
         event.registerBlockEntityRenderer(
                 BlockEntitiesRegistry.EFTORIT_FORGE_ENTITY.get(),
-                EftoritForgeEntityRenderer::new
+                EftoritForgeRenderer::new
         );
         System.out.println("Registering EftoritForgeEntityRenderer");
     }

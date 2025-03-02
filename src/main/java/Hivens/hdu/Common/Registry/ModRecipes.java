@@ -18,8 +18,8 @@ public class ModRecipes {
 
 
     public static final RegistryObject<RecipeType<EftoritForgeRecipe>> EFTORIT_FORGE_RECIPE_TYPE =
-            RECIPE_TYPES.register("eftorit_forge_recipe", () -> new RecipeType<>() {});
+            RECIPE_TYPES.register("eftorit_forge", () -> new RecipeType<>() {});
 
     public static final RegistryObject<RecipeSerializer<EftoritForgeRecipe>> EFTORIT_FORGE_SERIALIZER =
-            RECIPE_SERIALIZERS.register("eftorit_forge_recipe", EftoritForgeRecipe.Serializer::new);
+            RECIPE_SERIALIZERS.register("eftorit_forge", EftoritForgeRecipe.Serializer::new);
 }

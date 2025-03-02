@@ -1,0 +1,11 @@
+{
+  "type": "hdu:eftorit_forge",
+  "ingredients": [
+    { "item": "minecraft:iron_ingot", "consume": true },
+    { "item": "minecraft:diamond", "consume": false }
+  ],
+  "result": {
+    "item": "minecraft:netherite_ingot",
+    "count": 1
+  }
+}

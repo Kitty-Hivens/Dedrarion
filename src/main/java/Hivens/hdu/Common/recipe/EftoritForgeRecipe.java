@@ -3,6 +3,7 @@ package Hivens.hdu.Common.recipe;
 import Hivens.hdu.Common.Registry.ModRecipes;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -12,16 +13,20 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EftoritForgeRecipe implements Recipe<Container> {
     private final ResourceLocation id;
-    private final NonNullList<Ingredient> ingredients;
+    private final NonNullList<EftoritIngredient> ingredients;
     private final ItemStack output;
 
-    public EftoritForgeRecipe(ResourceLocation id, NonNullList<Ingredient> ingredients, ItemStack output) {
+    public static final Logger LOGGER = LogUtils.getLogger();
+
+    public EftoritForgeRecipe(ResourceLocation id, NonNullList<EftoritIngredient> ingredients, ItemStack output) {
         this.id = id;
         this.ingredients = ingredients;
         this.output = output;
@@ -29,34 +34,54 @@ public class EftoritForgeRecipe implements Recipe<Container> {
 
     @Override
     public boolean matches(Container container, Level level) {
-        NonNullList<ItemStack> items = NonNullList.create();
+        //LOGGER.debug("Проверка рецепта {}...", this.getId());
+
+        List<ItemStack> inventoryItems = new ArrayList<>();
         for (int i = 0; i < container.getContainerSize(); i++) {
-            items.add(container.getItem(i));
+            inventoryItems.add(container.getItem(i));
         }
-        return matchesIngredients(items);
+
+        List<EftoritIngredient> requiredIngredients = new ArrayList<>(ingredients);
+        //LOGGER.debug("Требуемые ингредиенты: {}", requiredIngredients);
+
+        for (ItemStack stack : inventoryItems) {
+            //LOGGER.debug("Проверяем слот: {}", stack);
+            requiredIngredients.removeIf(ingredient -> ingredient.ingredient().test(stack));
+        }
+        /*
+        if (requiredIngredients.isEmpty()) {
+            LOGGER.info("Рецепт {} найден!", this.getId());
+        } else {
+            LOGGER.warn("Рецепт {} не совпадает. Остались неудалённые ингредиенты: {}", this.getId(), requiredIngredients);
+        }
+
+         */
+
+        return requiredIngredients.isEmpty();
     }
 
 
+
     @Override
-    public ItemStack assemble(Container p_44001_, RegistryAccess p_267165_) {
+    public @NotNull ItemStack assemble(@NotNull Container p_44001_, @NotNull RegistryAccess p_267165_) {
         return output.copy();
     }
 
     private boolean matchesIngredients(NonNullList<ItemStack> items) {
         List<ItemStack> input = new ArrayList<>(items);
-        for (Ingredient ingredient : ingredients) {
+        for (EftoritIngredient ingredient : ingredients) {
             boolean found = false;
             for (ItemStack stack : input) {
-                if (ingredient.test(stack)) {
-                    input.remove(stack);
+                if (ingredient.ingredient().test(stack)) {
                     found = true;
                     break;
                 }
             }
             if (!found) return false;
         }
-        return input.isEmpty();
+        return true;
     }
+
 
     @Override
     public boolean canCraftInDimensions(int width, int height) {
@@ -64,54 +89,81 @@ public class EftoritForgeRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess p_267052_) {
+    public @NotNull ItemStack getResultItem(@NotNull RegistryAccess p_267052_) {
         return output.copy();
     }
 
     @Override
-    public ResourceLocation getId() {
+    public @NotNull ResourceLocation getId() {
         return id;
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public @NotNull RecipeSerializer<?> getSerializer() {
         return ModRecipes.EFTORIT_FORGE_SERIALIZER.get();
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public @NotNull RecipeType<?> getType() {
         return ModRecipes.EFTORIT_FORGE_RECIPE_TYPE.get();
     }
 
     public static class Serializer implements RecipeSerializer<EftoritForgeRecipe> {
         @Override
-        public EftoritForgeRecipe fromJson(ResourceLocation id, JsonObject json) {
-            NonNullList<Ingredient> ingredients = NonNullList.create();
+        public @NotNull EftoritForgeRecipe fromJson(@NotNull ResourceLocation id, @NotNull JsonObject json) {
+            NonNullList<EftoritIngredient> ingredients = NonNullList.create();
             for (JsonElement element : GsonHelper.getAsJsonArray(json, "ingredients")) {
-                ingredients.add(Ingredient.fromJson(element));
+                ingredients.add(EftoritIngredient.fromJson(element.getAsJsonObject())); // Используем метод
             }
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
             return new EftoritForgeRecipe(id, ingredients, output);
         }
 
+
+
+
+
+
+
         @Override
-        public EftoritForgeRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
-            NonNullList<Ingredient> ingredients = NonNullList.create();
+        public EftoritForgeRecipe fromNetwork(@NotNull ResourceLocation id, FriendlyByteBuf buffer) {
+            NonNullList<EftoritIngredient> ingredients = NonNullList.create();
             int size = buffer.readVarInt();
             for (int i = 0; i < size; i++) {
-                ingredients.add(Ingredient.fromNetwork(buffer));
+                ingredients.add(EftoritIngredient.fromNetwork(buffer)); // Добавляем вызов
             }
             ItemStack output = buffer.readItem();
             return new EftoritForgeRecipe(id, ingredients, output);
         }
 
+
+
+
         @Override
         public void toNetwork(FriendlyByteBuf buffer, EftoritForgeRecipe recipe) {
-            buffer.writeVarInt(recipe.ingredients.size());
-            for (Ingredient ingredient : recipe.ingredients) {
-                ingredient.toNetwork(buffer);
+            buffer.writeVarInt(recipe.getEftoritIngredients().size());
+            for (EftoritIngredient ingredient : recipe.getEftoritIngredients()) {
+                ingredient.toNetwork(buffer); // Добавляем этот вызов
             }
-            buffer.writeItem(recipe.output);
+            buffer.writeItem(recipe.getResultItem(null));
         }
+
+
+
+
+
+    }
+    @Override
+    public NonNullList<Ingredient> getIngredients() {
+        NonNullList<Ingredient> vanillaList = NonNullList.create();
+        for (EftoritIngredient eftoritIngredient : ingredients) {
+            vanillaList.add(eftoritIngredient.ingredient()); // Возвращает Ingredient
+        }
+        return vanillaList;
+    }
+
+    // Новая версия для processRecipe (как EftoritIngredient)
+    public NonNullList<EftoritIngredient> getEftoritIngredients() {
+        return ingredients;
     }
 }
