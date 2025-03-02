@@ -59,25 +59,20 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
         }
     }
 
-    public List<ItemStack> getVisibleInventory() {
-        return inventory.stream().filter(stack -> !stack.isEmpty()).toList();
-    }
-
-
 
     private void checkForRecipe() {
         assert level != null;
-        //LOGGER.debug("[checkForRecipe] Запуск проверки рецептов...");
+        LOGGER.debug("[checkForRecipe] Запуск проверки рецептов...");
 
         List<EftoritForgeRecipe> recipes = level.getRecipeManager()
                 .getAllRecipesFor(ModRecipes.EFTORIT_FORGE_RECIPE_TYPE.get());
 
-        //LOGGER.debug("[checkForRecipe] Найдено рецептов: {}", recipes.size());
+        LOGGER.debug("[checkForRecipe] Найдено рецептов: {}", recipes.size());
 
         Optional<EftoritForgeRecipe> optionalRecipe = recipes.stream()
                 .filter(recipe -> {
                     boolean match = recipe.matches(this, level);
-                    //LOGGER.debug("[checkForRecipe] Проверяем рецепт {}: {}", recipe.getId(), match);
+                    LOGGER.debug("[checkForRecipe] Проверяем рецепт {}: {}", recipe.getId(), match);
                     return match;
                 })
                 .findFirst();
@@ -88,9 +83,9 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
             craftTimer = 0;
             setChanged();
             sync();
-            //LOGGER.info("[checkForRecipe] Найден рецепт: {}", currentRecipe.getId());
+            LOGGER.info("[checkForRecipe] Найден рецепт: {}", currentRecipe.getId());
         } else {
-            //LOGGER.warn("[checkForRecipe] Рецепт не найден");
+            LOGGER.warn("[checkForRecipe] Рецепт не найден");
         }
     }
 
@@ -157,19 +152,19 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
         for (int i = inventory.size() - 1; i >= 0; i--) {
             if (!inventory.get(i).isEmpty()) {
                 ItemStack removed = inventory.get(i);
-                inventory.set(i, ItemStack.EMPTY); // Очищаем слот
+                inventory.set(i, ItemStack.EMPTY);
 
                 setChanged();
-                return removed; // Возвращаем предмет
+                return removed;
             }
         }
-        return ItemStack.EMPTY; // Если инвентарь пустой, возвращаем пустой стак
+        return ItemStack.EMPTY;
     }
 
 
     @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag); // Сначала базовое сохранение
+    protected void saveAdditional(@NotNull CompoundTag tag) {
+        super.saveAdditional(tag);
         System.out.println("Сохранение данных NBT для " + this.worldPosition);
         tag.put("Inventory", ContainerHelper.saveAllItems(new CompoundTag(), (NonNullList<ItemStack>) inventory));
     }
@@ -207,7 +202,7 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
+    public @NotNull CompoundTag getUpdateTag() {
         CompoundTag tag = super.getUpdateTag();
         saveAdditional(tag);
         return tag;

@@ -234,6 +234,10 @@ public class EftoritForgeBlock extends Block implements EntityBlock {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (!(blockEntity instanceof EftoritForgeEntity forgeEntity)) return InteractionResult.PASS;
 
+        if (forgeEntity.isCrafting()) {
+            return InteractionResult.PASS;
+        }
+
         if (!forgeEntity.getItems().isEmpty()) {
             ItemStack removed = forgeEntity.removeLastItem();
             player.getInventory().placeItemBackInInventory(removed);
@@ -243,8 +247,9 @@ public class EftoritForgeBlock extends Block implements EntityBlock {
         return InteractionResult.PASS;
     }
 
+
     @Override
-    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+    public void entityInside(@NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Entity entity) {
         if (level.isClientSide || !(entity instanceof ItemEntity itemEntity)) return;
 
         ItemStack stack = itemEntity.getItem();
