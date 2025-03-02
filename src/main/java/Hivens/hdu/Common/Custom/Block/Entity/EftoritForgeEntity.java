@@ -59,6 +59,12 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
         }
     }
 
+    public void clientTick() {
+        if (isCrafting) {
+            assert level != null;
+            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 2);
+        }
+    }
 
     private void checkForRecipe() {
         assert level != null;
