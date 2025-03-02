@@ -1,5 +1,6 @@
 package Hivens.hdu.Common.Registry;
 
+import Hivens.hdu.Common.Custom.Block.Entity.EftoritForgeEntity;
 import Hivens.hdu.Common.Custom.Block.Entity.PedestalBlockEntity;
 import Hivens.hdu.HDU;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -13,8 +14,11 @@ public class BlockEntitiesRegistry {
 
     public static final RegistryObject<BlockEntityType<PedestalBlockEntity>> PEDESTAL_ENTITY = BLOCK_ENTITIES.register("pedestal", () ->
             BlockEntityType.Builder.of(PedestalBlockEntity::new, BlockRegistry.PEDESTAL.get()).build(null));
-    public static final RegistryObject<BlockEntityType<PedestalBlockEntity>> EFTORIT_FORGE_ENTITY = BLOCK_ENTITIES.register("eftorit_forge", () ->
-            BlockEntityType.Builder.of(PedestalBlockEntity::new, BlockRegistry.EFTORIT_FORGE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<EftoritForgeEntity>> EFTORIT_FORGE_ENTITY =
+            BLOCK_ENTITIES.register("eftorit_forge_entity",
+                    () -> BlockEntityType.Builder.of(EftoritForgeEntity::new, BlockRegistry.EFTORIT_FORGE.get()).build(null));
+
+
     public static void register(IEventBus modEventBus) {
         BLOCK_ENTITIES.register(modEventBus);
     }

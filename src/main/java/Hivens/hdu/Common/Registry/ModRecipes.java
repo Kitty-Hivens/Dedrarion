@@ -1,6 +1,6 @@
 package Hivens.hdu.Common.Registry;
 
-import Hivens.hdu.Common.recipe.CustomRecipe;
+import Hivens.hdu.Common.recipe.EftoritForgeRecipe;
 import Hivens.hdu.HDU;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -15,9 +15,11 @@ public class ModRecipes {
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS =
             DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, HDU.MODID);
 
-    public static final RegistryObject<RecipeType<CustomRecipe>> CUSTOM_RECIPE_TYPE =
-            RECIPE_TYPES.register("custom_recipe", () -> new RecipeType<>() {});
 
-    public static final RegistryObject<RecipeSerializer<CustomRecipe>> CUSTOM_RECIPE_SERIALIZER =
-            RECIPE_SERIALIZERS.register("custom_recipe", CustomRecipe.Serializer::new);
+
+    public static final RegistryObject<RecipeType<EftoritForgeRecipe>> EFTORIT_FORGE_RECIPE_TYPE =
+            RECIPE_TYPES.register("eftorit_forge_recipe", () -> new RecipeType<>() {});
+
+    public static final RegistryObject<RecipeSerializer<EftoritForgeRecipe>> EFTORIT_FORGE_SERIALIZER =
+            RECIPE_SERIALIZERS.register("eftorit_forge_recipe", EftoritForgeRecipe.Serializer::new);
 }

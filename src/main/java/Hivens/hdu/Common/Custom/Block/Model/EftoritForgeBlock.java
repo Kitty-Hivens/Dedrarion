@@ -1,14 +1,17 @@
 package Hivens.hdu.Common.Custom.Block.Model;
 
+import Hivens.hdu.Common.Custom.Block.Entity.EftoritForgeEntity;
+import Hivens.hdu.Common.Registry.BlockEntitiesRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -19,9 +22,10 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 
-public class EftoritForgeBlock extends HorizontalDirectionalBlock {
+public class EftoritForgeBlock extends Block implements EntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final EnumProperty<Mode> MODE = EnumProperty.create("mode", Mode.class);
 
@@ -41,7 +45,7 @@ public class EftoritForgeBlock extends HorizontalDirectionalBlock {
         }
     }
 
-    /*
+    /**
      * Определяем базовую форму для направления NORTH.
      * Обратите внимание, что все координаты задаются как дроби (от 0 до 1),
      * где 1 соответствует 16/16.
@@ -181,5 +185,38 @@ public class EftoritForgeBlock extends HorizontalDirectionalBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, MODE);
+    }
+
+    @Override
+    public void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean isMoving) {
+        super.onPlace(state, world, pos, oldState, isMoving);
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new EftoritForgeEntity(pos, state);
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        return level.isClientSide ? null : (lvl, pos, st, entity) -> {
+            if (entity instanceof EftoritForgeEntity forgeEntity) {
+                EftoritForgeEntity.tick(lvl, pos, st, forgeEntity);
+            }
+        };
+    }
+
+
+    @Override
+    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity entity = world.getBlockEntity(pos);
+            if (entity instanceof EftoritForgeEntity forgeEntity) {
+                forgeEntity.dropItems();
+            }
+            super.onRemove(state, world, pos, newState, isMoving);
+        }
     }
 }
