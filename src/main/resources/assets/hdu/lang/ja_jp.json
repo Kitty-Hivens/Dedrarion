@@ -1,0 +1,63 @@
+{
+  "item.hdu.metal_detector": "魔法探知機",
+  "item.hdu.ethereum": "エーテル",
+  "item.hdu.ethereum_ore": "エーテル鉱石",
+  "item.hdu.raw_ethereum": "未精製のエーテル",
+  "item.hdu.ethereum_dust": "エーテルの粉",
+  "item.hdu.ruby": "ルビー",
+  "item.hdu.eftorit": "エフトリット",
+  "item.hdu.fuel_of_promises": "約束の燃料",
+  "item.hdu.forbidden_fruit": "禁断の果実",
+  "item.hdu.catalyst_of_debauchery" : "堕落の触媒",
+
+  "block.hdu.ethereum_ore": "エーテル鉱石",
+  "block.hdu.ethereum_block": "エーテルブロック",
+  "block.hdu.raw_ethereum_block": "未精製のエーテルブロック",
+
+  "block.hdu.ruby_ore": "ルビー鉱石",
+  "block.hdu.deepslate_ruby_ore": "深層ルビー鉱石",
+  "block.hdu.ruby_block": "ルビーブロック",
+
+  "block.hdu.eftorit_ore": "エフトリット鉱石",
+  "block.hdu.deepslate_eftorit_ore": "深層エフトリット鉱石",
+  "block.hdu.eftorit_block": "エフトリットブロック",
+  "block.hdu.eftorit_forge": "エフトリット炉",
+
+  "block.hdu.hope_stone": "希望の石",
+  "block.hdu.smooth_hope_stone": "滑らかな希望の石",
+  "block.hdu.hope_shards": "希望の欠片",
+
+  "block.hdu.hope_stone_bricks": "希望の石レンガ",
+  "block.hdu.smooth_hope_bricks": "滑らかな希望レンガ",
+  "block.hdu.hope_shard_bricks": "希望の欠片レンガ",
+
+  "block.hdu.hope_stone_stairs": "希望の石の階段",
+  "block.hdu.smooth_hope_stairs": "滑らかな希望の階段",
+  "block.hdu.hope_shard_stairs": "希望の欠片の階段",
+
+  "block.hdu.hope_brick_stairs": "希望のレンガの階段",
+  "block.hdu.smooth_hope_brick_stairs": "滑らかな希望レンガの階段",
+  "block.hdu.hope_shard_brick_stairs": "希望の欠片レンガの階段",
+
+  "block.hdu.broken_planks": "壊れた木材",
+  "block.hdu.extinguished_torch": "消えた松明",
+  "block.hdu.pedestal": "台座",
+
+  "creativetab.hdu_tab": "Dedrarion 地下のタブ",
+  "tooltip.item.hdu.metal_detector": "§bそのエネルギーは魔法に縛られているようだ",
+  "tooltip.item.hdu.ethereum": "§e雲よりも軽いとされる不思議な結晶",
+  "tooltip.item.hdu.fuel_of_promises": "§4誰に感謝すべきなのか？",
+  "tooltip.item.hdu.forbidden_fruit": "§eこれのために誰を犠牲にする？",
+
+  "event.hdu.creativehandler.success": "はじめまして",
+  "event.hdu.creativehandler.failure": "お前は失敗だ、%s",
+
+  "advancement.hdu.seeker_of_magic.title": "魔法の探求者",
+  "advancement.hdu.seeker_of_magic.description": "お前は若き探偵か？",
+
+  "advancement.hdu.white_prince.title": "白の王子",
+  "advancement.hdu.white_prince.description": "それでも王と名乗るつもりか？",
+
+  "advancement.hdu.magic_forger.title": "魔法の鍛冶師",
+  "advancement.hdu.magic_forger.description": "エフトリットの金床を手に入れる"
+}
