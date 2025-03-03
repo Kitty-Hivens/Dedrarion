@@ -1,6 +1,7 @@
 package Hivens.hdu.Common.recipe;
 
 import Hivens.hdu.Common.Registry.ModRecipes;
+import Hivens.hdu.Config;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
@@ -33,8 +34,10 @@ public class EftoritForgeRecipe implements Recipe<Container> {
     }
 
     @Override
-    public boolean matches(Container container, Level level) {
-        //LOGGER.debug("Проверка рецепта {}...", this.getId());
+    public boolean matches(@NotNull Container container, @NotNull Level level) {
+
+        if (Config.isDevMode())
+            LOGGER.debug("Проверка рецепта {}...", this.getId());
 
         List<ItemStack> inventoryItems = new ArrayList<>();
         for (int i = 0; i < container.getContainerSize(); i++) {
@@ -42,20 +45,24 @@ public class EftoritForgeRecipe implements Recipe<Container> {
         }
 
         List<EftoritIngredient> requiredIngredients = new ArrayList<>(ingredients);
-        //LOGGER.debug("Требуемые ингредиенты: {}", requiredIngredients);
+
+        if (Config.isDevMode())
+            LOGGER.debug("Требуемые ингредиенты: {}", requiredIngredients);
 
         for (ItemStack stack : inventoryItems) {
-            //LOGGER.debug("Проверяем слот: {}", stack);
+            if (Config.isDevMode())
+                LOGGER.debug("Проверяем слот: {}", stack);
             requiredIngredients.removeIf(ingredient -> ingredient.ingredient().test(stack));
         }
-        /*
-        if (requiredIngredients.isEmpty()) {
-            LOGGER.info("Рецепт {} найден!", this.getId());
-        } else {
-            LOGGER.warn("Рецепт {} не совпадает. Остались неудалённые ингредиенты: {}", this.getId(), requiredIngredients);
-        }
 
-         */
+        if (Config.isDevMode())
+            if (requiredIngredients.isEmpty()) {
+                LOGGER.info("Рецепт {} найден!", this.getId());
+            } else {
+                LOGGER.warn("Рецепт {} не совпадает. Остались неудалённые ингредиенты: {}", this.getId(), requiredIngredients);
+            }
+
+
 
         return requiredIngredients.isEmpty();
     }
@@ -67,21 +74,6 @@ public class EftoritForgeRecipe implements Recipe<Container> {
         return output.copy();
     }
 
-    private boolean matchesIngredients(NonNullList<ItemStack> items) {
-        List<ItemStack> input = new ArrayList<>(items);
-        for (EftoritIngredient ingredient : ingredients) {
-            boolean found = false;
-            for (ItemStack stack : input) {
-                if (ingredient.ingredient().test(stack)) {
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) return false;
-        }
-        return true;
-    }
-
 
     @Override
     public boolean canCraftInDimensions(int width, int height) {
@@ -89,7 +81,7 @@ public class EftoritForgeRecipe implements Recipe<Container> {
     }
 
     @Override
-    public @NotNull ItemStack getResultItem(@NotNull RegistryAccess p_267052_) {
+    public @NotNull ItemStack getResultItem(RegistryAccess p_267052_) {
         return output.copy();
     }
 
@@ -154,7 +146,7 @@ public class EftoritForgeRecipe implements Recipe<Container> {
 
     }
     @Override
-    public NonNullList<Ingredient> getIngredients() {
+    public @NotNull NonNullList<Ingredient> getIngredients() {
         NonNullList<Ingredient> vanillaList = NonNullList.create();
         for (EftoritIngredient eftoritIngredient : ingredients) {
             vanillaList.add(eftoritIngredient.ingredient()); // Возвращает Ingredient

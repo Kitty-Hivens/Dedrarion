@@ -1,6 +1,7 @@
 package Hivens.hdu.Common.Custom.Block.Model;
 
 import Hivens.hdu.Common.Custom.Block.Entity.EftoritForgeEntity;
+import Hivens.hdu.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
@@ -254,17 +255,21 @@ public class EftoritForgeBlock extends Block implements EntityBlock {
 
         ItemStack stack = itemEntity.getItem();
 
-        System.out.println("Обнаружен ItemEntity! " + stack.getCount() + " " + stack.getItem());
+        if(Config.isDevMode())
+            System.out.println("Обнаружен ItemEntity! " + stack.getCount() + " " + stack.getItem());
 
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (!(blockEntity instanceof EftoritForgeEntity forgeEntity)) return;
 
         if (forgeEntity.addItem(stack, itemEntity)) {
-            System.out.println("Предмет добавлен! Осталось: " + stack.getCount());
+            if(Config.isDevMode())
+                System.out.println("Предмет добавлен! Осталось: " + stack.getCount());
         } else {
-            System.out.println("Не удалось добавить предмет!");
+            if(Config.isDevMode())
+                System.out.println("Не удалось добавить предмет!");
         }
-        System.out.println("BlockEntity inventory: " + forgeEntity.getItems());
+        if(Config.isDevMode())
+            System.out.println("BlockEntity inventory: " + forgeEntity.getItems());
     }
 
 

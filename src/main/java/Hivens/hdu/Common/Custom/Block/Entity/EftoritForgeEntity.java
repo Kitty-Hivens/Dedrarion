@@ -4,10 +4,13 @@ import Hivens.hdu.Common.Registry.BlockEntitiesRegistry;
 import Hivens.hdu.Common.Registry.ModRecipes;
 import Hivens.hdu.Common.recipe.EftoritForgeRecipe;
 import Hivens.hdu.Common.recipe.EftoritIngredient;
+import Hivens.hdu.Config;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -17,6 +20,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
 import java.util.List;
@@ -43,6 +47,8 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
         return isCrafting;
     }
 
+
+
     public static void tick(Level level, BlockPos pos, BlockState state, EftoritForgeEntity entity) {
         if (level.isClientSide) return;
 
@@ -59,6 +65,18 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
         }
     }
 
+    @Nullable
+    @Override
+    public ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+        handleUpdateTag(pkt.getTag());
+    }
+
+
     public void clientTick() {
         if (isCrafting) {
             assert level != null;
@@ -68,17 +86,22 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
 
     private void checkForRecipe() {
         assert level != null;
-        LOGGER.debug("[checkForRecipe] Запуск проверки рецептов...");
+
+        if (Config.isDevMode())
+            LOGGER.debug("[checkForRecipe] Запуск проверки рецептов...");
 
         List<EftoritForgeRecipe> recipes = level.getRecipeManager()
                 .getAllRecipesFor(ModRecipes.EFTORIT_FORGE_RECIPE_TYPE.get());
-
-        LOGGER.debug("[checkForRecipe] Найдено рецептов: {}", recipes.size());
+        if (Config.isDevMode())
+            LOGGER.debug("[checkForRecipe] Найдено рецептов: {}", recipes.size());
 
         Optional<EftoritForgeRecipe> optionalRecipe = recipes.stream()
                 .filter(recipe -> {
                     boolean match = recipe.matches(this, level);
-                    LOGGER.debug("[checkForRecipe] Проверяем рецепт {}: {}", recipe.getId(), match);
+
+                    if (Config.isDevMode())
+                        LOGGER.debug("[checkForRecipe] Проверяем рецепт {}: {}", recipe.getId(), match);
+
                     return match;
                 })
                 .findFirst();
@@ -89,32 +112,51 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
             craftTimer = 0;
             setChanged();
             sync();
-            LOGGER.info("[checkForRecipe] Найден рецепт: {}", currentRecipe.getId());
-        } else {
+
+            if (Config.isDevMode())
+                LOGGER.info("[checkForRecipe] Найден рецепт: {}", currentRecipe.getId());
+
+        } else if(Config.isDevMode()) {
             LOGGER.warn("[checkForRecipe] Рецепт не найден");
+        }
+    }
+
+    @Override
+    public void setChanged() {
+        super.setChanged();
+        if (level != null && !level.isClientSide) {
+            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
         }
     }
 
 
 
 
-
     private void craftItem() {
         if (currentRecipe == null) {
-            //LOGGER.warn("Попытка создать предмет без рецепта!");
+
+            if (Config.isDevMode())
+                LOGGER.warn("Попытка создать предмет без рецепта!");
+
             return;
         }
 
         processRecipe(currentRecipe); // Используем ресурсы
 
         if (level == null) {
-            LOGGER.error("Уровень равен null во время крафта!");
+
+            if (Config.isDevMode())
+                LOGGER.error("Уровень равен null во время крафта!");
+
             return;
         }
 
         ItemStack result = currentRecipe.getResultItem(level.registryAccess());
         if (result.isEmpty()) {
-            LOGGER.warn("Результат рецепта пуст!");
+
+            if (Config.isDevMode())
+                LOGGER.warn("Результат рецепта пуст!");
+
             return;
         }
 
@@ -123,13 +165,18 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
             if (inventory.get(i).isEmpty()) {
                 inventory.set(i, result);
                 added = true;
-                LOGGER.info("Создан предмет {} и добавлен в слот {}", result.getItem(), i);
+
+                if (Config.isDevMode())
+                    LOGGER.info("Создан предмет {} и добавлен в слот {}", result.getItem(), i);
+
                 break;
             }
         }
 
         if (!added) {
-            LOGGER.warn("Инвентарь заполнен, предмет {} не может быть добавлен!", result.getItem());
+
+            if (Config.isDevMode())
+                LOGGER.warn("Инвентарь заполнен, предмет {} не может быть добавлен!", result.getItem());
         }
 
         currentRecipe = null;
@@ -171,8 +218,14 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
     @Override
     protected void saveAdditional(@NotNull CompoundTag tag) {
         super.saveAdditional(tag);
-        System.out.println("Сохранение данных NBT для " + this.worldPosition);
-        tag.put("Inventory", ContainerHelper.saveAllItems(new CompoundTag(), (NonNullList<ItemStack>) inventory));
+
+        if (Config.isDevMode())
+            System.out.println("Сохранение данных NBT для " + this.worldPosition);
+
+        CompoundTag inventoryTag = new CompoundTag();
+        ContainerHelper.saveAllItems(inventoryTag, (NonNullList<ItemStack>) inventory);
+        tag.put("Inventory", inventoryTag);
+
     }
 
 
@@ -195,59 +248,59 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
     @Override
     public void load(@NotNull CompoundTag tag) {
         super.load(tag); // Сначала базовая загрузка
-        System.out.println("Загрузка данных NBT для " + this.worldPosition);
+
+
+        //if (Config.isDevMode())
+            System.out.println("Загрузка данных NBT для " + this.worldPosition);
 
         // Не создаём новый список, а очищаем старый
-        if (inventory == null || inventory.size() != 32) {
-            inventory = NonNullList.withSize(32, ItemStack.EMPTY);
-        } else {
-            inventory.clear();
-        }
-
+        inventory.clear();
         ContainerHelper.loadAllItems(tag.getCompound("Inventory"), (NonNullList<ItemStack>) inventory);
     }
 
     @Override
     public @NotNull CompoundTag getUpdateTag() {
-        CompoundTag tag = super.getUpdateTag();
-        saveAdditional(tag);
-        return tag;
+        return saveWithoutMetadata();
     }
 
     public void sync() {
         if (level != null && !level.isClientSide) {
             System.out.println("[sync] Отправка данных клиенту для " + this.worldPosition);
             setChanged();
+            requestModelDataUpdate();  // ✅ Принудительное обновление
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
         }
     }
 
 
 
+
     @Override
     public void handleUpdateTag(CompoundTag tag) {
-        super.load(tag);
-        System.out.println("[handleUpdateTag] Клиент обновил инвентарь на " + this.worldPosition);
+        load(tag);
     }
 
 
 
     public boolean addItem(ItemStack stack, ItemEntity itemEntity) {
         if (stack.isEmpty()) {
-            System.out.println("Попытка добавить пустой стак!");
+            if (Config.isDevMode())
+                System.out.println("Попытка добавить пустой стак!");
             return false;
         }
 
-        System.out.println("Попытка добавить: " + stack.getCount() + " " + stack.getItem());
-
-        System.out.println("Текущее состояние инвентаря:");
-        for (int i = 0; i < inventory.size(); i++) {
-            System.out.println("Слот " + i + ": " + inventory.get(i));
+        if (Config.isDevMode()) {
+            System.out.println("Попытка добавить: " + stack.getCount() + " " + stack.getItem());
+            System.out.println("Текущее состояние инвентаря:");
+            for (int i = 0; i < inventory.size(); i++) {
+                System.out.println("Слот " + i + ": " + inventory.get(i));
+            }
         }
 
         for (int i = 0; i < inventory.size(); i++) {
             if (inventory.get(i).isEmpty()) {
-                System.out.println("Свободный слот найден: " + i);
+                if (Config.isDevMode())
+                    System.out.println("Свободный слот найден: " + i);
 
                 // Берём один предмет из стака
                 ItemStack singleItem = stack.copy();
@@ -259,19 +312,29 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
 
                 // Обновляем `ItemEntity`
                 if (stack.isEmpty()) {
-                    System.out.println("Все предметы использованы, удаляем ItemEntity!");
+                    if (Config.isDevMode())
+                        System.out.println("Все предметы использованы, удаляем ItemEntity!");
                     itemEntity.discard();
                 } else {
-                    System.out.println("Обновляем ItemEntity, осталось: " + stack.getCount());
+                    if (Config.isDevMode())
+                        System.out.println("Обновляем ItemEntity, осталось: " + stack.getCount());
                     itemEntity.setItem(stack);
                 }
 
-                setChanged();
+                // ***ВАЖНО: Обновляем данные и отправляем клиенту***
+                setChanged();  // Флаг, что данные изменились
+                if (level != null && !level.isClientSide) {
+                    level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+                }
+
                 return true;
             }
         }
 
-        System.out.println("Нет свободных слотов для предмета!");
+        if (Config.isDevMode())
+            System.out.println("Нет свободных слотов для предмета!");
+
+
         return false; // Нет свободных слотов
     }
 
@@ -281,7 +344,11 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
 
 
 
+
     public List<ItemStack> getItems() {
+        assert level != null;
+        if (Config.isDevMode())
+            System.out.println("getItems() вызван на " + (level.isClientSide ? "клиенте" : "сервере"));
         return inventory;
     }
 
@@ -318,7 +385,10 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
     @Override
     public void setItem(int slot, @NotNull ItemStack stack) {
         inventory.set(slot, stack);
+        this.setChanged();  // ✅ ОБЯЗАТЕЛЬНО!
+        sync();
     }
+
 
     @Override
     public void clearContent() {
