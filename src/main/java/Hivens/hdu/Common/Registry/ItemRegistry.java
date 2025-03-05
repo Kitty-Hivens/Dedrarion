@@ -6,6 +6,7 @@ import Hivens.hdu.Common.util.TooltipFuelItem;
 import Hivens.hdu.Common.util.TooltipItem;
 import Hivens.hdu.HDU;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -24,6 +25,15 @@ public class ItemRegistry {
 
     public static final RegistryObject<Item> ETHEREUM_DUST = Items.register("ethereum_dust",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> MNEMOSYNE_ALETA = Items.register("mnemosyne_aleta",
+            () -> new MnemosyneAletaItem(
+                    Tiers.DIAMOND,  // Базовый уровень прочности (можно изменить)
+                    -2,             // Модификатор урона (базовый урон минус 2)
+                    -2.4f,          // Скорость атаки
+                    new Item.Properties().stacksTo(1).durability(1000)
+            )
+    );
 
     public static final RegistryObject<Item> RUBY = Items.register("ruby",
             () -> new Item(new Item.Properties()));

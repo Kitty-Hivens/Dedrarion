@@ -38,6 +38,9 @@ public class CreativeTabRegistry {
                         // Food
                         pOutput.accept(ItemRegistry.FORBIDDEN_FRUIT.get());
 
+                        // Attack
+                        pOutput.accept(ItemRegistry.MNEMOSYNE_ALETA.get());
+
                         // Ore Blocks
                         pOutput.accept(BlockRegistry.ETHEREUM_ORE.get());
                         pOutput.accept(BlockRegistry.ETHEREUM_BLOCK.get());
@@ -54,6 +57,7 @@ public class CreativeTabRegistry {
                         pOutput.accept(BlockRegistry.EFTORIT_ORE.get());
                         pOutput.accept(BlockRegistry.DEEPSLATE_EFTORIT_ORE.get());
                         pOutput.accept(BlockRegistry.EFTORIT_BLOCK.get());
+
 
                         // Blocks
                         pOutput.accept(BlockRegistry.HOPE_STONE.get());
@@ -76,6 +80,7 @@ public class CreativeTabRegistry {
                         pOutput.accept(BlockRegistry.BROKEN_PLANKS.get());
                         pOutput.accept(BlockRegistry.EXTINGUISHED_TORCH.get());
                         pOutput.accept(BlockRegistry.PEDESTAL.get());
+
 
                     })
                     .build());
