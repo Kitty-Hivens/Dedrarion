@@ -6,6 +6,7 @@ import mezz.jei.api.registration.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.*;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
@@ -17,7 +18,7 @@ public final class JEICompat
     public static final ResourceLocation UID = new ResourceLocation(HDU.MODID, "jei_plugin");
 
     @Override
-    public ResourceLocation getPluginUid() {
+    public @NotNull ResourceLocation getPluginUid() {
         return UID;
     }
 
@@ -26,14 +27,15 @@ public final class JEICompat
     }
 
     @Override
-    public void registerCategories(IRecipeCategoryRegistration registration) {
+    public void registerCategories(@NotNull IRecipeCategoryRegistration registration) {
         // Добавить станции после
     }
 
     @Override
-    public void registerRecipes(IRecipeRegistration registration){
+    public void registerRecipes(@NotNull IRecipeRegistration registration){
         // Добавить рецепты после
 
+        assert Minecraft.getInstance().level != null;
         @SuppressWarnings("resource")
         RecipeManager manager = Minecraft.getInstance().level.getRecipeManager();
 

@@ -385,7 +385,7 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
     @Override
     public void setItem(int slot, @NotNull ItemStack stack) {
         inventory.set(slot, stack);
-        this.setChanged();  // ✅ ОБЯЗАТЕЛЬНО!
+        this.setChanged();
         sync();
     }
 
