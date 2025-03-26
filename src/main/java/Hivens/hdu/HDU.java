@@ -1,10 +1,12 @@
 package Hivens.hdu;
+
 import Hivens.hdu.Common.Registry.*;
 import Hivens.hdu.Common.compat.ModCompat;
 import Hivens.hdu.Common.loot.ModLootModifiers;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -16,7 +18,10 @@ public class HDU {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public HDU() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        // Регистрация конфигурационного файла; если его нет, Forge его создаст
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.configSpec, MODID + "_config.toml");
+
+        var modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ItemRegistry.register(modEventBus);
         BlockRegistry.register(modEventBus);
@@ -37,8 +42,13 @@ public class HDU {
         ModCompat.initCommon(event);
     }
 
-
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("HDU Common Setup Complete");
+
+        if (Config.isDevMode()) {
+            LOGGER.info("Development Mode is enabled.");
+        } else {
+            LOGGER.info("Development Mode is disabled.");
+        }
     }
 }

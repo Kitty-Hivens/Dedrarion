@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "hdu:smooth_hope_stone_stairs"
+          "name": "hdu:smooth_hope_stairs"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "hdu:blocks/smooth_hope_stone_stairs"
+  "random_sequence": "hdu:blocks/smooth_hope_stairs"
 }

@@ -11,45 +11,70 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 @OnlyIn(Dist.CLIENT)
 public class EftoritForgeRenderer implements BlockEntityRenderer<EftoritForgeEntity> {
     private final ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-    private static final float RADIUS = 0.3f; // Радиус расположения предметов вокруг центра
-    private static final float ITEM_SCALE = 0.5f; // Уменьшение размера предметов
-    private static final int MAX_ITEMS = 8; // Ограничение количества предметов в рендере
+    private static final float RADIUS = 0.4f; // Increased radius for better item spacing
+    private static final float ITEM_SCALE = 0.5f; // Scale of rendered items
+    private static final int MAX_ITEMS = 16; // Increased max items to show
 
     @Override
-    public void render(EftoritForgeEntity entity, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay) {
-        if (entity.getItems().isEmpty()) return;
+    public void render(EftoritForgeEntity entity, float partialTicks, @NotNull PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int light, int overlay) {
+        List<ItemStack> items = entity.getItems();
+        if (items.isEmpty()) return;
 
         poseStack.pushPose();
+
+        // Center of the block
         poseStack.translate(0.5, 1.0, 0.5);
 
-        float time = (System.currentTimeMillis() / 20) % 360; // Вращение каждый тик
+        // Calculate animation time (smooth rotation)
+        float time = (System.currentTimeMillis() / 20) % 360;
 
-        int itemCount = Math.min(entity.getItems().size(), MAX_ITEMS);
-        for (int i = 0; i < itemCount; i++) {
-            ItemStack stack = entity.getItems().get(i);
-            if (!stack.isEmpty()) {
+        // Filter out empty stacks and limit to MAX_ITEMS
+        int effectiveItemCount = 0;
+        for (ItemStack stack : items) {
+            if (!stack.isEmpty() && effectiveItemCount < MAX_ITEMS) {
+                effectiveItemCount++;
+            }
+        }
+
+        if (effectiveItemCount == 0) {
+            poseStack.popPose();
+            return;
+        }
+
+        // Render non-empty items
+        int renderedItems = 0;
+        for (ItemStack stack : items) {
+            if (!stack.isEmpty() && renderedItems < MAX_ITEMS) {
                 poseStack.pushPose();
 
-                // Распределение предметов по кругу
-                float angle = (360f / itemCount) * i;
-                double radians = Math.toRadians(angle + time); // Добавляем анимацию вращения
+                // Calculate angle for this item in radians
+                float angle = (360f / effectiveItemCount) * renderedItems;
+                double radians = Math.toRadians(angle + time);
 
+                // Position the item in a circle with vertical offset based on index
                 float xOffset = (float) Math.cos(radians) * RADIUS;
                 float zOffset = (float) Math.sin(radians) * RADIUS;
-                poseStack.translate(xOffset, 0.1, zOffset);
+                float yOffset = 0.1f + (renderedItems % 2) * 0.05f; // Alternating heights for better visibility
 
-                // Уменьшение размера предметов
+                poseStack.translate(xOffset, yOffset, zOffset);
                 poseStack.scale(ITEM_SCALE, ITEM_SCALE, ITEM_SCALE);
 
-                // Вращение предметов по Y
-                poseStack.mulPose(Axis.YP.rotationDegrees(time * 2)); // Плавное вращение предметов
+                // Rotate item to face outward
+                float itemRotation = angle + 90f + time * 2;
+                poseStack.mulPose(Axis.YP.rotationDegrees(itemRotation));
 
+                // Render the item
                 itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, light, overlay, poseStack, bufferSource, entity.getLevel(), 0);
+
                 poseStack.popPose();
+                renderedItems++;
             }
         }
 

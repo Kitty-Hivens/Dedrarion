@@ -48,6 +48,7 @@ public class BlockTagGenerator extends BlockTagsProvider {
                            BlockRegistry.DEEPSLATE_EFTORIT_ORE.get(),
                            BlockRegistry.EFTORIT_BLOCK.get(),
                            BlockRegistry.DEEPSLATE_EFTORIT_ORE.get(),
+                           BlockRegistry.EFTORIT_FORGE.get(),
 
                            BlockRegistry.HOPE_STONE.get(),
                            BlockRegistry.HOPE_STONE_STAIRS.get(),
