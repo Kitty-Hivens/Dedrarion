@@ -234,12 +234,13 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         oreCooking(p_248775_, RecipeSerializer.BLASTING_RECIPE, p_251504_, p_248846_, p_249735_, p_248783_, p_250303_, p_251984_, "_from_blasting");
     }
 
-    protected static void oreCooking(@NotNull Consumer<FinishedRecipe> pFinishedRecipeConsumer, @NotNull RecipeSerializer<? extends AbstractCookingRecipe> pCookingSeliazer, List<ItemLike> p_249619_, @NotNull RecipeCategory p_251154_, @NotNull ItemLike p_250066_, float p_251871_, int p_251316_, @NotNull String p_251450_, String p_249236_) {
+    protected static void oreCooking(@NotNull Consumer<FinishedRecipe> pFinishedRecipeConsumer, @NotNull RecipeSerializer<? extends AbstractCookingRecipe> pCookingSerializer, List<ItemLike> p_249619_, @NotNull RecipeCategory p_251154_, @NotNull ItemLike p_250066_, float p_251871_, int p_251316_, @NotNull String p_251450_, String p_249236_) {
         for(ItemLike itemlike : p_249619_) {
-            SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), p_251154_, p_250066_, p_251871_, p_251316_, pCookingSeliazer).group(p_251450_).unlockedBy(getHasName(itemlike), has(itemlike)).save(pFinishedRecipeConsumer, getItemName(p_250066_) + p_249236_ + "_" + getItemName(itemlike));
+            SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), p_251154_, p_250066_, p_251871_, p_251316_, pCookingSerializer).group(p_251450_).unlockedBy(getHasName(itemlike), has(itemlike)).save(pFinishedRecipeConsumer, getItemName(p_250066_) + p_249236_ + "_" + getItemName(itemlike));
         }
 
     }
+
 
 
     protected static void smeltingResultFromBase(@NotNull Consumer<FinishedRecipe> p_176740_, ItemLike p_176741_, ItemLike p_176742_) {

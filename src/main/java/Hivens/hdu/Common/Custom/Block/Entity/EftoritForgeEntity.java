@@ -49,8 +49,6 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
         return isCrafting;
     }
 
-
-
     public static void tick(Level level, BlockPos pos, BlockState state, EftoritForgeEntity entity) {
         EftoritForgeEntity.pos = pos;
         EftoritForgeEntity.state = state;
@@ -79,7 +77,6 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
     public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
         handleUpdateTag(pkt.getTag());
     }
-
 
     public void clientTick() {
         if (isCrafting) {
@@ -134,7 +131,6 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
         }
     }
 
-
     @Override
     public void setChanged() {
         super.setChanged();
@@ -142,9 +138,6 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
         }
     }
-
-
-
 
     private void craftItem() {
         if (currentRecipe == null) {
@@ -228,27 +221,8 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
             LOGGER.debug("Сохранение данных NBT для {}", this.worldPosition);
         }
 
-        CompoundTag inventoryTag = new CompoundTag();
-        ContainerHelper.saveAllItems(inventoryTag, (NonNullList<ItemStack>) inventory);
-        tag.put("Inventory", inventoryTag);
+        saveInventory(tag);
     }
-
-
-    public void processRecipe(EftoritForgeRecipe recipe) {
-        for (EftoritIngredient ingredient : recipe.getEftoritIngredients()) {
-            for (ItemStack stack : inventory) {
-                if (ingredient.ingredient().test(stack)) {
-                    if (ingredient.consume()) {
-                        stack.shrink(1);
-                    }
-                    break;
-                }
-            }
-        }
-    }
-
-
-
 
     @Override
     public void load(@NotNull CompoundTag tag) {
@@ -258,6 +232,16 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
             LOGGER.debug("Загрузка данных NBT для {}", this.worldPosition);
         }
 
+        loadInventory(tag);
+    }
+
+    private void saveInventory(CompoundTag tag) {
+        CompoundTag inventoryTag = new CompoundTag();
+        ContainerHelper.saveAllItems(inventoryTag, (NonNullList<ItemStack>) inventory);
+        tag.put("Inventory", inventoryTag);
+    }
+
+    private void loadInventory(CompoundTag tag) {
         inventory.clear();
         ContainerHelper.loadAllItems(tag.getCompound("Inventory"), (NonNullList<ItemStack>) inventory);
     }
@@ -380,7 +364,6 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
         sync();
     }
 
-
     @Override
     public void clearContent() {
         inventory.clear();
@@ -389,5 +372,18 @@ public class EftoritForgeEntity extends BlockEntity implements Container {
     @Override
     public boolean stillValid(@NotNull Player player) {
         return true;
+    }
+
+    public void processRecipe(EftoritForgeRecipe recipe) {
+        for (EftoritIngredient ingredient : recipe.getEftoritIngredients()) {
+            for (ItemStack stack : inventory) {
+                if (ingredient.ingredient().test(stack)) {
+                    if (ingredient.consume()) {
+                        stack.shrink(1);
+                    }
+                    break;
+                }
+            }
+        }
     }
 }
