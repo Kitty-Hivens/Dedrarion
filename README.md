@@ -63,10 +63,10 @@ This mod completely reworks and enhances vanilla Minecraft dungeons, introducing
 ## 📜 Лицензия | License | ライセンス
 
 ### 🇷🇺
-Этот мод распространяется по лицензии **[All Rights Reserved]**. Использование и модификация разрешены при соблюдении условий лицензии.
+Этот мод распространяется по лицензии **[GPL v3]**. Использование и модификация разрешены при соблюдении условий лицензии.
 
 ### 🇺🇸
-This mod is distributed under the **[All Rights Reserved]** license. Usage and modification are allowed under the terms of the license.
+This mod is distributed under the **[GPL v3]** license. Usage and modification are allowed under the terms of the license.
 
 ### 🇯🇵
-このモッドは **[All Rights Reserved]** ライセンスのもとで配布されています。ライセンスの条件に従う限り、使用および改変が許可されています。  
+このモッドは **[GPL v3]** ライセンスのもとで配布されています。ライセンスの条件に従う限り、使用および改変が許可されています。  
