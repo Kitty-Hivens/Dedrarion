@@ -124,24 +124,32 @@ public class EftoritForgeEntity extends BlockEntity { // Убираем 'impleme
     private void craftItem() {
         if (currentRecipe == null || level == null) return;
 
-        processRecipe(currentRecipe); // Уменьшаем ингредиенты
+        processRecipe(currentRecipe); // уменьшаем ингредиенты
 
         ItemStack result = currentRecipe.getResultItem(level.registryAccess());
         if (result.isEmpty()) return;
 
-        // Кладём результат в выходной слот. Так как у нас 1 предмет на слот, логика упрощается
-        if (itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty()) {
-            itemHandler.setStackInSlot(OUTPUT_SLOT, result.copy());
-        } else {
-            // Если выход занят, спавним в мир
+        // --- ищем свободный слот ---
+        boolean placed = false;
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
+            if (itemHandler.getStackInSlot(i).isEmpty()) {
+                itemHandler.setStackInSlot(i, result.copy());
+                placed = true;
+                break;
+            }
+        }
+
+        // если свободного слота не найдено, спавним в мир
+        if (!placed) {
             spawnResult(result.copy());
         }
 
         currentRecipe = null;
         isCrafting = false;
         craftTimer = 0;
-        // setChanged() и sync() будут вызваны автоматически через onContentsChanged
+        // setChanged() и sync() вызовутся автоматически через onContentsChanged
     }
+
 
     public void processRecipe(EftoritForgeRecipe recipe) {
         for (EftoritIngredient ingredient : recipe.getEftoritIngredients()) {
