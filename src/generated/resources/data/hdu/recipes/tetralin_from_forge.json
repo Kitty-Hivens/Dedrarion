@@ -1,0 +1,30 @@
+{
+  "type": "hdu:eftorit_forge",
+  "ingredients": [
+    {
+      "item": "minecraft:netherite_ingot"
+    },
+    {
+      "item": "hdu:ethereum"
+    },
+    {
+      "item": "hdu:ethereum"
+    },
+    {
+      "item": "minecraft:phantom_membrane"
+    },
+    {
+      "consume": false,
+      "item": "minecraft:heart_of_the_sea"
+    },
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "minecraft:diamond"
+    }
+  ],
+  "result": {
+    "item": "hdu:tetralin"
+  }
+}

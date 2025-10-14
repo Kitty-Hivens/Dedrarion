@@ -23,6 +23,7 @@ public class HDU {
         ModLootModifiers.register(modEventBus);
         ModCreativeTab.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+        ModEffects.register(modEventBus);
         ModRecipes.RECIPE_TYPES.register(modEventBus);
         ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
         modEventBus.addListener(this::setup);

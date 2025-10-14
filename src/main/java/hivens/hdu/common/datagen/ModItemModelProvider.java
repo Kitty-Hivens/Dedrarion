@@ -34,6 +34,11 @@ public class ModItemModelProvider extends net.minecraftforge.client.model.genera
         simpleItem(ModItems.FORBIDDEN_FRUIT);
 
         simpleItem(ModItems.MNEMOSYNE_ALETA);
+        simpleItem(ModItems.TETRALIN);
+        simpleItem(ModItems.ETHER_CORE);
+        simpleItem(ModItems.UNSTABLE_GUNPOWDER);
+        simpleItem(ModItems.MECHANICAL_PARTS);
+        simpleItem(ModItems.BROKEN_CARBON_PLATES);
 
         evenSimplerBlockItem(ModBlocks.HOPE_STONE_STAIRS);
         evenSimplerBlockItem(ModBlocks.SMOOTH_HOPE_STONE_STAIRS);

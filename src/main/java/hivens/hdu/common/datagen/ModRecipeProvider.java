@@ -272,6 +272,23 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                 ModItems.ETHEREUM.get() // Рецепт откроется, когда игрок подберет Этериум
         );
 
+        // В файле ModRecipeProvider.java, в методе buildRecipes()
+
+        eftoritForgeRecipe(pWriter,
+                "tetralin_from_forge",
+                ModItems.TETRALIN.get(),
+                List.of(
+                        new EftoritIngredient(Ingredient.of(Items.NETHERITE_INGOT), true),
+                        new EftoritIngredient(Ingredient.of(ModItems.ETHEREUM.get()), true), // Заменил Shards на слиток, так логичнее
+                        new EftoritIngredient(Ingredient.of(ModItems.ETHEREUM.get()), true),
+                        new EftoritIngredient(Ingredient.of(Items.PHANTOM_MEMBRANE), true),
+                        new EftoritIngredient(Ingredient.of(Items.HEART_OF_THE_SEA), false), // Сердце моря - катализатор!
+                        new EftoritIngredient(Ingredient.of(Items.DIAMOND), true),
+                        new EftoritIngredient(Ingredient.of(Items.DIAMOND), true)
+                ),
+                Items.NETHERITE_INGOT // Разблокируется, когда у игрока есть незерит
+        );
+
     }
 
 

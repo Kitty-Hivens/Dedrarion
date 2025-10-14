@@ -33,7 +33,7 @@ public class JEICompat implements IModPlugin {
     }
 
     @Override
-    public void registerCategories(IRecipeCategoryRegistration registration) {
+    public void registerCategories(@NotNull IRecipeCategoryRegistration registration) {
         LOGGER.info(">>>>>>>>>> [HDU-JEI] Step 1: Registering Categories... <<<<<<<<<<");
         try {
             registration.addRecipeCategories(new EftoritForgeRecipeCategory(
@@ -45,7 +45,7 @@ public class JEICompat implements IModPlugin {
     }
 
     @Override
-    public void registerRecipes(IRecipeRegistration registration) {
+    public void registerRecipes(@NotNull IRecipeRegistration registration) {
         LOGGER.info(">>>>>>>>>> [HDU-JEI] Step 2: Registering Recipes... <<<<<<<<<<");
         try {
             Minecraft minecraft = Minecraft.getInstance();
@@ -53,7 +53,7 @@ public class JEICompat implements IModPlugin {
                 RecipeManager recipeManager = minecraft.level.getRecipeManager();
                 List<EftoritForgeRecipe> recipes = recipeManager.getAllRecipesFor(ModRecipes.EFTORIT_FORGE_RECIPE_TYPE.get());
                 registration.addRecipes(EftoritForgeRecipeCategory.TYPE, recipes);
-                LOGGER.info(">>>>>>>>>> [HDU-JEI] Step 2 SUCCESS! Found " + recipes.size() + " recipes. <<<<<<<<<<");
+                LOGGER.info(">>>>>>>>>> [HDU-JEI] Step 2 SUCCESS! Found {} recipes. <<<<<<<<<<", recipes.size());
             } else {
                 LOGGER.warn(">>>>>>>>>> [HDU-JEI] Step 2 SKIPPED! Minecraft level was null. <<<<<<<<<<");
             }
@@ -63,7 +63,7 @@ public class JEICompat implements IModPlugin {
     }
 
     @Override
-    public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
+    public void registerRecipeCatalysts(@NotNull IRecipeCatalystRegistration registration) {
         LOGGER.info(">>>>>>>>>> [HDU-JEI] Step 3: Registering Catalysts... <<<<<<<<<<");
         try {
             registration.addRecipeCatalyst(new ItemStack(ModBlocks.EFTORIT_FORGE.get()), EftoritForgeRecipeCategory.TYPE);
