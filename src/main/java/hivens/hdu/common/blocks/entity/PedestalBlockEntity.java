@@ -3,6 +3,7 @@ package hivens.hdu.common.blocks.entity;
 import hivens.hdu.common.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -10,7 +11,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
-import java.util.Objects;
 
 public class PedestalBlockEntity extends BlockEntity {
     private ItemStack storedItem = ItemStack.EMPTY;
@@ -18,6 +18,8 @@ public class PedestalBlockEntity extends BlockEntity {
     public PedestalBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.PEDESTAL_ENTITY.get(), pos, state);
     }
+
+    // --- Методы для доступа к инвентарю ---
 
     public boolean hasItem() {
         return !storedItem.isEmpty();
@@ -29,29 +31,31 @@ public class PedestalBlockEntity extends BlockEntity {
 
     public void setItem(ItemStack item) {
         this.storedItem = item;
-        setChanged();
-        assert level != null;
-        level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+        setChanged(); // Помечаем для сохранения
+        sync();       // Отправляем обновление клиентам
     }
 
-
     public ItemStack removeItem() {
-        ItemStack item = storedItem;
-        storedItem = ItemStack.EMPTY;
+        ItemStack item = this.storedItem;
+        this.storedItem = ItemStack.EMPTY;
         setChanged();
-        assert level != null;
-        level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+        sync();
         return item;
     }
 
+    // --- Централизованный метод синхронизации ---
+    public void sync() {
+        if (level != null && !level.isClientSide) {
+            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+        }
+    }
 
-    // *** Сохранение в NBT ***
+    // *** Сохранение и загрузка NBT ***
     @Override
     protected void saveAdditional(@NotNull CompoundTag tag) {
         super.saveAdditional(tag);
-        CompoundTag itemTag = new CompoundTag();
-        storedItem.save(itemTag);
-        tag.put("StoredItem", itemTag);
+        // Более короткий способ сохранить ItemStack
+        tag.put("StoredItem", storedItem.save(new CompoundTag()));
     }
 
     @Override
@@ -62,7 +66,7 @@ public class PedestalBlockEntity extends BlockEntity {
         }
     }
 
-    // *** Синхронизация с клиентом ***
+    // *** Стандартная реализация синхронизации с клиентом ***
     @Nullable
     @Override
     public ClientboundBlockEntityDataPacket getUpdatePacket() {
@@ -70,19 +74,16 @@ public class PedestalBlockEntity extends BlockEntity {
     }
 
     @Override
-    public void onDataPacket(net.minecraft.network.Connection net, ClientboundBlockEntityDataPacket pkt) {
-        this.load(Objects.requireNonNull(pkt.getTag()));
-    }
-
-    @Override
     public @NotNull CompoundTag getUpdateTag() {
-        CompoundTag tag = new CompoundTag();
-        saveAdditional(tag);
-        return tag;
+        // Этот метод автоматически вызывается getUpdatePacket()
+        return saveWithoutMetadata();
     }
 
     @Override
-    public void handleUpdateTag(CompoundTag tag) {
-        load(tag);
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+        // Этот метод вызывается на клиенте при получении пакета
+        if (pkt.getTag() != null) {
+            handleUpdateTag(pkt.getTag());
+        }
     }
 }

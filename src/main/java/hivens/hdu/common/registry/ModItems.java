@@ -2,7 +2,7 @@ package hivens.hdu.common.registry;
 
 import hivens.hdu.common.Item.MagicDetectorItem;
 import hivens.hdu.common.Item.MnemosyneAletaItem;
-import hivens.hdu.common.util.TooltipFoodItem;
+import hivens.hdu.common.util.ModTooltipFoodItem;
 import hivens.hdu.common.util.TooltipFuelItem;
 import hivens.hdu.common.util.TooltipItem;
 import hivens.hdu.HDU;
@@ -48,7 +48,7 @@ public class ModItems {
             () -> new MagicDetectorItem(new Item.Properties()));
 
     public static final RegistryObject<Item> FORBIDDEN_FRUIT = Items.register("forbidden_fruit",
-            () -> new TooltipFoodItem(new Item.Properties().food(ModFood.FORBIDDEN_FRUIT), "tooltip.item.hdu.forbidden_fruit"));
+            () -> new ModTooltipFoodItem(new Item.Properties().food(ModFood.FORBIDDEN_FRUIT), "tooltip.item.hdu.forbidden_fruit"));
 
     public static final RegistryObject<Item> FUEL_OF_PROMISES = Items.register("fuel_of_promises",
             () -> new TooltipFuelItem(new Item.Properties(), 400, "tooltip.item.hdu.fuel_of_promises"));

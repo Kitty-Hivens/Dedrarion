@@ -42,7 +42,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                            ModBlocks.RAW_ETHEREUM_BLOCK.get(),
                            ModBlocks.ETHEREUM_BLOCK.get(),
                            ModBlocks.RUBY_ORE.get(),
-                           ModBlocks.RUBY_BLOCK.get(),
+                           ModBlocks.DEEPSLATE_RUBY_ORE.get(),
                            ModBlocks.RUBY_BLOCK.get(),
 
                            ModBlocks.EFTORIT_ORE.get(),
@@ -111,6 +111,9 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ModBlocks.SMOOTH_HOPE_BRICK_STAIRS.get(),
                         ModBlocks.HOPE_SHARD_BRICK_STAIRS.get()
                 );
+
+        this.tag(ModTags.Blocks.NEEDS_ARTIFACT_TOOL);
+
 
         this.tag(BlockTags.STAIRS)
                 .add(

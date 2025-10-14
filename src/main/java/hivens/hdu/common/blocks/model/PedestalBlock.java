@@ -48,7 +48,7 @@ public class PedestalBlock extends BaseEntityBlock {
                 ItemStack heldItem = player.getItemInHand(hand);
 
                 if (pedestal.hasItem()) {
-                    player.addItem(pedestal.removeItem());
+                    player.getInventory().placeItemBackInInventory(pedestal.removeItem());
                 } else if (!heldItem.isEmpty()) {
                     pedestal.setItem(heldItem.copyWithCount(1));
                     heldItem.shrink(1);

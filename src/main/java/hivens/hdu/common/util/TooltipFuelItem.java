@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class TooltipFuelItem extends FuelItem {
+public class TooltipFuelItem extends ModFuelItem {
     private final String tooltipKey;
 
     public TooltipFuelItem(Item.Properties properties, int burnTime, String tooltipKey) {

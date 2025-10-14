@@ -9,10 +9,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class TooltipFoodItem extends Item {
+public class ModTooltipFoodItem extends Item {
     private final String tooltipKey;
 
-    public TooltipFoodItem(Properties properties, String tooltipKey) {
+    public ModTooltipFoodItem(Properties properties, String tooltipKey) {
         super(properties);
         this.tooltipKey = tooltipKey;
     }

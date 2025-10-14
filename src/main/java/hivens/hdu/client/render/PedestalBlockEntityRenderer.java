@@ -29,14 +29,6 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
     @Override
     public void render(PedestalBlockEntity pBlockEntity, float pPartialTick, @NotNull PoseStack pPoseStack,
                        @NotNull MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
-        // Запрос обновления с сервера
-        if (pBlockEntity.getLevel() != null && pBlockEntity.getLevel().isClientSide) {
-            assert Minecraft.getInstance().player != null;
-            Minecraft.getInstance().player.connection.sendCommand("data get block "
-                    + pBlockEntity.getBlockPos().getX() + " "
-                    + pBlockEntity.getBlockPos().getY() + " "
-                    + pBlockEntity.getBlockPos().getZ());
-        }
 
         ItemStack itemStack = pBlockEntity.getItem();
 
