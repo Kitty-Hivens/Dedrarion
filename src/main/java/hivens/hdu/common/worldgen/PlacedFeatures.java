@@ -24,25 +24,29 @@ public class PlacedFeatures {
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
+        // Этериум: Самый редкий, встречается только глубоко. Пик на Y=-57.
         register(context, ETHEREUM_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ConfiguredFeatures.OVERWORLD_ETHEREUM_ORE_KEY),
-                OrePlacement.rareOrePlacement(1,
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-50))));
-        register(context, RUBY_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ConfiguredFeatures.OVERWORLD_RUBY_ORE_KEY),
-                OrePlacement.commonOrePlacement(7,
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
-        register(context, EFTORIT_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ConfiguredFeatures.OVERWORLD_EFTORIT_ORE_KEY),
-                OrePlacement.commonOrePlacement(4,
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(40))));
-        register(context, HOPE_STONE_PLACED_KEY, configuredFeatures.getOrThrow(ConfiguredFeatures.OVERWORLD_HOPE_STONE_ORE_KEY),
-                OrePlacement.rareOrePlacement(2,
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-30))));
+                OrePlacement.commonOrePlacement(1, // 1 жила на чанк
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-50))));
 
+        // Рубин: Очень распространен, но имеет свой пик. Пик на Y=8.
+        register(context, RUBY_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ConfiguredFeatures.OVERWORLD_RUBY_ORE_KEY),
+                OrePlacement.commonOrePlacement(7, // 7 жил на чанк
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
+
+        // Эфторит: Реже, чем рубин, и глубже. Пик на Y=-12.
+        register(context, EFTORIT_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ConfiguredFeatures.OVERWORLD_EFTORIT_ORE_KEY),
+                OrePlacement.commonOrePlacement(4, // 4 жилы на чанк
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(40))));
+
+        // Камень надежды: Встречается только глубоко, большими залежами. Пик на Y=-47.
+        register(context, HOPE_STONE_PLACED_KEY, configuredFeatures.getOrThrow(ConfiguredFeatures.OVERWORLD_HOPE_STONE_ORE_KEY),
+                OrePlacement.commonOrePlacement(2, // 2 жилы на чанк
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-30))));
     }
 
-
-
-    public static ResourceKey<PlacedFeature> registerKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(HDU.MOD_ID, name));
+    private static ResourceKey<PlacedFeature> registerKey(String name) {
+        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(HDU.MOD_ID, name));
     }
 
     private static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration,

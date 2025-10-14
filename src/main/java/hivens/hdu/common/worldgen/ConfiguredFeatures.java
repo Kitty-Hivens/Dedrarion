@@ -1,6 +1,6 @@
 package hivens.hdu.common.worldgen;
 
-import hivens.hdu.common.registry.BlockRegistry;
+import hivens.hdu.common.registry.ModBlocks;
 import hivens.hdu.HDU;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -30,14 +30,14 @@ public class ConfiguredFeatures {
         RuleTest deepslateReplaceable = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
 
         List<OreConfiguration.TargetBlockState> overworldRubyOres = List.of(
-                OreConfiguration.target(stoneReplaceable, BlockRegistry.RUBY_ORE.get().defaultBlockState()),
-                OreConfiguration.target(deepslateReplaceable, BlockRegistry.DEEPSLATE_RUBY_ORE.get().defaultBlockState()
+                OreConfiguration.target(stoneReplaceable, ModBlocks.RUBY_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceable, ModBlocks.DEEPSLATE_RUBY_ORE.get().defaultBlockState()
                 ));
 
         List<OreConfiguration.TargetBlockState> overworldEftoritOres = List.of(
-                OreConfiguration.target(stoneReplaceable, BlockRegistry.EFTORIT_ORE.get().defaultBlockState()),
-                OreConfiguration.target(deepslateReplaceable, BlockRegistry.EFTORIT_ORE.get().defaultBlockState()
-                ));
+                OreConfiguration.target(stoneReplaceable, ModBlocks.EFTORIT_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceable, ModBlocks.DEEPSLATE_EFTORIT_ORE.get().defaultBlockState()) // <-- ИСПРАВЛЕНО
+        );
 
 
         register(context,
@@ -45,7 +45,7 @@ public class ConfiguredFeatures {
                 Feature.ORE,
                 new OreConfiguration(
                         deepslateReplaceable,
-                        BlockRegistry.ETHEREUM_ORE.get().defaultBlockState(),
+                        ModBlocks.ETHEREUM_ORE.get().defaultBlockState(),
                         3));
 
         register(context,
@@ -67,7 +67,7 @@ public class ConfiguredFeatures {
                 Feature.ORE,
                 new OreConfiguration(
                         deepslateReplaceable,
-                        BlockRegistry.HOPE_STONE.get().defaultBlockState(),
+                        ModBlocks.HOPE_STONE.get().defaultBlockState(),
                         64));
 
 
@@ -75,7 +75,7 @@ public class ConfiguredFeatures {
 
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(HDU.MOD_ID, name));
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(HDU.MOD_ID, name));
     }
 
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstapContext<ConfiguredFeature<?, ?>> context,

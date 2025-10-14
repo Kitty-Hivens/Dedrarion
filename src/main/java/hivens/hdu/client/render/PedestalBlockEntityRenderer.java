@@ -1,11 +1,10 @@
 package hivens.hdu.client.render;
 
-import hivens.hdu.common.blocks.Entity.PedestalBlockEntity;
+import hivens.hdu.common.blocks.entity.PedestalBlockEntity;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
-import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
@@ -23,7 +22,7 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
     private final ItemRenderer itemRenderer;
 
-    public PedestalBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
+    public PedestalBlockEntityRenderer() {
         this.itemRenderer = Minecraft.getInstance().getItemRenderer();
     }
 

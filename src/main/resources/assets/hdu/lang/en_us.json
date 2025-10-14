@@ -9,56 +9,54 @@
   "item.hdu.fuel_of_promises": "Fuel Of Promises",
   "item.hdu.forbidden_fruit": "Forbidden Fruit",
   "item.hdu.catalyst_of_debauchery" : "Catalyst of Debauchery",
-
-
+  "item.hdu.mnemosyne_aleta": "Mnemosyne and Aleta",
   "block.hdu.ethereum_ore": "Ethereum Ore",
   "block.hdu.ethereum_block": "Block of Ethereum",
   "block.hdu.raw_ethereum_block": "Block of Raw Ethereum",
-
   "block.hdu.ruby_ore": "Ruby Ore",
   "block.hdu.deepslate_ruby_ore": "Deepslate Ruby Ore",
   "block.hdu.ruby_block": "Ruby Block",
-
   "block.hdu.eftorit_ore": "Eftorit Ore",
   "block.hdu.deepslate_eftorit_ore": "Deepslate Eftorit Ore",
   "block.hdu.eftorit_block": "Eftorit Block",
   "block.hdu.eftorit_forge": "Eftorit Forge",
-
   "block.hdu.hope_stone": "Hope Stone",
   "block.hdu.smooth_hope_stone": "Smooth Hope Stone",
   "block.hdu.hope_shards": "Hope Shards",
-
   "block.hdu.hope_stone_bricks": "Hope Stone Bricks",
   "block.hdu.smooth_hope_bricks": "Smooth Hope Bricks",
   "block.hdu.hope_shard_bricks": "Hope Shard Bricks",
-
   "block.hdu.hope_stone_stairs": "Hope Stone Stairs",
   "block.hdu.smooth_hope_stairs": "Smooth Hope Stairs",
   "block.hdu.hope_shard_stairs": "Hope Shard Stairs",
-
   "block.hdu.hope_brick_stairs": "Hope Brick Stairs",
   "block.hdu.smooth_hope_brick_stairs": "Smooth Hope Brick Stairs",
   "block.hdu.hope_shard_brick_stairs": "Hope Shard Brick Stairs",
-
   "block.hdu.broken_planks": "Broken Planks",
   "block.hdu.extinguished_torch": "Extinguished Torch",
   "block.hdu.pedestal": "Pedestal",
-
   "creativetab.hdu_tab": "Dedrarion Underground Tab",
   "tooltip.item.hdu.metal_detector": "§bIt seems that his energy is tied only to magic",
   "tooltip.item.hdu.ethereum": "§eA certain crystal that seems lighter than clouds",
   "tooltip.item.hdu.fuel_of_promises": "§4Who should we thank for this?",
   "tooltip.item.hdu.forbidden_fruit": "§eWho are you willing to give up for this?",
-
+  "tooltip.hdu.mnemosyne_aleta.aleta_mode": "§eAleta Mode (Day)",
+  "tooltip.hdu.mnemosyne_aleta.aleta_desc1": "Attacks ignore some armor.",
+  "tooltip.hdu.mnemosyne_aleta.aleta_desc2": "RMB: Wave of Insight (highlights enemies).",
+  "tooltip.hdu.mnemosyne_aleta.mnemosyne_mode": "§5Mnemosyne Mode (Night)",
+  "tooltip.hdu.mnemosyne_aleta.mnemosyne_desc": "Kills empower the sword and apply Wither.",
   "event.hdu.creativehandler.success": "Nice to meet you",
   "event.hdu.creativehandler.failure": "You are failure, %s",
-
   "advancement.hdu.seeker_of_magic.title": "Seeker of Magic",
   "advancement.hdu.seeker_of_magic.description": "Are you our young sleuth?",
-
   "advancement.hdu.white_prince.title": "White Prince",
   "advancement.hdu.white_prince.description": "And you dare call yourself a king?",
-
   "advancement.hdu.magic_forger.title": "Magic Forger",
-  "advancement.hdu.magic_forger.description": "Get Eftorit Anvil"
+  "advancement.hdu.magic_forger.description": "Get Eftorit Anvil",
+  "tooltip.hdu.jei.catalyst": "§bCatalyst (not consumed)",
+  "tooltip.hdu.jei.nbt_source": "§eNBT Source (repairs and copies tags)",
+  "advancement.hdu.dedrarion_underground.title": "Dedrarion Underground",
+  "advancement.hdu.dedrarion_underground.description": "Myths from the Depths",
+  "advancement.hdu.collector_of_jewelry.title": "Jewelry collector",
+  "advancement.hdu.collector_of_jewelry.description": "Find all the gems"
 }

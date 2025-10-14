@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "hdu:eftorit_ore"
+          "Name": "hdu:deepslate_eftorit_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

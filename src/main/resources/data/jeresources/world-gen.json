@@ -1,0 +1,28 @@
+{
+  "entries": [
+    {
+      "ore": "hdu:ethereum_ore",
+      "id": "hdu:ethereum_ore_placed"
+    },
+    {
+      "ore": "hdu:ruby_ore",
+      "id": "hdu:ruby_ore_placed"
+    },
+    {
+      "ore": "hdu:deepslate_ruby_ore",
+      "id": "hdu:ruby_ore_placed"
+    },
+    {
+      "ore": "hdu:eftorit_ore",
+      "id": "hdu:eftorit_ore_placed"
+    },
+    {
+      "ore": "hdu:deepslate_eftorit_ore",
+      "id": "hdu:eftorit_ore_placed"
+    },
+    {
+      "ore": "hdu:hope_stone",
+      "id": "hdu:hope_stone_placed"
+    }
+  ]
+}

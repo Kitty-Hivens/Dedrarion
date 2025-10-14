@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public record EftoritForgeRecipe(ResourceLocation id, NonNullList<EftoritIngredient> ingredients,
                                  ItemStack output) implements Recipe<Container> {
@@ -38,11 +39,48 @@ public record EftoritForgeRecipe(ResourceLocation id, NonNullList<EftoritIngredi
         return requiredIngredients.isEmpty();
     }
 
+    /**
+     * Вспомогательный метод для поиска предмета в инвентаре, который соответствует
+     * нашему ингредиенту с флагом copyNbt = true.
+     */
+    private Optional<ItemStack> findNbtSourceIngredient(Container container) {
+        // Ищем в рецепте ингредиент, который является источником NBT
+        Optional<EftoritIngredient> nbtIngredient = getEftoritIngredients().stream()
+                .filter(EftoritIngredient::copyNbt)
+                .findFirst();
+
+        if (nbtIngredient.isPresent()) {
+            // Ищем в реальном инвентаре предмет, который подходит под этот ингредиент
+            for (int i = 0; i < container.getContainerSize(); i++) {
+                ItemStack stackInSlot = container.getItem(i);
+                if (nbtIngredient.get().ingredient().test(stackInSlot)) {
+                    return Optional.of(stackInSlot);
+                }
+            }
+        }
+
+        return Optional.empty();
+    }
 
     @Override
-    public @NotNull ItemStack assemble(@NotNull Container p_44001_, @NotNull RegistryAccess p_267165_) {
-        return output.copy();
+    public @NotNull ItemStack assemble(@NotNull Container container, @NotNull RegistryAccess registryAccess) {
+        // 1. Берем базовый результат из рецепта (например, новая целая кирка)
+        final ItemStack result = getResultItem(registryAccess).copy();
+
+        // 2. Ищем ингредиент, помеченный как источник NBT
+        findNbtSourceIngredient(container).ifPresent(sourceStack -> {
+            // 3. Если у найденного предмета есть NBT-теги, копируем их
+            if (sourceStack.hasTag()) {
+                result.setTag(sourceStack.getTag().copy());
+            }
+            // 4. Устанавливаем прочность на 0 (полностью чиним)
+            result.setDamageValue(0);
+        });
+
+        return result;
     }
+
+
 
 
     @Override

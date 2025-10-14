@@ -1,12 +1,10 @@
 package hivens.hdu;
 
-import hivens.hdu.common.registry.*;
 import hivens.hdu.common.compat.ModCompat;
+import hivens.hdu.common.registry.*;
 import hivens.hdu.common.loot.ModLootModifiers;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -20,11 +18,11 @@ public class HDU {
     public HDU(FMLJavaModLoadingContext context) {
         var modEventBus = context.getModEventBus();
 
-        ItemRegistry.register(modEventBus);
-        BlockRegistry.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
         ModLootModifiers.register(modEventBus);
-        CreativeTabRegistry.register(modEventBus);
-        BlockEntitiesRegistry.register(modEventBus);
+        ModCreativeTab.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         ModRecipes.RECIPE_TYPES.register(modEventBus);
         ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
         modEventBus.addListener(this::setup);

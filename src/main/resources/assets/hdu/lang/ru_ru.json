@@ -8,57 +8,55 @@
   "item.hdu.eftorit": "Эфторит",
   "item.hdu.fuel_of_promises": "Топливо Обещаний",
   "item.hdu.forbidden_fruit": "Запретный Плод",
-  "item.hdu.catalyst_of_debauchery" : "Каталист Распутия",
-
-
+  "item.hdu.catalyst_of_debauchery": "Каталист Распутия",
+  "item.hdu.mnemosyne_aleta": "Мнемозина и Алета",
   "block.hdu.ethereum_ore": "Руда Эфириума",
   "block.hdu.ethereum_block": "Блок Эфириума",
   "block.hdu.raw_ethereum_block": "Блок Необработанного Эфириума",
-
   "block.hdu.ruby_ore": "Рубиновая руда",
   "block.hdu.deepslate_ruby_ore": "Рубиноносный глубинный сланец",
   "block.hdu.ruby_block": "Рубиновый блок",
-
   "block.hdu.eftorit_ore": "Эфторитовая руда",
   "block.hdu.deepslate_eftorit_ore": "Эфторитоносный глубинный сланец",
   "block.hdu.eftorit_block": "Эфторитовый блок",
   "block.hdu.eftorit_forge": "Эфторитовая наковальня",
-
   "block.hdu.hope_stone": "Камень Надежды",
   "block.hdu.smooth_hope_stone": "Гладкий Камень Надежды",
   "block.hdu.hope_shards": "Осколки Надежды",
-
   "block.hdu.hope_stone_bricks": "Кирпичи из Камня Надежды",
   "block.hdu.smooth_hope_bricks": "Кирпичи из Гладкого Камня Надежды",
   "block.hdu.hope_shard_bricks": "Кирпичи из Осколков Надежды",
-
   "block.hdu.hope_stone_stairs": "Ступеньки из Камня Надежды",
   "block.hdu.smooth_hope_stairs": "Ступеньки из Гладкого Камня Надежды",
   "block.hdu.hope_shard_stairs": "Ступеньки из Осколков Надежды",
-
   "block.hdu.hope_brick_stairs": "Ступеньки из Кирпичей Надежды",
   "block.hdu.smooth_hope_brick_stairs": "Ступеньки из Гладких Кирпичей Надежды",
   "block.hdu.hope_shard_brick_stairs": "Ступеньки из Кирпичей из Осколков Надежды",
-
   "block.hdu.broken_planks": "Поломанные доски",
   "block.hdu.extinguished_torch": "Потушенный факел",
   "block.hdu.pedestal": "Пьедестал",
-
   "creativetab.hdu_tab": "Подземелье Dedrarion",
   "tooltip.item.hdu.metal_detector": "§bКажется, его энергия связана лишь только с магией",
   "tooltip.item.hdu.ethereum": "§eКристалл, кажется что он легче облаков",
   "tooltip.item.hdu.fuel_of_promises": "§4И кого стоит за это благодарить?",
   "tooltip.item.hdu.forbidden_fruit": "§eКого вы готовы отдать ради этого?",
-
+  "tooltip.hdu.mnemosyne_aleta.aleta_mode": "§eРежим Алеты (День)",
+  "tooltip.hdu.mnemosyne_aleta.aleta_desc1": "Атаки игнорируют часть брони.",
+  "tooltip.hdu.mnemosyne_aleta.aleta_desc2": "ПКМ: Волна Прозрения (подсвечивает врагов).",
+  "tooltip.hdu.mnemosyne_aleta.mnemosyne_mode": "§5Режим Мнемозины (Ночь)",
+  "tooltip.hdu.mnemosyne_aleta.mnemosyne_desc": "Убийства усиливают меч и накладывают Увядание.",
   "event.hdu.creativehandler.success": "Рад знакомству",
   "event.hdu.creativehandler.failure": "Ты ничтожество, %s",
-
   "advancement.hdu.seeker_of_magic.title": "Искатель Магии",
   "advancement.hdu.seeker_of_magic.description": "Ты у нас молодой ищейка?",
-
   "advancement.hdu.white_prince.title": "Белый Принц",
   "advancement.hdu.white_prince.description": "И ты смеешь называть себя королём?",
-
   "advancement.hdu.magic_forger.title": "Магический ковщик",
-  "advancement.hdu.magic_forger.description": "Бей, бей, бей! Разрушение это искусство!"
+  "advancement.hdu.magic_forger.description": "Бей, бей, бей! Разрушение это искусство!",
+  "tooltip.hdu.jei.catalyst": "§bКатализатор (не тратится)",
+  "tooltip.hdu.jei.nbt_source": "§eИсточник NBT (чинит и копирует теги)",
+  "advancement.hdu.dedrarion_underground.title": "Подземелье Дедрариона",
+  "advancement.hdu.dedrarion_underground.description": "Мифы с глубин",
+  "advancement.hdu.collector_of_jewelry.title": "Собиратель драгоценностей",
+  "advancement.hdu.collector_of_jewelry.description": "Найдите все блестяшки"
 }

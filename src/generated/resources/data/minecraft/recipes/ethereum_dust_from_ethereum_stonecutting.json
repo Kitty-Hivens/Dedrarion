@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "hdu:ethereum"
-  },
-  "result": "hdu:ethereum_dust"
-}

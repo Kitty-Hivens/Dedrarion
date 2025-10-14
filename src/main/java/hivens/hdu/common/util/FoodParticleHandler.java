@@ -1,6 +1,6 @@
 package hivens.hdu.common.util;
 
-import hivens.hdu.common.registry.ItemRegistry;
+import hivens.hdu.common.registry.ModItems;
 import hivens.hdu.HDU;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.player.Player;
@@ -19,7 +19,7 @@ public class FoodParticleHandler {
         Player player = event.player;
 
 
-        if (player.getUseItem().getItem() == ItemRegistry.FORBIDDEN_FRUIT.get()) {
+        if (player.getUseItem().getItem() == ModItems.FORBIDDEN_FRUIT.get()) {
             tickCounter++;
 
             if (tickCounter >= 15) {
