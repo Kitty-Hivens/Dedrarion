@@ -3,7 +3,6 @@ package hivens.hdu.common.Item;
 import hivens.hdu.common.registry.ModEffects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -45,7 +44,7 @@ public class TetralinSwordItem extends SwordItem {
 
         // Определяем фазу и применяем эффекты
         Phase phase = determinePhase(isInAir, charge, hasResonanceBuff);
-        applyPhaseEffects(phase, stack, player, target, charge);
+        applyPhaseEffects(phase, player, target, charge);
 
         stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(EquipmentSlot.MAINHAND));
         return true;
@@ -59,7 +58,7 @@ public class TetralinSwordItem extends SwordItem {
         return Phase.SLASH;
     }
 
-    private void applyPhaseEffects(Phase phase, ItemStack stack, Player player, LivingEntity target, float charge) {
+    private void applyPhaseEffects(Phase phase, Player player, LivingEntity target, float charge) {
         Level level = player.level();
         if (level.isClientSide) return; // Вся логика - на сервере
         
