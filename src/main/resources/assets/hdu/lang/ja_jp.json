@@ -10,6 +10,12 @@
   "item.hdu.forbidden_fruit": "禁断の果実",
   "item.hdu.catalyst_of_debauchery": "堕落の触媒",
   "item.hdu.mnemosyne_aleta": "ムネモシュネとアレタ",
+  "item.hdu.tetralin": "Tetralin",
+  "effect.hdu.bleeding": "Bleeding",
+  "effect.hdu.armor_reduction": "Armor_reduction",
+  "effect.hdu.phase_energy": "Phase energy",
+  "effect.hdu.resonance": "Ethereum resonance",
+  "tooltip.hdu.tetralin.desc": "A blade that changes shape depending on the attack.",
   "block.hdu.ethereum_ore": "エーテル鉱石",
   "block.hdu.ethereum_block": "エーテルブロック",
   "block.hdu.raw_ethereum_block": "未精製のエーテルブロック",
@@ -58,5 +64,9 @@
   "advancement.hdu.dedrarion_underground.title": "デドラリオン地下",
   "advancement.hdu.dedrarion_underground.description": "深層からの神話",
   "advancement.hdu.collector_of_jewelry.title": "ジュエリーコレクター",
-  "advancement.hdu.collector_of_jewelry.description": "すべての宝石を見つける"
+  "advancement.hdu.collector_of_jewelry.description": "すべての宝石を見つける",
+  "tooltip.item.hdu.detonation_blade": "Detonation Blade",
+  "tooltip.item.hdu.unstable_gunpowder.unstable": "",
+  "tooltip.item.hdu.unstable_gunpowder.stable": "",
+  "tooltip.item.hdu.unstable_gunpowder.danger": ""
 }

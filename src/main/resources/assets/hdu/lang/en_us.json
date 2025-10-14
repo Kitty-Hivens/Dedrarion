@@ -64,5 +64,18 @@
   "advancement.hdu.dedrarion_underground.title": "Dedrarion Underground",
   "advancement.hdu.dedrarion_underground.description": "Myths from the Depths",
   "advancement.hdu.collector_of_jewelry.title": "Jewelry collector",
-  "advancement.hdu.collector_of_jewelry.description": "Find all the gems"
+  "advancement.hdu.collector_of_jewelry.description": "Find all the gems",
+  "tooltip.item.hdu.detonation_blade": "Detonation Blade",
+  "tooltip.item.hdu.unstable_gunpowder.unstable": "",
+  "tooltip.item.hdu.unstable_gunpowder.stable": "",
+  "tooltip.item.hdu.unstable_gunpowder.danger": "",
+  "item.hdu.broken_carbon_plates": "Осколки углеродных пластин",
+  "item.hdu.detonation_blade": "Меч Детонации",
+  "item.hdu.ether_core": "Энергетическое ядро",
+  "item.hdu.jokers_companion": "Друг весельчака",
+  "item.hdu.mechanical_parts": "Запчасти",
+  "item.hdu.unstable_gunpowder": "Рассыпающийся порох",
+  "tooltip.item.hdu.broken_carbon_plates": "§7Легче стали, прочнее алмаза.",
+  "tooltip.item.hdu.ether_core": "§7Пульсирует нестабильной энергией эфира.",
+  "tooltip.item.hdu.unstable_gunpowder": "§7Не трясти."
 }

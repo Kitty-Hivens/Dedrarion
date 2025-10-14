@@ -2,7 +2,9 @@ package hivens.hdu.client;
 
 import hivens.hdu.client.render.EftoritForgeRenderer;
 import hivens.hdu.client.render.PedestalBlockEntityRenderer;
+import hivens.hdu.client.render.entity.NullGuardianRenderer;
 import hivens.hdu.common.registry.ModBlockEntities;
+import hivens.hdu.common.registry.ModEntityTypes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,12 +19,15 @@ public class ClientSetup {
                 ModBlockEntities.PEDESTAL_ENTITY.get(),
                 context1 -> new PedestalBlockEntityRenderer()
         );
-        System.out.println("Registering PedestalBlockEntityRenderer");
+
         event.registerBlockEntityRenderer(
                 ModBlockEntities.EFTORIT_FORGE_ENTITY.get(),
                 context -> new EftoritForgeRenderer()
         );
 
-        System.out.println("Registering EftoritForgeRenderer");
+        event.registerEntityRenderer(
+                ModEntityTypes.NULL_GUARDIAN.get(),
+                NullGuardianRenderer::new
+        );
     }
 }

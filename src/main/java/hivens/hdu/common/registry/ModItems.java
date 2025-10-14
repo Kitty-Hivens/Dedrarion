@@ -1,14 +1,13 @@
 package hivens.hdu.common.registry;
 
-import hivens.hdu.common.Item.MagicDetectorItem;
-import hivens.hdu.common.Item.MnemosyneAletaItem;
-import hivens.hdu.common.Item.TetralinSwordItem;
+import hivens.hdu.common.Item.*;
 import hivens.hdu.common.util.ModTooltipFoodItem;
 import hivens.hdu.common.util.TooltipFuelItem;
 import hivens.hdu.common.util.TooltipItem;
 import hivens.hdu.HDU;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -57,7 +56,7 @@ public class ModItems {
      * Нестабильный порошок, используемый в особых взрывчатых веществах.
      */
     public static final RegistryObject<Item> UNSTABLE_GUNPOWDER = Items.register("unstable_gunpowder",
-            () -> new TooltipItem(new Item.Properties(), "tooltip.item.hdu.unstable_gunpowder"));
+            () -> new UnstableGunpowderItem(new Item.Properties()));
 
     /**
      * Базовые механические детали.
@@ -70,6 +69,20 @@ public class ModItems {
      */
     public static final RegistryObject<Item> BROKEN_CARBON_PLATES = Items.register("broken_carbon_plates",
             () -> new TooltipItem(new Item.Properties(), "tooltip.item.hdu.broken_carbon_plates"));
+
+    public static final RegistryObject<Item> JOKERS_COMPANION = Items.register("jokers_companion",
+            () -> new JokersCompanionItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> DETONATION_BLADE = Items.register("detonation_blade",
+            () -> new DetonationBladeItem(
+                    Tiers.NETHERITE, // Берём за основу незерит
+                    3,               // Стандартный модификатор урона для незеритового меча (4 от тира + 3 = 7 урона)
+                    -2.4f,           // Стандартная скорость
+                    new Item.Properties().fireResistant()
+            )
+    );
+
+
 
     public static final RegistryObject<Item> RUBY = Items.register("ruby",
             () -> new Item(new Item.Properties()));

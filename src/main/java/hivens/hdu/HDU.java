@@ -1,10 +1,12 @@
 package hivens.hdu;
 
 import hivens.hdu.common.compat.ModCompat;
+import hivens.hdu.common.entity.NullGuardianEntity;
 import hivens.hdu.common.registry.*;
 import hivens.hdu.common.loot.ModLootModifiers;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -24,10 +26,12 @@ public class HDU {
         ModCreativeTab.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModEffects.register(modEventBus);
+        ModEntityTypes.register(modEventBus);
         ModRecipes.RECIPE_TYPES.register(modEventBus);
         ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::entityAttributeEvent);
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -40,5 +44,9 @@ public class HDU {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("HDU Common Setup Complete");
+    }
+
+    private void entityAttributeEvent(EntityAttributeCreationEvent event) {
+        event.put(ModEntityTypes.NULL_GUARDIAN.get(), NullGuardianEntity.createAttributes().build());
     }
 }

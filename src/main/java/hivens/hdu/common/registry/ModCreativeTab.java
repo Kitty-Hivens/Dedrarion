@@ -21,6 +21,10 @@ public class ModCreativeTab {
 
                         // Custom Item
                         pOutput.accept(ModItems.METAL_DETECTOR.get());
+                        pOutput.accept(ModItems.ETHER_CORE.get());
+                        pOutput.accept(ModItems.BROKEN_CARBON_PLATES.get());
+                        pOutput.accept(ModItems.UNSTABLE_GUNPOWDER.get());
+                        pOutput.accept(ModItems.MECHANICAL_PARTS.get());
 
                         // Custom Block
                         pOutput.accept(ModBlocks.EFTORIT_FORGE.get());
@@ -40,6 +44,8 @@ public class ModCreativeTab {
 
                         // Attack
                         pOutput.accept(ModItems.MNEMOSYNE_ALETA.get());
+                        pOutput.accept(ModItems.TETRALIN.get());
+                        pOutput.accept(ModItems.DETONATION_BLADE.get());
 
                         // Ore Blocks
                         pOutput.accept(ModBlocks.ETHEREUM_ORE.get());

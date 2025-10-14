@@ -1,6 +1,7 @@
 package hivens.hdu.common.registry;
 
 import hivens.hdu.common.blocks.ExtinguishedTorchBlock;
+import hivens.hdu.common.blocks.model.ConcussiveDynamiteBlock;
 import hivens.hdu.common.blocks.model.EftoritForgeBlock;
 import hivens.hdu.common.blocks.model.PedestalBlock;
 import hivens.hdu.HDU;
@@ -99,7 +100,9 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops())
     );
 
-
+    // Null
+    public static final RegistryObject<Block> CONCUSSIVE_DYNAMITE = registerBlock("concussive_dynamite",
+            () -> new ConcussiveDynamiteBlock(BlockBehaviour.Properties.copy(Blocks.TNT)));
 
     // Hope Stone
 

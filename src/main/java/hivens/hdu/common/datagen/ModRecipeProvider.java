@@ -203,6 +203,27 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                 .unlockedBy(getHasName(ModBlocks.EFTORIT_BLOCK.get()), has(ModBlocks.EFTORIT_BLOCK.get()))
                 .save(pWriter);
 
+        // В методе buildRecipes()
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModBlocks.CONCUSSIVE_DYNAMITE.get())
+                .pattern("SPS")
+                .pattern("PGP")
+                .pattern("SPS")
+                .define('S', Items.SAND)
+                .define('P', ModItems.UNSTABLE_GUNPOWDER.get())
+                .define('G', Items.GUNPOWDER) // Добавил обычный порох для баланса
+                .unlockedBy(getHasName(ModItems.UNSTABLE_GUNPOWDER.get()), has(ModItems.UNSTABLE_GUNPOWDER.get()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.JOKERS_COMPANION.get())
+                .requires(ModItems.ETHER_CORE.get())
+                .requires(ModItems.UNSTABLE_GUNPOWDER.get())
+                .requires(ModItems.BROKEN_CARBON_PLATES.get())
+                .requires(ModItems.BROKEN_CARBON_PLATES.get())
+                .unlockedBy(getHasName(ModItems.ETHER_CORE.get()), has(ModItems.ETHER_CORE.get()))
+                .save(pWriter);
+
+
 
         // ===============================================================
         //
@@ -272,8 +293,6 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                 ModItems.ETHEREUM.get() // Рецепт откроется, когда игрок подберет Этериум
         );
 
-        // В файле ModRecipeProvider.java, в методе buildRecipes()
-
         eftoritForgeRecipe(pWriter,
                 "tetralin_from_forge",
                 ModItems.TETRALIN.get(),
@@ -289,6 +308,16 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                 Items.NETHERITE_INGOT // Разблокируется, когда у игрока есть незерит
         );
 
+
+
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), // Шаблон улучшения
+                        Ingredient.of(Items.NETHERITE_SWORD),                      // Что улучшаем
+                        Ingredient.of(ModItems.ETHER_CORE.get()),                  // Чем улучшаем
+                        RecipeCategory.COMBAT,
+                        ModItems.DETONATION_BLADE.get()                            // Результат
+                ).unlocks(getHasName(ModItems.ETHER_CORE.get()), has(ModItems.ETHER_CORE.get()))
+                .save(pWriter, "detonation_blade_from_smithing");
     }
 
 
