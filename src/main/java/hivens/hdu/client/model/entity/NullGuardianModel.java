@@ -1,4 +1,4 @@
-package hivens.hdu.client.model.entity; // Убедись, что пакет правильный
+package hivens.hdu.client.model.entity;
 
 import hivens.hdu.HDU;
 import hivens.hdu.common.entity.NullGuardianEntity;
