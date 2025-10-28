@@ -1,0 +1,50 @@
+# В файле /hdu/src/main/resources/META-INF/mods.toml
+
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="hdu"
+version="0.0.10-WIP"
+displayName="Dedrarion Underground"
+authors="GoldyL (Hivens)"
+description='''Part for Dedrarion. Lets explore caves!'''
+
+# --- ВОТ ОНО ---
+# Жёстко прописанный mod_id
+# Двойные скобки для "коллекции"
+[[dependencies.hdu]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.hdu]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.hdu]]
+modId="dedrarion"
+mandatory=true
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.hdu]]
+modId="jei"
+mandatory=false
+versionRange="[15.0.0,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.hdu]]
+modId="jeresources"
+mandatory=false
+versionRange="[1.4.0,)"
+ordering="NONE"
+side="BOTH"

@@ -1,0 +1,27 @@
+# В файле /dedrarion/src/main/resources/META-INF/mods.toml
+
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+displayTest="MOD_CONFIG_ONLY"
+
+[[mods]]
+modId="dedrarion"
+version="1.0.0"
+displayName="Dedrarion Adventures"
+authors="GoldyL (Hivens)"
+description='''Core API for Dedrarion Adventures modules.'''
+
+[[dependencies.dedrarion]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.dedrarion]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"

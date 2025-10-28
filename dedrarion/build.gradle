@@ -1,0 +1,80 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
+    id 'org.spongepowered.mixin' version '0.7.+'
+    id 'eclipse'
+    id 'idea'
+}
+
+ext {
+    mod_id = 'dedrarion'
+    mod_name = 'Dedrarion Adventures'
+    mod_license = 'GNU GPL v3'
+    mod_version = '1.0.0-dev'
+    mod_group_id = 'hivens.dedrarion'
+    mod_authors = 'Haru (Hivens)'
+    mod_description = 'Core API for Dedrarion Adventures modules.'
+}
+
+base {
+    archivesName = mod_id
+}
+
+minecraft {
+    mappings channel: rootProject.mapping_channel, version: rootProject.mapping_version
+    copyIdeResources = true
+
+    runs {
+        configureEach {
+            workingDirectory project.rootProject.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        client { property 'forge.enabledGameTestNamespaces', "${mod_id}" }
+        server { property 'forge.enabledGameTestNamespaces', "${mod_id}"; args '--nogui' }
+        gameTestServer { property 'forge.enabledGameTestNamespaces', "${mod_id}" }
+        data {
+            workingDirectory project.rootProject.file('run-data')
+            args '--mod', "${mod_id}", '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+}
+
+tasks.named('processResources', ProcessResources.class).configure {
+    var replaceProperties = [minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
+                             forge_version: forge_version, forge_version_range: forge_version_range,
+                             loader_version_range: loader_version_range,
+                             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+                             mod_authors: mod_authors, mod_description: mod_description]
+    inputs.properties replaceProperties
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+tasks.named('jar', Jar.class).configure {
+    manifest {
+        attributes(["Specification-Title"     : mod_id,
+                    "Specification-Vendor"    : mod_authors,
+                    "Specification-Version"   : "1",
+                    "Implementation-Title"    : project.name,
+                    "Implementation-Version"  : project.version,
+                    "Implementation-Vendor"   : mod_authors,
+                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")])
+    }
+    finalizedBy 'reobfJar'
+}
+
+// Проклятый Forge...
