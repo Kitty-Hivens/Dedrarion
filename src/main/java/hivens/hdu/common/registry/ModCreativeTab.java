@@ -26,6 +26,7 @@ public class ModCreativeTab {
                         pOutput.accept(ModItems.UNSTABLE_GUNPOWDER.get());
                         pOutput.accept(ModItems.MECHANICAL_PARTS.get());
 
+
                         // Custom Block
                         pOutput.accept(ModBlocks.EFTORIT_FORGE.get());
 
@@ -86,6 +87,7 @@ public class ModCreativeTab {
                         pOutput.accept(ModBlocks.BROKEN_PLANKS.get());
                         pOutput.accept(ModBlocks.EXTINGUISHED_TORCH.get());
                         pOutput.accept(ModBlocks.PEDESTAL.get());
+                        pOutput.accept(ModBlocks.CONCUSSIVE_DYNAMITE.get());
 
 
                     })

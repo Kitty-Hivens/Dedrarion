@@ -100,7 +100,7 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops())
     );
 
-    // Null
+    // Councussive Dynamite
     public static final RegistryObject<Block> CONCUSSIVE_DYNAMITE = registerBlock("concussive_dynamite",
             () -> new ConcussiveDynamiteBlock(BlockBehaviour.Properties.copy(Blocks.TNT)));
 
