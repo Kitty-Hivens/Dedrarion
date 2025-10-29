@@ -52,8 +52,6 @@
   "tooltip.hdu.mnemosyne_aleta.aleta_desc2": "RMB: 洞察の波 (敵を強調表示)。",
   "tooltip.hdu.mnemosyne_aleta.mnemosyne_mode": "§5 ムネモシュネモード(夜)",
   "tooltip.hdu.mnemosyne_aleta.mnemosyne_desc": "キルは剣に力を与え、ウィザーを与えます。",
-  "event.hdu.creativehandler.success": "攻撃は鎧を無視します",
-  "event.hdu.creativehandler.failure": "攻撃は鎧を無視します",
   "advancement.hdu.seeker_of_magic.title": "魔法の探索者",
   "advancement.hdu.seeker_of_magic.description": "お前は遠慮探偵か？",
   "advancement.hdu.white_prince.title": "白の王子",

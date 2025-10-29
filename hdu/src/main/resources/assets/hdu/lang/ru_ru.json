@@ -52,8 +52,6 @@
   "tooltip.hdu.mnemosyne_aleta.aleta_desc2": "ПКМ: Волна Прозрения (подсвечивает врагов).",
   "tooltip.hdu.mnemosyne_aleta.mnemosyne_mode": "§5Режим Мнемозины (Ночь)",
   "tooltip.hdu.mnemosyne_aleta.mnemosyne_desc": "Убийства усиливают меч и накладывают Увядание.",
-  "event.hdu.creativehandler.success": "Рад знакомству",
-  "event.hdu.creativehandler.failure": "Ты ничтожество, %s",
   "advancement.hdu.seeker_of_magic.title": "Искатель Магии",
   "advancement.hdu.seeker_of_magic.description": "Ты у нас молодой ищейка?",
   "advancement.hdu.white_prince.title": "Белый Принц",

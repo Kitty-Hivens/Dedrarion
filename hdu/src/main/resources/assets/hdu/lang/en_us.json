@@ -52,8 +52,6 @@
   "tooltip.hdu.mnemosyne_aleta.aleta_desc2": "RMB: Wave of Insight (highlights enemies).",
   "tooltip.hdu.mnemosyne_aleta.mnemosyne_mode": "§5Mnemosyne Mode (Night)",
   "tooltip.hdu.mnemosyne_aleta.mnemosyne_desc": "Kills empower the sword and apply Wither.",
-  "event.hdu.creativehandler.success": "Nice to meet you",
-  "event.hdu.creativehandler.failure": "You are failure, %s",
   "advancement.hdu.seeker_of_magic.title": "Seeker of Magic",
   "advancement.hdu.seeker_of_magic.description": "Are you our young sleuth?",
   "advancement.hdu.white_prince.title": "White Prince",
