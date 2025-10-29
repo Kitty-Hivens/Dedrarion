@@ -1,5 +1,5 @@
 {
-  "item.hdu.metal_detector": "魔法探知機",
+  "item.hdu.magic_detector": "魔法探知機",
   "item.hdu.ethereum": "エーテル",
   "item.hdu.ethereum_ore": "エーテル鉱石",
   "item.hdu.raw_ethereum": "未精製のエーテル",
@@ -43,7 +43,7 @@
   "block.hdu.pedestal": "台座",
   "block.hdu.concussive_dynamite": "弱体化したダイナマイト",
   "creativetab.hdu_tab": "デドラリオン地下のタブ",
-  "tooltip.item.hdu.metal_detector": "§bそのエネルギーは魔法に縛られているようだ",
+  "tooltip.item.hdu.magic_detector": "§bそのエネルギーは魔法に縛られているようだ",
   "tooltip.item.hdu.ethereum": "§e雲よりも軽いとされる不思議な結晶",
   "tooltip.item.hdu.fuel_of_promises": "§4誰に感謝すべきなのか?",
   "tooltip.item.hdu.forbidden_fruit": "§eこれのために誰を犠牲にする?",
@@ -69,5 +69,14 @@
   "tooltip.item.hdu.detonation_blade": "Detonation Blade",
   "tooltip.item.hdu.unstable_gunpowder.unstable": "",
   "tooltip.item.hdu.unstable_gunpowder.stable": "",
-  "tooltip.item.hdu.unstable_gunpowder.danger": ""
+  "tooltip.item.hdu.unstable_gunpowder.danger": "",
+  "item.hdu.broken_carbon_plates": "Осколки углеродных пластин",
+  "item.hdu.detonation_blade": "Меч Детонации",
+  "item.hdu.ether_core": "Энергетическое ядро",
+  "item.hdu.jokers_companion": "Jester's Pal",
+  "item.hdu.mechanical_parts": "Запчасти",
+  "item.hdu.unstable_gunpowder": "Рассыпающийся порох",
+  "tooltip.item.hdu.broken_carbon_plates": "§7Легче стали, прочнее алмаза.",
+  "tooltip.item.hdu.ether_core": "§7Пульсирует нестабильной энергией эфира.",
+  "tooltip.item.hdu.unstable_gunpowder": "§7Не трясти."
 }

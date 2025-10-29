@@ -1,4 +1,4 @@
-package hivens.dedrarion.api.registry; // Убедись, что пакет правильный
+package hivens.dedrarion.api.registry;
 
 import hivens.dedrarion.Dedrarion;
 import hivens.dedrarion.api.effect.BleedingEffect;

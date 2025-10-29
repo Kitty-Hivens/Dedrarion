@@ -20,7 +20,7 @@ public class ModCreativeTab {
 
 
                         // Custom Item
-                        pOutput.accept(ModItems.METAL_DETECTOR.get());
+                        pOutput.accept(ModItems.MAGIC_DETECTOR.get());
                         pOutput.accept(ModItems.ETHER_CORE.get());
                         pOutput.accept(ModItems.BROKEN_CARBON_PLATES.get());
                         pOutput.accept(ModItems.UNSTABLE_GUNPOWDER.get());

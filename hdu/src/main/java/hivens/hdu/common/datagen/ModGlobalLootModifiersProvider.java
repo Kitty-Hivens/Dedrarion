@@ -22,7 +22,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                         "chests/ancient_city"
                 )).build()},
 
-                ModItems.METAL_DETECTOR.get()
+                ModItems.MAGIC_DETECTOR.get()
         ));
 
         add("metal_detector_from_ancient_city_ice_box", new AddItemModifier(new LootItemCondition[]{
@@ -30,7 +30,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                         "chests/ancient_city_ice_box"
                 )).build()},
 
-                ModItems.METAL_DETECTOR.get()
+                ModItems.MAGIC_DETECTOR.get()
         ));
 
         add("metal_detector_from_jungle_temple", new AddItemModifier(new LootItemCondition[]{
@@ -38,7 +38,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                         "chests/jungle_temple"
                 )).build()},
 
-                ModItems.METAL_DETECTOR.get()
+                ModItems.MAGIC_DETECTOR.get()
         ));
 
         add("metal_detector_from_desert_pyramid", new AddItemModifier(new LootItemCondition[]{
@@ -46,7 +46,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                         "chests/desert_pyramid"
                 )).build()},
 
-                ModItems.METAL_DETECTOR.get()
+                ModItems.MAGIC_DETECTOR.get()
         ));
 
         add("metal_detector_from_end_city_treasure", new AddItemModifier(new LootItemCondition[]{
@@ -54,7 +54,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                         "chests/end_city_treasure"
                 )).build()},
 
-                ModItems.METAL_DETECTOR.get()
+                ModItems.MAGIC_DETECTOR.get()
         ));
 
         add("metal_detector_from_stronghold_corridor", new AddItemModifier(new LootItemCondition[]{
@@ -62,7 +62,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                         "chests/stronghold_library"
                 )).build()},
 
-                ModItems.METAL_DETECTOR.get()
+                ModItems.MAGIC_DETECTOR.get()
         ));
 
         add("metal_detector_from_stronghold_crossing", new AddItemModifier(new LootItemCondition[]{
@@ -70,7 +70,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                         "chests/stronghold_crossing"
                 )).build()},
 
-                ModItems.METAL_DETECTOR.get()
+                ModItems.MAGIC_DETECTOR.get()
         ));
 
         add("metal_detector_from_stronghold_library", new AddItemModifier(new LootItemCondition[]{
@@ -78,7 +78,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                         "chests/stronghold_library"
                 )).build()},
 
-                ModItems.METAL_DETECTOR.get()
+                ModItems.MAGIC_DETECTOR.get()
         ));
 
 

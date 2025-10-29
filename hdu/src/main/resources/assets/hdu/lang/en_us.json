@@ -1,5 +1,5 @@
 {
-  "item.hdu.metal_detector": "Magical Detector",
+  "item.hdu.magic_detector": "Magical Detector",
   "item.hdu.ethereum": "Ethereum",
   "item.hdu.ethereum_ore": "Ethereum Ore",
   "item.hdu.raw_ethereum": "Raw Ethereum",
@@ -43,7 +43,7 @@
   "block.hdu.pedestal": "Pedestal",
   "block.hdu.concussive_dynamite": "Concussive Dynamite",
   "creativetab.hdu_tab": "Dedrarion Underground Tab",
-  "tooltip.item.hdu.metal_detector": "§bIt seems that his energy is tied only to magic",
+  "tooltip.item.hdu.magic_detector": "§bIt seems that his energy is tied only to magic",
   "tooltip.item.hdu.ethereum": "§eA certain crystal that seems lighter than clouds",
   "tooltip.item.hdu.fuel_of_promises": "§4Who should we thank for this?",
   "tooltip.item.hdu.forbidden_fruit": "§eWho are you willing to give up for this?",

@@ -84,17 +84,26 @@ public class ModItems {
     );
 
 
-
+    /**
+     * Рубин. Классический самоцвет. Используется для различных крафтов. Встречается часто.
+     */
     public static final RegistryObject<Item> RUBY = Items.register("ruby",
             () -> new Item(new Item.Properties()));
 
+    /**
+     * Эфторит. Классический самоцвет. Используется для различных крафтов. Встречается часто.
+     */
     public  static final RegistryObject<Item> EFTORIT = Items.register("eftorit",
             () -> new Item(new Item.Properties()));
 
+    /**
+     * Катализатор забвения. На данный момент не используется.
+     * TODO: Использовать на эфторитовой наковальне
+     */
     public static final RegistryObject<Item> CATALYST_OF_DEBAUCHERY = Items.register("catalyst_of_debauchery",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> METAL_DETECTOR = Items.register("metal_detector",
+    public static final RegistryObject<Item> MAGIC_DETECTOR = Items.register("magic_detector",
             () -> new MagicDetectorItem(new Item.Properties()));
 
     public static final RegistryObject<Item> FORBIDDEN_FRUIT = Items.register("forbidden_fruit",

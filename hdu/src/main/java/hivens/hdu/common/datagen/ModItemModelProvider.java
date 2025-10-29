@@ -29,7 +29,7 @@ public class ModItemModelProvider extends net.minecraftforge.client.model.genera
 
         simpleItem(ModItems.EFTORIT);
 
-        simpleItem(ModItems.METAL_DETECTOR);
+        simpleItem(ModItems.MAGIC_DETECTOR);
         simpleItem(ModItems.FUEL_OF_PROMISES);
         simpleItem(ModItems.FORBIDDEN_FRUIT);
 
