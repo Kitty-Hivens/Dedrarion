@@ -55,7 +55,7 @@ public class UnstableGunpowderItem extends Item {
             float deltaYaw = Mth.abs(player.getYRot() - lastYaw);
             float deltaPitch = Mth.abs(player.getXRot() - lastPitch);
 
-            if (deltaYaw > 15 || deltaPitch > 15) {
+            if (deltaYaw > 30 || deltaPitch > 30) {
                 stability -= (int) ((deltaYaw + deltaPitch) / 2);
             }
 

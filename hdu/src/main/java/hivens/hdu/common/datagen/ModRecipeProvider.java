@@ -542,7 +542,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         // 1. Проверка на АРТЕФАКТЫ.
         // Используем уникальные имена Ваших артефактов (Мнемозина/Алета, Тетралин)
-        if (itemPath.contains("mnemosyne_aleta") || itemPath.contains("tetralin") || itemPath.contains("detonation_blade")) {
+        if (itemPath.contains("mnemosyne_aleta") || itemPath.contains("tetralin") ||
+            itemPath.contains("detonation_blade")|| itemPath.contains("magic_detector")) {
             eftoritCount = 3; // Самая высокая цена для ARTIFACT tier (Уровень 5)
         }
         // 2. Проверка на НЕЗЕРИТ

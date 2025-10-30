@@ -83,12 +83,13 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                            ModBlocks.EFTORIT_ORE.get(),
                            ModBlocks.DEEPSLATE_EFTORIT_ORE.get(),
                            ModBlocks.EFTORIT_BLOCK.get(),
-                           ModBlocks.EFTORIUM_BLOCK.get(),
                            ModBlocks.EFTORIT_FORGE.get()
                    );
 
 
-        this.tag(BlockTags.NEEDS_DIAMOND_TOOL);
+        this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(
+                        ModBlocks.EFTORIUM_BLOCK.get());
 
         this.tag(Tags.Blocks.NEEDS_NETHERITE_TOOL)
                 .add(
@@ -120,7 +121,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.STAIRS)
                 .add(
                         ModBlocks.HOPE_STONE_STAIRS.get(),
-                        ModBlocks.SMOOTH_HOPE_STONE_BRICKS.get(),
+                        ModBlocks.SMOOTH_HOPE_STONE_STAIRS.get(),
                         ModBlocks.HOPE_SHARD_STAIRS.get(),
 
                         ModBlocks.HOPE_BRICK_STAIRS.get(),

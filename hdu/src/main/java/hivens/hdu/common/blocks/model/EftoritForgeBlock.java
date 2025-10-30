@@ -168,7 +168,7 @@ public class EftoritForgeBlock extends Block implements EntityBlock {
     }
 
     @Override
-    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+    public void playerWillDestroy(Level level, @NotNull BlockPos pos, @NotNull BlockState state, @NotNull Player player) {
         BlockEntity entity = level.getBlockEntity(pos);
         if (entity instanceof EftoritForgeEntity forgeEntity) {
             forgeEntity.dropItems();
@@ -177,7 +177,7 @@ public class EftoritForgeBlock extends Block implements EntityBlock {
     }
 
     @Override
-    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(@NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
         if (level.isClientSide) return InteractionResult.SUCCESS;
 
         BlockEntity entity = level.getBlockEntity(pos);
@@ -185,12 +185,33 @@ public class EftoritForgeBlock extends Block implements EntityBlock {
 
         if (forge.isCrafting()) return InteractionResult.PASS;
 
-        if (!forge.getItems().isEmpty()) {
-            player.getInventory().placeItemBackInInventory(forge.removeLastItem());
-            return InteractionResult.CONSUME; // <--- важно
+        ItemStack heldItem = player.getItemInHand(hand);
+
+        // Логика ИЗЪЯТИЯ (если рука пустая)
+        if (heldItem.isEmpty()) {
+            if (!forge.getItems().isEmpty()) {
+                player.getInventory().placeItemBackInInventory(forge.removeLastItem());
+                return InteractionResult.CONSUME;
+            }
+            // Логика ДОБАВЛЕНИЯ (если в руке есть предмет)
+        } else {
+            // Пытаемся вставить предмет через ItemHandler
+            ItemStack remainder = ItemHandlerHelper.insertItem(
+                    forge.getCapability(ForgeCapabilities.ITEM_HANDLER).orElse(null),
+                    heldItem.copy(),
+                    false
+            );
+
+            // Если предмет вставился (полностью или частично)
+            if (remainder.getCount() != heldItem.getCount()) {
+                if (!player.getAbilities().instabuild) {
+                    player.setItemInHand(hand, remainder); // Возвращаем остаток (если он есть)
+                }
+                return InteractionResult.CONSUME;
+            }
         }
 
-        return InteractionResult.PASS;
+        return InteractionResult.PASS; // Ничего не произошло
     }
 
     @Override

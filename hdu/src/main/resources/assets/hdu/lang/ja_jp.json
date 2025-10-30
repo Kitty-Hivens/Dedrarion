@@ -68,13 +68,13 @@
   "tooltip.item.hdu.unstable_gunpowder.unstable": "",
   "tooltip.item.hdu.unstable_gunpowder.stable": "",
   "tooltip.item.hdu.unstable_gunpowder.danger": "",
-  "item.hdu.broken_carbon_plates": "Осколки углеродных пластин",
-  "item.hdu.detonation_blade": "Меч Детонации",
-  "item.hdu.ether_core": "Энергетическое ядро",
-  "item.hdu.jokers_companion": "Jester's Pal",
-  "item.hdu.mechanical_parts": "Запчасти",
-  "item.hdu.unstable_gunpowder": "Рассыпающийся порох",
-  "tooltip.item.hdu.broken_carbon_plates": "§7Легче стали, прочнее алмаза.",
-  "tooltip.item.hdu.ether_core": "§7Пульсирует нестабильной энергией эфира.",
-  "tooltip.item.hdu.unstable_gunpowder": "§7Не трясти."
+  "item.hdu.broken_carbon_plates": "炭素板の破片",
+  "item.hdu.detonation_blade": "起爆の剣",
+  "item.hdu.ether_core": "エーテルコア",
+  "item.hdu.jokers_companion": "道化師の仲間",
+  "item.hdu.mechanical_parts": "機械部品",
+  "item.hdu.unstable_gunpowder": "不安定な火薬",
+  "tooltip.item.hdu.broken_carbon_plates": "§7鋼鉄より軽く、ダイヤモンドより硬い。",
+  "tooltip.item.hdu.ether_core": "§7不安定なエーテルエネルギーで脈動している。",
+  "tooltip.item.hdu.unstable_gunpowder": "§7振らないでください。"
 }
