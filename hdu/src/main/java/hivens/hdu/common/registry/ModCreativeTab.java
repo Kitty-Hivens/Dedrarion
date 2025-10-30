@@ -34,6 +34,11 @@ public class ModCreativeTab {
                         pOutput.accept(ModItems.ETHEREUM.get());
                         pOutput.accept(ModItems.RAW_ETHEREUM.get());
                         pOutput.accept(ModItems.ETHEREUM_DUST.get());
+                        pOutput.accept(ModItems.IRON_DUST.get());
+                        pOutput.accept(ModItems.EFTORIT_DUST.get());
+                        pOutput.accept(ModItems.EFTORIUM_DUST.get());
+                        pOutput.accept(ModItems.EFTORIUM_INGOT.get());
+                        pOutput.accept(ModItems.FOSSIL.get());
                         pOutput.accept(ModItems.RUBY.get());
                         pOutput.accept(ModItems.EFTORIT.get());
 
@@ -64,6 +69,9 @@ public class ModCreativeTab {
                         pOutput.accept(ModBlocks.EFTORIT_ORE.get());
                         pOutput.accept(ModBlocks.DEEPSLATE_EFTORIT_ORE.get());
                         pOutput.accept(ModBlocks.EFTORIT_BLOCK.get());
+
+                        // Eftorium
+                        pOutput.accept(ModBlocks.EFTORIUM_BLOCK.get());
 
 
                         // Blocks

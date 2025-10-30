@@ -28,6 +28,22 @@ public class ModItems {
     public static final RegistryObject<Item> ETHEREUM_DUST = Items.register("ethereum_dust",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> IRON_DUST = Items.register("iron_dust",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> EFTORIT_DUST = Items.register("eftorit_dust",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> EFTORIUM_DUST = Items.register("eftorium_dust",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> EFTORIUM_INGOT = Items.register("eftorium_ingot",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> FOSSIL = Items.register("fossil",
+            () -> new Item(new Item.Properties()));
+
+
     public static final RegistryObject<Item> MNEMOSYNE_ALETA = Items.register("mnemosyne_aleta",
             () -> new MnemosyneAletaItem(
                     ModTiers.ARTIFACT,

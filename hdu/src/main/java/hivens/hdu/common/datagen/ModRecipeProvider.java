@@ -14,13 +14,14 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.example.registry.ItemRegistry;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 
-public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider implements IConditionBuilder {
+public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     public static final List<ItemLike> ETHEREUM_SMELTABLES = List.of(
             ModItems.RAW_ETHEREUM.get(),
             ModBlocks.ETHEREUM_ORE.get()
@@ -34,6 +35,40 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
     public static final List<ItemLike> EFTORIT_SMELTABLES = List.of(
             ModBlocks.EFTORIT_ORE.get(),
             ModBlocks.DEEPSLATE_EFTORIT_ORE.get()
+    );
+
+
+    /**
+     * Константа. Хранит информацию о предметах, которые могут быть починены через эфторитовую наковальню
+     */
+    public static final List<ItemLike> TOOLS_TO_REPAIR = List.of(
+            // Алмазные инструменты
+            Items.DIAMOND_PICKAXE,
+            Items.DIAMOND_AXE,
+            Items.DIAMOND_SHOVEL,
+            Items.DIAMOND_SWORD,
+            Items.DIAMOND_HOE,
+            // Незеритовые инструменты
+            Items.NETHERITE_PICKAXE,
+            Items.NETHERITE_AXE,
+            Items.NETHERITE_SHOVEL,
+            Items.NETHERITE_SWORD,
+            Items.NETHERITE_HOE,
+            // Алмазная броня
+            Items.DIAMOND_HELMET,
+            Items.DIAMOND_CHESTPLATE,
+            Items.DIAMOND_LEGGINGS,
+            Items.DIAMOND_BOOTS,
+            // Незеритовая броня
+            Items.NETHERITE_HELMET,
+            Items.NETHERITE_CHESTPLATE,
+            Items.NETHERITE_LEGGINGS,
+            Items.NETHERITE_BOOTS,
+            // Вещи с Dedrarion
+            ModItems.MAGIC_DETECTOR.get(),
+            ModItems.MNEMOSYNE_ALETA.get(),
+            ModItems.TETRALIN.get(),
+            ModItems.DETONATION_BLADE.get()
     );
 
 
@@ -92,15 +127,25 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                 .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.EFTORIT_FORGE.get())
-                .pattern("AAA")
-                .pattern("BAB")
-                .pattern("CCC")
-                .define('A', ModBlocks.EFTORIT_BLOCK.get())
-                .define('B', ModItems.ETHEREUM.get())
-                .define('C', ModBlocks.HOPE_STONE.get())
-                .unlockedBy(getHasName(ModItems.EFTORIT.get()), has(ModItems.EFTORIT.get()))
+                .pattern(" A ")
+                .pattern("CBC")
+                .pattern("DDD")
+                .define('A', ModItems.ETHEREUM.get())
+                .define('B', ModItems.FOSSIL.get())
+                .define('C', ModBlocks.EFTORIUM_BLOCK.get())
+                .define('D', ModBlocks.HOPE_STONE.get())
+                .unlockedBy(getHasName(ModItems.FOSSIL.get()), has(ModItems.FOSSIL.get()))
                 .unlockedBy(getHasName(ModItems.ETHEREUM.get()), has(ModItems.ETHEREUM.get()))
-                .unlockedBy(getHasName(ModBlocks.HOPE_STONE.get()), has(ModBlocks.HOPE_STONE.get()))
+                .unlockedBy(getHasName(ModBlocks.EFTORIUM_BLOCK.get()), has(ModBlocks.EFTORIUM_BLOCK.get()))
+                .save(pWriter);
+
+        // Eftorium
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.EFTORIUM_BLOCK.get())
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('S', ModItems.EFTORIUM_INGOT.get())
+                .unlockedBy(getHasName(ModItems.EFTORIUM_INGOT.get()), has(ModItems.EFTORIUM_INGOT.get()))
                 .save(pWriter);
 
         // Hope Stone
@@ -128,8 +173,7 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                 .unlockedBy(getHasName(ModBlocks.HOPE_STONE_BRICKS.get()), has(ModBlocks.HOPE_STONE_BRICKS.get()))
                 .save(pWriter);
 
-// Smooth Hope Stone
-
+        // Smooth Hope Stone
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SMOOTH_HOPE_STONE_STAIRS.get(), 8)
                 .pattern("  S")
                 .pattern(" SS")
@@ -153,8 +197,7 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                 .unlockedBy(getHasName(ModBlocks.SMOOTH_HOPE_STONE_BRICKS.get()), has(ModBlocks.SMOOTH_HOPE_STONE_BRICKS.get()))
                 .save(pWriter);
 
-// Hope Shards
-
+        // Hope Shards
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.HOPE_SHARD_STAIRS.get(), 8)
                 .pattern("  S")
                 .pattern(" SS")
@@ -176,6 +219,17 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                 .pattern("SSS")
                 .define('S', ModBlocks.HOPE_SHARD_BRICKS.get())
                 .unlockedBy(getHasName(ModBlocks.HOPE_SHARD_BRICKS.get()), has(ModBlocks.HOPE_SHARD_BRICKS.get()))
+                .save(pWriter);
+
+        // NullGuardian Items
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModBlocks.CONCUSSIVE_DYNAMITE.get())
+                .pattern("SPS")
+                .pattern("PGP")
+                .pattern("SPS")
+                .define('S', Items.SAND)
+                .define('P', ModItems.UNSTABLE_GUNPOWDER.get())
+                .define('G', Items.GUNPOWDER)
+                .unlockedBy(getHasName(ModItems.UNSTABLE_GUNPOWDER.get()), has(ModItems.UNSTABLE_GUNPOWDER.get()))
                 .save(pWriter);
 
 
@@ -203,17 +257,6 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                 .unlockedBy(getHasName(ModBlocks.EFTORIT_BLOCK.get()), has(ModBlocks.EFTORIT_BLOCK.get()))
                 .save(pWriter);
 
-        // В методе buildRecipes()
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModBlocks.CONCUSSIVE_DYNAMITE.get())
-                .pattern("SPS")
-                .pattern("PGP")
-                .pattern("SPS")
-                .define('S', Items.SAND)
-                .define('P', ModItems.UNSTABLE_GUNPOWDER.get())
-                .define('G', Items.GUNPOWDER) // Добавил обычный порох для баланса
-                .unlockedBy(getHasName(ModItems.UNSTABLE_GUNPOWDER.get()), has(ModItems.UNSTABLE_GUNPOWDER.get()))
-                .save(pWriter);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.JOKERS_COMPANION.get())
                 .requires(ModItems.ETHER_CORE.get())
@@ -222,6 +265,19 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                 .requires(ModItems.BROKEN_CARBON_PLATES.get())
                 .unlockedBy(getHasName(ModItems.ETHER_CORE.get()), has(ModItems.ETHER_CORE.get()))
                 .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.EFTORIUM_DUST.get(), 9)
+                .requires(ModItems.EFTORIT_DUST.get())
+                .requires(ModItems.EFTORIT_DUST.get())
+                .requires(ModItems.EFTORIT_DUST.get())
+                .requires(ModItems.ETHEREUM_DUST.get())
+                .requires(ModItems.ETHEREUM_DUST.get())
+                .requires(ModItems.IRON_DUST.get())
+                .requires(ModItems.IRON_DUST.get())
+                .requires(ModItems.IRON_DUST.get())
+                .requires(ModItems.IRON_DUST.get())
+                .unlockedBy(getHasName(ModItems.ETHEREUM_DUST.get()), has(ModItems.ETHEREUM_DUST.get()))
+                .save(pWriter); // 4 железных слитка, 2/3 эфириума, 3 эфторита...
 
 
 
@@ -236,7 +292,22 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                 pWriter,
                 RecipeCategory.MISC,
                 ModItems.ETHEREUM_DUST.get(),
-                ModItems.ETHEREUM.get()
+                ModItems.ETHEREUM.get(),
+                3
+        );
+
+        stonecutterResultFromBase(
+                pWriter,
+                RecipeCategory.MISC,
+                ModItems.IRON_DUST.get(),
+                Items.IRON_INGOT
+        );
+
+        stonecutterResultFromBase(
+                pWriter,
+                RecipeCategory.MISC,
+                ModItems.EFTORIT_DUST.get(),
+                ModItems.EFTORIT.get()
         );
 
 
@@ -265,18 +336,8 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
         //
         // ===============================================================
 
-        // Добавляйте сюда другие рецепты по тому же принципу!
-        // Например, рецепт починки инструмента, где инструмент не потребляется
-        eftoritForgeRecipe(pWriter,
-                "repair_diamond_pickaxe_with_nbt",
-                net.minecraft.world.item.Items.DIAMOND_PICKAXE,
-                List.of(
-                        new EftoritIngredient(Ingredient.of(net.minecraft.world.item.Items.DIAMOND), true),
-                        new EftoritIngredient(Ingredient.of(ModItems.EFTORIT.get()), true)
-                ),
-                Ingredient.of(net.minecraft.world.item.Items.DIAMOND_PICKAXE),
-                net.minecraft.world.item.Items.DIAMOND_PICKAXE
-        );
+
+        autoGenerateForgeRepair(pWriter);
 
         eftoritForgeRecipe(pWriter,
                 "mnemosyne_and_aleta_from_forge",      // Имя файла рецепта
@@ -291,6 +352,7 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                         new EftoritIngredient(Ingredient.of(Items.IRON_SWORD), true)
                 ),
                 ModItems.ETHEREUM.get() // Рецепт откроется, когда игрок подберет Этериум
+                // TODO: Переделать. Эфириум и так будет доступен к моменту крафта
         );
 
         eftoritForgeRecipe(pWriter,
@@ -305,7 +367,7 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                         new EftoritIngredient(Ingredient.of(Items.DIAMOND), true),
                         new EftoritIngredient(Ingredient.of(Items.DIAMOND), true)
                 ),
-                Items.NETHERITE_INGOT // Разблокируется, когда у игрока есть незерит
+                Items.HEART_OF_THE_SEA // Разблокируется, когда у игрока есть сердце моря
         );
 
 
@@ -427,38 +489,9 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
 
 
     /**
-     * Создает рецепт для Эфторитовой кузни.
-     * @param consumer Потребитель готовых рецептов.
-     * @param recipeName Уникальное имя файла для рецепта (например, "super_sword_from_forge").
-     * @param result Предмет-результат.
-     * @param ingredients Список ингредиентов. Используйте new EftoritIngredient(..., true/false).
-     * @param unlockItem Предмет, наличие которого в инвентаре разблокирует рецепт.
-     */
-    protected void eftoritForgeRecipe(
-            @NotNull Consumer<FinishedRecipe> consumer,
-            @NotNull String recipeName,
-            @NotNull ItemLike result,
-            @NotNull List<EftoritIngredient> ingredients,
-            @NotNull Ingredient nbtSourceIngredient, // <-- Новый параметр
-            @NotNull ItemLike unlockItem
-    ) {
-        var builder = EftoritForgeRecipeBuilder.create(result);
-
-        for (EftoritIngredient ingredient : ingredients) {
-            builder.addIngredient(ingredient.ingredient(), ingredient.consume());
-        }
-
-        // Добавляем наш NBT-источник
-        builder.addNbtSourceIngredient(nbtSourceIngredient);
-
-        builder.unlockedBy(getHasName(unlockItem), has(unlockItem));
-        builder.save(consumer, ResourceLocation.fromNamespaceAndPath("hdu", recipeName));
-    }
-
-    /**
      * Простая версия для создания НОВЫХ предметов в Эфторитовой кузне.
      */
-    protected void eftoritForgeRecipe(
+    protected static void eftoritForgeRecipe(
             @NotNull Consumer<FinishedRecipe> consumer,
             @NotNull String recipeName,
             @NotNull ItemLike result,
@@ -473,6 +506,54 @@ public class ModRecipeProvider extends net.minecraft.data.recipes.RecipeProvider
 
         builder.unlockedBy(getHasName(unlockItem), has(unlockItem));
         builder.save(consumer, ResourceLocation.fromNamespaceAndPath(HDU.MOD_ID, recipeName));
+    }
+
+    /**
+     * Автоматически генерирует рецепты ремонта для Эфторитовой кузни
+     * для списка предметов. Рецепт: 1-2 Эфторита + Предмет с NBT = Починенный предмет с NBT.
+     */
+    protected static void autoGenerateForgeRepair(@NotNull Consumer<FinishedRecipe> consumer) {
+        for (ItemLike repairItem : ModRecipeProvider.TOOLS_TO_REPAIR) {
+            String itemName = getItemName(repairItem);
+            String itemPath = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(repairItem.asItem())).getPath();
+
+            int eftoritCount = getEftoritCount(itemPath);
+
+            var builder = EftoritForgeRecipeBuilder.create(repairItem);
+
+            // Добавляем Эфторит в нужном количестве
+            for (int i = 0; i < eftoritCount; i++) {
+                builder.addIngredient(ModItems.EFTORIT.get(), true);
+            }
+
+            // Ключевой шаг: Указываем, что чинимый предмет является источником NBT
+            // Ингредиент не потребляется, но его NBT копируются, а прочность чинится
+            builder.addNbtSourceIngredient(Ingredient.of(repairItem));
+
+            builder.unlockedBy("has_" + itemName, has(repairItem));
+
+            // Используем специальное имя для рецепта, чтобы было понятно, что это ремонт
+            builder.save(consumer, ResourceLocation.fromNamespaceAndPath(HDU.MOD_ID, "repair_" + itemName + "_with_eftorit"));
+        }
+    }
+
+    private static int getEftoritCount(String itemPath) {
+        int eftoritCount;
+
+        // 1. Проверка на АРТЕФАКТЫ.
+        // Используем уникальные имена Ваших артефактов (Мнемозина/Алета, Тетралин)
+        if (itemPath.contains("mnemosyne_aleta") || itemPath.contains("tetralin") || itemPath.contains("detonation_blade")) {
+            eftoritCount = 3; // Самая высокая цена для ARTIFACT tier (Уровень 5)
+        }
+        // 2. Проверка на НЕЗЕРИТ
+        else if (itemPath.contains("netherite")) {
+            eftoritCount = 2; // Стандартная высокая цена (Уровень 4)
+        }
+        // 3. Остальные (Алмаз, Железо и т.д.)
+        else {
+            eftoritCount = 1; // Базовая цена
+        }
+        return eftoritCount;
     }
 
 

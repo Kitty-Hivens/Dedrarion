@@ -48,6 +48,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                            ModBlocks.EFTORIT_ORE.get(),
                            ModBlocks.DEEPSLATE_EFTORIT_ORE.get(),
                            ModBlocks.EFTORIT_BLOCK.get(),
+                           ModBlocks.EFTORIUM_BLOCK.get(),
                            ModBlocks.DEEPSLATE_EFTORIT_ORE.get(),
                            ModBlocks.EFTORIT_FORGE.get(),
 
@@ -82,6 +83,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                            ModBlocks.EFTORIT_ORE.get(),
                            ModBlocks.DEEPSLATE_EFTORIT_ORE.get(),
                            ModBlocks.EFTORIT_BLOCK.get(),
+                           ModBlocks.EFTORIUM_BLOCK.get(),
                            ModBlocks.EFTORIT_FORGE.get()
                    );
 

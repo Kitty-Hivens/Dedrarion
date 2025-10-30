@@ -24,6 +24,11 @@ public class ModItemModelProvider extends net.minecraftforge.client.model.genera
         simpleItem(ModItems.ETHEREUM);
         simpleItem(ModItems.RAW_ETHEREUM);
         simpleItem(ModItems.ETHEREUM_DUST);
+        simpleItem(ModItems.IRON_DUST);
+        simpleItem(ModItems.EFTORIT_DUST);
+        simpleItem(ModItems.EFTORIUM_DUST);
+        simpleItem(ModItems.EFTORIUM_INGOT);
+        simpleItem(ModItems.FOSSIL);
 
         simpleItem(ModItems.RUBY);
 

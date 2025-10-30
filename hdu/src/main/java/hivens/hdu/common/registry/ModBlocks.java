@@ -100,6 +100,14 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops())
     );
 
+    // Eftorium
+    public static  final  RegistryObject<Block> EFTORIUM_BLOCK = registerBlock("eftorium_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.LAPIS_BLOCK)
+                    .sound(SoundType.METAL)
+                    .strength(40f)
+                    .requiresCorrectToolForDrops())
+    );
+
     // Councussive Dynamite
     public static final RegistryObject<Block> CONCUSSIVE_DYNAMITE = registerBlock("concussive_dynamite",
             () -> new ConcussiveDynamiteBlock(BlockBehaviour.Properties.copy(Blocks.TNT)));

@@ -25,6 +25,7 @@ public class ModBlockStateProvider extends net.minecraftforge.client.model.gener
         blockWithItem(ModBlocks.EFTORIT_ORE);
         blockWithItem(ModBlocks.DEEPSLATE_EFTORIT_ORE);
         blockWithItem(ModBlocks.EFTORIT_BLOCK);
+        blockWithItem(ModBlocks.EFTORIUM_BLOCK);
 
         blockWithItem(ModBlocks.HOPE_STONE);
         blockWithItem(ModBlocks.SMOOTH_HOPE_STONE);
