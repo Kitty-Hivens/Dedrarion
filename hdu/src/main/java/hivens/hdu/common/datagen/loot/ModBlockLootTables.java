@@ -57,20 +57,22 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.EXTINGUISHED_TORCH.get());
 
 
+        // Ethereum Ore
         this.add(ModBlocks.ETHEREUM_ORE.get(),
                 block -> createRareLikeOreDrops(ModBlocks.ETHEREUM_ORE.get(), ModItems.RAW_ETHEREUM.get()).withPool(createFossilRarePool()));
+
+        // Ruby Ore
         this.add(ModBlocks.RUBY_ORE.get(),
                 block -> createRareLikeOreDrops(ModBlocks.RUBY_ORE.get(), ModItems.RUBY.get()).withPool(createFossilRarePool()));
         this.add(ModBlocks.DEEPSLATE_RUBY_ORE.get(),
-                block -> createRareLikeOreDrops(ModBlocks.RUBY_ORE.get(), ModItems.RUBY.get()).withPool(createFossilRarePool()));
-        this.add(ModBlocks.RUBY_ORE.get(),
-                block -> createRareLikeOreDrops(ModBlocks.RUBY_ORE.get(), ModItems.RUBY.get()).withPool(createFossilRarePool()));
-        this.add(ModBlocks.DEEPSLATE_RUBY_ORE.get(),
-                block -> createRareLikeOreDrops(ModBlocks.RUBY_ORE.get(), ModItems.RUBY.get()).withPool(createFossilRarePool()));
+                block -> createRareLikeOreDrops(ModBlocks.DEEPSLATE_RUBY_ORE.get(), ModItems.RUBY.get()).withPool(createFossilRarePool()));
+
+        // Eftorit Ore
         this.add(ModBlocks.EFTORIT_ORE.get(),
                 block -> createRareLikeOreDrops(ModBlocks.EFTORIT_ORE.get(), ModItems.EFTORIT.get()).withPool(createFossilRarePool()));
         this.add(ModBlocks.DEEPSLATE_EFTORIT_ORE.get(),
-                block -> createRareLikeOreDrops(ModBlocks.EFTORIT_ORE.get(), ModItems.EFTORIT.get()).withPool(createFossilRarePool()));
+                block -> createRareLikeOreDrops(ModBlocks.DEEPSLATE_EFTORIT_ORE.get(), ModItems.EFTORIT.get()).withPool(createFossilRarePool()));
+
         this.add(ModBlocks.HOPE_STONE.get(),
                 block -> createLikeStoneDrops(ModBlocks.HOPE_STONE.get(), ModBlocks.HOPE_SHARDS.get()));
     }
