@@ -8,7 +8,7 @@ license="GNU GPL v3"
 modId="dedrarion"
 version="1.0.0"
 displayName="Dedrarion Adventures"
-authors="GoldyL (Hivens)"
+authors="Haru (Hivens)"
 description='''Core API for Dedrarion Adventures modules.'''
 
 [[dependencies.dedrarion]]

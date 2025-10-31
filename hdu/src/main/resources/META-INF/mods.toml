@@ -1,5 +1,3 @@
-# В файле /hdu/src/main/resources/META-INF/mods.toml
-
 modLoader="javafml"
 loaderVersion="[47,)"
 license="GNU GPL v3"
@@ -8,12 +6,9 @@ license="GNU GPL v3"
 modId="hdu"
 version="1.1.0-dev"
 displayName="Dedrarion Underground"
-authors="GoldyL (Hivens)"
+authors="Haru (Hivens)"
 description='''Part for Dedrarion. Lets explore caves!'''
 
-# --- ВОТ ОНО ---
-# Жёстко прописанный mod_id
-# Двойные скобки для "коллекции"
 [[dependencies.hdu]]
 modId="forge"
 mandatory=true
