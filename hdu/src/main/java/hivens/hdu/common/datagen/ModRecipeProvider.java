@@ -279,6 +279,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModItems.ETHEREUM_DUST.get()), has(ModItems.ETHEREUM_DUST.get()))
                 .save(pWriter); // 4 железных слитка, 2/3 эфириума, 3 эфторита...
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CATALYST_OF_DEBAUCHERY.get())
+                .requires(ModItems.ETHER_CORE.get()) // Босс-дроп
+                .requires(ModItems.EFTORIUM_INGOT.get()) // Продвинутый материал
+                .requires(ModItems.UNSTABLE_GUNPOWDER.get(), 4) // Хаос
+                .unlockedBy(getHasName(ModItems.ETHER_CORE.get()), has(ModItems.ETHER_CORE.get()))
+                .unlockedBy(getHasName(ModItems.EFTORIUM_INGOT.get()), has(ModItems.EFTORIUM_INGOT.get()))
+                .unlockedBy(getHasName(ModItems.UNSTABLE_GUNPOWDER.get()), has(ModItems.UNSTABLE_GUNPOWDER.get()))
+                .save(pWriter, "catalyst_of_debauchery");
+
 
 
         // ===============================================================
@@ -343,16 +352,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 "mnemosyne_and_aleta_from_forge",      // Имя файла рецепта
                 ModItems.MNEMOSYNE_ALETA.get(),      // Ваш меч в качестве результата
                 List.of(
-                        // Все ингредиенты будут потрачены
-                        new EftoritIngredient(Ingredient.of(ModItems.ETHEREUM.get()), true),
+                        // Новая стоимость: Сфокусированная на T5-материалах
                         new EftoritIngredient(Ingredient.of(Items.NETHERITE_INGOT), true),
-                        new EftoritIngredient(Ingredient.of(Items.SPIDER_EYE), true),
-                        new EftoritIngredient(Ingredient.of(Items.GLASS), true),
-                        new EftoritIngredient(Ingredient.of(Items.STRING), true),
-                        new EftoritIngredient(Ingredient.of(Items.IRON_SWORD), true)
+                        new EftoritIngredient(Ingredient.of(ModItems.ETHEREUM.get()), true),
+                        new EftoritIngredient(Ingredient.of(ModItems.ETHEREUM.get()), true),
+                        new EftoritIngredient(Ingredient.of(ModItems.EFTORIUM_INGOT.get()), true), // T5-материал
+                        new EftoritIngredient(Ingredient.of(ModItems.EFTORIUM_INGOT.get()), true),
+                        new EftoritIngredient(Ingredient.of(ModItems.EFTORIUM_INGOT.get()), true),
+                        new EftoritIngredient(Ingredient.of(ModItems.ETHER_CORE.get()), true) // Босс-дроп
                 ),
-                ModItems.ETHEREUM.get() // Рецепт откроется, когда игрок подберет Этериум
-                // TODO: Переделать. Эфириум и так будет доступен к моменту крафта
+                ModItems.ETHER_CORE.get() // Разблокируется, когда игрок подберет Ether Core
         );
 
         eftoritForgeRecipe(pWriter,
@@ -360,14 +369,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ModItems.TETRALIN.get(),
                 List.of(
                         new EftoritIngredient(Ingredient.of(Items.NETHERITE_INGOT), true),
-                        new EftoritIngredient(Ingredient.of(ModItems.ETHEREUM.get()), true), // Заменил Shards на слиток, так логичнее
+                        new EftoritIngredient(Ingredient.of(ModItems.ETHEREUM.get()), true),
                         new EftoritIngredient(Ingredient.of(ModItems.ETHEREUM.get()), true),
                         new EftoritIngredient(Ingredient.of(Items.PHANTOM_MEMBRANE), true),
-                        new EftoritIngredient(Ingredient.of(Items.HEART_OF_THE_SEA), false), // Сердце моря - катализатор!
+
+                        // НОВОЕ: Катализатор Распутия. Не потребляется (consume: false)
+                        // и его NBT (чары) копируются на результат (copyNbt: true).
+                        new EftoritIngredient(
+                                Ingredient.of(ModItems.CATALYST_OF_DEBAUCHERY.get()),
+                                false,
+                                true // КЛЮЧЕВОЙ ФЛАГ: Копировать NBT
+                        ),
+
                         new EftoritIngredient(Ingredient.of(Items.DIAMOND), true),
                         new EftoritIngredient(Ingredient.of(Items.DIAMOND), true)
                 ),
-                Items.HEART_OF_THE_SEA // Разблокируется, когда у игрока есть сердце моря
+                ModItems.CATALYST_OF_DEBAUCHERY.get() // Разблокируется, когда игрок подберет катализатор
         );
 
 
