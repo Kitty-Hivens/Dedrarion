@@ -127,17 +127,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.EFTORIT_FORGE.get())
-                .pattern(" A ")
-                .pattern("CBC")
-                .pattern("DDD")
-                .define('A', ModItems.ETHEREUM.get())
-                .define('B', ModItems.FOSSIL.get())
-                .define('C', ModBlocks.EFTORIUM_BLOCK.get())
-                .define('D', ModBlocks.HOPE_STONE.get())
-                .unlockedBy(getHasName(ModItems.FOSSIL.get()), has(ModItems.FOSSIL.get()))
+                .pattern("AEA") // A: Эфторитовый Слиток (T2), E: Эфириум (T4)
+                .pattern("BCB") // B: Эфторитовый Блок (T2), C: Рубин (T2)
+                .pattern("DDD") // D: Кирпичи из Камня Надежды (T3)
+                .define('A', ModItems.EFTORIT.get()) // T2 Слиток
+                .define('E', ModItems.ETHEREUM.get()) // T4 Самоцвет (Самый дорогой самоцвет)
+                .define('B', ModBlocks.EFTORIT_BLOCK.get()) // T2 Блок
+                .define('C', ModItems.RUBY.get()) // T2 Самоцвет
+                .define('D', ModBlocks.HOPE_STONE_BRICKS.get()) // T3 Структурный блок
                 .unlockedBy(getHasName(ModItems.ETHEREUM.get()), has(ModItems.ETHEREUM.get()))
-                .unlockedBy(getHasName(ModBlocks.EFTORIUM_BLOCK.get()), has(ModBlocks.EFTORIUM_BLOCK.get()))
-                .save(pWriter);
+                .unlockedBy(getHasName(ModBlocks.EFTORIT_BLOCK.get()), has(ModBlocks.EFTORIT_BLOCK.get()))
+                .save(pWriter, "eftorit_forge");
 
         // Eftorium
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.EFTORIUM_BLOCK.get())
@@ -232,6 +232,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModItems.UNSTABLE_GUNPOWDER.get()), has(ModItems.UNSTABLE_GUNPOWDER.get()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BROKEN_CARBON_PLATES.get(), 4)
+                .pattern("CC")
+                .pattern("SS")
+                .define('C', Items.COAL) // Уголь
+                .define('S', ModBlocks.HOPE_SHARDS.get()) // Осколки Надежды (T3)
+                .unlockedBy(getHasName(ModBlocks.HOPE_SHARDS.get()), has(ModBlocks.HOPE_SHARDS.get()))
+                .save(pWriter, "broken_carbon_plates");
+
 
 
 
@@ -287,6 +295,21 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModItems.EFTORIUM_INGOT.get()), has(ModItems.EFTORIUM_INGOT.get()))
                 .unlockedBy(getHasName(ModItems.UNSTABLE_GUNPOWDER.get()), has(ModItems.UNSTABLE_GUNPOWDER.get()))
                 .save(pWriter, "catalyst_of_debauchery");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.UNSTABLE_GUNPOWDER.get(), 4)
+                .requires(Items.GUNPOWDER, 4)
+                .requires(ModItems.ETHEREUM_DUST.get(), 2) // Эфириумовая пыль (T2 магия)
+                .unlockedBy(getHasName(ModItems.ETHEREUM_DUST.get()), has(ModItems.ETHEREUM_DUST.get()))
+                .save(pWriter, "unstable_gunpowder");
+
+        // ИСПРАВЛЕННЫЙ РЕЦЕПТ: JOKERS COMPANION (Теперь использует только доступные до босса материалы)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.JOKERS_COMPANION.get())
+                .requires(ModItems.EFTORIT.get()) // T2 Эфторит
+                .requires(ModItems.UNSTABLE_GUNPOWDER.get()) // Теперь крафтится
+                .requires(ModItems.BROKEN_CARBON_PLATES.get()) // Теперь крафтится
+                .requires(ModItems.BROKEN_CARBON_PLATES.get())
+                .unlockedBy(getHasName(ModItems.EFTORIT.get()), has(ModItems.EFTORIT.get()))
+                .save(pWriter, "jokers_companion");
 
 
 

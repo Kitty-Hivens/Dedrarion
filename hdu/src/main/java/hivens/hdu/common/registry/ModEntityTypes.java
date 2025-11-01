@@ -1,6 +1,7 @@
 package hivens.hdu.common.registry;
 
 import hivens.hdu.HDU;
+import hivens.hdu.common.entity.DelayedExplosionEntity;
 import hivens.hdu.common.entity.NullGuardianEntity;
 import hivens.hdu.common.entity.PrimedJokerBomb;
 import net.minecraft.world.entity.EntityType;
@@ -21,6 +22,13 @@ public class ModEntityTypes {
                             .clientTrackingRange(10)
                             .updateInterval(10)
                             .build("primed_joker_bomb"));
+
+    public static final RegistryObject<EntityType<DelayedExplosionEntity>> DELAYED_EXPLOSION =
+            ENTITY_TYPES.register("delayed_explosion",
+                    () -> EntityType.Builder.<DelayedExplosionEntity>of(DelayedExplosionEntity::new, MobCategory.MISC)
+                            .sized(1.0f, 1.0f)
+                            .clientTrackingRange(16)
+                            .build("delayed_explosion"));
 
     public static final RegistryObject<EntityType<NullGuardianEntity>> NULL_GUARDIAN =
             ENTITY_TYPES.register("null_guardian",
