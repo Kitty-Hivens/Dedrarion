@@ -22,49 +22,47 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.ItemParticleOption;
+
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class EftoritForgeEntity extends BlockEntity { // Убираем 'implements Container'
+public class EftoritForgeEntity extends BlockEntity {
     private static final int INVENTORY_SIZE = 16;
     private static final int OUTPUT_SLOT = 15;
 
-    // --- НОВЫЙ СПОСОБ УПРАВЛЕНИЯ ИНВЕНТАРЁМ ---
     private final ItemStackHandler itemHandler = new ItemStackHandler(INVENTORY_SIZE) {
         @Override
         protected void onContentsChanged(int slot) {
-            // Этот метод вызывается АВТОМАТИЧЕСКИ при любом изменении инвентаря
-            // Это решает проблему с рендером раз и навсегда!
             setChanged();
             sync();
         }
 
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-            // Запрещаем вставлять предметы в выходной слот
             return slot != OUTPUT_SLOT && super.isItemValid(slot, stack);
         }
 
         @Override
         public int getSlotLimit(int slot) {
-            // ГЛАВНОЕ: Ограничиваем каждый слот ОДНИМ предметом
             return 1;
         }
     };
     private final LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.of(() -> itemHandler);
-    // --- КОНЕЦ НОВОГО БЛОКА ---
 
     private EftoritForgeRecipe currentRecipe;
     private int craftTimer = 0;
     private boolean isCrafting = false;
+    private ItemStack resultStack = ItemStack.EMPTY;
 
     public EftoritForgeEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.EFTORIT_FORGE_ENTITY.get(), pos, state);
     }
 
-    // Этот метод теперь нужен для проверки рецепта, т.к. мы убрали 'implements Container'
     public Container getRecipeMatcher() {
         SimpleContainer container = new SimpleContainer(INVENTORY_SIZE);
         for (int i = 0; i < INVENTORY_SIZE; i++) {
@@ -73,7 +71,6 @@ public class EftoritForgeEntity extends BlockEntity { // Убираем 'impleme
         return container;
     }
 
-    // --- ОБЯЗАТЕЛЬНЫЕ МЕТОДЫ ДЛЯ CAPABILITIES ---
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         if (cap == ForgeCapabilities.ITEM_HANDLER) {
@@ -87,20 +84,69 @@ public class EftoritForgeEntity extends BlockEntity { // Убираем 'impleme
         super.invalidateCaps();
         lazyItemHandler.invalidate();
     }
-    // --- КОНЕЦ ОБЯЗАТЕЛЬНЫХ МЕТОДОВ ---
 
     public static void tick(Level level, EftoritForgeEntity entity) {
         if (level == null || level.isClientSide) return;
 
         if (entity.isCrafting) {
             entity.craftTimer++;
+
+            // Спавним частицы на серверной стороне
+            if (entity.craftTimer < 100 && level.getGameTime() % 2 == 0) {
+                entity.spawnCraftingParticles();
+            }
+
             if (entity.craftTimer >= 100) {
                 entity.craftItem();
-                // isCrafting и craftTimer сбросятся внутри craftItem()
             }
         } else {
             entity.checkForRecipe();
         }
+    }
+
+    // Спавнит частицы ингредиентов и вихревые частицы
+    public void spawnCraftingParticles() {
+        if (level == null || level.isClientSide || currentRecipe == null || !(level instanceof ServerLevel serverLevel)) return;
+
+        currentRecipe.getEftoritIngredients().forEach(ingredient -> {
+            ItemStack[] items = ingredient.ingredient().getItems();
+            if (items.length == 0) return;
+            ItemStack itemStack = items[0];
+
+            // Координаты центра
+            double x = worldPosition.getX() + 0.5;
+            double y = worldPosition.getY() + 0.9;
+            double z = worldPosition.getZ() + 0.5;
+
+            // Случайная позиция для вихря
+            double radius = 0.5;
+            double angle = level.random.nextDouble() * 2 * Math.PI;
+            double xOffset = Math.cos(angle) * radius * 0.5;
+            double zOffset = Math.sin(angle) * radius * 0.5;
+
+            // 1. Частицы самого предмета
+            serverLevel.sendParticles(
+                    new ItemParticleOption(ParticleTypes.ITEM, itemStack),
+                    x + xOffset,
+                    y,
+                    z + zOffset,
+                    1,
+                    0.0, 0.0, 0.0, 0.0
+            );
+
+            // 2. Магические частицы (визуальный вихрь)
+            serverLevel.sendParticles(
+                    ParticleTypes.GLOW,
+                    x + xOffset,
+                    y,
+                    z + zOffset,
+                    1,
+                    0.0,
+                    0.1,
+                    0.0,
+                    0.0
+            );
+        });
     }
 
     private void checkForRecipe() {
@@ -114,22 +160,23 @@ public class EftoritForgeEntity extends BlockEntity { // Убираем 'impleme
 
         if (optional.isPresent()) {
             currentRecipe = optional.get();
+            // Рассчитываем и сохраняем результат для рендера
+            resultStack = currentRecipe.assemble(getRecipeMatcher(), level.registryAccess());
             isCrafting = true;
             craftTimer = 0;
-            // onContentsChanged() вызовется при крафте, так что sync() здесь не нужен
             setChanged();
+            sync();
         }
     }
 
     private void craftItem() {
         if (currentRecipe == null || level == null) return;
 
-        processRecipe(currentRecipe); // уменьшаем ингредиенты
+        processRecipe(currentRecipe);
 
         ItemStack result = currentRecipe.assemble(getRecipeMatcher(), level.registryAccess());
         if (result.isEmpty()) return;
 
-        // --- ищем свободный слот ---
         boolean placed = false;
         for (int i = 0; i < itemHandler.getSlots(); i++) {
             if (itemHandler.getStackInSlot(i).isEmpty()) {
@@ -139,15 +186,16 @@ public class EftoritForgeEntity extends BlockEntity { // Убираем 'impleme
             }
         }
 
-        // если свободного слота не найдено, спавним в мир
         if (!placed) {
             spawnResult(result.copy());
         }
 
+        // Очищаем результат после завершения крафта
+        resultStack = ItemStack.EMPTY;
+
         currentRecipe = null;
         isCrafting = false;
         craftTimer = 0;
-        // setChanged() и sync() вызовутся автоматически через onContentsChanged
     }
 
 
@@ -157,7 +205,6 @@ public class EftoritForgeEntity extends BlockEntity { // Убираем 'impleme
                 ItemStack stack = itemHandler.getStackInSlot(i);
                 if (ingredient.ingredient().test(stack)) {
                     if (ingredient.consume()) {
-                        // Просто удаляем предмет из слота
                         itemHandler.setStackInSlot(i, ItemStack.EMPTY);
                     }
                     break;
@@ -170,25 +217,34 @@ public class EftoritForgeEntity extends BlockEntity { // Убираем 'impleme
     @Override
     protected void saveAdditional(@NotNull CompoundTag tag) {
         super.saveAdditional(tag);
-        // Сохраняем инвентарь через itemHandler
         tag.put("inventory", itemHandler.serializeNBT());
         tag.putInt("CraftTimer", craftTimer);
         tag.putBoolean("IsCrafting", isCrafting);
+        tag.put("ResultStack", resultStack.save(new CompoundTag()));
     }
 
     @Override
     public void load(@NotNull CompoundTag tag) {
         super.load(tag);
-        // Загружаем инвентарь
         itemHandler.deserializeNBT(tag.getCompound("inventory"));
         this.craftTimer = tag.getInt("CraftTimer");
         this.isCrafting = tag.getBoolean("IsCrafting");
+        if (tag.contains("ResultStack")) {
+            resultStack = ItemStack.of(tag.getCompound("ResultStack"));
+        }
     }
 
-    // --- ВСПОМОГАТЕЛЬНЫЕ И СТАРЫЕ МЕТОДЫ (ОБНОВЛЕННЫЕ) ---
-
+    // --- ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ (ГЕТТЕРЫ) ---
     public boolean isCrafting() {
         return isCrafting;
+    }
+
+    public int getCraftTimer() {
+        return craftTimer;
+    }
+
+    public ItemStack getResultStack() {
+        return resultStack;
     }
 
     public List<ItemStack> getItems() {
@@ -205,7 +261,6 @@ public class EftoritForgeEntity extends BlockEntity { // Убираем 'impleme
     public ItemStack removeLastItem() {
         for (int i = itemHandler.getSlots() - 1; i >= 0; i--) {
             if (!itemHandler.getStackInSlot(i).isEmpty()) {
-                // extractItem вызовет onContentsChanged, который сделает sync()
                 return itemHandler.extractItem(i, 1, false);
             }
         }

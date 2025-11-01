@@ -195,17 +195,20 @@ public class EftoritForgeBlock extends Block implements EntityBlock {
             }
             // Логика ДОБАВЛЕНИЯ (если в руке есть предмет)
         } else {
-            // Пытаемся вставить предмет через ItemHandler
+            // --- ИСПРАВЛЕННАЯ ЛОГИКА ВСТАВКИ 1 ПРЕДМЕТА ---
+            ItemStack itemToInsert = heldItem.copyWithCount(1);
+
+            // Пытаемся вставить ТОЛЬКО ОДИН предмет через ItemHandler
             ItemStack remainder = ItemHandlerHelper.insertItem(
                     forge.getCapability(ForgeCapabilities.ITEM_HANDLER).orElse(null),
-                    heldItem.copy(),
+                    itemToInsert,
                     false
             );
 
-            // Если предмет вставился (полностью или частично)
-            if (remainder.getCount() != heldItem.getCount()) {
+            // Если остаток пуст (т.е. один предмет был успешно вставлен)
+            if (remainder.isEmpty()) {
                 if (!player.getAbilities().instabuild) {
-                    player.setItemInHand(hand, remainder); // Возвращаем остаток (если он есть)
+                    heldItem.shrink(1); // Уменьшаем стак игрока на 1
                 }
                 return InteractionResult.CONSUME;
             }
