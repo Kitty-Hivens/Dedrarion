@@ -1,0 +1,21 @@
+{
+  "type": "hdu:eftorit_forge",
+  "ingredients": [
+    {
+      "item": "hdu:eftorit"
+    },
+    {
+      "item": "hdu:eftorit"
+    },
+    {
+      "item": "hdu:eftorit"
+    },
+    {
+      "copyNbt": true,
+      "item": "hdu:tetralin"
+    }
+  ],
+  "result": {
+    "item": "hdu:tetralin"
+  }
+}

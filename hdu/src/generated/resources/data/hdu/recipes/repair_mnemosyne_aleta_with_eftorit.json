@@ -1,0 +1,21 @@
+{
+  "type": "hdu:eftorit_forge",
+  "ingredients": [
+    {
+      "item": "hdu:eftorit"
+    },
+    {
+      "item": "hdu:eftorit"
+    },
+    {
+      "item": "hdu:eftorit"
+    },
+    {
+      "copyNbt": true,
+      "item": "hdu:mnemosyne_aleta"
+    }
+  ],
+  "result": {
+    "item": "hdu:mnemosyne_aleta"
+  }
+}

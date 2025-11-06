@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hdu:ether_core"
+    },
+    {
+      "item": "hdu:unstable_gunpowder"
+    },
+    {
+      "item": "hdu:broken_carbon_plates"
+    },
+    {
+      "item": "hdu:broken_carbon_plates"
+    }
+  ],
+  "result": {
+    "item": "hdu:jokers_companion"
+  }
+}

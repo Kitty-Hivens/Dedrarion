@@ -3,19 +3,22 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "hdu:eftorit_block"
-    },
-    "B": {
       "item": "hdu:ethereum"
     },
+    "B": {
+      "item": "hdu:fossil"
+    },
     "C": {
+      "item": "hdu:eftorium_block"
+    },
+    "D": {
       "item": "hdu:hope_stone"
     }
   },
   "pattern": [
-    "AAA",
-    "BAB",
-    "CCC"
+    " A ",
+    "CBC",
+    "DDD"
   ],
   "result": {
     "item": "hdu:eftorit_forge"

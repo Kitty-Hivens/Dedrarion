@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_detonation_blade": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hdu:detonation_blade"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hdu:repair_detonation_blade_with_eftorit"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_detonation_blade"
+    ],
+    [
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hdu:repair_detonation_blade_with_eftorit"
+    ]
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,18 @@
+{
+  "type": "hdu:eftorit_forge",
+  "ingredients": [
+    {
+      "item": "hdu:eftorit"
+    },
+    {
+      "item": "hdu:eftorit"
+    },
+    {
+      "copyNbt": true,
+      "item": "minecraft:netherite_axe"
+    }
+  ],
+  "result": {
+    "item": "minecraft:netherite_axe"
+  }
+}

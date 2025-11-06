@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_diamond_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:diamond_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hdu:repair_diamond_sword_with_eftorit"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_diamond_sword"
+    ],
+    [
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hdu:repair_diamond_sword_with_eftorit"
+    ]
+  },
+  "sends_telemetry_event": true
+}

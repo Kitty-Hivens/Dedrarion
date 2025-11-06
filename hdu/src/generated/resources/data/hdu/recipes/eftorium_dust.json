@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hdu:eftorit_dust"
+    },
+    {
+      "item": "hdu:eftorit_dust"
+    },
+    {
+      "item": "hdu:eftorit_dust"
+    },
+    {
+      "item": "hdu:ethereum_dust"
+    },
+    {
+      "item": "hdu:ethereum_dust"
+    },
+    {
+      "item": "hdu:iron_dust"
+    },
+    {
+      "item": "hdu:iron_dust"
+    },
+    {
+      "item": "hdu:iron_dust"
+    },
+    {
+      "item": "hdu:iron_dust"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "hdu:eftorium_dust"
+  }
+}

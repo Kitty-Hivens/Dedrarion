@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_eftorit": {
+    "has_eftorium_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hdu:eftorit"
+              "hdu:eftorium_block"
             ]
           }
         ]
@@ -25,12 +25,12 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_hope_stone": {
+    "has_fossil": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hdu:hope_stone"
+              "hdu:fossil"
             ]
           }
         ]
@@ -46,9 +46,9 @@
   },
   "requirements": [
     [
-      "has_eftorit",
+      "has_fossil",
       "has_ethereum",
-      "has_hope_stone",
+      "has_eftorium_block",
       "has_the_recipe"
     ]
   ],

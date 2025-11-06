@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "G": {
+      "item": "minecraft:gunpowder"
+    },
+    "P": {
+      "item": "hdu:unstable_gunpowder"
+    },
+    "S": {
+      "item": "minecraft:sand"
+    }
+  },
+  "pattern": [
+    "SPS",
+    "PGP",
+    "SPS"
+  ],
+  "result": {
+    "item": "hdu:concussive_dynamite"
+  },
+  "show_notification": true
+}

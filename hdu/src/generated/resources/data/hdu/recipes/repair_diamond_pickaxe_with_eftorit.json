@@ -1,0 +1,15 @@
+{
+  "type": "hdu:eftorit_forge",
+  "ingredients": [
+    {
+      "item": "hdu:eftorit"
+    },
+    {
+      "copyNbt": true,
+      "item": "minecraft:diamond_pickaxe"
+    }
+  ],
+  "result": {
+    "item": "minecraft:diamond_pickaxe"
+  }
+}

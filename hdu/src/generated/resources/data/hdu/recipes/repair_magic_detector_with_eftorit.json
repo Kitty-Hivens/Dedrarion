@@ -1,0 +1,21 @@
+{
+  "type": "hdu:eftorit_forge",
+  "ingredients": [
+    {
+      "item": "hdu:eftorit"
+    },
+    {
+      "item": "hdu:eftorit"
+    },
+    {
+      "item": "hdu:eftorit"
+    },
+    {
+      "copyNbt": true,
+      "item": "hdu:magic_detector"
+    }
+  ],
+  "result": {
+    "item": "hdu:magic_detector"
+  }
+}

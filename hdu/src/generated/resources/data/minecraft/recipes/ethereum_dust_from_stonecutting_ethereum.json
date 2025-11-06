@@ -1,6 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "count": 1,
+  "count": 3,
   "ingredient": {
     "item": "hdu:ethereum"
   },
