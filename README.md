@@ -79,4 +79,4 @@ The entire **Dedrarion Adventures** project is distributed under the **GNU LGPL 
 
 * **Dedrarion Core API:** Haru (Hivens)
 * **Dedrarion Underground:** Haru, Afanet (Hivens)
-* **Благодарности:** logerions, thisgoi, Maris260 (из старого README)
+* **Благодарности:** logerions, thisgoi, Maris260
