@@ -2,7 +2,7 @@
 
 modLoader="javafml"
 loaderVersion="[47,)"
-license="GNU GPL v3"
+license="${mod_license}"
 
 [[mods]]
 modId="dedrarion"
