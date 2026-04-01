@@ -59,19 +59,19 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         // Ethereum Ore
         this.add(ModBlocks.ETHEREUM_ORE.get(),
-                block -> createRareLikeOreDrops(ModBlocks.ETHEREUM_ORE.get(), ModItems.RAW_ETHEREUM.get()).withPool(createFossilRarePool()));
+                block -> createRareLikeOreDrops(ModBlocks.ETHEREUM_ORE.get(), ModItems.RAW_ETHEREUM.get()));
 
         // Ruby Ore
         this.add(ModBlocks.RUBY_ORE.get(),
-                block -> createRareLikeOreDrops(ModBlocks.RUBY_ORE.get(), ModItems.RUBY.get()).withPool(createFossilRarePool()));
+                block -> createRareLikeOreDrops(ModBlocks.RUBY_ORE.get(), ModItems.RUBY.get()));
         this.add(ModBlocks.DEEPSLATE_RUBY_ORE.get(),
-                block -> createRareLikeOreDrops(ModBlocks.DEEPSLATE_RUBY_ORE.get(), ModItems.RUBY.get()).withPool(createFossilRarePool()));
+                block -> createRareLikeOreDrops(ModBlocks.DEEPSLATE_RUBY_ORE.get(), ModItems.RUBY.get()));
 
         // Eftorit Ore
         this.add(ModBlocks.EFTORIT_ORE.get(),
-                block -> createRareLikeOreDrops(ModBlocks.EFTORIT_ORE.get(), ModItems.EFTORIT.get()).withPool(createFossilRarePool()));
+                block -> createRareLikeOreDrops(ModBlocks.EFTORIT_ORE.get(), ModItems.EFTORIT.get()));
         this.add(ModBlocks.DEEPSLATE_EFTORIT_ORE.get(),
-                block -> createRareLikeOreDrops(ModBlocks.DEEPSLATE_EFTORIT_ORE.get(), ModItems.EFTORIT.get()).withPool(createFossilRarePool()));
+                block -> createRareLikeOreDrops(ModBlocks.DEEPSLATE_EFTORIT_ORE.get(), ModItems.EFTORIT.get()));
 
         this.add(ModBlocks.HOPE_STONE.get(),
                 block -> createLikeStoneDrops(ModBlocks.HOPE_STONE.get(), ModBlocks.HOPE_SHARDS.get()));
@@ -93,26 +93,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 this.applyExplosionDecay(pBlock,
                         LootItem.lootTableItem(block)));
     }
-
-    protected LootPool.Builder createFossilRarePool() {
-        // Шанс выпадения (например, 1%)
-        float chance = 0.01F;
-
-        return LootPool.lootPool()
-                .setRolls(ConstantValue.exactly(1.0F)) // 1 попытка
-                .add(LootItem.lootTableItem(ModItems.FOSSIL.get())
-                        // Условие: шанс срабатывает в 1% случаев
-                        .when(LootItemRandomChanceCondition.randomChance(chance))
-                        // Условие: Fossil выпадает ТОЛЬКО если кирка НЕ ИМЕЕТ Шелкового Касания (Silk Touch)
-                        .when(net.minecraft.world.level.storage.loot.predicates.MatchTool.toolMatches(
-                                ItemPredicate.Builder.item()
-                                        .hasEnchantment(new EnchantmentPredicate(
-                                                Enchantments.SILK_TOUCH, MinMaxBounds.Ints.exactly(0)
-                                        ))
-                        ))
-                );
-    }
-
 
     @Override
     protected @NotNull Iterable<Block> getKnownBlocks() {

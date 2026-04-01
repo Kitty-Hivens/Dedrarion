@@ -46,10 +46,8 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         int customPackedLight = pPackedLight;
 
         // Определяем, является ли предмет АРТЕФАКТОМ или КЛЮЧЕВЫМ МАГИЧЕСКИМ ресурсом
-        boolean isArtifact = itemStack.is(ModItems.ETHER_CORE.get()) // Энергетическое ядро
-                || itemStack.is(ModItems.MNEMOSYNE_ALETA.get()) // Мнемозина и Алета
+        boolean isArtifact = itemStack.is(ModItems.MNEMOSYNE_ALETA.get()) // Мнемозина и Алета
                 || itemStack.is(ModItems.TETRALIN.get()) // Тетралин
-                || itemStack.is(ModItems.DETONATION_BLADE.get()) // Меч Детонации
                 || itemStack.is(ModItems.MAGIC_DETECTOR.get()) // Магический Детектор
                 || itemStack.is(ModItems.ETHEREUM.get()); // Эфириум (ключевой компонент)
 

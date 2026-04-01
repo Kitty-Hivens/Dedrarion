@@ -28,23 +28,13 @@ public class ModItemModelProvider extends net.minecraftforge.client.model.genera
         simpleItem(ModItems.EFTORIT_DUST);
         simpleItem(ModItems.EFTORIUM_DUST);
         simpleItem(ModItems.EFTORIUM_INGOT);
-        simpleItem(ModItems.FOSSIL);
-
         simpleItem(ModItems.RUBY);
-
         simpleItem(ModItems.EFTORIT);
-
         simpleItem(ModItems.MAGIC_DETECTOR);
         simpleItem(ModItems.FUEL_OF_PROMISES);
         simpleItem(ModItems.FORBIDDEN_FRUIT);
-
         simpleItem(ModItems.MNEMOSYNE_ALETA);
         simpleItem(ModItems.TETRALIN);
-        simpleItem(ModItems.ETHER_CORE);
-        simpleItem(ModItems.UNSTABLE_GUNPOWDER);
-        simpleItem(ModItems.MECHANICAL_PARTS);
-        simpleItem(ModItems.BROKEN_CARBON_PLATES);
-
         evenSimplerBlockItem(ModBlocks.HOPE_STONE_STAIRS);
         evenSimplerBlockItem(ModBlocks.SMOOTH_HOPE_STONE_STAIRS);
         evenSimplerBlockItem(ModBlocks.HOPE_SHARD_STAIRS);

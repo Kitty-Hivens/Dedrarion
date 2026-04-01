@@ -108,10 +108,6 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops())
     );
 
-    // Councussive Dynamite
-    public static final RegistryObject<Block> CONCUSSIVE_DYNAMITE = registerBlock("concussive_dynamite",
-            () -> new ConcussiveDynamiteBlock(BlockBehaviour.Properties.copy(Blocks.TNT)));
-
     // Hope Stone
 
     public static final RegistryObject<Block> HOPE_STONE = registerBlock("hope_stone",
@@ -202,13 +198,6 @@ public class ModBlocks {
             )
     );
 
-
-
-
-
-
-
-
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
@@ -218,7 +207,6 @@ public class ModBlocks {
     private  static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block) {
         ModItems.Items.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
-
 
     public static void register(IEventBus eventBus){
         BLOCKS.register(eventBus);

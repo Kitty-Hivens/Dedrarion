@@ -7,8 +7,6 @@ import dedrarion.api.item.ModTooltipFoodItem;
 import dedrarion.api.item.TooltipFuelItem;
 import dedrarion.api.item.TooltipItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -40,9 +38,6 @@ public class ModItems {
     public static final RegistryObject<Item> EFTORIUM_INGOT = Items.register("eftorium_ingot",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> FOSSIL = Items.register("fossil",
-            () -> new Item(new Item.Properties()));
-
 
     public static final RegistryObject<Item> MNEMOSYNE_ALETA = Items.register("mnemosyne_aleta",
             () -> new MnemosyneAletaItem(
@@ -61,44 +56,6 @@ public class ModItems {
                     new Item.Properties().stacksTo(1).fireResistant()
             )
     );
-
-    /**
-     * Ключевой компонент, выпавший из уничтоженного Стража.
-     * Сделаем его редким и светящимся.
-     */
-    public static final RegistryObject<Item> ETHER_CORE = Items.register("ether_core",
-            () -> new TooltipItem(new Item.Properties().rarity(Rarity.RARE), "tooltip.item.hdu.ether_core"));
-
-    /**
-     * Нестабильный порошок, используемый в особых взрывчатых веществах.
-     */
-    public static final RegistryObject<Item> UNSTABLE_GUNPOWDER = Items.register("unstable_gunpowder",
-            () -> new UnstableGunpowderItem(new Item.Properties()));
-
-    /**
-     * Базовые механические детали.
-     */
-    public static final RegistryObject<Item> MECHANICAL_PARTS = Items.register("mechanical_parts",
-            () -> new Item(new Item.Properties()));
-
-    /**
-     * Фрагменты внеземной брони. Невероятно прочные.
-     */
-    public static final RegistryObject<Item> BROKEN_CARBON_PLATES = Items.register("broken_carbon_plates",
-            () -> new TooltipItem(new Item.Properties(), "tooltip.item.hdu.broken_carbon_plates"));
-
-    public static final RegistryObject<Item> JOKERS_COMPANION = Items.register("jokers_companion",
-            () -> new JokersCompanionItem(new Item.Properties()));
-
-    public static final RegistryObject<Item> DETONATION_BLADE = Items.register("detonation_blade",
-            () -> new DetonationBladeItem(
-                    Tiers.NETHERITE, // Берём за основу незерит
-                    3,               // Стандартный модификатор урона для незеритового меча (4 от тира + 3 = 7 урона)
-                    -2.4f,           // Стандартная скорость
-                    new Item.Properties().fireResistant()
-            )
-    );
-
 
     /**
      * Рубин. Классический самоцвет. Используется для различных крафтов. Встречается часто.

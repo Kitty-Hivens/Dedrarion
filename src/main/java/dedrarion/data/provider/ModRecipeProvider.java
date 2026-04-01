@@ -67,8 +67,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             // Вещи с Dedrarion
             ModItems.MAGIC_DETECTOR.get(),
             ModItems.MNEMOSYNE_ALETA.get(),
-            ModItems.TETRALIN.get(),
-            ModItems.DETONATION_BLADE.get()
+            ModItems.TETRALIN.get()
     );
 
 
@@ -221,28 +220,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModBlocks.HOPE_SHARD_BRICKS.get()), has(ModBlocks.HOPE_SHARD_BRICKS.get()))
                 .save(pWriter);
 
-        // NullGuardian Items
-        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModBlocks.CONCUSSIVE_DYNAMITE.get())
-                .pattern("SPS")
-                .pattern("PGP")
-                .pattern("SPS")
-                .define('S', Items.SAND)
-                .define('P', ModItems.UNSTABLE_GUNPOWDER.get())
-                .define('G', Items.GUNPOWDER)
-                .unlockedBy(getHasName(ModItems.UNSTABLE_GUNPOWDER.get()), has(ModItems.UNSTABLE_GUNPOWDER.get()))
-                .save(pWriter);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BROKEN_CARBON_PLATES.get(), 4)
-                .pattern("CC")
-                .pattern("SS")
-                .define('C', Items.COAL) // Уголь
-                .define('S', ModBlocks.HOPE_SHARDS.get()) // Осколки Надежды (T3)
-                .unlockedBy(getHasName(ModBlocks.HOPE_SHARDS.get()), has(ModBlocks.HOPE_SHARDS.get()))
-                .save(pWriter, "broken_carbon_plates");
-
-
-
-
         // ===============================================================
         //
         //                      Shapeless Craft
@@ -265,15 +242,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModBlocks.EFTORIT_BLOCK.get()), has(ModBlocks.EFTORIT_BLOCK.get()))
                 .save(pWriter);
 
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.JOKERS_COMPANION.get())
-                .requires(ModItems.ETHER_CORE.get())
-                .requires(ModItems.UNSTABLE_GUNPOWDER.get())
-                .requires(ModItems.BROKEN_CARBON_PLATES.get())
-                .requires(ModItems.BROKEN_CARBON_PLATES.get())
-                .unlockedBy(getHasName(ModItems.ETHER_CORE.get()), has(ModItems.ETHER_CORE.get()))
-                .save(pWriter);
-
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.EFTORIUM_DUST.get(), 9)
                 .requires(ModItems.EFTORIT_DUST.get())
                 .requires(ModItems.EFTORIT_DUST.get())
@@ -286,32 +254,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ModItems.IRON_DUST.get())
                 .unlockedBy(getHasName(ModItems.ETHEREUM_DUST.get()), has(ModItems.ETHEREUM_DUST.get()))
                 .save(pWriter); // 4 железных слитка, 2/3 эфириума, 3 эфторита...
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CATALYST_OF_DEBAUCHERY.get())
-                .requires(ModItems.ETHER_CORE.get()) // Босс-дроп
-                .requires(ModItems.EFTORIUM_INGOT.get()) // Продвинутый материал
-                .requires(ModItems.UNSTABLE_GUNPOWDER.get(), 4) // Хаос
-                .unlockedBy(getHasName(ModItems.ETHER_CORE.get()), has(ModItems.ETHER_CORE.get()))
-                .unlockedBy(getHasName(ModItems.EFTORIUM_INGOT.get()), has(ModItems.EFTORIUM_INGOT.get()))
-                .unlockedBy(getHasName(ModItems.UNSTABLE_GUNPOWDER.get()), has(ModItems.UNSTABLE_GUNPOWDER.get()))
-                .save(pWriter, "catalyst_of_debauchery");
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.UNSTABLE_GUNPOWDER.get(), 4)
-                .requires(Items.GUNPOWDER, 4)
-                .requires(ModItems.ETHEREUM_DUST.get(), 2) // Эфириумовая пыль (T2 магия)
-                .unlockedBy(getHasName(ModItems.ETHEREUM_DUST.get()), has(ModItems.ETHEREUM_DUST.get()))
-                .save(pWriter, "unstable_gunpowder");
-
-        // ИСПРАВЛЕННЫЙ РЕЦЕПТ: JOKERS COMPANION (Теперь использует только доступные до босса материалы)
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.JOKERS_COMPANION.get())
-                .requires(ModItems.EFTORIT.get()) // T2 Эфторит
-                .requires(ModItems.UNSTABLE_GUNPOWDER.get()) // Теперь крафтится
-                .requires(ModItems.BROKEN_CARBON_PLATES.get()) // Теперь крафтится
-                .requires(ModItems.BROKEN_CARBON_PLATES.get())
-                .unlockedBy(getHasName(ModItems.EFTORIT.get()), has(ModItems.EFTORIT.get()))
-                .save(pWriter, "jokers_companion");
-
-
 
         // ===============================================================
         //
@@ -381,10 +323,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         new EftoritIngredient(Ingredient.of(ModItems.ETHEREUM.get()), true),
                         new EftoritIngredient(Ingredient.of(ModItems.EFTORIUM_INGOT.get()), true), // T5-материал
                         new EftoritIngredient(Ingredient.of(ModItems.EFTORIUM_INGOT.get()), true),
-                        new EftoritIngredient(Ingredient.of(ModItems.EFTORIUM_INGOT.get()), true),
-                        new EftoritIngredient(Ingredient.of(ModItems.ETHER_CORE.get()), true) // Босс-дроп
+                        new EftoritIngredient(Ingredient.of(ModItems.EFTORIUM_INGOT.get()), true)
                 ),
-                ModItems.ETHER_CORE.get() // Разблокируется, когда игрок подберет Ether Core
+                ModItems.ETHEREUM.get() // Разблокируется, когда игрок подберет Ether Core
         );
 
         eftoritForgeRecipe(pWriter,
@@ -409,17 +350,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ),
                 ModItems.CATALYST_OF_DEBAUCHERY.get() // Разблокируется, когда игрок подберет катализатор
         );
-
-
-
-        SmithingTransformRecipeBuilder.smithing(
-                        Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), // Шаблон улучшения
-                        Ingredient.of(Items.NETHERITE_SWORD),                      // Что улучшаем
-                        Ingredient.of(ModItems.ETHER_CORE.get()),                  // Чем улучшаем
-                        RecipeCategory.COMBAT,
-                        ModItems.DETONATION_BLADE.get()                            // Результат
-                ).unlocks(getHasName(ModItems.ETHER_CORE.get()), has(ModItems.ETHER_CORE.get()))
-                .save(pWriter, "detonation_blade_from_smithing");
     }
 
 

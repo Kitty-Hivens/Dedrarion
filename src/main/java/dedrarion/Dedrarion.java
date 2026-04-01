@@ -2,12 +2,10 @@ package dedrarion;
 
 import com.mojang.logging.LogUtils;
 import dedrarion.compat.ModCompat;
-import dedrarion.content.entity.NullGuardianEntity;
 import dedrarion.registry.ModLootModifiers;
 import dedrarion.registry.ModEffects;
 import dedrarion.registry.*;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -32,7 +30,6 @@ public class Dedrarion {
         ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(this::entityAttributeEvent);
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -45,9 +42,5 @@ public class Dedrarion {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("HDU Common Setup Complete");
-    }
-
-    private void entityAttributeEvent(EntityAttributeCreationEvent event) {
-        event.put(ModEntityTypes.NULL_GUARDIAN.get(), NullGuardianEntity.createAttributes().build());
     }
 }

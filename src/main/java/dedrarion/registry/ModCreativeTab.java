@@ -21,11 +21,6 @@ public class ModCreativeTab {
 
                         // Custom Item
                         pOutput.accept(ModItems.MAGIC_DETECTOR.get());
-                        pOutput.accept(ModItems.ETHER_CORE.get());
-                        pOutput.accept(ModItems.BROKEN_CARBON_PLATES.get());
-                        pOutput.accept(ModItems.UNSTABLE_GUNPOWDER.get());
-                        pOutput.accept(ModItems.MECHANICAL_PARTS.get());
-
 
                         // Custom Block
                         pOutput.accept(ModBlocks.EFTORIT_FORGE.get());
@@ -38,7 +33,6 @@ public class ModCreativeTab {
                         pOutput.accept(ModItems.EFTORIT_DUST.get());
                         pOutput.accept(ModItems.EFTORIUM_DUST.get());
                         pOutput.accept(ModItems.EFTORIUM_INGOT.get());
-                        pOutput.accept(ModItems.FOSSIL.get());
                         pOutput.accept(ModItems.RUBY.get());
                         pOutput.accept(ModItems.EFTORIT.get());
 
@@ -51,7 +45,6 @@ public class ModCreativeTab {
                         // Attack
                         pOutput.accept(ModItems.MNEMOSYNE_ALETA.get());
                         pOutput.accept(ModItems.TETRALIN.get());
-                        pOutput.accept(ModItems.DETONATION_BLADE.get());
 
                         // Ore Blocks
                         pOutput.accept(ModBlocks.ETHEREUM_ORE.get());
@@ -95,7 +88,6 @@ public class ModCreativeTab {
                         pOutput.accept(ModBlocks.BROKEN_PLANKS.get());
                         pOutput.accept(ModBlocks.EXTINGUISHED_TORCH.get());
                         pOutput.accept(ModBlocks.PEDESTAL.get());
-                        pOutput.accept(ModBlocks.CONCUSSIVE_DYNAMITE.get());
 
 
                     })
