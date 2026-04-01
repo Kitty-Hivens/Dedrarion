@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "hdu:block/hope_shard_bricks",
-    "side": "hdu:block/hope_shard_bricks",
-    "top": "hdu:block/hope_shard_bricks"
-  }
-}

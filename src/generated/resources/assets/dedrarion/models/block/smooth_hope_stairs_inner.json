@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "hdu:block/smooth_hope_stone",
-    "side": "hdu:block/smooth_hope_stone",
-    "top": "hdu:block/smooth_hope_stone"
-  }
-}
