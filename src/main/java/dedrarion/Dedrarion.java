@@ -1,12 +1,11 @@
 package dedrarion;
 
 import com.mojang.logging.LogUtils;
-import dedrarion.common.compat.ModCompat;
-import dedrarion.common.entity.NullGuardianEntity;
-import dedrarion.common.loot.ModLootModifiers;
-import dedrarion.api.registry.ModEffects;
-import dedrarion.common.registry.*;
-import dedrarion.common.registry.*;
+import dedrarion.compat.ModCompat;
+import dedrarion.content.entity.NullGuardianEntity;
+import dedrarion.registry.ModLootModifiers;
+import dedrarion.registry.ModEffects;
+import dedrarion.registry.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.fml.common.Mod;

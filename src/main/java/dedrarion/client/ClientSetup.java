@@ -1,10 +1,10 @@
 package dedrarion.client;
 
-import dedrarion.client.render.EftoritForgeRenderer;
-import dedrarion.client.render.PedestalBlockEntityRenderer;
+import dedrarion.client.render.block.EftoritForgeRenderer;
+import dedrarion.client.render.block.PedestalBlockEntityRenderer;
 import dedrarion.client.render.entity.NullGuardianRenderer;
-import dedrarion.common.registry.ModBlockEntities;
-import dedrarion.common.registry.ModEntityTypes;
+import dedrarion.registry.ModBlockEntities;
+import dedrarion.registry.ModEntityTypes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

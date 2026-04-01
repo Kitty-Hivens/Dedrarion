@@ -1,7 +1,7 @@
 package dedrarion.client.render.entity; // Убедись, что пакет правильный
 
-import dedrarion.client.model.entity.NullGuardianModel;
-import dedrarion.common.entity.NullGuardianEntity;
+import dedrarion.client.model.NullGuardianModel;
+import dedrarion.content.entity.NullGuardianEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
