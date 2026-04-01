@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 
 @Mod(dedrarion.Dedrarion.MOD_ID)
 public class Dedrarion {
-    public static final String MOD_ID = "hdu";
+    public static final String MOD_ID = "dedrarion";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public Dedrarion(FMLJavaModLoadingContext context) {
@@ -33,7 +33,7 @@ public class Dedrarion {
 
         MinecraftForge.EVENT_BUS.register(this);
 
-        LOGGER.info("HDU Mod Initialization Started");
+        LOGGER.info("Dedrarion Mod Initialization Started");
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -41,6 +41,6 @@ public class Dedrarion {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        LOGGER.info("HDU Common Setup Complete");
+        LOGGER.info("Dedrarion common setup complete");
     }
 }

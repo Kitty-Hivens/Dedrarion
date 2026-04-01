@@ -42,9 +42,6 @@ public class ModBlockStateProvider extends net.minecraftforge.client.model.gener
         stairsBlock(ModBlocks.HOPE_BRICK_STAIRS.get(), blockTexture(ModBlocks.HOPE_STONE_BRICKS.get()));
         stairsBlock(ModBlocks.SMOOTH_HOPE_BRICK_STAIRS.get(), blockTexture(ModBlocks.SMOOTH_HOPE_STONE_BRICKS.get()));
         stairsBlock(ModBlocks.HOPE_SHARD_BRICK_STAIRS.get(), blockTexture(ModBlocks.HOPE_SHARD_BRICKS.get()));
-
-        blockWithItem(ModBlocks.BROKEN_PLANKS);
-        blockWithItem(ModBlocks.EXTINGUISHED_TORCH);
     }
 
 

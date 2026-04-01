@@ -1,15 +1,13 @@
-# В файле /dedrarion/src/main/resources/META-INF/mods.toml
-
 modLoader="javafml"
 loaderVersion="[47,)"
 license="${mod_license}"
 
 [[mods]]
 modId="dedrarion"
-version="1.0.0"
-displayName="Dedrarion Adventures"
-authors="Haru (Hivens)"
-description='''Core API for Dedrarion Adventures modules.'''
+version="${mod_version}"
+displayName="${mod_name}"
+authors="${mod_authors}"
+description='''${mod_description}'''
 
 [[dependencies.dedrarion]]
 modId="forge"
@@ -22,5 +20,19 @@ side="BOTH"
 modId="minecraft"
 mandatory=true
 versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.dedrarion]]
+modId="jei"
+mandatory=false
+versionRange="[15.0.0,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.dedrarion]]
+modId="jeresources"
+mandatory=false
+versionRange="[1.4.0,)"
 ordering="NONE"
 side="BOTH"

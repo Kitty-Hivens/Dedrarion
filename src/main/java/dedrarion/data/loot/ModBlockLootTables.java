@@ -53,8 +53,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.HOPE_SHARD_BRICK_STAIRS.get());
 
         this.dropSelf(ModBlocks.PEDESTAL.get());
-        this.dropSelf(ModBlocks.BROKEN_PLANKS.get());
-        this.dropSelf(ModBlocks.EXTINGUISHED_TORCH.get());
 
 
         // Ethereum Ore

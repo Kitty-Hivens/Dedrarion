@@ -31,10 +31,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 );
 
 
-        this.tag(BlockTags.MINEABLE_WITH_AXE)
-                .add(
-                        ModBlocks.BROKEN_PLANKS.get()
-                );
+        this.tag(BlockTags.MINEABLE_WITH_AXE);
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                    .add(
@@ -70,20 +67,15 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
                            ModBlocks.PEDESTAL.get()
                    );
+
         this.tag(BlockTags.NEEDS_STONE_TOOL)
-                    .add(
-                            ModBlocks.PEDESTAL.get()
-                );
+                .add(ModBlocks.PEDESTAL.get());
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
-                   .add(
-                           ModBlocks.RUBY_ORE.get(),
-                           ModBlocks.DEEPSLATE_RUBY_ORE.get(),
-                           ModBlocks.RUBY_BLOCK.get(),
-                           ModBlocks.EFTORIT_ORE.get(),
-                           ModBlocks.DEEPSLATE_EFTORIT_ORE.get(),
-                           ModBlocks.EFTORIT_BLOCK.get(),
-                           ModBlocks.EFTORIT_FORGE.get()
+                   .add(ModBlocks.RUBY_ORE.get(), ModBlocks.DEEPSLATE_RUBY_ORE.get(),
+                        ModBlocks.RUBY_BLOCK.get(), ModBlocks.EFTORIT_ORE.get(),
+                        ModBlocks.DEEPSLATE_EFTORIT_ORE.get(), ModBlocks.EFTORIT_BLOCK.get(),
+                        ModBlocks.EFTORIT_FORGE.get()
                    );
 
 
@@ -92,16 +84,12 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ModBlocks.HOPE_STONE.get(),
                         ModBlocks.SMOOTH_HOPE_STONE.get(),
                         ModBlocks.HOPE_SHARDS.get(),
-
                         ModBlocks.HOPE_STONE_BRICKS.get(),
                         ModBlocks.SMOOTH_HOPE_STONE_BRICKS.get(),
                         ModBlocks.HOPE_SHARD_BRICKS.get(),
-
                         ModBlocks.HOPE_STONE_STAIRS.get(),
                         ModBlocks.SMOOTH_HOPE_STONE_BRICKS.get(),
                         ModBlocks.HOPE_SHARD_STAIRS.get(),
-
-
                         ModBlocks.HOPE_BRICK_STAIRS.get(),
                         ModBlocks.SMOOTH_HOPE_BRICK_STAIRS.get(),
                         ModBlocks.HOPE_SHARD_BRICK_STAIRS.get()
@@ -123,7 +111,6 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ModBlocks.HOPE_STONE_STAIRS.get(),
                         ModBlocks.SMOOTH_HOPE_STONE_STAIRS.get(),
                         ModBlocks.HOPE_SHARD_STAIRS.get(),
-
                         ModBlocks.HOPE_BRICK_STAIRS.get(),
                         ModBlocks.SMOOTH_HOPE_BRICK_STAIRS.get(),
                         ModBlocks.HOPE_SHARD_BRICK_STAIRS.get()

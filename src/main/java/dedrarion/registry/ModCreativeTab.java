@@ -85,8 +85,6 @@ public class ModCreativeTab {
                         pOutput.accept(ModBlocks.HOPE_SHARD_BRICK_STAIRS.get());
 
                         // Structure
-                        pOutput.accept(ModBlocks.BROKEN_PLANKS.get());
-                        pOutput.accept(ModBlocks.EXTINGUISHED_TORCH.get());
                         pOutput.accept(ModBlocks.PEDESTAL.get());
 
 

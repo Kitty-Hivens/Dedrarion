@@ -13,7 +13,7 @@ ext {
     mod_id          = 'dedrarion'
     mod_name        = 'Dedrarion Adventures'
     mod_license     = 'GNU LGPL v3'
-    mod_version     = '1.1.0-dev'
+    mod_version     = '0.0.0-dev'
     mod_group_id    = 'dedrarion'
     mod_authors     = ''
     mod_description = 'Dedrarion Adventures — explore the underground depths.'

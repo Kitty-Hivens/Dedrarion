@@ -1,8 +1,6 @@
 package dedrarion.registry;
 
 import dedrarion.Dedrarion;
-import dedrarion.content.block.ExtinguishedTorchBlock;
-import dedrarion.content.block.ConcussiveDynamiteBlock;
 import dedrarion.content.block.EftoritForgeBlock;
 import dedrarion.content.block.PedestalBlock;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -175,21 +173,6 @@ public class ModBlocks {
             () -> new StairBlock(() -> ModBlocks.HOPE_SHARD_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties
                     .copy(ModBlocks.HOPE_STONE.get()))
     );
-
-    // Structure
-    public static final RegistryObject<Block> BROKEN_PLANKS = registerBlock("broken_planks",
-            () -> new Block(BlockBehaviour.Properties
-                    .copy(Blocks.OAK_PLANKS))
-    );
-
-    public static final RegistryObject<Block> EXTINGUISHED_TORCH = registerBlock("extinguished_torch",
-            () -> new ExtinguishedTorchBlock(BlockBehaviour.Properties.of()
-                    .sound(SoundType.WOOD)
-                    .noCollission()
-                    .instabreak()
-                    .lightLevel((p) -> 0))
-    );
-
 
     public static  final  RegistryObject<Block> PEDESTAL = registerBlock("pedestal",
             () -> new PedestalBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
