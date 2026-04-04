@@ -37,8 +37,12 @@ public class EftoritForgeEntity extends BaseCraftingBlockEntity<EftoritForgeReci
         return INVENTORY_SIZE;
     }
 
+    /**
+     * Public so the client-side renderer can read it for progress calculation.
+     * Widened from {@code protected} — valid in Java.
+     */
     @Override
-    protected int getCraftTime() {
+    public int getCraftTime() {
         return CRAFT_TIME;
     }
 
@@ -47,11 +51,14 @@ public class EftoritForgeEntity extends BaseCraftingBlockEntity<EftoritForgeReci
         return new ItemStackHandler(INVENTORY_SIZE) {
             @Override
             protected void onContentsChanged(int slot) {
-                setChanged();
+                // Sync to client on every inventory change so the renderer
+                // stays up to date (items inserted, removed, result placed or taken).
+                sync();
             }
 
             @Override
             public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+                // Prevent insertion while crafting is in progress.
                 return !isCrafting;
             }
 
@@ -73,7 +80,7 @@ public class EftoritForgeEntity extends BaseCraftingBlockEntity<EftoritForgeReci
     protected void finishCrafting(Level level) {
         if (currentRecipe == null) return;
 
-        // Assemble BEFORE consuming — NBT source ingredient may be consumed next.
+        // Assemble BEFORE consuming — the NBT source ingredient may be consumed next.
         ItemStack result = currentRecipe.assemble(snapshot(), level.registryAccess());
         processRecipe(currentRecipe);
 
@@ -165,7 +172,10 @@ public class EftoritForgeEntity extends BaseCraftingBlockEntity<EftoritForgeReci
         return items;
     }
 
-    /** Removes and returns the last non-empty item from the inventory. */
+    /**
+     * Removes and returns the last non-empty item from the inventory.
+     * Triggers {@code onContentsChanged} → {@code sync()} automatically.
+     */
     public ItemStack removeLastItem() {
         for (int i = itemHandler.getSlots() - 1; i >= 0; i--) {
             if (!itemHandler.getStackInSlot(i).isEmpty()) {

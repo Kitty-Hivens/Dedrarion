@@ -9,153 +9,213 @@ import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-@OnlyIn(Dist.CLIENT)
+/**
+ * Renders items orbiting above the {@link EftoritForgeEntity}.
+ *
+ * <h3>Animation phases</h3>
+ * <ol>
+ *   <li><b>Idle</b> — slow wide orbit, gentle vertical wave.</li>
+ *   <li><b>Gathering</b> (0–70 % of craft time) — orbit gradually accelerates
+ *       and tightens as crafting progresses.</li>
+ *   <li><b>Converging</b> (70–90 %) — items spiral inward to the center,
+ *       speed peaks, radius collapses to zero.</li>
+ *   <li><b>Synthesis</b> (90–100 %) — result item pulses into view with a
+ *       sine-eased scale, spins fast, and fades out at the end.</li>
+ * </ol>
+ */
 public class EftoritForgeRenderer implements BlockEntityRenderer<EftoritForgeEntity> {
+
+    // --- Orbit parameters ---
+    private static final float BASE_RADIUS        = 0.9f;
+    private static final float BASE_HEIGHT        = 0.3f;
+    private static final float WAVE_HEIGHT        = 0.4f;
+    private static final float WAVE_SPEED         = 1.5f;
+
+    // --- Idle orbit speed (radians per tick equivalent) ---
+    private static final float IDLE_SPEED         = 4.0f;
+
+    // --- Craft phase thresholds (fraction of total craft time) ---
+    private static final float PHASE_CONVERGE     = 0.70f;
+    private static final float PHASE_SYNTHESIS    = 0.90f;
+
+    // --- Item rendering ---
+    private static final float ITEM_SCALE         = 0.5f;
+    private static final float RESULT_PEAK_SCALE  = 0.9f;
+
     private final ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 
-    // --- ПАРАМЕТРЫ ОРБИТЫ (Оставлены широкими) ---
-    private static final float BASE_RADIUS = 0.9f;
-    private static final float WAVE_HEIGHT = 0.4f;
-    private static final float BASE_ITEM_HEIGHT = 0.3f;
-    private static final float VERTICAL_WAVE_SPEED = 1.5f;
-    // --- ПАРАМЕТРЫ АНИМАЦИИ ---
-    private static final float ITEM_SCALE = 0.5f;
-    private static final int MAX_CRAFT_TIME = 100; // 5 секунд
-
     @Override
-    public void render(EftoritForgeEntity entity, float partialTicks, @NotNull PoseStack poseStack,
-                       @NotNull MultiBufferSource bufferSource, int light, int overlay) {
+    public void render(EftoritForgeEntity entity, float partialTicks, @NotNull PoseStack pose,
+                       @NotNull MultiBufferSource buffer, int light, int overlay) {
 
-        List<ItemStack> items = entity.getItems();
-        boolean isCrafting = entity.isCrafting();
-        int craftTimer = entity.getCraftTimer();
+        List<ItemStack> items    = entity.getItems();
+        boolean isCrafting       = entity.isCrafting();
+        int craftTimer           = entity.getCraftTimer();
+        long gameTime            = entity.getLevel() != null ? entity.getLevel().getGameTime() : 0;
+        float time               = gameTime + partialTicks;
 
-        long gameTime = entity.getLevel() != null ? entity.getLevel().getGameTime() : 0;
-        float baseTime = gameTime + partialTicks;
+        pose.pushPose();
+        pose.translate(0.5, 1.0, 0.5);
 
-        poseStack.pushPose();
-        poseStack.translate(0.5, 1.0, 0.5); // Центр ковки
-
-        if (isCrafting) {
-            float progress = (craftTimer + partialTicks) / MAX_CRAFT_TIME;
-
-            // Фаза 1: Сбор (0% - 80% времени крафта)
-            if (progress < 0.8f) {
-
-                // --- НОВОЕ: Отсутствие динамического изменения скорости и радиуса ---
-                float currentRotationSpeed = 4.0f; // Постоянная медленная скорость
-                float currentRadius = BASE_RADIUS; // Постоянный широкий радиус
-                // ------------------------------------------------------------------
-
-                renderIngredients(entity, items, baseTime, currentRotationSpeed, currentRadius, poseStack, bufferSource, light, overlay);
-
-                // Фаза 2: Синтез и Финализация (80% - 100%)
-            } else {
-                float fusionProgress = (progress - 0.8f) / 0.2f;
-                ItemStack resultStack = entity.getResultStack();
-
-                if (!resultStack.isEmpty()) {
-                    renderResultItem(entity, resultStack, fusionProgress, baseTime, poseStack, bufferSource, light, overlay);
-                }
-
-                if (entity.getLevel() instanceof ClientLevel clientLevel && clientLevel.random.nextFloat() < 0.2f) {
-                    clientLevel.addParticle(ParticleTypes.FLASH, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0);
-                }
-            }
+        if (!isCrafting) {
+            renderIdleOrbit(entity, items, time, pose, buffer, light, overlay);
         } else {
-            // Фаза 3: Покой - медленное вращение по широкой 3D орбите
-            renderIngredients(entity, items, baseTime, 4.0f, BASE_RADIUS, poseStack, bufferSource, light, overlay);
-        }
+            // Normalized craft progress [0, 1].
+            float progress = craftTimer / (float) entity.getCraftTime();
 
-        poseStack.popPose();
-    }
-
-    // --- Метод для рендера ингредиентов (Фаза 1 и 3) ---
-    private void renderIngredients(EftoritForgeEntity entity, List<ItemStack> items, float baseTime, float rotationSpeed, float radius, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay) {
-        int activeItemCount = 0;
-        for (ItemStack stack : items) if (!stack.isEmpty()) activeItemCount++;
-        if (activeItemCount == 0) return;
-
-        int renderedCount = 0;
-        for (ItemStack stack : items) {
-            if (!stack.isEmpty()) {
-                poseStack.pushPose();
-
-                float angle = (360f / activeItemCount) * renderedCount;
-                double radians = Math.toRadians(angle + baseTime * (rotationSpeed / 4.0f));
-
-                float xOffset = (float) Math.cos(radians) * radius;
-                float zOffset = (float) Math.sin(radians) * radius;
-
-                // 3D-орбита: угол * 3.0f для 3 волн + смещение по времени (оставлено, так как это крутое левитирование)
-                float verticalAngle = (float) Math.toRadians(angle * 3.0f + baseTime * VERTICAL_WAVE_SPEED);
-                float yOffset = BASE_ITEM_HEIGHT + Mth.sin(verticalAngle) * WAVE_HEIGHT;
-
-                poseStack.translate(xOffset, yOffset, zOffset);
-                poseStack.scale(ITEM_SCALE, ITEM_SCALE, ITEM_SCALE);
-
-                float itemRotation = angle + 90f + baseTime * (rotationSpeed / 2.0f);
-                poseStack.mulPose(Axis.YP.rotationDegrees(itemRotation));
-
-                itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, light, overlay, poseStack, bufferSource, entity.getLevel(), 0);
-
-                poseStack.popPose();
-                renderedCount++;
+            if (progress < PHASE_CONVERGE) {
+                renderGathering(entity, items, time, progress, pose, buffer, light, overlay);
+            } else if (progress < PHASE_SYNTHESIS) {
+                renderConverging(entity, items, time, progress, pose, buffer, light, overlay);
+            } else {
+                float synthProgress = (progress - PHASE_SYNTHESIS) / (1f - PHASE_SYNTHESIS);
+                renderSynthesis(entity, entity.getResultStack(), synthProgress, time, pose, buffer);
             }
         }
+
+        pose.popPose();
     }
 
-    // --- Метод для рендера РЕЗУЛЬТИРУЮЩЕГО предмета (Фаза 2 - Синтез) ---
-    private void renderResultItem(EftoritForgeEntity entity, ItemStack resultStack, float fusionProgress, float baseTime, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay) {
+    // -------------------------------------------------------------------------
+    // Phase renderers
+    // -------------------------------------------------------------------------
 
-        poseStack.pushPose();
+    /**
+     * Idle phase — slow orbit, no crafting in progress.
+     */
+    private void renderIdleOrbit(EftoritForgeEntity entity, List<ItemStack> items, float time,
+                                 PoseStack pose, MultiBufferSource buffer, int light, int overlay) {
+        renderOrbit(entity, items, time, IDLE_SPEED, BASE_RADIUS, pose, buffer, light, overlay);
+    }
 
-        // Используем синусоиду Mth.sin(x*PI) для плавного появления/исчезновения
-        float sin_progress = Mth.sin(fusionProgress * Mth.PI);
+    /**
+     * Gathering phase — orbit gradually accelerates and tightens.
+     * Progress goes from 0 to {@link #PHASE_CONVERGE}.
+     */
+    private void renderGathering(EftoritForgeEntity entity, List<ItemStack> items, float time,
+                                 float progress, PoseStack pose, MultiBufferSource buffer,
+                                 int light, int overlay) {
+        // Normalize progress within this phase [0, 1].
+        float t = progress / PHASE_CONVERGE;
 
-        // 1. Анимация по вертикали: Плавный подъем до 0.4f и плавный спад
-        float y_pos_peak = 0.4f;
-        float y_pos = sin_progress * y_pos_peak;
+        float speed  = Mth.lerp(t, IDLE_SPEED, IDLE_SPEED * 4f);
+        float radius = Mth.lerp(t, BASE_RADIUS, BASE_RADIUS * 0.6f);
 
-        // 2. Масштаб: Плавная пульсация и коллапс
-        float peak_scale = ITEM_SCALE * 1.8f;
-        float pulse = Mth.sin(baseTime / 4.0f) * 0.1f;
+        renderOrbit(entity, items, time, speed, radius, pose, buffer, light, overlay);
+    }
 
-        // Масштаб: (Пиковый + Пульс) * sin_progress (плавно идет от 0 до Пика и обратно к 0)
-        float scale = (peak_scale + pulse) * sin_progress;
+    /**
+     * Converging phase — items spiral into the center and disappear.
+     * Progress goes from {@link #PHASE_CONVERGE} to {@link #PHASE_SYNTHESIS}.
+     */
+    private void renderConverging(EftoritForgeEntity entity, List<ItemStack> items, float time,
+                                  float progress, PoseStack pose, MultiBufferSource buffer,
+                                  int light, int overlay) {
+        float t = (progress - PHASE_CONVERGE) / (PHASE_SYNTHESIS - PHASE_CONVERGE);
 
-        float rotation = baseTime * 10.0f;
+        // Radius collapses to zero; speed stays at max.
+        float speed  = IDLE_SPEED * 4f;
+        float radius = Mth.lerp(t, BASE_RADIUS * 0.6f, 0f);
 
-        poseStack.translate(0.0f, y_pos, 0.0f);
-        poseStack.scale(scale, scale, scale);
+        // Items shrink as they converge.
+        float scale = Mth.lerp(t, ITEM_SCALE, 0f);
 
-        poseStack.mulPose(Axis.YP.rotationDegrees(rotation));
-        poseStack.mulPose(Axis.XP.rotationDegrees(90));
+        renderOrbit(entity, items, time, speed, radius, scale, pose, buffer, light, overlay);
+    }
 
-        int fullBright = LightTexture.FULL_BRIGHT;
+    /**
+     * Synthesis phase — result item pulses into view, spins, then fades out.
+     *
+     * @param synthProgress normalized progress within this phase [0, 1]
+     */
+    private void renderSynthesis(EftoritForgeEntity entity, ItemStack result,
+                                 float synthProgress, float time,
+                                 PoseStack pose, MultiBufferSource buffer) {
+        if (result.isEmpty()) return;
+
+        // sin(x*PI) gives smooth 0→peak→0 envelope over the full phase.
+        float envelope = Mth.sin(synthProgress * Mth.PI);
+        float pulse    = Mth.sin(time / 3f) * 0.05f;
+        float scale    = (RESULT_PEAK_SCALE + pulse) * envelope;
+        float yPos     = 0.35f * envelope;
+
+        pose.pushPose();
+        pose.translate(0f, yPos, 0f);
+        pose.scale(scale, scale, scale);
+        pose.mulPose(Axis.YP.rotationDegrees(time * 12f));
+        pose.mulPose(Axis.XP.rotationDegrees(90f));
 
         itemRenderer.renderStatic(
-                resultStack,
+                result,
                 ItemDisplayContext.FIXED,
-                fullBright,
+                LightTexture.FULL_BRIGHT,
                 OverlayTexture.NO_OVERLAY,
-                poseStack,
-                bufferSource,
-                entity.getLevel(),
-                0
+                pose, buffer, entity.getLevel(), 0
         );
 
-        poseStack.popPose();
+        pose.popPose();
+    }
+
+    // -------------------------------------------------------------------------
+    // Orbit helpers
+    // -------------------------------------------------------------------------
+
+    /** Renders the orbit using the default {@link #ITEM_SCALE}. */
+    private void renderOrbit(EftoritForgeEntity entity, List<ItemStack> items, float time,
+                             float speed, float radius,
+                             PoseStack pose, MultiBufferSource buffer, int light, int overlay) {
+        renderOrbit(entity, items, time, speed, radius, ITEM_SCALE, pose, buffer, light, overlay);
+    }
+
+    /**
+     * Core orbit renderer — distributes items evenly around a circle and applies
+     * a vertical sine wave for a 3-D floating effect.
+     *
+     * @param speed  angular speed in degrees per tick equivalent
+     * @param radius orbit radius in blocks
+     * @param scale  item render scale
+     */
+    private void renderOrbit(EftoritForgeEntity entity, List<ItemStack> items, float time,
+                             float speed, float radius, float scale,
+                             PoseStack pose, MultiBufferSource buffer, int light, int overlay) {
+        int count = (int) items.stream().filter(s -> !s.isEmpty()).count();
+        if (count == 0) return;
+
+        int rendered = 0;
+        for (ItemStack stack : items) {
+            if (stack.isEmpty()) continue;
+
+            float angleDeg = (360f / count) * rendered;
+            double rad     = Math.toRadians(angleDeg + time * (speed / 4f));
+
+            float x = (float) Math.cos(rad) * radius;
+            float z = (float) Math.sin(rad) * radius;
+
+            // Vertical wave: each item is offset in phase so they don't all bob in sync.
+            float wavePhase = (float) Math.toRadians(angleDeg * 3f + time * WAVE_SPEED);
+            float y = BASE_HEIGHT + Mth.sin(wavePhase) * WAVE_HEIGHT;
+
+            pose.pushPose();
+            pose.translate(x, y, z);
+            pose.scale(scale, scale, scale);
+            pose.mulPose(Axis.YP.rotationDegrees(angleDeg + 90f + time * (speed / 2f)));
+
+            itemRenderer.renderStatic(
+                    stack,
+                    ItemDisplayContext.FIXED,
+                    light, overlay,
+                    pose, buffer, entity.getLevel(), 0
+            );
+
+            pose.popPose();
+            rendered++;
+        }
     }
 }
