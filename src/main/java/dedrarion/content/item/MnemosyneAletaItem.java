@@ -19,169 +19,195 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Mnemosyne and Aleta — a dual-natured artifact sword.
+ *
+ * <p>This is a transitional implementation. The full redesign is documented
+ * in {@code MnemosyneAleta_concept.md}. Current behaviour preserves the
+ * original day/night mode switching and essence accumulation while the
+ * new scale-based system is being built.
+ *
+ * <p>TODO: Replace with scale [-2500, 2500] system, four phases
+ * (Inactive / Aleta / Mnemosyne / Eclipse), chest drift via timestamp NBT,
+ * and animated wave tooltip bar.
+ */
 public class MnemosyneAletaItem extends SwordItem {
 
-    private static final Logger LOGGER = LogManager.getLogger();
-    private static final String TAG_MEMORY_ESSENCE = "MemoryEssence";
-    private static final String TAG_MODE = "CurrentMode";
-    private static final String MODE_DAY = "Aleta";
-    private static final String MODE_NIGHT = "Mnemosyne";
-    private static final int MAX_ESSENCE = 10;
-    private static final int ALETA_COOLDOWN_TICKS = 300; // 15 секунд
+    private static final String TAG_ESSENCE = "MemoryEssence";
+    private static final String TAG_MODE    = "CurrentMode";
+    private static final String MODE_DAY    = "Aleta";
+    private static final String MODE_NIGHT  = "Mnemosyne";
 
-    public MnemosyneAletaItem(Tier tier, int attackDamageModifier, float attackSpeedModifier, Properties properties) {
+    private static final int MAX_ESSENCE        = 10;
+    private static final int ALETA_COOLDOWN     = 300; // 15 seconds
+    private static final int ESSENCE_DECAY_RATE = 200; // ticks between decay steps
+
+    public MnemosyneAletaItem(Tier tier, int attackDamageModifier, float attackSpeedModifier,
+                              Properties properties) {
         super(tier, attackDamageModifier, attackSpeedModifier, properties);
     }
 
-    // --- Отображение динамического урона ---
+    // --- Attribute modifiers ---
+
     @Override
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
-        // Получаем оригинальный, НЕИЗМЕНЯЕМЫЙ multimap
-        Multimap<Attribute, AttributeModifier> defaultModifiers = super.getAttributeModifiers(slot, stack);
-        // Создаем НОВУЮ, ИЗМЕНЯЕМУЮ копию
-        Multimap<Attribute, AttributeModifier> mutableModifiers = HashMultimap.create(defaultModifiers);
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot,
+                                                                        ItemStack stack) {
+        Multimap<Attribute, AttributeModifier> modifiers = HashMultimap.create(
+                super.getAttributeModifiers(slot, stack)
+        );
 
-        if (slot == EquipmentSlot.MAINHAND) {
-            String currentMode = stack.getOrCreateTag().getString(TAG_MODE);
-
-            if (currentMode.equals(MODE_NIGHT)) {
-                int essence = getMemoryEssence(stack);
-                if (essence > 0) {
-                    float bonusDamage = essence * 0.5f;
-                    // Безопасно работаем с ИЗМЕНЯЕМОЙ копией
-                    mutableModifiers.removeAll(Attributes.ATTACK_DAMAGE);
-                    mutableModifiers.put(Attributes.ATTACK_DAMAGE,
-                            new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", this.getDamage() + bonusDamage, AttributeModifier.Operation.ADDITION));
-                }
+        if (slot == EquipmentSlot.MAINHAND && getMode(stack).equals(MODE_NIGHT)) {
+            int essence = getEssence(stack);
+            if (essence > 0) {
+                modifiers.removeAll(Attributes.ATTACK_DAMAGE);
+                modifiers.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(
+                        BASE_ATTACK_DAMAGE_UUID,
+                        "Weapon modifier",
+                        this.getDamage() + essence * 0.5f,
+                        AttributeModifier.Operation.ADDITION
+                ));
             }
         }
-        // Возвращаем нашу измененную копию
-        return mutableModifiers;
+
+        return modifiers;
     }
 
-    // --- Надежная смена режима и затухание зарядов ---
+    // --- Mode switching and essence decay ---
+
     @Override
-    public void inventoryTick(@NotNull ItemStack stack, @NotNull Level level, @NotNull Entity entity, int itemSlot, boolean isSelected) {
-        // Вся логика теперь на стороне СЕРВЕРА
-        if (!level.isClientSide) {
-            CompoundTag tag = stack.getOrCreateTag();
-            String storedMode = tag.getString(TAG_MODE);
-            String currentMode = level.isDay() ? MODE_DAY : MODE_NIGHT;
+    public void inventoryTick(@NotNull ItemStack stack, @NotNull Level level,
+                              @NotNull Entity entity, int slot, boolean selected) {
+        if (level.isClientSide) return;
 
-            // Если режим в мире отличается от того, что записано в мече, обновляем NBT
-            if (!Objects.equals(storedMode, currentMode)) {
-                tag.putString(TAG_MODE, currentMode);
-            }
+        CompoundTag tag = stack.getOrCreateTag();
+        String worldMode = level.isDay() ? MODE_DAY : MODE_NIGHT;
 
-            // Логика затухания зарядов
-            if (currentMode.equals(MODE_NIGHT)) {
-                int essence = getMemoryEssence(stack);
-                if (essence > 0 && level.getGameTime() % 200 == 0) { // Каждые 10 секунд
-                    addMemoryEssence(stack, -1);
-                }
-            }
+        // Sync stored mode with current day/night cycle.
+        if (!Objects.equals(tag.getString(TAG_MODE), worldMode)) {
+            tag.putString(TAG_MODE, worldMode);
+        }
+
+        // Decay essence while in Mnemosyne mode.
+        if (worldMode.equals(MODE_NIGHT) && level.getGameTime() % ESSENCE_DECAY_RATE == 0) {
+            addEssence(stack, -1);
         }
     }
 
-    // --- Основная логика атаки и счётчик убийств ---
+    // --- Combat ---
+
     @Override
-    public boolean hurtEnemy(@NotNull ItemStack stack, @NotNull LivingEntity target, @NotNull LivingEntity attacker) {
+    public boolean hurtEnemy(@NotNull ItemStack stack, @NotNull LivingEntity target,
+                             @NotNull LivingEntity attacker) {
         if (!(attacker instanceof Player player)) {
             return super.hurtEnemy(stack, target, attacker);
         }
 
+        @SuppressWarnings("resource")
         Level level = attacker.level();
-        float baseDamage = this.getDamage();
+        float base = this.getDamage();
 
         if (level.isDay()) {
-            target.invulnerableTime = 0;
-            target.hurt(player.damageSources().playerAttack(player), baseDamage * 0.75f);
-            target.hurt(player.damageSources().magic(), baseDamage * 0.25f);
+            // Aleta mode — split physical/magic damage.
+            target.hurt(player.damageSources().playerAttack(player), base * 0.75f);
+            target.hurt(player.damageSources().magic(), base * 0.25f);
         } else {
-            int essence = getMemoryEssence(stack);
-            float bonusDamage = essence * 0.5f;
-            target.hurt(player.damageSources().playerAttack(player), baseDamage + bonusDamage);
-            if (essence > 0) {
+            // Mnemosyne mode — bonus from essence, applies Wither.
+            float bonus = getEssence(stack) * 0.5f;
+            target.hurt(player.damageSources().playerAttack(player), base + bonus);
+            if (getEssence(stack) > 0) {
                 target.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0));
             }
         }
 
-        // Проверяем, жив ли моб ПОСЛЕ удара
+        // Gain essence on kill (night only).
         if (!target.isAlive() && !level.isClientSide && !level.isDay()) {
-            addMemoryEssence(stack, 1);
-            LOGGER.info("[HDU-KILL-COUNTER] Mnemosyne killed a mob! Essence is now: {}", getMemoryEssence(stack));
+            addEssence(stack, 1);
         }
 
-        stack.hurtAndBreak(1, attacker, (e) -> e.broadcastBreakEvent(attacker.getUsedItemHand()));
+        stack.hurtAndBreak(1, attacker, e -> e.broadcastBreakEvent(attacker.getUsedItemHand()));
         return true;
     }
 
-    // --- Активная способность Алеты ---
+    // --- Active ability (Aleta) ---
+
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level,
+                                                           @NotNull Player player,
+                                                           @NotNull InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        if (level.isDay() && !player.getCooldowns().isOnCooldown(this)) {
-            if (!level.isClientSide) {
-                List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class,
-                        new AABB(player.blockPosition()).inflate(10),
-                        (e) -> e != player && e.isAlive());
 
-                for (LivingEntity target : targets) {
-                    target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 100, 0));
-                }
-                player.getCooldowns().addCooldown(this, ALETA_COOLDOWN_TICKS);
-                return InteractionResultHolder.success(stack);
-            }
+        if (!level.isDay() || player.getCooldowns().isOnCooldown(this)) {
+            return InteractionResultHolder.pass(stack);
         }
-        return InteractionResultHolder.pass(stack);
+
+        if (!level.isClientSide) {
+            // Wave of Insight — highlight all nearby enemies.
+            level.getEntitiesOfClass(LivingEntity.class,
+                            new AABB(player.blockPosition()).inflate(10),
+                            e -> e != player && e.isAlive())
+                    .forEach(e -> e.addEffect(new MobEffectInstance(MobEffects.GLOWING, 100, 0)));
+
+            player.getCooldowns().addCooldown(this, ALETA_COOLDOWN);
+        }
+
+        return InteractionResultHolder.success(stack);
     }
 
-    // --- Динамическая подсказка ---
+    // --- Tooltip ---
+
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
-        CompoundTag tag = stack.getOrCreateTag();
-        String currentMode = tag.getString(TAG_MODE);
-        if (currentMode.isEmpty()) currentMode = (level != null && level.isDay()) ? MODE_DAY : MODE_NIGHT;
-
-        if (currentMode.equals(MODE_DAY)) {
-            tooltip.add(Component.translatable("tooltip.hdu.mnemosyne_aleta.aleta_mode").withStyle(ChatFormatting.YELLOW));
-            tooltip.add(Component.translatable("tooltip.hdu.mnemosyne_aleta.aleta_desc1").withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.hdu.mnemosyne_aleta.aleta_desc2").withStyle(ChatFormatting.GRAY));
-        } else {
-            int essence = getMemoryEssence(stack);
-            tooltip.add(Component.translatable("tooltip.hdu.mnemosyne_aleta.mnemosyne_mode").withStyle(ChatFormatting.DARK_PURPLE));
-            tooltip.add(Component.literal(ChatFormatting.GRAY + "Эхо Души: " + ChatFormatting.LIGHT_PURPLE + essence + "/" + MAX_ESSENCE));
-            tooltip.add(Component.translatable("tooltip.hdu.mnemosyne_aleta.mnemosyne_desc").withStyle(ChatFormatting.GRAY));
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level,
+                                @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
+        String mode = getMode(stack);
+        if (mode.isEmpty()) {
+            mode = (level != null && level.isDay()) ? MODE_DAY : MODE_NIGHT;
         }
 
-        // Вызываем super в конце, чтобы игра сама добавила стандартные подсказки (урон, скорость атаки)
-        super.appendHoverText(stack, level, tooltip, context);
+        if (mode.equals(MODE_DAY)) {
+            tooltip.add(Component.translatable("tooltip.dedrarion.mnemosyne_aleta.aleta_mode")
+                    .withStyle(ChatFormatting.YELLOW));
+            tooltip.add(Component.translatable("tooltip.dedrarion.mnemosyne_aleta.aleta_desc1")
+                    .withStyle(ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("tooltip.dedrarion.mnemosyne_aleta.aleta_desc2")
+                    .withStyle(ChatFormatting.GRAY));
+        } else {
+            int essence = getEssence(stack);
+            tooltip.add(Component.translatable("tooltip.dedrarion.mnemosyne_aleta.mnemosyne_mode")
+                    .withStyle(ChatFormatting.DARK_PURPLE));
+            // TODO: Replace with animated wave bar (ITooltipComponent) in full redesign.
+            tooltip.add(Component.translatable("tooltip.dedrarion.mnemosyne_aleta.essence",
+                    essence, MAX_ESSENCE).withStyle(ChatFormatting.LIGHT_PURPLE));
+            tooltip.add(Component.translatable("tooltip.dedrarion.mnemosyne_aleta.mnemosyne_desc")
+                    .withStyle(ChatFormatting.GRAY));
+        }
+
+        super.appendHoverText(stack, level, tooltip, flag);
     }
 
-    // --- Свечение при максимальном заряде ---
     @Override
     public boolean isFoil(@NotNull ItemStack stack) {
-        String currentMode = stack.getOrCreateTag().getString(TAG_MODE);
-        return currentMode.equals(MODE_NIGHT) && getMemoryEssence(stack) == MAX_ESSENCE;
+        return getMode(stack).equals(MODE_NIGHT) && getEssence(stack) == MAX_ESSENCE;
     }
 
-    // --- Вспомогательные методы для работы с NBT ---
-    private int getMemoryEssence(ItemStack stack) {
-        return stack.getOrCreateTag().getInt(TAG_MEMORY_ESSENCE);
+    // --- NBT helpers ---
+
+    private String getMode(ItemStack stack) {
+        return stack.getOrCreateTag().getString(TAG_MODE);
     }
 
-    private void addMemoryEssence(ItemStack stack, int amount) {
+    private int getEssence(ItemStack stack) {
+        return stack.getOrCreateTag().getInt(TAG_ESSENCE);
+    }
+
+    private void addEssence(ItemStack stack, int amount) {
         CompoundTag tag = stack.getOrCreateTag();
-        int currentEssence = tag.getInt(TAG_MEMORY_ESSENCE);
-        int newEssence = Math.max(0, Math.min(MAX_ESSENCE, currentEssence + amount));
-        tag.putInt(TAG_MEMORY_ESSENCE, newEssence);
+        int current = tag.getInt(TAG_ESSENCE);
+        tag.putInt(TAG_ESSENCE, Math.max(0, Math.min(MAX_ESSENCE, current + amount)));
     }
 }
