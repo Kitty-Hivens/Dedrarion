@@ -1,5 +1,5 @@
 {
   "variants": {
-    "": { "model": "hdu:block/pedestal" }
+    "": { "model": "dedrarion:block/pedestal" }
   }
 }

@@ -2,12 +2,12 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "hdu:block/eftorit_forge_1",
-		"1": "hdu:block/eftorit_forge_2",
-		"2": "hdu:block/eftorit_forge_3",
-		"3": "hdu:block/eftorit_forge_4",
-		"4": "hdu:block/eftorit_forge_5",
-		"particle": "hdu:block/eftorit_forge_1"
+		"0": "dedrarion:block/eftorit_forge_1",
+		"1": "dedrarion:block/eftorit_forge_2",
+		"2": "dedrarion:block/eftorit_forge_3",
+		"3": "dedrarion:block/eftorit_forge_4",
+		"4": "dedrarion:block/eftorit_forge_5",
+		"particle": "dedrarion:block/eftorit_forge_1"
 	},
 	"elements": [
 		{

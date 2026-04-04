@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "hdu:block/pedestal",
-		"particle": "hdu:block/pedestal"
+		"0": "dedrarion:block/pedestal",
+		"particle": "dedrarion:block/pedestal"
 	},
 	"elements": [
 		{
