@@ -5,7 +5,7 @@ import net.minecraftforge.fml.ModList;
 
 public class ModCompat {
     public static void initCommon() {
-        if(ModList.get().isLoaded("data/jeresources")){
+        if(ModList.get().isLoaded("jeresources")){
             JERCompat.init();
         }
     }
