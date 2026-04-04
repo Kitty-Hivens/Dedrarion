@@ -2,8 +2,6 @@ package dedrarion;
 
 import com.mojang.logging.LogUtils;
 import dedrarion.compat.ModCompat;
-import dedrarion.registry.ModLootModifiers;
-import dedrarion.registry.ModEffects;
 import dedrarion.registry.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -29,18 +27,11 @@ public class Dedrarion {
         ModRecipes.RECIPE_TYPES.register(modEventBus);
         ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
         modEventBus.addListener(this::setup);
-        modEventBus.addListener(this::commonSetup);
-
         MinecraftForge.EVENT_BUS.register(this);
-
         LOGGER.info("Dedrarion Mod Initialization Started");
     }
 
     private void setup(final FMLCommonSetupEvent event) {
         ModCompat.initCommon();
-    }
-
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        LOGGER.info("Dedrarion common setup complete");
     }
 }
