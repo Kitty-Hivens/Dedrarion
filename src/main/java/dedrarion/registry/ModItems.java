@@ -3,7 +3,6 @@ package dedrarion.registry;
 import dedrarion.Dedrarion;
 import dedrarion.content.item.*;
 import dedrarion.api.tier.ModTiers;
-import dedrarion.api.item.ModTooltipFoodItem;
 import dedrarion.api.item.TooltipFuelItem;
 import dedrarion.api.item.TooltipItem;
 import net.minecraft.world.item.Item;
@@ -21,7 +20,7 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> ETHEREUM = Items.register("ethereum",
-            () -> new TooltipItem(new Item.Properties(), "tooltip.item.hdu.ethereum"));
+            () -> new TooltipItem(new Item.Properties(), "tooltip.item.dedrarion.ethereum"));
 
     public static final RegistryObject<Item> ETHEREUM_DUST = Items.register("ethereum_dust",
             () -> new Item(new Item.Properties()));
@@ -80,10 +79,10 @@ public class ModItems {
             () -> new MagicDetectorItem(new Item.Properties()));
 
     public static final RegistryObject<Item> FORBIDDEN_FRUIT = Items.register("forbidden_fruit",
-            () -> new ModTooltipFoodItem(new Item.Properties().food(ModFood.FORBIDDEN_FRUIT), "tooltip.item.hdu.forbidden_fruit"));
+            () -> new TooltipItem(new Item.Properties().food(ModFood.FORBIDDEN_FRUIT), "tooltip.item.dedrarion.forbidden_fruit"));
 
     public static final RegistryObject<Item> FUEL_OF_PROMISES = Items.register("fuel_of_promises",
-            () -> new TooltipFuelItem(new Item.Properties(), 400, "tooltip.item.hdu.fuel_of_promises"));
+            () -> new TooltipFuelItem(new Item.Properties(), 400, "tooltip.item.dedrarion.fuel_of_promises"));
 
     public static void register(IEventBus eventBus) {
             Items.register(eventBus);
