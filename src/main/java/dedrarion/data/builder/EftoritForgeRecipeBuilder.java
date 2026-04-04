@@ -72,8 +72,9 @@ public class EftoritForgeRecipeBuilder implements RecipeBuilder {
     /**
      * Добавляет ингредиент, с которого будут скопированы NBT-теги (например, зачарования).
      */
-    public void addNbtSourceIngredient(Ingredient ingredient) {
+    public EftoritForgeRecipeBuilder addNbtSourceIngredient(Ingredient ingredient) {
         this.ingredients.add(new EftoritIngredient(ingredient, true, true));
+        return this;
     }
 
     @Override
