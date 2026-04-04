@@ -13,9 +13,9 @@ public class ModCreativeTab {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Dedrarion.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> HDU_TAB = CREATIVE_MODE_TABS.register("hdu_tab",
+    public static final RegistryObject<CreativeModeTab> DEDRARION_TAB = CREATIVE_MODE_TABS.register("dedrarion_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.ETHEREUM.get()))
-                    .title(Component.translatable("creativetab.hdu_tab"))
+                    .title(Component.translatable("creativetab.dedrarion_tab"))
                     .displayItems((pParameters, pOutput) -> {
 
 
