@@ -1,12 +1,8 @@
 {
-  "targets": [
-    "silhouette",
-    "blur_h",
-    "blur_v"
-  ],
+  "targets": ["silhouette", "blur_h", "blur_v"],
   "passes": [
     {
-      "name": "dedrarion:blur",
+      "name": "minecraft:blur",
       "intarget": "silhouette",
       "outtarget": "blur_h",
       "uniforms": [
@@ -15,23 +11,12 @@
       ]
     },
     {
-      "name": "dedrarion:blur",
+      "name": "minecraft:blur",
       "intarget": "blur_h",
       "outtarget": "blur_v",
       "uniforms": [
         { "name": "BlurDir", "values": [ 0.0, 1.0 ] },
         { "name": "Radius",  "values": [ 6.0 ] }
-      ]
-    },
-    {
-      "name": "dedrarion:composite",
-      "intarget": "blur_v",
-      "outtarget": "minecraft:main",
-      "auxtargets": [
-        { "name": "GlowSampler", "id": "blur_v" }
-      ],
-      "uniforms": [
-        { "name": "GlowIntensity", "values": [ 1.5 ] }
       ]
     }
   ]
