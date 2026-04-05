@@ -9,28 +9,17 @@ java {
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
-ext {
-    mod_id          = 'dedrarion'
-    mod_name        = 'Dedrarion Adventures'
-    mod_license     = 'GNU LGPL v3'
-    mod_version     = '0.0.0-dev'
-    mod_group_id    = 'dedrarion'
-    mod_authors     = ''
-    mod_description = 'Dedrarion Adventures — explore the underground depths.'
-}
-
 base {
     archivesName = mod_id
 }
 
 repositories {
-    mavenCentral()
-    maven { name = "Progwml6 maven"; url = "https://dvs1.progwml6.com/files/maven/" }
-    maven { name = "ModMaven";       url = "https://modmaven.dev" }
-    maven { url = "https://cursemaven.com" }
+    maven { name = 'ModMaven';   url = 'https://modmaven.dev' }
+    maven { name = 'CurseMaven'; url = 'https://cursemaven.com' }
     maven {
         name = 'GeckoLib'
-        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        url  = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+
         content {
             includeGroupByRegex("software\\.bernie.*")
             includeGroup("com.eliotlash.mclib")
@@ -47,14 +36,13 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-
             mods {
                 "${mod_id}" { source sourceSets.main }
             }
         }
 
-        client      { property 'forge.enabledGameTestNamespaces', "${mod_id}" }
-        server      { property 'forge.enabledGameTestNamespaces', "${mod_id}"; args '--nogui' }
+        client         { property 'forge.enabledGameTestNamespaces', "${mod_id}" }
+        server         { property 'forge.enabledGameTestNamespaces', "${mod_id}"; args '--nogui' }
         gameTestServer { property 'forge.enabledGameTestNamespaces', "${mod_id}" }
         data {
             workingDirectory project.file('run-data')
@@ -70,12 +58,24 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
+    // JEI
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
-    runtimeOnly  fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
-    implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:5057220")
+    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+
+    // JER
+    implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:${jer_file_id}")
+
+    // GeckoLib
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")
     implementation("com.eliotlash.mclib:mclib:20")
+
+    // Shimmer — bloom, colored lighting
+    compileOnly fg.deobf("curse.maven:shimmer-627824:${shimmer_file_id}")
+    runtimeOnly fg.deobf("curse.maven:shimmer-627824:${shimmer_file_id}")
+
+    // Oculus — IrisApi, full shader pipeline
+    compileOnly fg.deobf("curse.maven:oculus-581495:${oculus_file_id}")
 }
 
 tasks.named('processResources', ProcessResources).configure {
