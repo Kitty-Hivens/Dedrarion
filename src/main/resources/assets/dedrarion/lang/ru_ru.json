@@ -48,6 +48,12 @@
   "creativetab.dedrarion_tab": "Подземелье Dedrarion",
 
   "tooltip.item.dedrarion.magic_detector": "§bКажется, его энергия связана лишь только с магией.",
+  "tooltip.dedrarion.magic_detector.mode_raw":      "Сырой",
+  "tooltip.dedrarion.magic_detector.mode_ethereal": "Эфирный",
+  "tooltip.dedrarion.magic_detector.mode_full":     "Полный",
+  "tooltip.dedrarion.magic_detector.current_mode":  "Режим: ",
+  "tooltip.dedrarion.magic_detector.switch_hint":   "Shift + ПКМ для смены режима.",
+
   "tooltip.item.dedrarion.ethereum": "§eКристалл, кажется что он легче облаков.",
   "tooltip.item.dedrarion.fuel_of_promises": "§4И кого стоит за это благодарить?",
   "tooltip.item.dedrarion.forbidden_fruit": "§eКого вы готовы отдать ради этого?",
@@ -57,6 +63,7 @@
   "tooltip.dedrarion.mnemosyne_aleta.aleta_desc2": "ПКМ: Волна Прозрения (подсвечивает врагов).",
   "tooltip.dedrarion.mnemosyne_aleta.mnemosyne_mode": "§5Режим Мнемозины (Ночь)",
   "tooltip.dedrarion.mnemosyne_aleta.mnemosyne_desc": "Убийства усиливают меч и накладывают Увядание.",
+  "tooltip.dedrarion.mnemosyne_aleta.essence": "Эхо Души: %s/%s",
 
   "tooltip.dedrarion.tetralin.desc": "Клинок, меняющий форму в зависимости от атаки.",
 

@@ -48,6 +48,12 @@
   "creativetab.dedrarion_tab": "デドラリオン地下",
 
   "tooltip.item.dedrarion.magic_detector": "§bそのエネルギーは魔法に縛られているようだ。",
+  "tooltip.dedrarion.magic_detector.mode_raw":      "原石",
+  "tooltip.dedrarion.magic_detector.mode_ethereal": "エーテル",
+  "tooltip.dedrarion.magic_detector.mode_full":     "全探知",
+  "tooltip.dedrarion.magic_detector.current_mode":  "モード：",
+  "tooltip.dedrarion.magic_detector.switch_hint":   "Shift + 右クリックでモード切替。",
+
   "tooltip.item.dedrarion.ethereum": "§e雲よりも軽いとされる不思議な結晶。",
   "tooltip.item.dedrarion.fuel_of_promises": "§4誰に感謝すべきなのか？",
   "tooltip.item.dedrarion.forbidden_fruit": "§eこれのために誰を犠牲にする？",
@@ -57,6 +63,7 @@
   "tooltip.dedrarion.mnemosyne_aleta.aleta_desc2": "右クリック：洞察の波（敵を強調表示）。",
   "tooltip.dedrarion.mnemosyne_aleta.mnemosyne_mode": "§5ムネモシュネモード（夜）",
   "tooltip.dedrarion.mnemosyne_aleta.mnemosyne_desc": "キルで剣が強化されウィザーを付与する。",
+  "tooltip.dedrarion.mnemosyne_aleta.essence": "魂のこだま：%s/%s",
 
   "tooltip.dedrarion.tetralin.desc": "攻撃によって形が変わる刃。",
 

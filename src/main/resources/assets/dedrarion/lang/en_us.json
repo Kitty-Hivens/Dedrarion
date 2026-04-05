@@ -48,6 +48,12 @@
   "creativetab.dedrarion_tab": "Dedrarion Underground",
 
   "tooltip.item.dedrarion.magic_detector": "§bIts energy seems bound only to magic.",
+  "tooltip.dedrarion.magic_detector.mode_raw":      "Raw",
+  "tooltip.dedrarion.magic_detector.mode_ethereal": "Ethereal",
+  "tooltip.dedrarion.magic_detector.mode_full":     "Full",
+  "tooltip.dedrarion.magic_detector.current_mode":  "Mode: ",
+  "tooltip.dedrarion.magic_detector.switch_hint":   "Shift + RMB to switch mode.",
+
   "tooltip.item.dedrarion.ethereum": "§eA crystal that feels lighter than clouds.",
   "tooltip.item.dedrarion.fuel_of_promises": "§4Who should we thank for this?",
   "tooltip.item.dedrarion.forbidden_fruit": "§eWho are you willing to give up for this?",
@@ -57,6 +63,7 @@
   "tooltip.dedrarion.mnemosyne_aleta.aleta_desc2": "RMB: Wave of Insight (highlights enemies).",
   "tooltip.dedrarion.mnemosyne_aleta.mnemosyne_mode": "§5Mnemosyne Mode (Night)",
   "tooltip.dedrarion.mnemosyne_aleta.mnemosyne_desc": "Kills empower the sword and apply Wither.",
+  "tooltip.dedrarion.mnemosyne_aleta.essence": "Soul Echo: %s/%s",
 
   "tooltip.dedrarion.tetralin.desc": "A blade that changes shape depending on the attack.",
 
