@@ -2,6 +2,7 @@ package dedrarion.content.item;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import dedrarion.config.ModConfigValues;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -44,13 +45,23 @@ public class MnemosyneAletaItem extends SwordItem {
     private static final String MODE_DAY    = "Aleta";
     private static final String MODE_NIGHT  = "Mnemosyne";
 
-    private static final int MAX_ESSENCE        = 10;
-    private static final int ALETA_COOLDOWN     = 300; // 15 seconds
-    private static final int ESSENCE_DECAY_RATE = 200; // ticks between decay steps
-
     public MnemosyneAletaItem(Tier tier, int attackDamageModifier, float attackSpeedModifier,
                               Properties properties) {
         super(tier, attackDamageModifier, attackSpeedModifier, properties);
+    }
+
+    // --- Config accessors ---
+
+    private static int maxEssence() {
+        return ModConfigValues.mnemosyneMaxEssence.get();
+    }
+
+    private static int aletaCooldown() {
+        return ModConfigValues.mnemosyneAletaCooldown.get();
+    }
+
+    private static int essenceDecayRate() {
+        return ModConfigValues.mnemosyneEssenceDecayRate.get();
     }
 
     // --- Attribute modifiers ---
@@ -93,8 +104,7 @@ public class MnemosyneAletaItem extends SwordItem {
             tag.putString(TAG_MODE, worldMode);
         }
 
-        // Decay essence while in Mnemosyne mode.
-        if (worldMode.equals(MODE_NIGHT) && level.getGameTime() % ESSENCE_DECAY_RATE == 0) {
+        if (worldMode.equals(MODE_NIGHT) && level.getGameTime() % essenceDecayRate() == 0) {
             addEssence(stack, -1);
         }
     }
@@ -153,7 +163,7 @@ public class MnemosyneAletaItem extends SwordItem {
                             e -> e != player && e.isAlive())
                     .forEach(e -> e.addEffect(new MobEffectInstance(MobEffects.GLOWING, 100, 0)));
 
-            player.getCooldowns().addCooldown(this, ALETA_COOLDOWN);
+            player.getCooldowns().addCooldown(this, aletaCooldown());
         }
 
         return InteractionResultHolder.success(stack);
@@ -182,7 +192,7 @@ public class MnemosyneAletaItem extends SwordItem {
                     .withStyle(ChatFormatting.DARK_PURPLE));
             // TODO: Replace with animated wave bar (ITooltipComponent) in full redesign.
             tooltip.add(Component.translatable("tooltip.dedrarion.mnemosyne_aleta.essence",
-                    essence, MAX_ESSENCE).withStyle(ChatFormatting.LIGHT_PURPLE));
+                    essence, maxEssence()).withStyle(ChatFormatting.LIGHT_PURPLE));
             tooltip.add(Component.translatable("tooltip.dedrarion.mnemosyne_aleta.mnemosyne_desc")
                     .withStyle(ChatFormatting.GRAY));
         }
@@ -192,7 +202,7 @@ public class MnemosyneAletaItem extends SwordItem {
 
     @Override
     public boolean isFoil(@NotNull ItemStack stack) {
-        return getMode(stack).equals(MODE_NIGHT) && getEssence(stack) == MAX_ESSENCE;
+        return getMode(stack).equals(MODE_NIGHT) && getEssence(stack) == maxEssence();
     }
 
     // --- NBT helpers ---
@@ -208,6 +218,6 @@ public class MnemosyneAletaItem extends SwordItem {
     private void addEssence(ItemStack stack, int amount) {
         CompoundTag tag = stack.getOrCreateTag();
         int current = tag.getInt(TAG_ESSENCE);
-        tag.putInt(TAG_ESSENCE, Math.max(0, Math.min(MAX_ESSENCE, current + amount)));
+        tag.putInt(TAG_ESSENCE, Math.max(0, Math.min(maxEssence(), current + amount)));
     }
 }

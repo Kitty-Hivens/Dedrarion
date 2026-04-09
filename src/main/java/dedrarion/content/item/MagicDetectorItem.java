@@ -2,6 +2,7 @@ package dedrarion.content.item;
 
 import dedrarion.client.render.FireflySystem;
 import dedrarion.client.render.OreHighlightTarget;
+import dedrarion.config.ModConfigValues;
 import dedrarion.content.util.ModTags;
 import dedrarion.network.ModNetwork;
 import dedrarion.network.OreHighlightPacket;
@@ -37,7 +38,8 @@ import java.util.List;
  * Handled by {@link FireflySystem}.
  *
  * <h3>Active (RMB)</h3>
- * Scans a cube of radius {@link #SCAN_RADIUS} around the player.
+ * Scans a cube of radius around the player (configurable via
+ * {@link ModConfigValues#magicDetectorScanRadius}).
  * Found ores are highlighted via {@link OreHighlightTarget} and displayed
  * on the HUD by {@link dedrarion.client.render.OreMarkerOverlay}.
  *
@@ -50,8 +52,7 @@ import java.util.List;
  */
 public class MagicDetectorItem extends Item {
 
-    private static final String TAG_MODE    = "DetectorMode";
-    private static final int    SCAN_RADIUS = 16;
+    private static final String TAG_MODE = "DetectorMode";
 
     // --- Detection modes ---
 
@@ -117,11 +118,12 @@ public class MagicDetectorItem extends Item {
         );
 
         Mode mode = getMode(stack);
+        int scanRadius = ModConfigValues.magicDetectorScanRadius.get();
         List<OreHighlightPacket.Entry> found = new ArrayList<>();
 
-        for (int x = -SCAN_RADIUS; x <= SCAN_RADIUS; x++) {
-            for (int y = -SCAN_RADIUS; y <= SCAN_RADIUS; y++) {
-                for (int z = -SCAN_RADIUS; z <= SCAN_RADIUS; z++) {
+        for (int x = -scanRadius; x <= scanRadius; x++) {
+            for (int y = -scanRadius; y <= scanRadius; y++) {
+                for (int z = -scanRadius; z <= scanRadius; z++) {
                     BlockPos pos     = center.offset(x, y, z);
                     BlockState state = level.getBlockState(pos);
 

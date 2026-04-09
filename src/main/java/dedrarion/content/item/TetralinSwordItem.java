@@ -1,5 +1,6 @@
 package dedrarion.content.item;
 
+import dedrarion.config.ModConfigValues;
 import dedrarion.registry.ModEffects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
@@ -24,7 +25,6 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class TetralinSwordItem extends SwordItem {
-    private static final int SURGE_COOLDOWN_TICKS = 6 * 20; // 6 секунд
     private static final String TAG_LAST_CRUSH_TIME = "LastCrushTime";
 
     public TetralinSwordItem(Tier tier, int attackDamageModifier, float attackSpeedModifier, Properties props) {
@@ -64,6 +64,7 @@ public class TetralinSwordItem extends SwordItem {
         
         DamageSource damageSource = level.damageSources().playerAttack(player);
         float baseDamage = this.getDamage();
+        int surgeCooldown = ModConfigValues.tetralinSurgeCooldown.get();
 
         switch (phase) {
             case CRUSH -> {
@@ -99,10 +100,10 @@ public class TetralinSwordItem extends SwordItem {
                 
                 if (isCombo) {
                     damage *= 1.25f; // Усиление урона от комбо
-                    player.getCooldowns().addCooldown(this, SURGE_COOLDOWN_TICKS / 2); // Уменьшаем кулдаун
+                    player.getCooldowns().addCooldown(this, surgeCooldown / 2); // Уменьшаем кулдаун
                     player.getPersistentData().remove(TAG_LAST_CRUSH_TIME); // Сбрасываем таймер комбо
                 } else {
-                    player.getCooldowns().addCooldown(this, SURGE_COOLDOWN_TICKS);
+                    player.getCooldowns().addCooldown(this, surgeCooldown);
                 }
 
                 target.hurt(damageSource, damage);

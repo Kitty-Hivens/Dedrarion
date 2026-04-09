@@ -1,5 +1,6 @@
 package dedrarion.client.render;
 
+import dedrarion.config.ModConfigValues;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.Vec3;
 
@@ -11,16 +12,18 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * Client-side shared state for ore highlight rendering.
  * <p>
  * Updated by {@link dedrarion.content.item.MagicDetectorItem} when the player
- * activates detection, consumed by {@link OreGlowRenderer} every frame.
+ * activates detection, consumed by the ore overlay every frame.
  */
 public final class OreHighlightTarget {
-
-    /** Maximum time (in ms) a highlight stays active before fading out. */
-    public static final long HIGHLIGHT_DURATION_MS = 10_000;
 
     private static final List<Entry> ENTRIES = new CopyOnWriteArrayList<>();
 
     private OreHighlightTarget() {}
+
+    /** Returns the configured highlight duration in milliseconds. */
+    public static long getHighlightDurationMs() {
+        return ModConfigValues.magicDetectorHighlightDurationMs.get();
+    }
 
     /**
      * Registers a block position to be highlighted with the given color.
@@ -42,7 +45,8 @@ public final class OreHighlightTarget {
     /** Returns an unmodifiable view of current highlight entries. */
     public static List<Entry> getEntries() {
         long now = System.currentTimeMillis();
-        ENTRIES.removeIf(e -> now - e.timestamp > HIGHLIGHT_DURATION_MS);
+        long duration = getHighlightDurationMs();
+        ENTRIES.removeIf(e -> now - e.timestamp > duration);
         return Collections.unmodifiableList(ENTRIES);
     }
 
@@ -69,8 +73,9 @@ public final class OreHighlightTarget {
 
         /** Returns the alpha factor [0,1] based on remaining highlight time. */
         public float alpha() {
+            long duration = getHighlightDurationMs();
             long elapsed = System.currentTimeMillis() - timestamp;
-            float t = elapsed / (float) HIGHLIGHT_DURATION_MS;
+            float t = elapsed / (float) duration;
             // Fade out in the last 20 % of the duration.
             return t > 0.8f ? 1f - (t - 0.8f) / 0.2f : 1f;
         }

@@ -1,6 +1,7 @@
 package dedrarion.client.render;
 
 import dedrarion.client.particle.SoftGlowParticle;
+import dedrarion.config.ModConfigValues;
 import dedrarion.content.item.MagicDetectorItem;
 import dedrarion.content.util.ModTags;
 import net.minecraft.client.Minecraft;
@@ -39,10 +40,6 @@ public class FireflySystem {
     private static Vec3    nearestOreDir   = null;  // unit vector from player toward nearest ore
     private static long    lastScanTick    = Long.MIN_VALUE;
 
-    private static final int SCAN_INTERVAL    = 40;  // ticks between ore scans
-    private static final int SCAN_RADIUS      = 10;  // blocks
-    private static final int FIREFLY_INTERVAL = 4;   // ticks between firefly spawns
-
     // --- Color presets per mode ---
 
     private static final float[] COLOR_RAW = {1.0f, 0.75f, 0.35f};       // Warm amber
@@ -69,15 +66,17 @@ public class FireflySystem {
         }
 
         long gameTime = level.getGameTime();
+        int scanInterval = ModConfigValues.fireflyScanInterval.get();
+        int spawnInterval = ModConfigValues.fireflySpawnInterval.get();
 
         // Periodic ore scan
-        if (gameTime - lastScanTick >= SCAN_INTERVAL) {
+        if (gameTime - lastScanTick >= scanInterval) {
             scanNearbyOres(level, player);
             lastScanTick = gameTime;
         }
 
         // Firefly spawn
-        if (gameTime % FIREFLY_INTERVAL == 0) {
+        if (gameTime % spawnInterval == 0) {
             spawnFireflies(level, player, gameTime);
         }
     }
@@ -180,13 +179,14 @@ public class FireflySystem {
 
     private static void scanNearbyOres(ClientLevel level, LocalPlayer player) {
         BlockPos center = player.blockPosition();
+        int scanRadius = ModConfigValues.fireflyScanRadius.get();
         int count = 0;
         double bestDist = Double.MAX_VALUE;
         Vec3 bestDir = null;
 
-        for (int x = -SCAN_RADIUS; x <= SCAN_RADIUS; x++) {
-            for (int y = -SCAN_RADIUS; y <= SCAN_RADIUS; y++) {
-                for (int z = -SCAN_RADIUS; z <= SCAN_RADIUS; z++) {
+        for (int x = -scanRadius; x <= scanRadius; x++) {
+            for (int y = -scanRadius; y <= scanRadius; y++) {
+                for (int z = -scanRadius; z <= scanRadius; z++) {
                     BlockPos pos = center.offset(x, y, z);
                     if (!level.getBlockState(pos).is(ModTags.Blocks.METAL_DETECTOR_VALUABLES)) continue;
                     count++;

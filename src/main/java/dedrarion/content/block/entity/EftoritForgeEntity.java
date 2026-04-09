@@ -2,6 +2,7 @@ package dedrarion.content.block.entity;
 
 import dedrarion.api.block.entity.BaseCraftingBlockEntity;
 import dedrarion.api.util.RecipeUtils;
+import dedrarion.config.ModConfigValues;
 import dedrarion.content.recipe.EftoritForgeRecipe;
 import dedrarion.content.recipe.EftoritIngredient;
 import dedrarion.registry.ModBlockEntities;
@@ -24,7 +25,6 @@ import java.util.List;
 public class EftoritForgeEntity extends BaseCraftingBlockEntity<EftoritForgeRecipe> {
 
     private static final int INVENTORY_SIZE = 15;
-    private static final int CRAFT_TIME     = 100; // 5 seconds
 
     public EftoritForgeEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.EFTORIT_FORGE_ENTITY.get(), pos, state);
@@ -43,7 +43,7 @@ public class EftoritForgeEntity extends BaseCraftingBlockEntity<EftoritForgeReci
      */
     @Override
     public int getCraftTime() {
-        return CRAFT_TIME;
+        return ModConfigValues.eftoritForgeCraftTime.get();
     }
 
     @Override

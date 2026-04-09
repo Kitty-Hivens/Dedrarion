@@ -14,8 +14,9 @@ base {
 }
 
 repositories {
-    maven { name = 'ModMaven';   url = 'https://modmaven.dev' }
-    maven { name = 'CurseMaven'; url = 'https://cursemaven.com' }
+    maven { name = 'ModMaven';    url = 'https://modmaven.dev' }
+    maven { name = 'CurseMaven';  url = 'https://cursemaven.com' }
+    maven { name = 'ClothConfig'; url = 'https://maven.shedaniel.me/' }
     maven {
         name = 'GeckoLib'
         url  = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
@@ -76,6 +77,9 @@ dependencies {
 
     // Oculus — IrisApi, full shader pipeline
     compileOnly fg.deobf("curse.maven:oculus-581495:${oculus_file_id}")
+
+    // Cloth Config
+    implementation fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}")
 }
 
 tasks.named('processResources', ProcessResources).configure {

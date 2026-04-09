@@ -2,6 +2,7 @@ package dedrarion.client.render;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
+import dedrarion.config.ModConfigValues;
 import dedrarion.content.item.MagicDetectorItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -30,9 +31,6 @@ public final class OreMarkerOverlay {
 
     private OreMarkerOverlay() {}
 
-    /** Maximum render distance for markers (blocks). Beyond this they are hidden. */
-    private static final double MAX_RENDER_DIST = 48.0;
-
     // --- Main render entry ---
 
     /**
@@ -52,16 +50,19 @@ public final class OreMarkerOverlay {
 
         Vec3 cam = ProjectionCache.getCameraPos();
         float time = (System.currentTimeMillis() % 10000) / 1000f;
+        double maxRenderDist = ModConfigValues.oreMarkerMaxRenderDist.get();
+        // Size scales inversely with distance
+        float baseSize = (float) ModConfigValues.oreMarkerBaseSize.get().doubleValue();
 
         for (OreHighlightTarget.Entry entry : entries) {
             long entryAge = System.currentTimeMillis() - entry.timestamp();
             Vec3 worldPos = entry.center();
             double dist = worldPos.distanceTo(cam);
-            if (dist > MAX_RENDER_DIST) continue;
+            if (dist > maxRenderDist) continue;
 
             // Distance-based alpha fade: full at 0, fading from 60% of max dist
-            float distFade = dist > MAX_RENDER_DIST * 0.6
-                    ? 1f - (float) ((dist - MAX_RENDER_DIST * 0.6) / (MAX_RENDER_DIST * 0.4))
+            float distFade = dist > maxRenderDist * 0.6
+                    ? 1f - (float) ((dist - maxRenderDist * 0.6) / (maxRenderDist * 0.4))
                     : 1f;
 
             float alpha = entry.alpha() * distFade;
@@ -76,9 +77,7 @@ public final class OreMarkerOverlay {
             // Gentle pulse
             float pulse = 1f + Mth.sin(time * 2.5f + (float) (entry.pos().hashCode() % 100) * 0.1f) * 0.12f;
 
-            // Size scales inversely with distance
-            float baseSize = 8f;
-            float size = baseSize * pulse * (float) Math.max(0.4, 1.0 - dist / MAX_RENDER_DIST * 0.6);
+            float size = baseSize * pulse * (float) Math.max(0.4, 1.0 - dist / maxRenderDist * 0.6);
 
             Vec2 screen = ProjectionCache.worldToScreen(worldPos);
 
