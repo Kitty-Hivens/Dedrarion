@@ -1,34 +1,34 @@
 package dedrarion.client.render;
 
+import dedrarion.client.particle.SoftGlowParticle;
 import dedrarion.content.item.MagicDetectorItem;
 import dedrarion.content.util.ModTags;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-import java.util.List;
+import org.jetbrains.annotations.Nullable;
 
 /**
- * Client-side passive firefly + puddle particle system for the Magic Detector.
- *
- * <h3>Fireflies</h3>
- * Orbit the player's hand continuously while the detector is held.
- * Count and speed scale with nearby ore count (radius 10).
- * Drift subtly toward the nearest ore cluster.
- *
- * <h3>Puddle (no-texture prototype)</h3>
- * When ores are highlighted via {@link OreHighlightTarget},
- * exposed ore faces emit slow-falling GLOW particles.
- * No custom block or texture needed.
+ * Client-side ambient firefly particle system for the Magic Detector.
+ * <p>
+ * Fireflies orbit the player's hand continuously while the detector is held.
+ * Uses {@link SoftGlowParticle} for a soft, warm glow instead of vanilla GLOW
+ * particles. Count and behavior scale with nearby ore density.
+ * <p>
+ * Compared to the previous implementation:
+ * <ul>
+ *   <li>No puddle particles — replaced by {@link OreMarkerOverlay} HUD.</li>
+ *   <li>Uses custom soft particle for ambient feel.</li>
+ *   <li>Subtle color tinting based on detector mode.</li>
+ * </ul>
  */
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class FireflySystem {
@@ -41,8 +41,14 @@ public class FireflySystem {
 
     private static final int SCAN_INTERVAL    = 40;  // ticks between ore scans
     private static final int SCAN_RADIUS      = 10;  // blocks
-    private static final int FIREFLY_INTERVAL = 3;   // ticks between firefly spawns
-    private static final int PUDDLE_INTERVAL  = 6;   // ticks between puddle particle spawns
+    private static final int FIREFLY_INTERVAL = 4;   // ticks between firefly spawns
+
+    // --- Color presets per mode ---
+
+    private static final float[] COLOR_RAW = {1.0f, 0.75f, 0.35f};       // Warm amber
+    private static final float[] COLOR_ETHEREAL = {0.7f, 0.85f, 1.0f};   // Cool blue-white
+    private static final float[] COLOR_FULL = {0.85f, 0.7f, 1.0f};       // Soft purple
+    private static final float[] COLOR_IDLE = {0.9f, 0.9f, 0.7f};        // Warm white
 
     // --- Event handler ---
 
@@ -55,15 +61,6 @@ public class FireflySystem {
         ClientLevel level  = mc.level;
 
         if (player == null || level == null || mc.isPaused()) return;
-
-        long gameTime = level.getGameTime();
-
-        // Puddle particles run regardless of whether detector is held,
-        // because OreHighlightTarget entries persist 10 seconds after scanning.
-        if (gameTime % PUDDLE_INTERVAL == 0) {
-            spawnPuddleParticles(level);
-        }
-
         if (!isHoldingDetector(player)) {
             // Reset cached data so fireflies don't linger
             nearbyOreCount = 0;
@@ -71,7 +68,9 @@ public class FireflySystem {
             return;
         }
 
-        // Periodic ore scan (client-side read-only, cheap enough at 40-tick interval)
+        long gameTime = level.getGameTime();
+
+        // Periodic ore scan
         if (gameTime - lastScanTick >= SCAN_INTERVAL) {
             scanNearbyOres(level, player);
             lastScanTick = gameTime;
@@ -91,53 +90,90 @@ public class FireflySystem {
 
         RandomSource rng = level.getRandom();
         Vec3 hand = getHandPos(player);
+        float[] color = getFireflyColor(player);
+
+        Minecraft mc = Minecraft.getInstance();
 
         for (int i = 0; i < count; i++) {
             // Evenly distribute base angles, then add slow rotation over time
             double baseAngle = (2 * Math.PI / count) * i;
-            double timeAngle = gameTime * 0.04;
+            double timeAngle = gameTime * 0.03;
             double angle     = baseAngle + timeAngle;
 
-            float orbitR = 0.18f + rng.nextFloat() * 0.12f;
+            float orbitR = 0.15f + rng.nextFloat() * 0.12f;
 
             // Nudge orbit toward nearest ore
             double bx = 0, bz = 0;
             if (nearestOreDir != null && nearbyOreCount > 0) {
-                float bias = Math.min(nearbyOreCount / 25f, 0.35f);
+                float bias = Math.min(nearbyOreCount / 30f, 0.3f);
                 bx = nearestOreDir.x * bias;
                 bz = nearestOreDir.z * bias;
             }
 
             double px = hand.x + Math.cos(angle) * orbitR + bx;
-            double py = hand.y + (rng.nextFloat() - 0.5) * 0.25;
+            double py = hand.y + (rng.nextFloat() - 0.5) * 0.2;
             double pz = hand.z + Math.sin(angle) * orbitR + bz;
 
-            // Speed scales with ore density for visual urgency
-            float speed = nearbyOreCount > 10 ? 0.05f : 0.015f;
+            // Gentle velocity
+            float speed = nearbyOreCount > 10 ? 0.02f : 0.008f;
+            double vx = (rng.nextFloat() - 0.5) * speed;
+            double vy = (rng.nextFloat() - 0.3) * speed * 0.3;
+            double vz = (rng.nextFloat() - 0.5) * speed;
 
-            level.addParticle(ParticleTypes.GLOW,
-                    px, py, pz,
-                    (rng.nextFloat() - 0.5) * speed,
-                    (rng.nextFloat() - 0.3) * speed * 0.4,
-                    (rng.nextFloat() - 0.5) * speed);
+            // Slight color variation per firefly
+            float cr = Mth.clamp(color[0] + (rng.nextFloat() - 0.5f) * 0.1f, 0f, 1f);
+            float cg = Mth.clamp(color[1] + (rng.nextFloat() - 0.5f) * 0.1f, 0f, 1f);
+            float cb = Mth.clamp(color[2] + (rng.nextFloat() - 0.5f) * 0.1f, 0f, 1f);
+
+            // Size varies: more ores = slightly larger
+            float size = nearbyOreCount > 5 ? 0.08f + rng.nextFloat() * 0.06f
+                    : 0.05f + rng.nextFloat() * 0.04f;
+
+            int lifetime = 20 + rng.nextInt(20);
+
+            SoftGlowParticle particle = SoftGlowParticle.create(
+                    level, px, py, pz, vx, vy, vz,
+                    cr, cg, cb, 0.5f, size, lifetime
+            );
+
+            if (particle != null) {
+                mc.particleEngine.add(particle);
+            }
         }
     }
 
     private static int fireflyCount() {
         if (nearbyOreCount == 0)  return 1;
-        if (nearbyOreCount < 5)   return 3;
-        if (nearbyOreCount < 15)  return 6;
-        return 10;
+        if (nearbyOreCount < 5)   return 2;
+        if (nearbyOreCount < 15)  return 4;
+        return 6;
     }
 
     /** Approximate main-hand position at player shoulder level. */
     private static Vec3 getHandPos(LocalPlayer player) {
         double yawRad = Math.toRadians(player.getYRot());
         return new Vec3(
-                player.getX() - Math.sin(yawRad) * 0.38,
-                player.getY() + player.getEyeHeight() - 0.38,
-                player.getZ() + Math.cos(yawRad) * 0.38
+                player.getX() - Math.sin(yawRad) * 0.35,
+                player.getY() + player.getEyeHeight() - 0.4,
+                player.getZ() + Math.cos(yawRad) * 0.35
         );
+    }
+
+    /**
+     * Returns the firefly tint color based on the current detector mode.
+     */
+    private static float[] getFireflyColor(LocalPlayer player) {
+        MagicDetectorItem det = getDetectorItem(player);
+        if (det == null) return COLOR_IDLE;
+
+        net.minecraft.world.item.ItemStack stack = player.getMainHandItem().getItem() instanceof MagicDetectorItem
+                ? player.getMainHandItem() : player.getOffhandItem();
+
+        return switch (det.getMode(stack)) {
+            case RAW -> COLOR_RAW;
+            case ETHEREAL -> COLOR_ETHEREAL;
+            case FULL -> COLOR_FULL;
+        };
     }
 
     // --- Ore scan ---
@@ -167,49 +203,17 @@ public class FireflySystem {
         nearestOreDir  = bestDir;
     }
 
-    // --- Puddle particles ---
-
-    /**
-     * For every active highlighted ore that has at least one exposed face (adjacent air),
-     * emit a slow-falling GLOW particle from that face.
-     * Acts as a no-texture "puddle" — visible seep from ore faces.
-     */
-    private static void spawnPuddleParticles(ClientLevel level) {
-        List<OreHighlightTarget.Entry> entries = OreHighlightTarget.getEntries();
-        if (entries.isEmpty()) return;
-
-        RandomSource rng = level.getRandom();
-
-        for (OreHighlightTarget.Entry entry : entries) {
-            BlockPos pos = entry.pos();
-
-            // Alpha fades toward end of highlight duration — skip low-alpha entries
-            if (entry.alpha() < 0.2f) continue;
-
-            // Find an exposed face (prefer DOWN for puddle-drip feel)
-            for (Direction dir : Direction.values()) {
-                BlockPos neighbor = pos.relative(dir);
-                if (!level.isEmptyBlock(neighbor)) continue;
-
-                // Spawn probability: roughly 1-2 particles per exposed ore per 6 ticks
-                if (rng.nextFloat() > 0.25f) break;
-
-                double fx = pos.getX() + 0.5 + dir.getStepX() * 0.52 + (rng.nextFloat() - 0.5) * 0.4;
-                double fy = pos.getY() + 0.5 + dir.getStepY() * 0.52 + (rng.nextFloat() - 0.5) * 0.3;
-                double fz = pos.getZ() + 0.5 + dir.getStepZ() * 0.52 + (rng.nextFloat() - 0.5) * 0.4;
-
-                level.addParticle(ParticleTypes.GLOW,
-                        fx, fy, fz,
-                        0, -0.008, 0);
-                break; // One face per ore per tick is enough
-            }
-        }
-    }
-
     // --- Helpers ---
 
     private static boolean isHoldingDetector(LocalPlayer player) {
         return player.getMainHandItem().getItem() instanceof MagicDetectorItem
                 || player.getOffhandItem().getItem() instanceof MagicDetectorItem;
+    }
+
+    @Nullable
+    private static MagicDetectorItem getDetectorItem(LocalPlayer player) {
+        if (player.getMainHandItem().getItem() instanceof MagicDetectorItem det) return det;
+        if (player.getOffhandItem().getItem() instanceof MagicDetectorItem det) return det;
+        return null;
     }
 }

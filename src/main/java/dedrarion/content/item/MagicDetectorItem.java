@@ -1,12 +1,12 @@
 package dedrarion.content.item;
 
+import dedrarion.client.render.FireflySystem;
 import dedrarion.client.render.OreHighlightTarget;
 import dedrarion.content.util.ModTags;
 import dedrarion.network.ModNetwork;
 import dedrarion.network.OreHighlightPacket;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -32,22 +32,21 @@ import java.util.List;
 /**
  * The Magic Detector — a detection tool that reacts to nearby magical ores.
  *
- * <h3>Modes (switched via Shift + RMB)</h3>
+ * <h3>Passive</h3>
+ * Fireflies orbit the held item, reacting to nearby ore density.
+ * Handled by {@link FireflySystem}.
+ *
+ * <h3>Active (RMB)</h3>
+ * Scans a cube of radius {@link #SCAN_RADIUS} around the player.
+ * Found ores are highlighted via {@link OreHighlightTarget} and displayed
+ * on the HUD by {@link dedrarion.client.render.OreMarkerOverlay}.
+ *
+ * <h3>Modes (Shift + RMB)</h3>
  * <ul>
- *   <li><b>RAW</b> — common ores (Ruby, Eftorit). Warm orange highlight.</li>
- *   <li><b>ETHEREAL</b> — rare ores (Ethereum). Cold white/gold highlight.</li>
- *   <li><b>FULL</b> — all registered valuables. Mixed highlights.</li>
+ *   <li><b>RAW</b> — common ores (Ruby, Eftorit).</li>
+ *   <li><b>ETHEREAL</b> — rare ores (Ethereum).</li>
+ *   <li><b>FULL</b> — all registered valuables.</li>
  * </ul>
- *
- * <h3>Detection (RMB)</h3>
- * Scans a cube of radius {@link #SCAN_RADIUS} around the player's eye position.
- * All matching blocks are highlighted via {@link OreHighlightTarget} for
- * {@link OreHighlightTarget#HIGHLIGHT_DURATION_MS} milliseconds.
- * A particle trail is sent via ServerLevel#sendParticles so it is
- * visible to all nearby players, not just the activating client.
- *
- * <p>TODO: passive firefly particles reacting to nearby ore count.
- * <p>TODO: puddle system for visible ores.
  */
 public class MagicDetectorItem extends Item {
 
@@ -128,7 +127,6 @@ public class MagicDetectorItem extends Item {
 
                     if (matchesMode(state, mode)) {
                         found.add(new OreHighlightPacket.Entry(pos, resolveColor(state)));
-                        spawnTrail(level, eye, pos);
                     }
                 }
             }
@@ -159,31 +157,6 @@ public class MagicDetectorItem extends Item {
         if (state.is(ModTags.Blocks.METAL_DETECTOR_ETHEREAL)) return OreHighlightTarget.COLOR_ETHEREUM;
         if (state.is(ModTags.Blocks.METAL_DETECTOR_RAW))      return OreHighlightTarget.COLOR_RUBY;
         return OreHighlightTarget.COLOR_ETHEREUM;
-    }
-
-    /**
-     * Spawns a GLOW particle trail from the player's eye to the target block.
-     * Starts at step 1 (not 0) to avoid spawning a particle directly in the player's face.
-     * Uses ServerLevel#sendParticles so all nearby clients see it.
-     */
-    private void spawnTrail(ServerLevel level, Vec3 from, BlockPos to) {
-        double dx   = to.getX() + 0.5 - from.x;
-        double dy   = to.getY() + 0.5 - from.y;
-        double dz   = to.getZ() + 0.5 - from.z;
-        double dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
-        int steps   = Math.max(1, (int) (dist / 1.5));
-
-        // Start at i=1 to skip the particle directly at the player's eye.
-        for (int i = 1; i <= steps; i++) {
-            double t = (double) i / steps;
-            level.sendParticles(
-                    ParticleTypes.GLOW,
-                    from.x + dx * t,
-                    from.y + dy * t,
-                    from.z + dz * t,
-                    1, 0, 0, 0, 0
-            );
-        }
     }
 
     // --- Tooltip ---

@@ -27,6 +27,7 @@ public class Dedrarion {
         ModCreativeTab.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModEffects.register(modEventBus);
+        ModParticles.register(modEventBus);
         ModRecipes.RECIPE_TYPES.register(modEventBus);
         ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
 

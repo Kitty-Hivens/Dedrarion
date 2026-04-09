@@ -1,6 +1,8 @@
 package dedrarion.network;
 
 import dedrarion.client.render.OreHighlightTarget;
+import dedrarion.client.render.OreMarkerOverlay;
+import dedrarion.compat.shimmer.ShimmerBridge;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,6 +16,9 @@ import java.util.function.Supplier;
 /**
  * Sent from server to client when the Magic Detector finds ore blocks.
  * Each entry carries a block position and a packed ARGB color.
+ * <p>
+ * On receive, populates {@link OreHighlightTarget} and triggers
+ * the {@link OreMarkerOverlay} scan wave animation.
  */
 public class OreHighlightPacket {
 
@@ -48,12 +53,16 @@ public class OreHighlightPacket {
 
     public static void handle(OreHighlightPacket packet, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() ->
-            // Must run on the render thread.
-            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
-                packet.entries.forEach(e -> OreHighlightTarget.add(e.pos(), e.color()))
-            )
+                DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> applyOnClient(packet))
         );
         ctx.get().setPacketHandled(true);
+    }
+
+    private static void applyOnClient(OreHighlightPacket packet) {
+        packet.entries.forEach(e -> {
+            OreHighlightTarget.add(e.pos(), e.color());
+            ShimmerBridge.addOreLight(e.pos(), e.color());
+        });
     }
 
     // --- Entry ---
